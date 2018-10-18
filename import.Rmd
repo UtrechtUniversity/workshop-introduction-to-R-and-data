@@ -1,209 +1,253 @@
-# Tibbles and data import
+# Tidyverse, tibbles and data import
 
-This part of the workshop covers chapter 10, 11.1, 11.2, 11.4, 11.6 of *R for Data Science (Wickham & Gorlemunt, 2017)*. 
+In this section, you learn to work with tibbles (variant of a data frame) and data files. The material covers large parts of [Chapter 10](/) and [11](/) of [R for Data
+Science](http://r4ds.had.co.nz/)
 
-## Introduction
+<!-- This part of the workshop covers chapter 10, 11.1, 11.2, 11.4, 11.6 of *R for  -->
+<!-- Data Science (Wickham & Gorlemunt, 2017)*. -->
 
-In this section, you'll learn how to read plain-text rectangular files into R. Here, we'll only scratch the surface of data import, but many of the principles will translate to other forms of data. We'll finish with a few pointers to packages that are useful for other types of data.
+## The tidyverse
 
-Working with data provided by R packages is a great way to learn the tools of data science, but at some point you want to stop learning and start working with your own data. In this chapter, you'll learn how to read plain-text rectangular files into R. Here, we'll only scratch the surface of data import, but many of the principles will translate to other forms of data. We'll finish with a few pointers to packages that are useful for other types of data.
+<!-- ### The tidyverse -->
 
-### Prerequisites
+You'll also need to install some R packages. An R __package__ is a collection of
+functions, data, and documentation that extends the capabilities of base R. 
+Using packages is key to the successful use of R. The majority of the packages 
+that you will learn in this book are part of the so-called tidyverse. The 
+packages in the tidyverse share a common philosophy of data and R programming, 
+and are designed to work together naturally.
 
-In this chapter, you'll learn how to load flat files in R with the __readr__ package, which is part of the core tidyverse.
+You can install the complete tidyverse with a single line of code:
+
+```{r, eval = FALSE} 
+install.packages("tidyverse") 
+```
+
+On your own computer, type that line of code in the console, and then press 
+enter to run it. R will download the packages from CRAN and install them on to 
+your computer. If you have problems installing, make sure that you are connected
+to the internet, and that <https://cloud.r-project.org/> isn't blocked by your 
+firewall or proxy.
+
+You will not be able to use the functions, objects, and help files in a package 
+until you load it with `library()`. Once you have installed a package, you can 
+load it with the `library()` function:
+
+```{r} 
+library(tidyverse) 
+```
+
+This tells you that tidyverse is loading the ggplot2, tibble, tidyr, readr, 
+purrr, and dplyr packages. These are considered to be the __core__ of the 
+tidyverse because you'll use them in almost every analysis.
+
+Packages in the tidyverse change fairly frequently. You can see if updates are 
+available, and optionally install them, by running `tidyverse_update()`.
+
+## Tibbles
+
+*Book material: Chapter [10](http://r4ds.had.co.nz/tibbles.html) of [R for Data
+Science](http://r4ds.had.co.nz/).*
+
+Tidyverse works with “tibbles” instead of R’s traditional data.frame. Tibbles 
+are improved data frames. The author of the 'tibble' package, Hadley Wickham, 
+says the following about tibbles: 
+
+> "Tibbles are data frames, but they tweak some older behaviours to make life
+a little easier. R is an old language, and some things that were useful 10 or 20
+years ago now get in your way. It’s difficult to change base R without breaking
+existing code, so most innovation occurs in packages."
+
+
+## Data import with `readr`
+
+In this section, you'll learn how to read data files into R. Working with the 
+built-in datasets of R like `mtcars` is great, but from now, we are going to use
+our own data file.
+
+Here, we'll only scratch the surface of data import, but many of the principles 
+will translate to other forms of data. We'll finish with a few pointers to 
+packages that are useful for other types of data.
+
+In this chapter, you'll learn how to load flat files in R with the __readr__ 
+package, which is part of the core tidyverse.
+
+Import readr as a standalone package with the following command: 
+```{r} 
+library(readr) 
+```
+
+
+<!-- Working with data provided by R packages is a great way to learn the tools 
+of  --> <!-- data science, but at some point you want to stop learning and start
+working with --> <!-- your own data. -->
+
+<!-- In this chapter, you'll learn how to read plain-text rectangular files into
+R.  --> <!-- Here, we'll only scratch the surface of data import, but many of 
+the principles  --> <!-- will translate to other forms of data. We'll finish 
+with a few pointers to  --> <!-- packages that are useful for other types of 
+data. -->
+
+## Dataset
+
+- Publications by Utrecht University 
+- From 2012 till 2017 
+- Open Access only
+
+## Excercises
+
+The excercises are divided in two groups:
+
+- **required exercises** The solution of these exercises are part of the rest of this workshop. The code for these exercises needs to work correctly. Ask questions if you are completely stuck.
+
+- **optional exercises** These question be relevant for you. Please pick a few of these exercises to enhance your skills. It doesn't matter when you do not have time to complete them all. 
+
+### Required excercises
+
+#### Excercise x [Required] Convert a data frame into a tibble.
+
+We have seen that the built-in dataset `iris` is an object of type `data.frame`.
+Can you convert the iris data frame into an tibble?
+
+*Hint: Check out the function `as_tibble` or Chapter
+[10.2](http://r4ds.had.co.nz/tibbles.html#tibbles) of the book R for Data 
+Science. *
+
+```{r} 
+# insert your code here
+
+```
+
+Run the same code in your Console. What are the differences between output of 
+the iris `data.frame` and the iris `tibble`?
+
+#### [Exercise x] Read data file with Rstudio
+
+You might have seen the "Import dataset" button in the top right window. Click the button and read our dataset into memory. Copy-paste the code generated in the console to the code block below. 
 
 ```{r}
-library(tidyverse)
+# insert your code here
+
 ```
 
-Import readr as a standalone package with the following command:
-```{r}
-library(readr)
+#### Excercise x [Required] Flat files and separators.
+
+Flat files like CSV files are common in research. CSV files are commonly separated with a comma (`,`) or semicolon (`;`).
+
+
+### Optional exercises
+
+#### Excersise x `recap` Determine the class of the object. Create a tibble from
+the iris dataset. How can you show if the object is a tibble?
+
+
+```{r} 
+# insert your code here
+
 ```
 
-## Getting started
 
-Most of readr's functions are concerned with turning flat files into data frames:
 
-* `read_csv()` reads comma delimited files, `read_csv2()` reads semicolon
-  separated files (common in countries where `,` is used as the decimal place),
-  `read_tsv()` reads tab delimited files, and `read_delim()` reads in files
-  with any delimiter.
 
-* `read_fwf()` reads fixed width files. You can specify fields either by their
-  widths with `fwf_widths()` or their position with `fwf_positions()`.
-  `read_table()` reads a common variation of fixed width files where columns
-  are separated by white space.
+#### [Reading excercise x] [Advanced] `readr` versus base R
 
-These functions all have similar syntax: once you've mastered one, you can use the others with ease. For the rest of this chapter we'll focus on `read_csv()`. Not only are csv files one of the most common forms of data storage, but once you understand `read_csv()`, you can easily apply your knowledge to all the other functions in readr.
+You might wonder why we’re not using base R function for data importing. Functions like `read.csv()`, `read.csv2()` and `read.delimiter()` are available by default in R. 
 
-The first argument to `read_csv()` is the most important: it's the path to the file to read.
+Read [Chapter 11.2.1](http://r4ds.had.co.nz/data-import.html#compared-to-base-r)  of [R for Data
+Science](http://r4ds.had.co.nz/) and think about the topics like reproducibility, shareablitiy and performance.
 
-```{r, message = TRUE}
-data <- read_csv("data/Huji_JNF_Crane_israel_GPRS.csv")
-```
 
-When you run `read_csv()` it prints out a column specification that gives the name and type of each column. That's an important part of readr, which we'll come back to in [parsing a file].
 
-1.  The data might not have column names. You can use `col_names = FALSE` to
-    tell `read_csv()` not to treat the first row as headings, and instead
-    label them sequentially from `X1` to `Xn`:
-    
-    ```{r}
-    read_csv("1,2,3\n4,5,6", col_names = FALSE)
-    ```
-    
-    (`"\n"` is a convenient shortcut for adding a new line. You'll learn more
-    about it and other types of string escape in [string basics].)
-    
-    Alternatively you can pass `col_names` a character vector which will be
-    used as the column names:
-    
-    ```{r}
-    read_csv("1,2,3\n4,5,6", col_names = c("x", "y", "z"))
-    ```
 
-Another option that commonly needs tweaking is `na`: this specifies the value (or values) that are used to represent missing values in your file:
+#### [Exercise x] Read SPSS, SAS and Excel data files
+
+By default, it is not possible to read SPSS, SAS and Excel files with R. Tidyverse offers some packages to make this possible. These packages are not part of `library(tidyverse)`. Install the packages `haven` and `readxl` from the "Packages" tab. Load the packages with the following lines of code:
 
 ```{r}
-read_csv("a,b,c\n1,2,.", na = ".")
+library("haven") # to read and write SPSS, STATA and SAS files
+library("readxl") # to read Excel files
 ```
 
-This is all you need to know to read ~75% of CSV files that you'll encounter in practice. You can also easily adapt what you've learned to read tab separated files with `read_tsv()` and fixed width files with `read_fwf()`. To read in more challenging files, you'll need to learn more about how readr parses each column, turning them into R vectors.
+Read the files `demo.xlsx` `demo.sav` from the `data` folder. 
 
-### Compared to base R
+```{r}
+# insert your code here
 
-If you've used R before, you might wonder why we're not using `read.csv()`. There are a few good reasons to favour readr functions over the base equivalents:
-
->  * They are typically much faster (~10x) than their base equivalents.
->    Long running jobs have a progress bar, so you can see what's happening. 
->    If you're looking for raw speed, try `data.table::fread()`. It doesn't fit 
->    quite so well into the tidyverse, but it can be quite a bit faster.
->  
->  * They produce tibbles, they don't convert character vectors to factors,
->    use row names, or munge the column names. These are common sources of
->    frustration with the base R functions.
->  
->  * They are more reproducible. Base R functions inherit some behaviour from
->    your operating system and environment variables, so import code that works 
->    on your computer might not work on someone else's.
-
-### Exercises
-
-1.  What function would you use to read a file where fields were separated with  
-    "|"?
-    
-1.  Apart from `file`, `skip`, and `comment`, what other arguments do
-    `read_csv()` and `read_tsv()` have in common?
-    
-1.  What are the most important arguments to `read_fwf()`?
-   
-1.  Sometimes strings in a CSV file contain commas. To prevent them from
-    causing problems they need to be surrounded by a quoting character, like
-    `"` or `'`. By convention, `read_csv()` assumes that the quoting
-    character will be `"`, and if you want to change it you'll need to
-    use `read_delim()` instead. What arguments do you need to specify
-    to read the following text into a data frame?
-    
-    ```{r, eval = FALSE}
-    "x,y\n1,'a,b'"
-    ```
-
+```
 
 ## [Parsing a vector](http://r4ds.had.co.nz/data-import.html#parsing-a-vector)
 
-If there are many parsing failures, you'll need to use `problems()` to get the complete set. This returns a tibble, which you can then manipulate with dplyr.
+If there are many parsing failures, you'll need to use `problems()` to get the 
+complete set. This returns a tibble, which you can then manipulate with dplyr.
 
-```{r}
-# problems(x)
-```
+```{r} # problems(x) ```
 
 
-You pick between three parsers depending on whether you want a date (the number of days since 1970-01-01), a date-time (the number of seconds since midnight 1970-01-01), or a time (the number of seconds since midnight). When called without any additional arguments:
+You pick between three parsers depending on whether you want a date (the number 
+of days since 1970-01-01), a date-time (the number of seconds since midnight 
+1970-01-01), or a time (the number of seconds since midnight). When called 
+without any additional arguments:
 
-*   `parse_datetime()` expects an ISO8601 date-time. ISO8601 is an
-    international standard in which the components of a date are
-    organised from biggest to smallest: year, month, day, hour, minute, 
-    second.
-    
-    ```{r}
-    parse_datetime("2010-10-01T2010")
-    # If time is omitted, it will be set to midnight
-    parse_datetime("20101010")
-    ```
-    
-    This is the most important date/time standard, and if you work with
-    dates and times frequently, I recommend reading
-    <https://en.wikipedia.org/wiki/ISO_8601>
-    
-*   `parse_date()` expects a four digit year, a `-` or `/`, the month, a `-` 
-    or `/`, then the day:
-    
-    ```{r}
-    parse_date("2010-10-01")
-    ```
+*   `parse_datetime()` expects an ISO8601 date-time. ISO8601 is an international
+standard in which the components of a date are organised from biggest to 
+smallest: year, month, day, hour, minute, second.
+
+```{r} parse_datetime("2010-10-01T2010") # If time is omitted, it will be set to
+midnight parse_datetime("20101010") ```
+
+This is the most important date/time standard, and if you work with dates and 
+times frequently, I recommend reading <https://en.wikipedia.org/wiki/ISO_8601>
+
+*   `parse_date()` expects a four digit year, a `-` or `/`, the month, a `-` or 
+`/`, then the day:
+
+```{r} parse_date("2010-10-01") ```
 
 *   `parse_time()` expects the hour, `:`, minutes, optionally `:` and seconds, 
-    and an optional am/pm specifier:
-  
-    ```{r}
-    library(hms)
-    parse_time("01:10 am")
-    parse_time("20:10:01")
-    ```
-    
-    Base R doesn't have a great built in class for time data, so we use 
-    the one provided in the hms package.
+and an optional am/pm specifier:
 
-If these defaults don't work for your data you can supply your own date-time `format`, built up of the following pieces:
+```{r} library(hms) parse_time("01:10 am") parse_time("20:10:01") ```
 
-Year
-: `%Y` (4 digits). 
-: `%y` (2 digits); 00-69 -> 2000-2069, 70-99 -> 1970-1999.
+Base R doesn't have a great built in class for time data, so we use the one 
+provided in the hms package.
 
-Month
-: `%m` (2 digits).
-: `%b` (abbreviated name, like "Jan").
-: `%B` (full name, "January").
+If these defaults don't work for your data you can supply your own date-time 
+`format`, built up of the following pieces:
 
-Day
-: `%d` (2 digits).
-: `%e` (optional leading space).
+Year : `%Y` (4 digits). : `%y` (2 digits); 00-69 -> 2000-2069, 70-99 -> 
+1970-1999.
 
-Time
-: `%H` 0-23 hour.
-: `%I` 0-12, must be used with `%p`.
-: `%p` AM/PM indicator.
-: `%M` minutes.
-: `%S` integer seconds.
-: `%OS` real seconds. 
-: `%Z` Time zone (as name, e.g. `America/Chicago`). Beware of abbreviations:
-  if you're American, note that "EST" is a Canadian time zone that does not
-  have daylight savings time. It is _not_ Eastern Standard Time! We'll
-  come back to this [time zones].
-: `%z` (as offset from UTC, e.g. `+0800`). 
+Month : `%m` (2 digits). : `%b` (abbreviated name, like "Jan"). : `%B` (full 
+name, "January").
 
-Non-digits
-: `%.` skips one non-digit character.
-: `%*` skips any number of non-digits.
+Day : `%d` (2 digits). : `%e` (optional leading space).
 
-The best way to figure out the correct format is to create a few examples in a character vector, and test with one of the parsing functions. For example:
+Time : `%H` 0-23 hour. : `%I` 0-12, must be used with `%p`. : `%p` AM/PM 
+indicator. : `%M` minutes. : `%S` integer seconds. : `%OS` real seconds. : `%Z` 
+Time zone (as name, e.g. `America/Chicago`). Beware of abbreviations: if you're 
+American, note that "EST" is a Canadian time zone that does not have daylight 
+savings time. It is _not_ Eastern Standard Time! We'll come back to this [time 
+zones]. : `%z` (as offset from UTC, e.g. `+0800`).
 
-```{r}
-parse_date("01/02/15", "%m/%d/%y")
-parse_date("01/02/15", "%d/%m/%y")
-parse_date("01/02/15", "%y/%m/%d")
-```
+Non-digits : `%.` skips one non-digit character. : `%*` skips any number of 
+non-digits.
 
-If you're using `%b` or `%B` with non-English month names, you'll need to set the  `lang` argument to `locale()`. See the list of built-in languages in `date_names_langs()`, or if your language is not already included, create your own with `date_names()`.
+The best way to figure out the correct format is to create a few examples in a 
+character vector, and test with one of the parsing functions. For example:
 
-```{r}
-parse_date("1 janvier 2015", "%d %B %Y", locale = locale("fr"))
-```
+```{r} parse_date("01/02/15", "%m/%d/%y") parse_date("01/02/15", "%d/%m/%y") 
+parse_date("01/02/15", "%y/%m/%d") ```
+
+If you're using `%b` or `%B` with non-English month names, you'll need to set 
+the  `lang` argument to `locale()`. See the list of built-in languages in 
+`date_names_langs()`, or if your language is not already included, create your 
+own with `date_names()`.
+
+```{r} parse_date("1 janvier 2015", "%d %B %Y", locale = locale("fr")) ```
 
 ### Exercises
 
-1.  What are the most important arguments to `locale()`? 
+1.  What are the most important arguments to `locale()`?
 
 1.  What's the difference between `read_csv()` and `read_csv2()`?
 
@@ -214,34 +258,33 @@ parse_date("1 janvier 2015", "%d %B %Y", locale = locale("fr"))
 
 ## Parsing a file
 
-Now that you've learned how to parse an individual vector, it's time to return to the beginning and explore how readr parses a file. There are two new things that you'll learn about in this section:
+Now that you've learned how to parse an individual vector, it's time to return 
+to the beginning and explore how readr parses a file. There are two new things 
+that you'll learn about in this section:
 
-1. How readr automatically guesses the type of each column.
-1. How to override the default specification.
+1. How readr automatically guesses the type of each column. 1. How to override 
+the default specification.
 
 ### Strategy
 
-readr uses a heuristic to figure out the type of each column: it reads the first 1000 rows and uses some (moderately conservative) heuristics to figure out the type of each column. You can emulate this process with a character vector using `guess_parser()`, which returns readr's best guess, and `parse_guess()` which uses that guess to parse the column:
+readr uses a heuristic to figure out the type of each column: it reads the first
+1000 rows and uses some (moderately conservative) heuristics to figure out the 
+type of each column. You can emulate this process with a character vector using 
+`guess_parser()`, which returns readr's best guess, and `parse_guess()` which 
+uses that guess to parse the column:
 
-```{r}
-guess_parser("2010-10-01")
-guess_parser("15:01")
-guess_parser(c("TRUE", "FALSE"))
-guess_parser(c("1", "5", "9"))
-guess_parser(c("12,352,561"))
+```{r} guess_parser("2010-10-01") guess_parser("15:01") guess_parser(c("TRUE", 
+"FALSE")) guess_parser(c("1", "5", "9")) guess_parser(c("12,352,561"))
 
-str(parse_guess("2010-10-10"))
-```
+str(parse_guess("2010-10-10")) ```
 
 The heuristic tries each of the following types, stopping when it finds a match:
 
-* logical: contains only "F", "T", "FALSE", or "TRUE".
-* integer: contains only numeric characters (and `-`).
-* double: contains only valid doubles (including numbers like `4.5e-5`).
-* number: contains valid doubles with the grouping mark inside.
-* time: matches the default `time_format`.
-* date: matches the default `date_format`.
-* date-time: any ISO8601 date.
+* logical: contains only "F", "T", "FALSE", or "TRUE". * integer: contains only 
+numeric characters (and `-`). * double: contains only valid doubles (including 
+numbers like `4.5e-5`). * number: contains valid doubles with the grouping mark 
+inside. * time: matches the default `time_format`. * date: matches the default 
+`date_format`. * date-time: any ISO8601 date.
 
 If none of these rules apply, then the column will stay as a vector of strings.
 
@@ -249,71 +292,58 @@ If none of these rules apply, then the column will stay as a vector of strings.
 
 These defaults don't always work for larger files. There are two basic problems:
 
-1.  The first thousand rows might be a special case, and readr guesses
-    a type that is not sufficiently general. For example, you might have 
-    a column of doubles that only contains integers in the first 1000 rows. 
+1.  The first thousand rows might be a special case, and readr guesses a type 
+that is not sufficiently general. For example, you might have a column of 
+doubles that only contains integers in the first 1000 rows.
 
-1.  The column might contain a lot of missing values. If the first 1000
-    rows contain only `NA`s, readr will guess that it's a character 
-    vector, whereas you probably want to parse it as something more
-    specific.
+1.  The column might contain a lot of missing values. If the first 1000 rows 
+contain only `NA`s, readr will guess that it's a character vector, whereas you 
+probably want to parse it as something more specific.
 
-There are two printed outputs: the column specification generated by looking at the first 1000 rows, and the first five parsing failures. It's always a good idea to explicitly pull out the `problems()`, so you can explore them in more depth:
+There are two printed outputs: the column specification generated by looking at 
+the first 1000 rows, and the first five parsing failures. It's always a good 
+idea to explicitly pull out the `problems()`, so you can explore them in more 
+depth:
 
-```{r}
-# problems(challenge)
-```
+```{r} # problems(challenge) ```
 
-A good strategy is to work column by column until there are no problems remaining. Here we can see that there are a lot of parsing problems with the `x` column - there are trailing characters after the integer value. That suggests we need to use a double parser instead.
+A good strategy is to work column by column until there are no problems 
+remaining. Here we can see that there are a lot of parsing problems with the `x`
+column - there are trailing characters after the integer value. That suggests we
+need to use a double parser instead.
 
-To fix the call, start by copying and pasting the column specification into your original call:
+To fix the call, start by copying and pasting the column specification into your
+original call:
 
-```{r, eval = FALSE}
-data <- read_csv(
-  "data/Huji_JNF_Crane_israel_GPRS.csv", 
-  col_types = cols(
-    `tag-local-identifier` = col_character(),
-    visible = col_logical()
-  )
-)
+```{r, eval = FALSE} data <- read_csv( "data/Huji_JNF_Crane_israel_GPRS.csv", 
+col_types = cols( `tag-local-identifier` = col_character(), visible = 
+col_logical() ) )
 
-spec(data)
-```
+spec(data) ```
 
 Then you can tweak the type of the `x` column:
 
-```{r}
-challenge <- read_csv(
-  readr_example("challenge.csv"), 
-  col_types = cols(
-    x = col_double(),
-    y = col_character()
-  )
-)
-```
+```{r} challenge <- read_csv( readr_example("challenge.csv"), col_types = cols( 
+x = col_double(), y = col_character() ) ) ```
 
-That fixes the first problem, but if we look at the last few rows, you'll see that they're dates stored in a character vector:
+That fixes the first problem, but if we look at the last few rows, you'll see 
+that they're dates stored in a character vector:
 
-```{r}
-tail(challenge)
-```
+```{r} tail(challenge) ```
 
 You can fix that by specifying that `y` is a date column:
 
-```{r}
-challenge <- read_csv(
-  readr_example("challenge.csv"), 
-  col_types = cols(
-    x = col_double(),
-    y = col_date()
-  )
-)
-tail(challenge)
-```
+```{r} challenge <- read_csv( readr_example("challenge.csv"), col_types = cols( 
+x = col_double(), y = col_date() ) ) tail(challenge) ```
 
 Hadley Wickham:
 
-> I highly recommend always supplying `col_types`, building up from the print-out provided by readr. This ensures that you have a consistent and reproducible data import script. If you rely on the default guesses and your data changes, readr will continue to read it in. If you want to be really strict, use `stop_for_problems()`: that will throw an error and stop your script if there are any parsing problems.
+> I highly recommend always supplying `col_types`, building up from the 
+print-out provided by readr. This ensures that you have a consistent and 
+reproducible data import script. If you rely on the default guesses and your 
+data changes, readr will continue to read it in. If you want to be really 
+strict, use `stop_for_problems()`: that will throw an error and stop your script
+if there are any parsing problems.
 
 
 
@@ -322,88 +352,79 @@ Hadley Wickham:
 
 There are a few other general strategies to help you parse files:
 
-*   In the previous example, we just got unlucky: if we look at just
-    one more row than the default, we can correctly parse in one shot:
-   
-    ```{r}
-    challenge2 <- read_csv(readr_example("challenge.csv"), guess_max = 1001)
-    challenge2
-    ```
+*   In the previous example, we just got unlucky: if we look at just one more 
+row than the default, we can correctly parse in one shot:
 
-*   Sometimes it's easier to diagnose problems if you just read in all
-    the columns as character vectors:
-   
-    ```{r}
-    challenge2 <- read_csv(readr_example("challenge.csv"), 
-      col_types = cols(.default = col_character())
-    )
-    ```
-    
-    This is particularly useful in conjunction with `type_convert()`,
-    which applies the parsing heuristics to the character columns in a data
-    frame.
+```{r} challenge2 <- read_csv(readr_example("challenge.csv"), guess_max = 1001) 
+challenge2 ```
 
-    ```{r}
-    df <- tribble(
-      ~x,  ~y,
-      "1", "1.21",
-      "2", "2.32",
-      "3", "4.56"
-    )
-    df
-    
-    # Note the column types
-    type_convert(df)
-    ```
-    
-*   If you're reading a very large file, you might want to set `n_max` to
-    a smallish number like 10,000 or 100,000. That will accelerate your 
-    iterations while you eliminate common problems.
+*   Sometimes it's easier to diagnose problems if you just read in all the 
+columns as character vectors:
 
-*   If you're having major parsing problems, sometimes it's easier
-    to just read into a character vector of lines with `read_lines()`,
-    or even a character vector of length 1 with `read_file()`. Then you
-    can use the string parsing skills you'll learn later to parse
-    more exotic formats.
+```{r} challenge2 <- read_csv(readr_example("challenge.csv"), col_types = 
+cols(.default = col_character()) ) ```
+
+This is particularly useful in conjunction with `type_convert()`, which applies 
+the parsing heuristics to the character columns in a data frame.
+
+```{r} df <- tribble( ~x,  ~y, "1", "1.21", "2", "2.32", "3", "4.56" ) df
+
+# Note the column types type_convert(df) ```
+
+*   If you're reading a very large file, you might want to set `n_max` to a 
+smallish number like 10,000 or 100,000. That will accelerate your iterations 
+while you eliminate common problems.
+
+*   If you're having major parsing problems, sometimes it's easier to just read 
+into a character vector of lines with `read_lines()`, or even a character vector
+of length 1 with `read_file()`. Then you can use the string parsing skills 
+you'll learn later to parse more exotic formats.
 
 ## Writing to a file
 
-readr also comes with two useful functions for writing data back to disk: `write_csv()` and `write_tsv()`. Both functions increase the chances of the output file being read back in correctly by:
+readr also comes with two useful functions for writing data back to disk: 
+`write_csv()` and `write_tsv()`. Both functions increase the chances of the 
+output file being read back in correctly by:
 
 * Always encoding strings in UTF-8.
-  
-* Saving dates and date-times in ISO8601 format so they are easily
-  parsed elsewhere.
 
-If you want to export a csv file to Excel, use `write_excel_csv()` --- this writes a special character (a "byte order mark") at the start of the file which tells Excel that you're using the UTF-8 encoding.
+* Saving dates and date-times in ISO8601 format so they are easily parsed 
+elsewhere.
 
-The most important arguments are `x` (the data frame to save), and `path` (the location to save it). You can also specify how missing values are written with `na`, and if you want to `append` to an existing file.
+If you want to export a csv file to Excel, use `write_excel_csv()` --- this 
+writes a special character (a "byte order mark") at the start of the file which 
+tells Excel that you're using the UTF-8 encoding.
 
-```{r, eval = FALSE}
-write_csv(challenge, "challenge.csv")
-```
+The most important arguments are `x` (the data frame to save), and `path` (the 
+location to save it). You can also specify how missing values are written with 
+`na`, and if you want to `append` to an existing file.
+
+```{r, eval = FALSE} write_csv(challenge, "challenge.csv") ```
 
 Note that the type information is lost when you save to csv:
 
-```{r, warning = FALSE}
-challenge
-write_csv(challenge, "challenge-2.csv")
-read_csv("challenge-2.csv")
-```
+```{r, warning = FALSE} challenge write_csv(challenge, "challenge-2.csv") 
+read_csv("challenge-2.csv") ```
 
 
 ## Other types of data
 
-To get other types of data into R, we recommend starting with the tidyverse packages listed below. They're certainly not perfect, but they are a good place to start. For rectangular data:
+To get other types of data into R, we recommend starting with the tidyverse 
+packages listed below. They're certainly not perfect, but they are a good place 
+to start. For rectangular data:
 
 * __haven__ reads SPSS, Stata, and SAS files.
 
 * __readxl__ reads excel files (both `.xls` and `.xlsx`).
 
-* __DBI__, along with a database specific backend (e.g. __RMySQL__, 
-  __RSQLite__, __RPostgreSQL__ etc) allows you to run SQL queries against a 
-  database and return a data frame.
+* __DBI__, along with a database specific backend (e.g. __RMySQL__, __RSQLite__,
+__RPostgreSQL__ etc) allows you to run SQL queries against a database and return
+a data frame.
 
-For hierarchical data: use __jsonlite__ (by Jeroen Ooms) for json, and __xml2__ for XML. Jenny Bryan has some excellent worked examples at <https://jennybc.github.io/purrr-tutorial/>.
+For hierarchical data: use __jsonlite__ (by Jeroen Ooms) for json, and __xml2__ 
+for XML. Jenny Bryan has some excellent worked examples at 
+<https://jennybc.github.io/purrr-tutorial/>.
 
-For other file types, try the [R data import/export manual](https://cran.r-project.org/doc/manuals/r-release/R-data.html) and the [__rio__](https://github.com/leeper/rio) package.
+For other file types, try the [R data import/export 
+manual](https://cran.r-project.org/doc/manuals/r-release/R-data.html) and the 
+[__rio__](https://github.com/leeper/rio) package.
