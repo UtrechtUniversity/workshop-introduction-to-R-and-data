@@ -1,0 +1,221 @@
+---
+title: "Modern R with tidyverse"
+author: "[Insert your name]"
+output: html_document
+---
+
+*This document is part of the workshop Introduction to R & Data by Utrecht University RDM Support. *
+
+# Introduction
+
+
+
+<!-- ![](images/pizza-1344720_960_720.jpg) -->
+
+
+In this document, we explore a list of over 3,500 pizzas from multiple restaurants in the U.S. The dataset is provided by [Datafiniti's Business Database](https://www.kaggle.com/datafiniti/pizza-restaurants-and-the-pizza-they-sell/home). Datafiniti's Business Database provides business and product information. The data we will explore in this document contains variables like the category, name, address, city, state, menu information and price range for each pizza restaurant. 
+
+## Research questions
+
+Research questions can be:
+
+- *How many pizza restaurants does each state in the U.S. have?*
+- *What is the median price of a large plain pizza across the U.S.?*
+- ...
+
+The exercises in this document help you aswer the research questions. You can use the structure of this document to make your own reproducible scientific analyses.
+
+## Technical requirements
+
+This project depends on the `tidyverse` package. Load tidyverse into your work environment. 
+
+```{r} 
+library(tidyverse) 
+```
+
+## Excercises
+
+This part of the workshop (second part) makes use of exercises to find answers to the research questions. The excercises are divided in two groups:
+
+- **required exercises (RE)** The solution of these exercises are part of the rest of this workshop. The code for these exercises needs to work correctly. Ask questions if you are completely stuck.
+
+- **optional exercises (OE)** These questions might be relevant for you. Please pick a few of these exercises to enhance your skills. It doesn't matter when you do not have time to complete them all. 
+
+# Import data
+
+The data about the pizza restaurants is stored in two files. One file contains the information about the restaurants while the other file contains information about the pizza's they sell.
+
+### Exercise 1 - Required - Download the data
+
+Download the data and store the data files into the data folder. 
+
+
+### Exercise 2 - Required - Read data files with Rstudio
+
+#### 2a) Read the dataset `restaurants.csv`
+
+Complete the code in the code cell below to read the data into `data_restaurants.csv`. *Tip: Use `head(data_restaurants)` to display the result.*
+
+```{r error=TRUE}
+filepath <- file.path('data', 'restaurants.csv')
+data_restaurants <- ### enter your code here ###
+
+
+```
+
+#### 2b) Install the `readxl`
+
+The package `readxl` is a tidyverse package to read Excel files. Use the code below to load the package. 
+
+```{r error=TRUE}
+library() ### insert your code between the brackets ###
+```
+
+#### 2c) Read the dataset `menus.xlsx`
+
+Complete the code in the code cell below to read the data into `data_restaurants.csv`. *Tip: Write `?read_excel` in your console.*
+
+```{r error=TRUE}
+
+filepath <- file.path('data', 'menus.xlsx')
+data_menus <- ### enter your code here ###
+
+
+```
+
+
+### Exercise 3 - Required - Dataset properties 
+
+Output the structure of the restaurants and menus dataset. Do this with the function `glimpse`. What does `<chr>`, `<dbl>` and `<int>` mean?
+
+```{r error=TRUE}
+
+glimpse(data_restaurants)
+### enter your code here ###
+
+```
+
+### Exercise 3 - Optional (+) - Save to a CSV file. 
+
+Save the tibble `data_menus` as a `.csv` file. Use ';' as delimiter. 
+
+*Tip: check the function `write_delim`.
+
+```{r error=TRUE}
+
+### enter your code here ###
+
+```
+
+### Execise 4 - Optional (+) - Tibbles versus data.frame objects.
+
+The `data_restaurants` is a tibble, but how do you check this with code?
+
+Use your console to convert `data_restaurants` to a data frame. The code to do this is `as.data.frame(data_restaurants)`. 
+
+What is the difference between outputting `data_restaurants` as a tibble or as a data frame?
+
+### Exercise 5 - Optional (++) - `readr` versus base R
+
+You might wonder why we’re not using base R function for data importing. Functions like `read.csv()`, `read.csv2()` and `read.delimiter()` are available by default in R. 
+
+Read [Chapter 11.2.1](http://r4ds.had.co.nz/data-import.html#compared-to-base-r)  of [R for Data
+Science](http://r4ds.had.co.nz/) and think about the topics like reproducibility, shareablitiy and performance. Discuss the results with other participants.
+
+
+#### [Exercise x] Read SPSS, SAS and Excel data files
+
+By default, it is not possible to read SPSS, SAS and Excel files with R. Tidyverse offers some packages to make this possible. These packages are not part of `library(tidyverse)`. Install the packages `haven` and `readxl` from the "Packages" tab. Load the packages with the following lines of code:
+
+```{r}
+library("haven") # to read and write SPSS, STATA and SAS files
+library("readxl") # to read Excel files
+```
+
+Read the files `demo.xlsx` `demo.sav` from the `data` folder. 
+
+```{r}
+# insert your code here
+
+```
+
+
+# 2. Visualise data
+
+Visualizing data is important get a feeling for the data. We use the ggplot2 functions `qplot` and `ggplot`. 
+
+
+
+
+
+### Exercise 2.1 - Required - Quick plots of the menus
+
+#### 2.1a) Single column plots
+
+Make a quick plot of each column in the menus dataset.
+```{r error=TRUE}
+
+qplot(data_menus$menus.amountMax)
+
+### enter your code here ###
+
+```
+#### 2.1b) Combine columns in plots
+
+Make a quick plot of two columns in the restaurants dataset.
+
+```{r error=TRUE}
+
+qplot(data_restaurants$priceRangeMin, data_restaurants$priceRangeMax)
+
+### enter your code here ###
+
+```
+
+
+### Exercise 2.1 - Required - Use ggplot 
+
+#### 2.1a) Single column plots
+
+
+
+### Exercise 2.2 - Optional (++) - Plot the restaurants on a map
+
+In this exercise, the data is plotted on a map of the USA.
+
+#### 2.2a) Install package the `maps`
+
+Install package `maps` and load the library (both by using code).
+
+```{r}
+
+### enter your code here ###
+
+```
+
+#### 2.2b) Plot the restaurants on the map of the USA.
+
+Add a layer with the location of the restaurants.
+
+```{r error=TRUE}
+usa <- map_data("usa") 
+
+ggplot(data_restaurants) + 
+  geom_polygon(data = usa, aes(x=long, y = lat))
+
+```
+
+
+#### 2.2c) Use the maximum price to colour the restaurants.
+
+
+
+
+
+## [Parsing a vector](http://r4ds.had.co.nz/data-import.html#parsing-a-vector)
+
+If there are many parsing failures, you'll need to use `problems()` to get the 
+complete set. This returns a tibble, which you can then manipulate with dplyr.
+
+```{r} # problems(x) ```
+
