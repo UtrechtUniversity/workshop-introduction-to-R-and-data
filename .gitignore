@@ -1,9 +1,3 @@
-
-data/
-
-# Created by https://www.gitignore.io/api/r
-
-### R ###
 # History files
 .Rhistory
 .Rapp.history
@@ -40,10 +34,3 @@ vignettes/*.pdf
 
 # Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
 rsconnect/
-
-### R.Bookdown Stack ###
-# R package: bookdown caching files
-/*_files/
-
-
-# End of https://www.gitignore.io/api/r
