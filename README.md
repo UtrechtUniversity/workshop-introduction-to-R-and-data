@@ -1,7 +1,11 @@
-Workshop: Introduction to R & data
+# Workshop: Introduction to R & data
 
-This repository contains the course material for the workshop 'Introduction to
-R & data'.
+This repository contains the documentation, exercises and datasets of the
+workshop 'Introduction to R & data' by the [Utrecht
+University](https://www.uu.nl). The workshop is organised by [Research Data
+Management Support](https://www.uu.nl/en/research/research-data-management).
+
+## Workshop description
 
 R is a powerful scripting language for data handling, data visualization, and
 statistics. In this workshop, we aim to give you the tools to start exploring
@@ -15,3 +19,28 @@ manner. We will work in RStudio and introduce R as well as R Markdown: this is
 a great way to combine code and its output with text, allowing you to code in
 a narrative and intuitive way. Moreover, this way you produce a human-readable
 document with which you can easily share and showcase your work.
+
+## License
+
+The datasets [data/restaurants.csv](data/restaurants.csv) and
+[data/menus.xlsx](data/menus.xlsx) are distributed under a Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International ([CC BY-NC-SA
+4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)) license.  They are
+derived from [Datafiniti's Business Database](
+https://www.kaggle.com/datafiniti/pizza-restaurants-and-the-pizza-they-sell)
+(CC BY-NC-SA 4.0).
+
+All other content in this repository is licensed under Attribution 4.0
+International (CC BY 4.0). We highly encourage you to contact us when you 
+would like to use the material.
+
+## Contact 
+
+The workshop 'Introduction to R & data' by [Research Data Management
+Support](https://www.uu.nl/en/research/research-data-management) is developed
+and organised by:
+
+- Barbara Vreede ([b.m.i.vreede@uu.nl](mailto:b.m.i.vreede@uu.nl)) @bvreede
+- Jonathan de Bruin ([j.debruin1@uu.nl](mailto:j.debruin1@uu.nl)) @J535D165
+
+Feel free to contact us.
