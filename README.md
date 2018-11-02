@@ -44,7 +44,7 @@ The workshop 'Introduction to R & data' by [Research Data Management
 Support](https://www.uu.nl/en/research/research-data-management) is developed
 and organised by:
 
-- Barbara Vreede ([b.m.i.vreede@uu.nl](mailto:b.m.i.vreede@uu.nl)) @bvreede
-- Jonathan de Bruin ([j.debruin1@uu.nl](mailto:j.debruin1@uu.nl)) @J535D165
+- Barbara Vreede ([b.m.i.vreede@uu.nl](mailto:b.m.i.vreede@uu.nl)) [@bvreede](https://github.com/bvreede)
+- Jonathan de Bruin ([j.debruin1@uu.nl](mailto:j.debruin1@uu.nl)) [@J535D165](https://github.com/J535D165)
 
 Feel free to contact us.
