@@ -34,6 +34,10 @@ All other content in this repository is licensed under Attribution 4.0
 International (CC BY 4.0). We highly encourage you to contact us when you 
 would like to use the material.
 
+## Development
+
+Course material is developed in the `development`branch. 
+
 ## Contact 
 
 The workshop 'Introduction to R & data' by [Research Data Management
