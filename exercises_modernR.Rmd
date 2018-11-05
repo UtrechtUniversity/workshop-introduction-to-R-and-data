@@ -1,17 +1,14 @@
 ---
 title: "Modern R with tidyverse"
 author: "[Insert your name]"
-output: html_document
+output: 
+  html_document:
+    toc: true
 ---
 
-*This document is part of the workshop Introduction to R & Data by Utrecht University RDM Support. *
+*This document is part of the workshop **Introduction to R & Data** by Utrecht University RDM Support. *
 
 # Introduction
-
-
-
-<!-- ![](images/pizza-1344720_960_720.jpg) -->
-
 
 In this document, we explore a list of over 3,500 pizzas from multiple restaurants in the U.S. The dataset is provided by [Datafiniti's Business Database](https://www.kaggle.com/datafiniti/pizza-restaurants-and-the-pizza-they-sell/home). Datafiniti's Business Database provides business and product information. The data we will explore in this document contains variables like the category, name, address, city, state, menu information and price range for each pizza restaurant. 
 
@@ -25,6 +22,14 @@ Research questions can be:
 
 The exercises in this document help you aswer the research questions. You can use the structure of this document to make your own reproducible scientific analyses.
 
+## Excercises
+
+This part of the workshop (part II) makes use of exercises to find answers to the research questions. The excercises are divided in two groups:
+
+- **required exercises (RE)** The solution of these exercises are part of the rest of this workshop. The code for these exercises needs to work correctly. Ask questions if you are completely stuck.
+
+- **optional exercises (OE)** These questions might be relevant for you. Please pick a few of these exercises to enhance your skills. It doesn't matter if you do not have time to complete them all. 
+
 ## Technical requirements
 
 This project depends on the `tidyverse` package. Load tidyverse into your work environment. 
@@ -33,26 +38,18 @@ This project depends on the `tidyverse` package. Load tidyverse into your work e
 library(tidyverse) 
 ```
 
-## Excercises
-
-This part of the workshop (second part) makes use of exercises to find answers to the research questions. The excercises are divided in two groups:
-
-- **required exercises (RE)** The solution of these exercises are part of the rest of this workshop. The code for these exercises needs to work correctly. Ask questions if you are completely stuck.
-
-- **optional exercises (OE)** These questions might be relevant for you. Please pick a few of these exercises to enhance your skills. It doesn't matter when you do not have time to complete them all. 
-
-# Import data
+# 1. Read and save data
 
 The data about the pizza restaurants is stored in two files. One file contains the information about the restaurants while the other file contains information about the pizza's they sell.
 
-### Exercise 1 - Required - Download the data
+### Exercise 1.1 - Required - Download the data
 
 Download the data and store the data files into the data folder. 
 
 
-### Exercise 2 - Required - Read data files with Rstudio
+### Exercise 1.2 - Required - Read data files with Rstudio
 
-#### 2a) Read the dataset `restaurants.csv`
+#### 1.2a) Read the dataset `restaurants.csv`
 
 Complete the code in the code cell below to read the data into `data_restaurants.csv`. *Tip: Use `head(data_restaurants)` to display the result.*
 
@@ -63,7 +60,7 @@ data_restaurants <- ### enter your code here ###
 
 ```
 
-#### 2b) Install the `readxl`
+#### 1.2b) Install the `readxl`
 
 The package `readxl` is a tidyverse package to read Excel files. Use the code below to load the package. 
 
@@ -71,7 +68,7 @@ The package `readxl` is a tidyverse package to read Excel files. Use the code be
 library() ### insert your code between the brackets ###
 ```
 
-#### 2c) Read the dataset `menus.xlsx`
+#### 1.2c) Read the dataset `menus.xlsx`
 
 Complete the code in the code cell below to read the data into `data_restaurants.csv`. *Tip: Write `?read_excel` in your console.*
 
@@ -84,7 +81,7 @@ data_menus <- ### enter your code here ###
 ```
 
 
-### Exercise 3 - Required - Dataset properties 
+### Exercise 1.3 - Required - Dataset properties 
 
 Output the structure of the restaurants and menus dataset. Do this with the function `glimpse`. What does `<chr>`, `<dbl>` and `<int>` mean?
 
@@ -95,7 +92,7 @@ glimpse(data_restaurants)
 
 ```
 
-### Exercise 3 - Optional (+) - Save to a CSV file. 
+### Exercise 1.3 - Optional (+) - Save to a CSV file. 
 
 Save the tibble `data_menus` as a `.csv` file. Use ';' as delimiter. 
 
@@ -107,7 +104,7 @@ Save the tibble `data_menus` as a `.csv` file. Use ';' as delimiter.
 
 ```
 
-### Execise 4 - Optional (+) - Tibbles versus data.frame objects.
+### Execise 1.4 - Optional (+) - Tibbles versus data.frame objects.
 
 The `data_restaurants` is a tibble, but how do you check this with code?
 
@@ -115,38 +112,44 @@ Use your console to convert `data_restaurants` to a data frame. The code to do t
 
 What is the difference between outputting `data_restaurants` as a tibble or as a data frame?
 
-### Exercise 5 - Optional (++) - `readr` versus base R
+### Exercise 1.5 - Reading Exercise - `readr` versus base R
 
-You might wonder why we’re not using base R function for data importing. Functions like `read.csv()`, `read.csv2()` and `read.delimiter()` are available by default in R. 
+You might wonder why we’re not using base R functions for (flat) file reading like `read.csv()`, `read.csv2()` and `read.delimiter()`. These function are available by default in base R and don't require additional packages like `readr`. 
 
 Read [Chapter 11.2.1](http://r4ds.had.co.nz/data-import.html#compared-to-base-r)  of [R for Data
-Science](http://r4ds.had.co.nz/) and think about the topics like reproducibility, shareablitiy and performance. Discuss the results with other participants.
+Science](http://r4ds.had.co.nz/) and think about the topics like reproducibility, shareablitiy and performance. Discuss your thoughts with another workshop participant.
 
 
-#### [Exercise x] Read SPSS, SAS and Excel data files
+### Exercise 1.6 - Optional (++) - Read SPSS, SAS and Excel data files
 
-By default, it is not possible to read SPSS, SAS and Excel files with R. Tidyverse offers some packages to make this possible. These packages are not part of `library(tidyverse)`. Install the packages `haven` and `readxl` from the "Packages" tab. Load the packages with the following lines of code:
+By default, it is not possible to read SPSS, SAS and Excel files with R. Tidyverse offers some packages to make this possible. These packages are loaded and attached by default when  `library(tidyverse)` is called. Install the packages `haven` and `readxl`. Load the packages with the following lines of code:
 
 ```{r}
 library("haven") # to read and write SPSS, STATA and SAS files
 library("readxl") # to read Excel files
 ```
 
-Read the files `demo.xlsx` `demo.sav` from the `data` folder. 
+#### 1.6a) Write data frame to SPSS, SAS, STATA data files. 
 
-```{r}
-# insert your code here
+Do the following: 
 
-```
+- Write the `data_restaurants` to a SPSS (`.dat`) file
+- Read the saved SPSS data file. 
+- Write the result of the previous step 
+
+`Create a code block here and insert the required code.`
+
+#### 1.6b) Write data frame to Excel. 
+
+Write `data_restaurants` to an Excel file. 
+
+Is there a tidyverse function to do this? If not, read on the internet about
+writing Excel files with R.
 
 
-# 2. Visualise data
+# 2. Data visualisation
 
-Visualizing data is important get a feeling for the data. We use the ggplot2 functions `qplot` and `ggplot`. 
-
-
-
-
+Visualizing data is important get a feeling for data sets. In the pizza dataset, visualisation is used to explore the values of the columns. Base R has strong plotting functions. To get even better flexibility in plotting, we use the ggplot2 functions `qplot` and `ggplot`. 
 
 ### Exercise 2.1 - Required - Quick plots of the menus
 
@@ -178,6 +181,8 @@ qplot(data_restaurants$priceRangeMin, data_restaurants$priceRangeMax)
 #### 2.1a) Single column plots
 
 
+### Exercise 2.3 - Reading exercise - Quick plots of the menus
+
 
 ### Exercise 2.2 - Optional (++) - Plot the restaurants on a map
 
@@ -185,7 +190,7 @@ In this exercise, the data is plotted on a map of the USA.
 
 #### 2.2a) Install package the `maps`
 
-Install package `maps` and load the library (both by using code).
+Install the package `maps` and load the library (both by using code).
 
 ```{r}
 
@@ -209,7 +214,28 @@ ggplot(data_restaurants) +
 #### 2.2c) Use the maximum price to colour the restaurants.
 
 
-# 3. Transform, tidy and mutate data
+### Exercise 2.3 - Reading Exercise - Add statistical layers to graphs.
+
+Applying statistics
+
+```{r echo=FALSE, message=FALSE, width=4, height=3}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point() + geom_smooth()
+```
+
+
+Read [Chapter 3.6](https://r4ds.had.co.nz/data-visualisation.html#geometric-objects)  of [R for Data
+Science](http://r4ds.had.co.nz/) and experiment with the function `geom_smooth()`. 
+
+```{r error=TRUE}
+
+# check ?geom_smooth for examples
+
+```
+
+
+
+# 3. Data transformation
 
 Most of the time, the data is not in the shape you prefer. In this section, the transform the data about the pizza restaurants.
 
