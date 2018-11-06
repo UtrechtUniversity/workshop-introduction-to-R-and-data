@@ -22,9 +22,9 @@ Research questions can be:
 
 The exercises in this document help you aswer the research questions. You can use the structure of this document to make your own reproducible scientific analyses.
 
-## Excercises
+## Exercises
 
-This part of the workshop (part II) makes use of exercises to find answers to the research questions. The excercises are divided in two groups:
+This part of the workshop (part II) makes use of exercises to find answers to the research questions. The exercises are divided in two groups:
 
 - **basic exercises** The solution of these exercises are part of the rest of this workshop. The code for these exercises needs to work correctly. Ask questions if you are completely stuck.
 
@@ -46,13 +46,14 @@ The data about the pizza restaurants is stored in two files. One file contains
 the information about the restaurants while the other file contains information
 about the pizza's they sell.
 
-### Basic exercise I - Read data files with Rstudio
+### Basic exercise I - Read data files
 
 #### a) Read the dataset `menus.csv`
 
 Complete the code in the code cell below to read the data into
-`data_menus`. *Tip: Use `head(data_menus)` to display the
-result.*
+`data_menus`. You can do this with the RStudio interface (with buttons).
+
+*Tip: Use `head(data_menus)` to display the result.*
 
 ```{r error=TRUE}
 filepath <- file.path('data', 'menus.csv')
@@ -176,11 +177,11 @@ read_csv(filepath,
 
 # 2. Data visualisation
 
-Visualizing data is important get a feeling for data sets. In the pizza dataset, visualisation is used to explore the values of the columns. Base R has strong plotting functions. To get even better flexibility in plotting, we use the ggplot2 functions `qplot` and `ggplot`. 
+Visualizing data is important get a feeling for the content of a data set. In the pizza dataset, visualisation is used to explore the values of the columns. Base R has strong plotting functions. To get even better flexibility in plotting, we use the ggplot2 functions `qplot` and `ggplot`. 
 
-### Exercise 2.1 - Required - Quick plots of the menus
+### Basic exercise I - Quick plots of the menus
 
-#### 2.1a) Single column plots
+#### a) Single column plots
 
 Make a quick plot of each column in the menus dataset.
 ```{r error=TRUE}
@@ -190,51 +191,61 @@ qplot(data_menus$menus.amountMax)
 ### enter your code here ###
 
 ```
-#### 2.1b) Combine columns in plots
+#### b) Two column in plots
 
-Make a quick plot of two columns in the restaurants dataset.
+Make a quick plot of two columns in the restaurants dataset. Check `priceRangeMin` with `priceRangeMax` and `state` with `priceRangeMax`.
 
 ```{r error=TRUE}
 
-qplot(data_restaurants$priceRangeMin, data_restaurants$priceRangeMax)
-
-### enter your code here ###
+qplot(x = data_restaurants$priceRangeMin, y = 
 
 ```
 
 
-### Exercise 2.1 - Required - Use ggplot 
+### Basic exercise II - Using ggplot for graphs
 
-#### 2.1a) Single column plots
+Complete the following code with different geometric layers. Examples are `geom_point`, `geom_line`, `geom_count` and `geom_density_2d`. 
 
+*Tip: write `geom_` in the search field of the help tab in RStudio.
 
-### Exercise 2.3 - Reading exercise - Quick plots of the menus
+```{r error=TRUE}
 
-### Reading Exercise - Add statistical layers to graphs.
+ggplot(data_menus, aes(menus.amountMax, menus.amountMin)) + 
+  ### enter your code here ###
 
-Applying statistics
+```
+
+### Reading exercise - Statistical layers for graphs.
+
+Statistical layers reveal a strong power of ggplot. The following graph illustrates this:
 
 ```{r echo=FALSE, message=FALSE, width=4, height=3}
 ggplot(mpg, aes(displ, hwy)) +
   geom_point() + geom_smooth()
 ```
 
-
 Read [Chapter 3.6](https://r4ds.had.co.nz/data-visualisation.html#geometric-objects)  of [R for Data
-Science](http://r4ds.had.co.nz/) and experiment with the function `geom_smooth()`. 
+Science](http://r4ds.had.co.nz/) and experiment with the function `geom_smooth()` and `stat_smooth()`. What is the difference between both functions? 
+
+
+### Optional exercise (+) - Scale axes
+
+Scaling of the axes with a ggplot is easy. Take a look at the *data-visualization* cheatsheet. In the bottom right corner of the cheatsheet, you will find the code needed to scale the axes. 
+
+Zoom in on the price range till 100 dollar. 
 
 ```{r error=TRUE}
-
-# check ?geom_smooth for examples
-
+ggplot(data_restaurants, aes(priceRangeMin, priceRangeMax)) + 
+  geom_point()
 ```
 
 
-### Exercise 2.2 - Optional (++) - Plot the restaurants on a map
 
-In this exercise, the data is plotted on a map of the USA.
+### Optional exercise (++) - Plot the restaurants on a map
 
-#### 2.2a) Install package the `maps`
+In this exercise, we plot the restaurants on a map of the USA.
+
+#### a) Install package the `maps`
 
 Install the package `maps` and load the library (both by using code).
 
@@ -244,29 +255,50 @@ Install the package `maps` and load the library (both by using code).
 
 ```
 
-#### 2.2b) Plot the restaurants on the map of the USA.
+#### b) Plot the restaurants on the map of the USA.
 
 Add a layer with the location of the restaurants.
 
-```{r error=TRUE}
-usa <- map_data("usa") 
+*tip: can you use the `geom_point()` layer for this?*
 
-ggplot(data_restaurants) + 
-  geom_polygon(data = usa, aes(x=long, y = lat))
+
+```{r error=TRUE}
+# usa <- map_data("usa") 
+
+# ggplot(data_restaurants) + 
+#   geom_polygon(data = usa, aes(x=long, y = lat))
 
 ```
 
 
-#### 2.2c) Use the maximum price to colour the restaurants.
+#### c) Use the maximum price to colour the restaurants.
+
+```{r error=TRUE}
+# usa <- map_data("usa") 
+
+# ggplot(data_restaurants) + 
+#   geom_polygon(data = usa, aes(x=long, y = lat))
+
+```
+
+### Optional exercise (+++) - Create facets. 
+
+Search on the internet for information about facets in ggplot. This unique feature is a must have for data exploration. Create a graph (doesn't matter what kind of graph) and use facets to display them for all states. 
+
+```{r fig.height=15, fig.width=6}
+
+### enter your code here ###
+
+```
 
 
 # 3. Data transformation
 
-Most of the time, the data is not in the shape you prefer. In this section, the transform the data about the pizza restaurants.
+The pizza restaurant data might not be in the format you prefer for analysis. In this section, the transform the data about the pizza restaurants.
 
-### Exercise 3.1 - Required - Subset data
+### Basic exercise I - Subset data
 
-#### 3.1a) Make a selection of all restaurants in 'Los Angeles'.
+#### a) Make a selection of all restaurants in 'Los Angeles'.
 
 Make use of the tidyverse (dplyr) function `filter()`.
 
@@ -276,7 +308,9 @@ Make use of the tidyverse (dplyr) function `filter()`.
 
 ```
 
-#### 3.1b) Make a selection of all restaurants in 'Los Angeles' where the variable `priceRangeMin` isn't missing.
+#### b) Make a selection of all restaurants in 'Los Angeles' where the variable `priceRangeMin` isn't missing.
+
+How many records satify this condition?
 
 *Tip: Use the function `is.na()` preceded by the `!`. Check the help page for both `is.na` and `!`.*
 
@@ -286,7 +320,7 @@ Make use of the tidyverse (dplyr) function `filter()`.
 
 ```
 
-#### 3.1c) Make a selection of all restaurants in 'Los Angeles' where the variable `priceRangeMin` is not missing. Return only the `address` and `name` of the restaurants. 
+#### c) Make a selection of all restaurants in 'Los Angeles' where the variable `priceRangeMin` is not missing. Return only the `address` and `name` of the restaurants. 
 
 Make only use of tidyverse functions.
 
@@ -296,22 +330,33 @@ Make only use of tidyverse functions.
 
 ```
 
-### Exercise 3.2 - Required - Mutate data
+### Basic exercise II - Compute the price range
 
-The function `mutate()` is a very powerfull function in tidyverse (dplyr) to mutate column variables in a data frame or tibble. Create a new variable named `priceRangeDiff` which is the maximum price of a pizza minus the minimum price of a pizza.
+The function `mutate()` is a very powerfull function in tidyverse (dplyr) to mutate column variables in a data frame or tibble. Create a tibble with new variable named `priceRangeDiff` which is the maximum price of a pizza minus the minimum price of a pizza.
 
 ```{r error=TRUE}
 
-data_restaurants <- mutate( ### enter your code here ### )
+data_restaurants_with_price_range <- mutate(data_restaurants,  ### enter your code here ### )
 
+head(data_restaurants_with_price_range)
 ```
 
+Try to use the formatting tips discussed during the presentation.
 
-### Exercise 3.3 - Optional (+) - Exclude variables
+### Basic exercise III - Filter outliers
+
+Remove the record of `data_restaurants` with outliers on the variables `priceRangeMin` and `priceRangeMax`. Use `ggplot` to create a scatterplot of the 'cleaned' variables. The result should look like the (+) exercise in part 2 (Data visualisation). 
+
+### Reading exercise - Pipe operator
+
+The pipe operator `%>%` is used by many tidyverse users. Read [Chapter 18](https://r4ds.had.co.nz/pipes.html)  of [R for Data
+Science](http://r4ds.had.co.nz/). Make a selection columns and rows of the data and make use of the pipe syntax.
+
+### Optional exercise (+) - Exclude variables
 
 Create a tibble of the restaurant dataset without the latitude and longitude. 
 
-Use only one line of code and less than 75 characters. 
+Use tidyverse and a maximum of 75 characters. (Our best result is 42 characters.)
 
 ```{r}
 
@@ -319,35 +364,32 @@ Use only one line of code and less than 75 characters.
 
 ```
 
-### Exercise 3.4 - Optional (++) - Summarise results
+### Optional exercise (++) - Summarise results
 
-The function `summarise()` can be used to summarise results. Compute the mean minumum price and the mean maximum price of the pizzas. Compute the median difference between the minimum and maximum price.
+The function `summarise()` can be used to summarise the menus dataset. Compute the following variables: 
+
+- the mean minumum price
+- the mean maximum price of the pizzas
+- the median difference between the minimum and maximum price
 
 *Tip: Use the cheatsheet or R4DS
 
 ```{r}
 
-### enter your code here ###
-
 ```
 
-### Exercise 3.4 - Optional (+++) - Pipe operator
-
-
-
-### Exercise 3.5 - Required - Join datasets
+### Optional exercise (+++) - Join datasets
 
 Quickly read [13.4.1](https://r4ds.had.co.nz/relational-data.html#understanding-joins)-[13.4.3](https://r4ds.had.co.nz/relational-data.html#outer-join) from R for Data Science. Focus on the images.
 
 In this exercise, append restaurant data to each pizza. What kind of join is this? *Hint: Check the data transformation cheatsheet, section 'Combine Tables'.*
 
-The join key in our dataset is `id`. 
-
+The join key for our pizza datasets is `id`. 
 
 ```{r error=TRUE}
 
-data_pizza_with_restaurant <- ..._join(### enter your code here ###)
+# data_pizza_with_restaurant <- ..._join()
 
 ```
 
-
+Multiple options give the same results. Explain why!
