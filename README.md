@@ -20,6 +20,26 @@ a great way to combine code and its output with text, allowing you to code in
 a narrative and intuitive way. Moreover, this way you produce a human-readable
 document with which you can easily share and showcase your work.
 
+## Material
+
+An overview of the workshop material is listed here.
+
+**Workshop reference material**
+
+- slides
+- Code reference Part I [.pdf](), [.Rmd]()
+
+**Exercises**
+
+- Exercises Part II: Modern R with Tidyverse [exercises_modernR.Rmd](exercises_modernR.Rmd)
+- Datasets Part II: [data](data)
+
+**External resources**
+
+- Book: [R for Data Science](https://r4ds.had.co.nz/)
+- R cheatsheets [cheatsheets](cheatsheets)
+
+
 ## License
 
 The datasets [data/restaurants.csv](data/restaurants.csv) and
