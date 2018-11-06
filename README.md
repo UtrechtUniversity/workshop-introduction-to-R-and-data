@@ -31,7 +31,7 @@ An overview of the workshop material is listed here.
 
 **Exercises**
 
-- Exercises Part II: Modern R with Tidyverse [exercises_modernR.Rmd](exercises_modernR.Rmd)
+- Exercises Part II: Modern R with Tidyverse [modernR_exercises.Rmd](modernR_exercises.Rmd)
 - Datasets Part II: [data](data)
 
 **External resources**
