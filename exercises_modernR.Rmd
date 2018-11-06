@@ -48,15 +48,15 @@ about the pizza's they sell.
 
 ### Basic exercise I - Read data files with Rstudio
 
-#### a) Read the dataset `restaurants.csv`
+#### a) Read the dataset `menus.csv`
 
 Complete the code in the code cell below to read the data into
-`data_restaurants.csv`. *Tip: Use `head(data_restaurants)` to display the
+`data_menus.csv`. *Tip: Use `head(data_menus)` to display the
 result.*
 
 ```{r error=TRUE}
-filepath <- file.path('data', 'restaurants.csv')
-data_restaurants <- ### enter your code here ###
+filepath <- file.path('data', 'menus.csv')
+data_menus <- ### enter your code here ###
 
 
 ```
@@ -73,13 +73,13 @@ function `library()`.
 
 #### c) Read the menus dataset
 
-Read the menus data file `menus.xlsx` (Excel file!). Complete the code in the
+Read the menus data file `restaurants.xlsx` (Excel file!). Complete the code in the
 code cell below and . *Tip: Write `?read_excel` in your console.*
 
 ```{r error=TRUE}
 
 filepath <- file.path('data', 'menus.xlsx')
-data_menus <- ### enter your code here ###
+data_restaurants <- ### enter your code here ###
 
 
 ```
@@ -103,7 +103,7 @@ Science](http://r4ds.had.co.nz/) and think about the topics like reproducibility
 
 ### Optional exercise (+) - Save data to a CSV file. 
 
-Save the tibble `data_menus` to a `.csv` file. Use `;` as delimiter. 
+Save the tibble `data_restaurants` to a `.csv` file. Use `;` as delimiter. 
 
 *Tip: check the function `write_delim`.*
 
@@ -138,7 +138,7 @@ Compare the result with `data_restaurants`.
 
 #### b) Write data frame to Excel. 
 
-Write `data_restaurants` to an Excel file. 
+Write `data_menus` to an Excel file. 
 
 Is there a tidyverse function to do this? If not, read on the internet about
 writing Excel files with R.
@@ -146,8 +146,29 @@ writing Excel files with R.
 
 ### Optional exercise (+++) - Parse datetime columns
 
-Date and time variables can be very challenging to work with in programming languages (including R). 
+Date and time variables can be very challenging to work with in programming languages (including R). In the menus dataset, there is a variable `menus.dateSeen`. This column isn't recognized as a date variable. 
 
+```{r}
+glimpse(data_menus)
+```
+
+The following code shows how you can parse columns with a specific data type. Uncomment the line with `col_date` and insert the correct format for the date column.
+
+```{r}
+
+filepath <- file.path('data', 'menus.csv')
+
+read_delim(filepath, delim='\t',
+  col_types = cols(
+    menus.amountMax = col_double(),
+    menus.amountMin = col_double(),
+    menus.currency = col_character(),
+    # menus.dateSeen = col_date(format="### insert correct format here ###"),
+    menus.description = col_character(),
+    menus.name = col_character()
+  ))
+  
+```
 
 # 2. Data visualisation
 
