@@ -51,7 +51,7 @@ about the pizza's they sell.
 #### a) Read the dataset `menus.csv`
 
 Complete the code in the code cell below to read the data into
-`data_menus.csv`. *Tip: Use `head(data_menus)` to display the
+`data_menus`. *Tip: Use `head(data_menus)` to display the
 result.*
 
 ```{r error=TRUE}
@@ -68,6 +68,8 @@ doesn't load when you call `library("tidyverse")`. Load the package with the
 function `library()`. 
 
 ```{r error=TRUE}
+
+### enter your code here ###
 
 ```
 
@@ -90,6 +92,8 @@ data_restaurants <- ### enter your code here ###
 Output the structure of both the restaurants and menus dataset in the cell below. Do this with the function `glimpse()`. What does `<chr>`, `<dbl>` and `<int>` mean? Are these values what you expect?
 
 ```{r error=TRUE}
+
+### enter your code here ###
 
 ```
 
@@ -148,13 +152,13 @@ writing Excel files with R.
 
 Date and time variables can be very challenging to work with in programming languages (including R). In the menus dataset, there is a variable `menus.dateSeen`. This column isn't recognized as a date variable. 
 
-```{r}
+```{r error=TRUE}
 glimpse(data_menus)
 ```
 
 The following code shows how you can parse columns with a specific data type. Uncomment the line with `col_date` and insert the correct format for the date column.
 
-```{r}
+```{r error=TRUE}
 
 filepath <- file.path('data', 'menus.csv')
 

@@ -96,6 +96,9 @@ head(data_restaurants_stata)
 
 This is not possible with `tidyverse` at the moment. `readxl` only support Excel file reading. This is not a problem for a researcher, because we don't use Excel, isn't it?
 
+### Optional exercise (+++) - Parse datetime columns
+
+No solutions available at the moment.
 
 # 2. Data visualisation
 
