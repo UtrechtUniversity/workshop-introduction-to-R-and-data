@@ -4,6 +4,7 @@ author: "Jonathan de Bruin & Barbara Vreede"
 output:
   pdf_document:
     toc: yes
+    latex_engine: xelatex
   html_document:
     toc: yes
 ---
@@ -285,3 +286,4 @@ head(data_pizza_with_restaurant)
 ```
 
 Multiple options give the same results. Explain why!
+
