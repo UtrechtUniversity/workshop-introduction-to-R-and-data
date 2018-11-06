@@ -1,8 +1,15 @@
-# Installation guide
+# Installation and troubleshooting guide
 
 The workshop *Introduction to R & Data* makes use of R and Rstudio. 
 Also, the R package `tidyverse` is used. This document shows how to install 
-R and RStudio.
+R and RStudio. 
+
+Most workshops on R programming make use of an RStudio server. With an RStudio
+server, the participant logs in onto the website and gets a web based RStudio
+IDE. We prefer a local installation of RStudio for our workshop. We hope that 
+this removes a barrier for users to start working with R themselves.
+
+# Installation
 
 ## Install R and RStudio on a personal laptop.
 
