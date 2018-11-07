@@ -26,8 +26,7 @@ An overview of the workshop material is listed here.
 
 **Workshop reference material**
 
-- slides
-- Code reference Part I [.pdf](), [.Rmd]()
+- [Slides](20181107_WSIntroRData_slides.pdf)
 
 **Exercises**
 
