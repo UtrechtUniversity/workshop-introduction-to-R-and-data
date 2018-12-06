@@ -44,7 +44,7 @@ An overview of the workshop material is listed here.
 
 The dataset [data/HUJI_Crane_israel_GPRS.csv](data/HUJI_Crane_Israel_GPRS.csv) was generously provided by Sasha Pekarsky, and is the result of work done at the Department of Ecology, Evolution, and Behavior at the Hebrew University of Jerusalem in Israel. It may not be reused other than for the purposes of this workshop.
 
-The dataset [data/Crane_additional_observations.xlsx](data/Crane_additional_observations.xlsx) is fictional.
+The dataset [data/crane_additional_observations.xlsx](data/Crane_additional_observations.xlsx) is fictional.
 
 All content in this repository with the exception of the dataset [data/HUJI_Crane_israel_GPRS.csv](data/HUJI_Crane_Israel_GPRS.csv) is licensed under Attribution 4.0
 International (CC BY 4.0). We highly encourage you to contact us when you 
