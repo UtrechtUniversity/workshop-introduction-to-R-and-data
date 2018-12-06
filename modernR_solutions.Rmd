@@ -9,6 +9,12 @@ output:
     toc: yes
 ---
 
+# Introduction
+
+In this document, we explore Crane migration, through the GPS data from 39 tagged individuals during the fall migration of 2017. The data was kindly provided for this course by Sasha Pekarsky at the Department of Ecology, Evolution, and Behavior at HUJI. The dataset has been modified by the course instructors.
+
+## Technical requirements
+
 *This document is part of the workshop **Introduction to R & Data** by Utrecht University RDM Support. *
 
 ```{r} 
@@ -111,11 +117,13 @@ This is not a problem for a researcher, because we don't use Excel, do we?
 
 ### Optional exercise (+++) - Parse datetime columns
 
+```{r}
 read_csv('data/HUJI_Crane_Israel_GPRS.csv',
   col_types = cols(
     . = col_guess(),
     eobs_start_timestamp = col_date(format="%Y,%d+%b")
   ))
+```
 
 # 2. Data visualisation
 
@@ -134,6 +142,7 @@ qplot(eobs_status, data=data_crane)
 
 
 ```
+
 #### b) Two column in plots
 
 ```{r}
@@ -276,7 +285,8 @@ data_crane_with_mag_magnetic <- mutate(
                      mag_magnetic_field_raw_y ^ 2)
 )
 
-data_crane_with_mag_magnetic$magnitude
+ggplot(data_crane_with_mag_magnetic) + 
+  geom_histogram(aes(magnitude))
 ```
 
 
@@ -301,7 +311,7 @@ summarise(
   data_crane, 
   min_latitude = max(location_lat, na.rm=T),
   first_observation = min(timestamp),
-  magnitude_acceleration = mean(sqrt(acceleration_raw_x^2+acceleration_raw_y^2+acceleration_raw_x^2), na.rm=T)
+  magnitude_acceleration = mean(sqrt(acceleration_raw_x^2 + acceleration_raw_y^2 + acceleration_raw_x^2), na.rm=T)
 )
 ```
 

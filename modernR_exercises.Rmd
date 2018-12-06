@@ -1,9 +1,11 @@
 ---
 title: "Modern R with tidyverse"
-author: "[Insert your name]"
-output: 
+author: '[Insert your name]'
+output:
+  pdf_document:
+    toc: yes
   html_document:
-    toc: true
+    toc: yes
 ---
 
 *This document is part of the workshop **Introduction to R & Data** by Utrecht University RDM Support. *
