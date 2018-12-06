@@ -31,28 +31,32 @@ This project depends on the `tidyverse` package. Load tidyverse into your work e
 library(tidyverse) 
 ```
 
+```{r include=F}
+# The following code is used to allow errors in code blocks.
+knitr::opts_chunk$set(error = T)
+```
+
 # 1. Read and save data
 
 ### Basic exercise I - Read data into R
 
-In this exercise, we read the dataset `Huji_JNF_Crane_israel_GPRS.csv` into the 
+In this exercise, we read the dataset `HUJI_Crane_Israel_GPRS.csv` into the 
 memory of the computer. You can find the dataset in the `data` folder of your
 project.
 
-#### a) Find the delimiter of the dataset `Huji_JNF_Crane_israel_GPRS.csv`
+#### a) Find the delimiter of the dataset `HUJI_Crane_Israel_GPRS.csv`
 
 The delimiter is the character that separates the values in a CSV file. There
 are various ways to find out how the datasets is delimited. Discuss your approach with a colleague or assistant.
 
-#### b) Read the data `Huji_JNF_Crane_israel_GPRS.csv` into R
+#### b) Read the data `HUJI_Crane_Israel_GPRS.csv` into R
 
 Complete the code in the code cell below to read the data into
 `data_crane`.
 
-*Tip: The file location (argument `file`) should be 'data/Huji_JNF_Crane_israel_GPRS.csv'* 
+*Tip: The file location (argument `file`) should be 'data/HUJI_Crane_Israel_GPRS.csv'* 
 
-```{r error=TRUE}
-
+```{r}
 
 data_crane <- read_### enter your code here ###
 
@@ -63,7 +67,7 @@ data_crane <- read_### enter your code here ###
 The package `readxl` is a tidyverse package to read Excel files. The package
 doesn't load by default when you call `library("tidyverse")`. Load the package with the function `library()`. Also read the help function of the `read_excel` function.
 
-```{r error=TRUE}
+```{r}
 
 ### enter your code here ###
 
@@ -73,12 +77,12 @@ doesn't load by default when you call `library("tidyverse")`. Load the package w
 
 ```
 
-#### c) Read the additional observations `Huji_JNF_additional_observations.xlsx`.
+#### c) Read the additional observations `crane_additional_observations.xlsx`.
 
-Read the additional observations in data file `Huji_JNF_additional_observations.xlsx` (Excel file!). Complete the code in the
+Read the additional observations in data file `crane_additional_observations.xlsx` (Excel file!). Complete the code in the
 code cell below.
 
-```{r error=TRUE}
+```{r}
 
 data_crane_additional <- ### enter your code here ###
 
@@ -92,7 +96,7 @@ The structure of the dataset (i.e. number of observations, columns, data types) 
 
 Output the structure of both datasets in the cell below. What does `<chr>`, `<dbl>` and `<int>` mean? Are these values what you expect?
 
-```{r error=TRUE}
+```{r}
 
 ### enter your code here ###
 
@@ -113,7 +117,7 @@ Save the tibble `data_crane` to a `.csv` file. Use `;` as delimiter.
 *Tip: check the function `write_delim`.*
 *Tip: Use a different file name, otherwise you overwrite the original data*
 
-```{r error=TRUE}
+```{r}
 
 ### enter your code here ###
 
@@ -160,15 +164,15 @@ Is there a tidyverse function to write Excel files? If not, read on the internet
 
 Date and time variables can be very challenging to work with in programming languages (including R). In the `data_crane` dataset, there is a variable `eobs_start_timestamp`. This column isn't recognized as a date variable. 
 
-```{r error=TRUE}
+```{r}
 glimpse(data_crane)
 ```
 
 The following code shows how you can parse columns with a specific data type. Insert the correct format for the date column.
 
-```{r error=TRUE}
+```{r}
 
-read_csv('data/Huji_JNF_Crane_israel_GPRS.csv',
+read_csv('data/HUJI_Crane_Israel_GPRS.csv',
   col_types = cols(
     . = col_guess(),
     eobs_start_timestamp = col_date(format="### insert correct format here ###")
@@ -178,14 +182,14 @@ read_csv('data/Huji_JNF_Crane_israel_GPRS.csv',
 
 # 2. Data visualisation
 
-Visualizing data is important get a feeling for the content of a data set. For the crane dataset, visualisation is used to explore the values of the columns. Base R has strong plotting functions. To get even better flexibility in plotting, we use the ggplot2 functions `qplot` and `ggplot`. 
+Visualizing data is important get a feeling for the content of a data set. For the crane dataset, visualisation is used to explore the values of the columns. Base R has strong plotting functions. To get even better flexibility in plotting, we use the ggplot2 functions `qplot` and `ggplot`.
 
 ### Basic exercise I - Quick plots of the `data_crane`.
 
 #### a) Single column plots
 
 Make a quick plot of at least 5 columns in the `data_crane` dataset. One example has been provided already.
-```{r error=TRUE}
+```{r}
 
 qplot(timestamp, data=data_crane)
 
@@ -196,7 +200,7 @@ qplot(timestamp, data=data_crane)
 
 Make a few quick plots of combinations of columns. One example has been provided already.
 
-```{r error=TRUE}
+```{r}
 
 qplot(heading, acceleration_raw_x, data=data_crane)
 
@@ -212,7 +216,7 @@ Complete the following code with different geometric layers. Examples are `geom_
 
 *Tip: write `geom_` in the search field of the help tab in RStudio to find more geometric layers.
 
-```{r error=TRUE}
+```{r}
 
 ggplot(data_crane, aes(heading, ground_speed)) + 
   ### enter your code here ###
@@ -238,7 +242,7 @@ Scaling of the axes with a ggplot is easy. Take a look at the *data-visualizatio
 
 Zoom in on the acceleration between -1000 and 1000 for both the x-axis and y-axis. 
 
-```{r error=TRUE}
+```{r}
 ggplot(data_crane, aes(acceleration_raw_x, acceleration_raw_y)) + 
   geom_point()
 ```
@@ -253,7 +257,7 @@ In this exercise, we plot the crane data on a map.
 
 Install the package `maps` and load the library in the cell below.
 
-```{r error=TRUE}
+```{r}
 
 ### enter your code here ###
 
@@ -266,7 +270,7 @@ Add a layer with the location of the observations.
 *tip: can you use the `geom_point()` layer for this?*
 
 
-```{r error=TRUE}
+```{r}
 world_map_polygon <- map_data("world2")
 
 ggplot(data_crane) +
@@ -282,7 +286,7 @@ ggplot(data_crane) +
 
 The variable `individual_local_identifier` identifies the cranes. Use this variable to color the points.
 
-```{r error=TRUE}
+```{r}
 
 
 ```
@@ -291,7 +295,7 @@ The variable `individual_local_identifier` identifies the cranes. Use this varia
 
 Search on the internet for information about facets in ggplot. This unique feature is a must-have for data exploration. Create a graph (it doesn't matter what kind of graph) and use facets to display all cranes (use the variable `individual_local_identifier`). 
 
-```{r error=TRUE, fig.height=15, fig.width=6}
+```{r fig.height=15, fig.width=6}
 
 ### enter your code here ###
 
@@ -308,7 +312,7 @@ The crane dataset is clean and well-structured. Nevertheless, you might be inter
 
 Make a selection of observations of crane 'L6037' in column `individual_local_identifier`. Make use of the tidyverse (dplyr) function `filter()`. Have a look at the cheat sheet if you are stuck.
 
-```{r error=TRUE}
+```{r}
 
 ### enter your code here ###
 
@@ -321,7 +325,7 @@ How many records satisfy this condition?
 
 *Tip: Use the function `is.na()` preceded by the `!`. Check the help page for both `is.na` and `!`.*
 
-```{r error=TRUE}
+```{r}
 
 ### enter your code here ###
 
@@ -331,7 +335,7 @@ How many records satisfy this condition?
 
 Make use of tidyverse functions only.
 
-```{r error=TRUE}
+```{r}
 
 ### enter your code here ###
 
@@ -343,7 +347,7 @@ The function `mutate()` is a very powerful function in tidyverse (the `dplyr` pa
 
 Create a tibble with a new variable called `mag_magnetic`, which is the magnitude of the magnetic field. You can calculate the magnetic field by taking the square root of `mag_magnetic_field_raw_x ^ 2 + mag_magnetic_field_raw_y ^ 2 + mag_magnetic_field_raw_y ^ 2`  
 
-```{r error=TRUE}
+```{r}
 
 data_crane_with_mag_magnetic <- mutate(data_crane,  ### enter your code here ### )
 
@@ -363,7 +367,7 @@ Create a tibble of the crane dataset without the latitude and longitude.
 
 Use tidyverse and a maximum of 60 characters.
 
-```{r error=TRUE}
+```{r}
 
 ### enter your code here ###
 
@@ -379,7 +383,7 @@ The function `summarise()` can be used to summarise variables in tibbles. Comput
 
 *Tip: Use the cheatsheet or the book R4DS*
 
-```{r error=TRUE}
+```{r}
 
 summarise(
   data_crane, 
@@ -397,7 +401,7 @@ In this exercise, append crane dataset with the additional measures. What kind o
 
 The join key for our datasets is `event_id`. 
 
-```{r error=TRUE}
+```{r}
 
 # data_crane_with_measures <- ..._join()
 

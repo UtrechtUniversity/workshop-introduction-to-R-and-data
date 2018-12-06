@@ -20,15 +20,15 @@ library(tidyverse)
 
 ### Basic exercise I - Read data into R
 
-#### a) Find the delimiter of the dataset `Huji_JNF_Crane_israel_GPRS.csv`
+#### a) Find the delimiter of the dataset `HUJI_Crane_Israel_GPRS.csv`
 
 Use the data import tool of RStudio or use a text editor to inspect the document. The delimiter is `,`.
 
-#### b) Read the data `Huji_JNF_Crane_israel_GPRS.csv` into R
+#### b) Read the data `HUJI_Crane_Israel_GPRS.csv` into R
 
-```{r error=TRUE}
+```{r}
 
-data_crane <- read_csv('data/Huji_JNF_Crane_israel_GPRS.csv')
+data_crane <- read_csv('data/HUJI_Crane_Israel_GPRS.csv')
 
 head(data_crane)
 
@@ -36,7 +36,7 @@ head(data_crane)
 
 #### c) Load `readxl` (to read Excel files)
 
-```{r error=TRUE}
+```{r}
 
 library(readxl)
 
@@ -45,11 +45,10 @@ library(readxl)
 
 ```
 
-#### c) Read the additional observations `Huji_JNF_additional_observations.xlsx`.
+#### c) Read the additional observations `crane_additional_observations.xlsx`.
 
-```{r error=TRUE}
-
-data_crane_additional <- read_excel('data/Huji_JNF_additional_observations.xlsx')
+```{r}
+data_crane_additional <- read_excel('data/crane_additional_observations.xlsx')
 
 head(data_crane_additional)
 ```
@@ -57,7 +56,7 @@ head(data_crane_additional)
 
 ### Basic exercise II - Dataset properties 
 
-```{r error=TRUE}
+```{r}
 
 glimpse(data_crane)
 glimpse(data_crane_additional)
@@ -68,7 +67,7 @@ glimpse(data_crane_additional)
 
 ### Optional exercise (+) - Save data to a CSV file with delimiter `;`. 
 
-```{r error=TRUE}
+```{r}
 # create a directory for the output file
 if (!dir.exists('tmp')){
   dir.create("tmp")
@@ -112,7 +111,11 @@ This is not a problem for a researcher, because we don't use Excel, do we?
 
 ### Optional exercise (+++) - Parse datetime columns
 
-No solutions available at the moment.
+read_csv('data/HUJI_Crane_Israel_GPRS.csv',
+  col_types = cols(
+    . = col_guess(),
+    eobs_start_timestamp = col_date(format="%Y,%d+%b")
+  ))
 
 # 2. Data visualisation
 
@@ -121,7 +124,7 @@ No solutions available at the moment.
 #### a) Single column plots
 
 Make a quick plot of at least 5 columns in the `data_crane` dataset.
-```{r error=TRUE}
+```{r}
 
 qplot(timestamp, data=data_crane)
 qplot(mag_magnetic_field_raw_x, data=data_crane)
@@ -133,7 +136,7 @@ qplot(eobs_status, data=data_crane)
 ```
 #### b) Two column in plots
 
-```{r error=TRUE}
+```{r}
 
 qplot(heading, acceleration_raw_x, data=data_crane)
 qplot(acceleration_raw_x, acceleration_raw_y, data=data_crane)
@@ -147,7 +150,7 @@ qplot(location_long, location_lat, data=data_crane)
 
 ### Basic exercise II - Using ggplot for plotting
 
-```{r error=TRUE}
+```{r}
 
 ggplot(data_crane, aes(heading, ground_speed)) + 
   geom_count()
@@ -173,7 +176,7 @@ Scaling of the axes with a ggplot is easy. Take a look at the *data-visualizatio
 
 Zoom in on the acceleration between -1000 and 1000 for both the x-axis and y-axis. 
 
-```{r error=TRUE}
+```{r}
 ggplot(data_crane, aes(acceleration_raw_x, acceleration_raw_y)) + 
   geom_point()+ 
   scale_x_continuous(limits = c(-1000, 1000)) +
@@ -186,7 +189,7 @@ ggplot(data_crane, aes(acceleration_raw_x, acceleration_raw_y)) +
 
 #### a) Install package the `maps`
 
-```{r error=TRUE}
+```{r}
 
 # install.packages('maps')
 library(maps)
@@ -195,7 +198,7 @@ library(maps)
 
 #### b) Plot the crane data on a map.
 
-```{r error=TRUE}
+```{r}
 world_map_polygon <- map_data("world2")
 
 ggplot(data_crane) +
@@ -209,7 +212,7 @@ ggplot(data_crane) +
 
 #### c) Use an individual identifier to colour the different cranes.
 
-```{r error=TRUE}
+```{r}
 
 world_map_polygon <- map_data("world2")
 
@@ -224,7 +227,7 @@ ggplot(data_crane) +
 
 ### Optional exercise (+++) - Create facets. 
 
-```{r error=TRUE, fig.height=15, fig.width=6}
+```{r fig.height=15, fig.width=6}
 
 ggplot(data_crane, aes(mag_magnetic_field_raw_x, mag_magnetic_field_raw_y)) +
   geom_point() + 
@@ -239,7 +242,7 @@ ggplot(data_crane, aes(mag_magnetic_field_raw_x, mag_magnetic_field_raw_y)) +
 
 #### a) Make a selection of all observations of crane 'L6037'.
 
-```{r error=TRUE}
+```{r}
 
 filter(data_crane, individual_local_identifier=='L6037')
 
@@ -247,7 +250,7 @@ filter(data_crane, individual_local_identifier=='L6037')
 
 #### b) Make a selection of all observations of crane 'L6037' where the variable `eobs_status` isn't missing.
 
-```{r error=TRUE}
+```{r}
 
 filter(data_crane, individual_local_identifier=='L6037', !is.na(eobs_status))
 
@@ -255,7 +258,7 @@ filter(data_crane, individual_local_identifier=='L6037', !is.na(eobs_status))
 
 #### c) Make a selection of all observations of crane 'L6037' where the variable `eobs_status` isn't missing. Return only the `event_id` and `timestamp` variables. 
 
-```{r error=TRUE}
+```{r}
 
 data_crane_filter <- filter(data_crane, individual_local_identifier=='L6037')
 select(data_crane_filter, event_id, timestamp)
@@ -264,7 +267,7 @@ select(data_crane_filter, event_id, timestamp)
 
 ### Basic exercise II - Compute the magnitude of the magnetic field
 
-```{r error=TRUE}
+```{r}
 
 data_crane_with_mag_magnetic <- mutate(
   data_crane,  
@@ -273,7 +276,7 @@ data_crane_with_mag_magnetic <- mutate(
                      mag_magnetic_field_raw_y ^ 2)
 )
 
-View(data_crane_with_mag_magnetic)
+data_crane_with_mag_magnetic$magnitude
 ```
 
 
@@ -284,7 +287,7 @@ Science](http://r4ds.had.co.nz/). Make a selection columns and rows of the data 
 
 ### Optional exercise (+) - Exclude variables
 
-```{r error=TRUE}
+```{r}
 
 select(data_crane, -starts_with('location'))
 
@@ -292,7 +295,7 @@ select(data_crane, -starts_with('location'))
 
 ### Optional exercise (++) - Summarise results
 
-```{r error=TRUE}
+```{r}
 
 summarise(
   data_crane, 
@@ -304,8 +307,8 @@ summarise(
 
 ### Optional exercise (+++) - Join datasets
 
-```{r error=TRUE}
+```{r}
 
-data_crane_with_measures <- left_join(data_crane, data_crane_additional, by=`event_id`)
+data_crane_with_measures <- left_join(data_crane, data_crane_additional, by='event_id')
 
 ```
