@@ -42,15 +42,11 @@ An overview of the workshop material is listed here.
 
 ## License
 
-The datasets [data/restaurants.csv](data/restaurants.csv) and
-[data/menus.xlsx](data/menus.xlsx) are distributed under a Creative Commons
-Attribution-NonCommercial-ShareAlike 4.0 International ([CC BY-NC-SA
-4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)) license.  They are
-derived from [Datafiniti's Business Database](
-https://www.kaggle.com/datafiniti/pizza-restaurants-and-the-pizza-they-sell)
-(CC BY-NC-SA 4.0).
+The dataset [data/HUJI_Crane_israel_GPRS.csv](data/HUJI_Crane_Israel_GPRS.csv) was generously provided by Sasha Pekarsky, and is the result of work done at the Department of Ecology, Evolution, and Behavior at the Hebrew University of Jerusalem in Israel. It may not be reused other than for the purposes of this workshop.
 
-All other content in this repository is licensed under Attribution 4.0
+The dataset [data/Crane_additional_observations.xlsx](data/Crane_additional_observations.xlsx) is fictional.
+
+All content in this repository with the exception of the dataset [data/HUJI_Crane_israel_GPRS.csv](data/HUJI_Crane_Israel_GPRS.csv) is licensed under Attribution 4.0
 International (CC BY 4.0). We highly encourage you to contact us when you 
 would like to use the material.
 
