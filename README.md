@@ -26,12 +26,13 @@ An overview of the workshop material is listed here.
 
 **Workshop reference material**
 
-- [Slides](20181107_WSIntroRData_slides.pdf)
+- [Slides](intro_R_and_data_slides.pdf)
 
 **Exercises**
 
-- Exercises Part II: Modern R with Tidyverse [modernR_exercises.Rmd](modernR_exercises.Rmd)
 - Datasets Part II: [data](data)
+- Exercises Part II: Modern R with Tidyverse [modernR_exercises.Rmd](modernR_exercises.Rmd)
+- Solutions Part II: Modern R with Tidyverse [modernR_solutions.Rmd](modernR_solutions.Rmd) [[PDF](modernR_solutions.pdf)]
 
 **External resources**
 
