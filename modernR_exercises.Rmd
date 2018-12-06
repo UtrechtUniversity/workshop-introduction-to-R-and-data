@@ -10,17 +10,8 @@ output:
 
 # Introduction
 
-In this document, we explore a list of over 3,500 pizzas from multiple restaurants in the U.S. The dataset is provided by [Datafiniti's Business Database](https://www.kaggle.com/datafiniti/pizza-restaurants-and-the-pizza-they-sell/home). Datafiniti's Business Database provides business and product information. The data we will explore in this document contains variables like the category, name, address, city, state, menu information and price range for each pizza restaurant. 
+In this document, we explore Crane migration, through the GPS data from 39 tagged individuals during the fall migration of 2017. The data was kindly provided for this course by Sasha Pekarsky at the Department of Ecology, Evolution, and Behavior at HUJI. The dataset has been modified by the course instructors.
 
-## Research questions
-
-Research questions can be:
-
-- *How many pizza restaurants does each state in the U.S. have?*
-- *What is the median price of a large plain pizza across the U.S.?*
-- ...
-
-The exercises in this document help you aswer the research questions. You can use the structure of this document to make your own reproducible scientific analyses.
 
 ## Exercises
 
@@ -42,47 +33,54 @@ library(tidyverse)
 
 # 1. Read and save data
 
-The data about the pizza restaurants is stored in two files. One file contains
-the information about the restaurants while the other file contains information
-about the pizza's they sell.
+### Basic exercise I - Read data into R
 
-### Basic exercise I - Read data files
+In this exercise, we read the dataset `Huji_JNF_Crane_israel_GPRS.csv` into the 
+memory of the computer. You can find the dataset in the `data` folder of your
+project.
 
-#### a) Read the dataset `menus.csv`
+#### a) Find the delimiter of the dataset `Huji_JNF_Crane_israel_GPRS.csv`
+
+The delimiter is the character that separates the values in a CSV file. There
+are various ways to find out how the datasets is delimited. Discuss your approach with a colleague or assistant.
+
+#### b) Read the data `Huji_JNF_Crane_israel_GPRS.csv` into R
 
 Complete the code in the code cell below to read the data into
-`data_menus`. You can do this with the RStudio interface (with buttons).
+`data_crane`.
 
-*Tip: Use `head(data_menus)` to display the result.*
+*Tip: The file location (argument `file`) should be 'data/Huji_JNF_Crane_israel_GPRS.csv'* 
 
 ```{r error=TRUE}
-filepath <- file.path('data', 'menus.csv')
-data_menus <- ### enter your code here ###
 
+
+data_crane <- read_### enter your code here ###
 
 ```
 
-#### b) Load `readxl`
+#### c) Load `readxl` (to read Excel files)
 
 The package `readxl` is a tidyverse package to read Excel files. The package
-doesn't load when you call `library("tidyverse")`. Load the package with the
-function `library()`. 
+doesn't load by default when you call `library("tidyverse")`. Load the package with the function `library()`. Also read the help function of the `read_excel` function.
 
 ```{r error=TRUE}
 
 ### enter your code here ###
 
+
+# open the help function
+?read_excel
+
 ```
 
-#### c) Read the restaurants dataset
+#### c) Read the additional observations `Huji_JNF_additional_observations.xlsx`.
 
-Read the restaurants data file `restaurants.xlsx` (Excel file!). Complete the code in the
-code cell below and . *Tip: Write `?read_excel` in your console.*
+Read the additional observations in data file `Huji_JNF_additional_observations.xlsx` (Excel file!). Complete the code in the
+code cell below.
 
 ```{r error=TRUE}
 
-filepath <- file.path('data', 'restaurants.xlsx')
-data_restaurants <- ### enter your code here ###
+data_crane_additional <- ### enter your code here ###
 
 
 ```
@@ -90,7 +88,9 @@ data_restaurants <- ### enter your code here ###
 
 ### Basic exercise II - Dataset properties 
 
-Output the structure of both the restaurants and menus dataset in the cell below. Do this with the function `glimpse()`. What does `<chr>`, `<dbl>` and `<int>` mean? Are these values what you expect?
+The structure of the dataset (i.e. number of observations, columns, data types) is very important for your initial data exploration. Tidyverse has the function `glimpse()` to output the structure of a `data.frame` or `tibble`. 
+
+Output the structure of both datasets in the cell below. What does `<chr>`, `<dbl>` and `<int>` mean? Are these values what you expect?
 
 ```{r error=TRUE}
 
@@ -106,11 +106,12 @@ Read [Chapter 11.2.1](http://r4ds.had.co.nz/data-import.html#compared-to-base-r)
 Science](http://r4ds.had.co.nz/) and think about the topics like reproducibility, shareablitiy and performance. Discuss your thoughts with another workshop participant.
 
 
-### Optional exercise (+) - Save data to a CSV file. 
+### Optional exercise (+) - Save data to a CSV file with delimiter `;`. 
 
-Save the tibble `data_restaurants` to a `.csv` file. Use `;` as delimiter. 
+Save the tibble `data_crane` to a `.csv` file. Use `;` as delimiter. 
 
 *Tip: check the function `write_delim`.*
+*Tip: Use a different file name, otherwise you overwrite the original data*
 
 ```{r error=TRUE}
 
@@ -118,99 +119,102 @@ Save the tibble `data_restaurants` to a `.csv` file. Use `;` as delimiter.
 
 ```
 
-### Optional exercise (++) - Read SPSS, SAS and Excel data files
+### Optional exercise (++) - Read SPSS, SAS, Excel and STATA data files
 
-By default, it is not possible to read SPSS, SAS and Excel files with R. Tidyverse offers some packages to make this possible. These packages aren't loaded and attached by default with  `library(tidyverse)`. The package `haven` and `readxl` can be used to do this. Load the packages with the following lines of code:
+(Statistical) software like SPSS, SAS, Excel and STATA are popular programs in the scientific world. These programs do have their own file formats. 
+
+By default, it is not possible to read and write SPSS, SAS and STATA data files with base R. Tidyverse offers solutions to make this possible. The package `haven` can be used to do this (not loaded by default). Load the package with the following line of code:
 
 ```{r}
-library("haven") # to read and write SPSS, STATA and SAS files
-library("readxl") # to read Excel files
+library(haven) # to read and write SPSS, STATA and SAS files
 ```
 
-#### a) Write data frame to SPSS, SAS, STATA data files. 
+#### a) Write tibble `data_crane` to SPSS, SAS, STATA data files. 
 
-Create a code block and try to do the following:
+Create a code block and do at least one of the following exercises:
 
-- Write the `data_restaurants` to a SPSS (`.dat`) file
-- Read the saved SPSS data file. 
-- Write the result of the previous step to a SAS (`.sas7bdat`) file
-- Read the SAS file. 
-- Write the result of the previous step to a STATA (`.dta`) file
-- Read the STATA file. 
+SPSS:
 
-Compare the result with `data_restaurants`.
+- Write the `data_crane` to a SPSS data file (extension `.sav`) with the function `write_sav`.
+- Read the saved SPSS data file with the function `read_sav`.
+
+SAS:
+
+- Write the `data_crane` to a SAS data file (extension `.sas7bdat`) with the function `write_sas`.
+- Read the saved SAS data file with the function `read_sas`.
+
+STATA:
+
+- Write the `data_crane` to a STATA data file (extension `.dta`) with the function `write_dta`.
+- Read the saved STATA data file with the function `read_dta`.
 
 
-#### b) Write data frame to Excel. 
+#### b) Write tibble `data_crane` to an Excel file. 
 
-Write `data_menus` to an Excel file. 
+Create a code block and write the tibble `data_crane` to an Excel file (extension `.xlsx`).
 
-Is there a tidyverse function to do this? If not, read on the internet about
-writing Excel files with R.
+Is there a tidyverse function to write Excel files? If not, read on the internet about writing Excel files with R.
 
 
 ### Optional exercise (+++) - Parse datetime columns
 
-Date and time variables can be very challenging to work with in programming languages (including R). In the menus dataset, there is a variable `menus.dateSeen`. This column isn't recognized as a date variable. 
+Date and time variables can be very challenging to work with in programming languages (including R). In the `data_crane` dataset, there is a variable `eobs_start_timestamp`. This column isn't recognized as a date variable. 
 
 ```{r error=TRUE}
-glimpse(data_menus)
+glimpse(data_crane)
 ```
 
-The following code shows how you can parse columns with a specific data type. Uncomment the line with `col_date` and insert the correct format for the date column.
+The following code shows how you can parse columns with a specific data type. Insert the correct format for the date column.
 
 ```{r error=TRUE}
 
-filepath <- file.path('data', 'menus.csv')
-
-read_csv(filepath,
+read_csv('data/Huji_JNF_Crane_israel_GPRS.csv',
   col_types = cols(
-    menus.amountMax = col_double(),
-    menus.amountMin = col_double(),
-    menus.currency = col_character(),
-    # menus.dateSeen = col_date(format="### insert correct format here ###"),
-    menus.description = col_character(),
-    menus.name = col_character()
+    . = col_guess(),
+    eobs_start_timestamp = col_date(format="### insert correct format here ###")
   ))
   
 ```
 
 # 2. Data visualisation
 
-Visualizing data is important get a feeling for the content of a data set. In the pizza dataset, visualisation is used to explore the values of the columns. Base R has strong plotting functions. To get even better flexibility in plotting, we use the ggplot2 functions `qplot` and `ggplot`. 
+Visualizing data is important get a feeling for the content of a data set. For the crane dataset, visualisation is used to explore the values of the columns. Base R has strong plotting functions. To get even better flexibility in plotting, we use the ggplot2 functions `qplot` and `ggplot`. 
 
-### Basic exercise I - Quick plots of the menus
+### Basic exercise I - Quick plots of the `data_crane`.
 
 #### a) Single column plots
 
-Make a quick plot of each column in the menus dataset.
+Make a quick plot of at least 5 columns in the `data_crane` dataset. One example has been provided already.
 ```{r error=TRUE}
 
-qplot(data_menus$menus.amountMax)
+qplot(timestamp, data=data_crane)
 
 ### enter your code here ###
 
 ```
-#### b) Two column in plots
+#### b) Two column plots
 
-Make a quick plot of two columns in the restaurants dataset. Check `priceRangeMin` with `priceRangeMax` and `state` with `priceRangeMax`.
+Make a few quick plots of combinations of columns. One example has been provided already.
 
 ```{r error=TRUE}
 
-qplot(x = data_restaurants$priceRangeMin, y = 
+qplot(heading, acceleration_raw_x, data=data_crane)
+
+### enter your code here (at least 3 examples) ###
+
 
 ```
 
 
-### Basic exercise II - Using ggplot for graphs
+### Basic exercise II - Using ggplot for plotting
 
 Complete the following code with different geometric layers. Examples are `geom_point`, `geom_line`, `geom_count` and `geom_density_2d`. 
 
-*Tip: write `geom_` in the search field of the help tab in RStudio.
+*Tip: write `geom_` in the search field of the help tab in RStudio to find more geometric layers.
 
 ```{r error=TRUE}
 
-ggplot(data_menus, aes(menus.amountMax, menus.amountMin)) + 
+ggplot(data_crane, aes(heading, ground_speed)) + 
   ### enter your code here ###
 
 ```
@@ -232,60 +236,62 @@ Science](http://r4ds.had.co.nz/) and experiment with the function `geom_smooth()
 
 Scaling of the axes with a ggplot is easy. Take a look at the *data-visualization* cheatsheet. In the bottom right corner of the cheatsheet, you will find the code needed to scale the axes. 
 
-Zoom in on the price range till 100 dollar. 
+Zoom in on the acceleration between -1000 and 1000 for both the x-axis and y-axis. 
 
 ```{r error=TRUE}
-ggplot(data_restaurants, aes(priceRangeMin, priceRangeMax)) + 
+ggplot(data_crane, aes(acceleration_raw_x, acceleration_raw_y)) + 
   geom_point()
 ```
 
 
 
-### Optional exercise (++) - Plot the restaurants on a map
+### Optional exercise (++) - Plot the crane positions on a map
 
-In this exercise, we plot the restaurants on a map of the USA.
+In this exercise, we plot the crane data on a map.
 
 #### a) Install package the `maps`
 
-Install the package `maps` and load the library (both by using code).
+Install the package `maps` and load the library in the cell below.
 
-```{r}
+```{r error=TRUE}
 
 ### enter your code here ###
 
 ```
 
-#### b) Plot the restaurants on the map of the USA.
+#### b) Plot the crane data on a map.
 
-Add a layer with the location of the restaurants.
+Add a layer with the location of the observations.
 
 *tip: can you use the `geom_point()` layer for this?*
 
 
 ```{r error=TRUE}
-# usa <- map_data("usa") 
+world_map_polygon <- map_data("world2")
 
-# ggplot(data_restaurants) + 
-#   geom_polygon(data = usa, aes(x=long, y = lat))
+ggplot(data_crane) +
+  geom_map(data = world_map_polygon, map= world_map_polygon, aes(x=long, y = lat, map_id = region)) + 
+  scale_x_continuous(limits = c(0, 60)) +
+  scale_y_continuous(limits = c(25, 60))
+  ### add your geometric layer here ###
 
 ```
 
 
-#### c) Use the maximum price to colour the restaurants.
+#### c) Use an individual identifier to colour the different cranes.
+
+The variable `individual_local_identifier` identifies the cranes. Use this variable to color the points.
 
 ```{r error=TRUE}
-# usa <- map_data("usa") 
 
-# ggplot(data_restaurants) + 
-#   geom_polygon(data = usa, aes(x=long, y = lat))
 
 ```
 
 ### Optional exercise (+++) - Create facets. 
 
-Search on the internet for information about facets in ggplot. This unique feature is a must have for data exploration. Create a graph (doesn't matter what kind of graph) and use facets to display them for all states. 
+Search on the internet for information about facets in ggplot. This unique feature is a must-have for data exploration. Create a graph (it doesn't matter what kind of graph) and use facets to display all cranes (use the variable `individual_local_identifier`). 
 
-```{r fig.height=15, fig.width=6}
+```{r error=TRUE, fig.height=15, fig.width=6}
 
 ### enter your code here ###
 
@@ -294,23 +300,24 @@ Search on the internet for information about facets in ggplot. This unique featu
 
 # 3. Data transformation
 
-The pizza restaurant data might not be in the format you prefer for analysis. In this section, the transform the data about the pizza restaurants.
+The crane dataset is clean and well-structured. Nevertheless, you might be interested in doing additional transformations and selections. In this section, we transform and enrich the crane dataset. 
 
-### Basic exercise I - Subset data
+### Basic exercise I - Subset data (single crane)
 
-#### a) Make a selection of all restaurants in 'Los Angeles'.
+#### a) Make a selection of all observations of crane 'L6037'.
 
-Make use of the tidyverse (dplyr) function `filter()`.
+Make a selection of observations of crane 'L6037' in column `individual_local_identifier`. Make use of the tidyverse (dplyr) function `filter()`. Have a look at the cheat sheet if you are stuck.
 
 ```{r error=TRUE}
 
 ### enter your code here ###
 
+
 ```
 
-#### b) Make a selection of all restaurants in 'Los Angeles' where the variable `priceRangeMin` isn't missing.
+#### b) Make a selection of all observations of crane 'L6037' where the variable `eobs_status` isn't missing.
 
-How many records satify this condition?
+How many records satisfy this condition?
 
 *Tip: Use the function `is.na()` preceded by the `!`. Check the help page for both `is.na` and `!`.*
 
@@ -320,9 +327,9 @@ How many records satify this condition?
 
 ```
 
-#### c) Make a selection of all restaurants in 'Los Angeles' where the variable `priceRangeMin` is not missing. Return only the `address` and `name` of the restaurants. 
+#### c) Make a selection of all observations of crane 'L6037' where the variable `eobs_status` isn't missing. Return only the `event_id` and `timestamp` variables. 
 
-Make only use of tidyverse functions.
+Make use of tidyverse functions only.
 
 ```{r error=TRUE}
 
@@ -330,22 +337,20 @@ Make only use of tidyverse functions.
 
 ```
 
-### Basic exercise II - Compute the price range
+### Basic exercise II - Compute the magnitude of the magnetic field
 
-The function `mutate()` is a very powerfull function in tidyverse (dplyr) to mutate column variables in a data frame or tibble. Create a tibble with new variable named `priceRangeDiff` which is the maximum price of a pizza minus the minimum price of a pizza.
+The function `mutate()` is a very powerful function in tidyverse (the `dplyr` package) to mutate and create new column variables in a data frame or tibble. 
+
+Create a tibble with a new variable called `mag_magnetic`, which is the magnitude of the magnetic field. You can calculate the magnetic field by taking the square root of `mag_magnetic_field_raw_x ^ 2 + mag_magnetic_field_raw_y ^ 2 + mag_magnetic_field_raw_y ^ 2`  
 
 ```{r error=TRUE}
 
-data_restaurants_with_price_range <- mutate(data_restaurants,  ### enter your code here ### )
+data_crane_with_mag_magnetic <- mutate(data_crane,  ### enter your code here ### )
 
-head(data_restaurants_with_price_range)
+head(data_crane_with_mag_magnetic)
 ```
 
-Try to use the formatting tips discussed during the presentation.
-
-### Basic exercise III - Filter outliers
-
-Remove the record of `data_restaurants` with outliers on the variables `priceRangeMin` and `priceRangeMax`. Use `ggplot` to create a scatterplot of the 'cleaned' variables. The result should look like the (+) exercise in part 2 (Data visualisation). 
+Try to use the formatting discussed during the presentation, so that your code is as readable as possible.
 
 ### Reading exercise - Pipe operator
 
@@ -354,11 +359,11 @@ Science](http://r4ds.had.co.nz/). Make a selection columns and rows of the data 
 
 ### Optional exercise (+) - Exclude variables
 
-Create a tibble of the restaurant dataset without the latitude and longitude. 
+Create a tibble of the crane dataset without the latitude and longitude. 
 
-Use tidyverse and a maximum of 75 characters. (Our best result is 42 characters.)
+Use tidyverse and a maximum of 60 characters.
 
-```{r}
+```{r error=TRUE}
 
 ### enter your code here ###
 
@@ -366,29 +371,35 @@ Use tidyverse and a maximum of 75 characters. (Our best result is 42 characters.
 
 ### Optional exercise (++) - Summarise results
 
-The function `summarise()` can be used to summarise the menus dataset. Compute the following variables: 
+The function `summarise()` can be used to summarise variables in tibbles. Compute the following properties: 
 
-- the mean minumum price
-- the mean maximum price of the pizzas
-- the median difference between the minimum and maximum price
+- the maximum latitude (the highest point on the globe).
+- the first observation
+- the magnitude of the acceleration (the square root of x^2 + y^2 + z^2)
 
-*Tip: Use the cheatsheet or R4DS
+*Tip: Use the cheatsheet or the book R4DS*
 
-```{r}
+```{r error=TRUE}
 
+summarise(
+  data_crane, 
+  min_latitude = ### enter your code here ###
+  first_observation = ### enter your code here ###
+  magnitude_acceleration = ### enter your code here ###
+)
 ```
 
 ### Optional exercise (+++) - Join datasets
 
 Quickly read [13.4.1](https://r4ds.had.co.nz/relational-data.html#understanding-joins)-[13.4.3](https://r4ds.had.co.nz/relational-data.html#outer-join) from R for Data Science. Focus on the images.
 
-In this exercise, append restaurant data to each pizza. What kind of join is this? *Hint: Check the data transformation cheatsheet, section 'Combine Tables'.*
+In this exercise, append crane dataset with the additional measures. What kind of join is this? *Hint: Check the data transformation cheatsheet, section 'Combine Tables'.*
 
-The join key for our pizza datasets is `id`. 
+The join key for our datasets is `event_id`. 
 
 ```{r error=TRUE}
 
-# data_pizza_with_restaurant <- ..._join()
+# data_crane_with_measures <- ..._join()
 
 ```
 

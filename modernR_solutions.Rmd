@@ -11,40 +11,47 @@ output:
 
 *This document is part of the workshop **Introduction to R & Data** by Utrecht University RDM Support. *
 
-This document is work in progress.
-
 ```{r} 
 library(tidyverse) 
 ```
 
 # 1. Read and save data
 
-### Basic exercise I - Read data files
 
-#### a) Read the dataset `menus.csv`
+### Basic exercise I - Read data into R
+
+#### a) Find the delimiter of the dataset `Huji_JNF_Crane_israel_GPRS.csv`
+
+Use the data import tool of RStudio or use a text editor to inspect the document. The delimiter is `,`.
+
+#### b) Read the data `Huji_JNF_Crane_israel_GPRS.csv` into R
 
 ```{r error=TRUE}
-filepath <- file.path('data', 'menus.csv')
-data_menus <- read_csv(filepath)
 
-head(data_menus)
+data_crane <- read_csv('data/Huji_JNF_Crane_israel_GPRS.csv')
+
+head(data_crane)
+
 ```
 
-#### b) Load `readxl`
-
+#### c) Load `readxl` (to read Excel files)
 
 ```{r error=TRUE}
-library("readxl")
+
+library(readxl)
+
+# open the help function
+?read_excel
+
 ```
 
-#### c) Read the restaurants dataset
+#### c) Read the additional observations `Huji_JNF_additional_observations.xlsx`.
 
 ```{r error=TRUE}
 
-filepath <- file.path('data', 'restaurants.xlsx')
-data_restaurants <- read_excel(filepath)
+data_crane_additional <- read_excel('data/Huji_JNF_additional_observations.xlsx')
 
-head(data_restaurants)
+head(data_crane_additional)
 ```
 
 
@@ -52,54 +59,56 @@ head(data_restaurants)
 
 ```{r error=TRUE}
 
-glimpse(data_restaurants)
-glimpse(data_menus)
+glimpse(data_crane)
+glimpse(data_crane_additional)
+
 ```
 
 ### Reading exercise - `readr` versus base R
 
-
-### Optional exercise (+) - Save data to a CSV file. 
+### Optional exercise (+) - Save data to a CSV file with delimiter `;`. 
 
 ```{r error=TRUE}
-
-write_delim(data_menus, "menus_in_csv_format.csv", delim = ";")
-```
-
-### Optional exercise (++) - Read SPSS, SAS and Excel data files
-
-```{r}
-library("haven") # to read and write SPSS, STATA and SAS files
-library("readxl") # to read Excel files
-```
-
-#### a) Write data frame to SPSS, SAS, STATA data files. 
-
-```{r}
-
-# create a directory
+# create a directory for the output file
 if (!dir.exists('tmp')){
   dir.create("tmp")
 }
 
+write_delim(data_crane, 'tmp/data_crane_csv_file.csv', delim = ';')
+
+```
+
+### Optional exercise (++) - Read SPSS, SAS, Excel and STATA data files
+
+```{r}
+library("haven") # to read and write SPSS, STATA and SAS files
+```
+
+#### a) Write tibble `data_crane` to SPSS, SAS, STATA data files. 
+
+```{r}
+# create a directory
+if (!dir.exists('tmp')){
+  dir.create("tmp")
+}
 # read and write files
-write_sav(data_restaurants, file.path("tmp", "restaurants_spss.sav"))
-data_restaurants_spss <- read_sav(file.path("tmp", "restaurants_spss.sav"))
+write_sav(data_crane, file.path("tmp", "crane_spss.sav"))
+read_sav(file.path("tmp", "crane_spss.sav"))
 
-write_sas(data_restaurants_spss, file.path("tmp", "restaurants_sas.sas7bdat"))
-data_restaurants_sas <- read_sas(file.path("tmp", "restaurants_sas.sas7bdat"))
+# write_sas(data_crane, file.path("tmp", "crane_sas.sas7bdat"))
+# read_sas(file.path("tmp", "crane_sas.sas7bdat"))
 
-write_dta(data_restaurants_sas, file.path("tmp", "restaurants_stata.dta"))
-data_restaurants_stata <- read_dta(file.path("tmp", "restaurants_stata.dta"))
-
-head(data_restaurants_stata)
+# write_dta(data_crane, file.path("tmp", "crane_stata.dta"))
+# read_dta(file.path("tmp", "crane_stata.dta"))
 
 ```
 
 
-#### b) Write data frame to Excel. 
 
-This is not possible with `tidyverse` at the moment. `readxl` only support Excel file reading. This is not a problem for a researcher, because we don't use Excel, isn't it?
+#### b) Write tibble `data_crane` to Excel. 
+
+This is not possible with `tidyverse` at the moment. `readxl` only support Excel file reading. 
+This is not a problem for a researcher, because we don't use Excel, do we?
 
 ### Optional exercise (+++) - Parse datetime columns
 
@@ -107,183 +116,196 @@ No solutions available at the moment.
 
 # 2. Data visualisation
 
-### Basic exercise I - Quick plots of the menus
+### Basic exercise I - Quick plots of the `data_crane`.
 
 #### a) Single column plots
 
+Make a quick plot of at least 5 columns in the `data_crane` dataset.
 ```{r error=TRUE}
 
-qplot(data_menus$menus.amountMax)
-qplot(data_menus$menus.amountMin)
-qplot(data_menus$menus.currency)
-qplot(data_menus$menus.dateSeen)
-qplot(data_menus$menus.description)
+qplot(timestamp, data=data_crane)
+qplot(mag_magnetic_field_raw_x, data=data_crane)
+qplot(mag_magnetic_field_raw_y, data=data_crane)
+qplot(tag_voltage, data=data_crane)
+qplot(eobs_status, data=data_crane)
+
 
 ```
 #### b) Two column in plots
 
 ```{r error=TRUE}
 
-qplot(x = data_restaurants$priceRangeMin, y = data_restaurants$priceRangeMax)
-qplot(x = data_restaurants$state, y = data_restaurants$priceRangeMax)
+qplot(heading, acceleration_raw_x, data=data_crane)
+qplot(acceleration_raw_x, acceleration_raw_y, data=data_crane)
+qplot(acceleration_raw_x, acceleration_raw_z, data=data_crane)
+qplot(location_long, location_lat, data=data_crane)
+
+
 
 ```
 
 
-
-### Basic exercise II - Using ggplot for graphs
+### Basic exercise II - Using ggplot for plotting
 
 ```{r error=TRUE}
 
-ggplot(data_menus, aes(menus.amountMax, menus.amountMin)) + 
+ggplot(data_crane, aes(heading, ground_speed)) + 
   geom_count()
 
 ```
 
-
 ### Reading exercise - Statistical layers for graphs.
 
+Statistical layers reveal a strong power of ggplot. The following graph illustrates this:
 
-### Optional excercise (+) - Scale axis
+```{r echo=FALSE, message=FALSE, width=4, height=3}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point() + geom_smooth()
+```
+
+Read [Chapter 3.6](https://r4ds.had.co.nz/data-visualisation.html#geometric-objects)  of [R for Data
+Science](http://r4ds.had.co.nz/) and experiment with the function `geom_smooth()` and `stat_smooth()`. What is the difference between both functions? 
+
+
+### Optional exercise (+) - Scale axes
+
+Scaling of the axes with a ggplot is easy. Take a look at the *data-visualization* cheat sheet. In the bottom right corner of the cheat sheet, you will find the code needed to scale the axes. 
+
+Zoom in on the acceleration between -1000 and 1000 for both the x-axis and y-axis. 
 
 ```{r error=TRUE}
-ggplot(data_restaurants, aes(priceRangeMin, priceRangeMax)) + 
-  geom_point() + 
-  scale_x_continuous(limits = c(0, 100)) +
-  scale_y_continuous(limits = c(0, 100))
+ggplot(data_crane, aes(acceleration_raw_x, acceleration_raw_y)) + 
+  geom_point()+ 
+  scale_x_continuous(limits = c(-1000, 1000)) +
+  scale_y_continuous(limits = c(-1000, 1000))
 ```
 
 
 
-### Optional excercise (++) - Plot the restaurants on a map
+### Optional exercise (++) - Plot the crane positions on a map
 
 #### a) Install package the `maps`
 
-```{r}
+```{r error=TRUE}
 
 # install.packages('maps')
 library(maps)
-```
-
-#### b) Plot the restaurants on the map of the USA.
-
-```{r error=TRUE}
-usa <- map_data("usa")
-
-ggplot(data_restaurants) +
-  geom_polygon(data = usa, aes(x=long, y = lat)) + 
-  geom_point(aes(x=longitude, y=latitude))
 
 ```
 
-
-#### c) Use the maximum price to colour the restaurants.
+#### b) Plot the crane data on a map.
 
 ```{r error=TRUE}
-usa <- map_data("usa")
+world_map_polygon <- map_data("world2")
 
-ggplot(data_restaurants) +
-  geom_polygon(data = usa, aes(x=long, y = lat)) + 
-  geom_point(aes(x=longitude, y=latitude, colour=priceRangeMin))
+ggplot(data_crane) +
+  geom_map(data = world_map_polygon, map= world_map_polygon, aes(x=long, y = lat, map_id = region)) + 
+  scale_x_continuous(limits = c(0, 60)) +
+  scale_y_continuous(limits = c(25, 60)) + 
+  geom_point(data = data_crane, aes(x = location_long, y = location_lat))
+
+```
+
+
+#### c) Use an individual identifier to colour the different cranes.
+
+```{r error=TRUE}
+
+world_map_polygon <- map_data("world2")
+
+ggplot(data_crane) +
+  geom_map(data = world_map_polygon, map= world_map_polygon, aes(long, lat, map_id = region)) + 
+  scale_x_continuous(limits = c(0, 60)) +
+  scale_y_continuous(limits = c(25, 60)) + 
+  geom_point(data = data_crane, aes(x = location_long, y = location_lat, colour=individual_local_identifier))
+
+
 ```
 
 ### Optional exercise (+++) - Create facets. 
 
-```{r fig.height=15, fig.width=6}
+```{r error=TRUE, fig.height=15, fig.width=6}
 
-ggplot(data_restaurants) + 
-  geom_histogram(aes(x = priceRangeMin)) + 
-  facet_wrap(~ state, ncol = 5)
+ggplot(data_crane, aes(mag_magnetic_field_raw_x, mag_magnetic_field_raw_y)) +
+  geom_point() + 
+  facet_wrap(~individual_local_identifier)
 
 ```
-
 
 
 # 3. Data transformation
 
-### Basic exercise I - Subset data
+### Basic exercise I - Subset data (single crane)
 
-#### a) Make a selection of all restaurants in 'Los Angeles'.
+#### a) Make a selection of all observations of crane 'L6037'.
 
 ```{r error=TRUE}
 
-filter(data_restaurants, city=='Los Angeles')
+filter(data_crane, individual_local_identifier=='L6037')
 
 ```
 
-#### b) Make a selection of all restaurants in 'Los Angeles' where the variable `priceRangeMin` isn't missing.
+#### b) Make a selection of all observations of crane 'L6037' where the variable `eobs_status` isn't missing.
 
 ```{r error=TRUE}
 
-filter(data_restaurants, city=='Los Angeles' & !is.na(priceRangeMin))
+filter(data_crane, individual_local_identifier=='L6037', !is.na(eobs_status))
 
 ```
 
-#### c) Make a selection of all restaurants in 'Los Angeles' where the variable `priceRangeMin` is not missing. Return only the `address` and `name` of the restaurants. 
+#### c) Make a selection of all observations of crane 'L6037' where the variable `eobs_status` isn't missing. Return only the `event_id` and `timestamp` variables. 
 
 ```{r error=TRUE}
 
-data_restaurants_filtered <- filter(data_restaurants, city=='Los Angeles' & !is.na(priceRangeMin))
+data_crane_filter <- filter(data_crane, individual_local_identifier=='L6037')
+select(data_crane_filter, event_id, timestamp)
 
-select(data_restaurants_filtered, address, name)
 ```
 
-### Basic exercise II - Compute the price range
+### Basic exercise II - Compute the magnitude of the magnetic field
 
 ```{r error=TRUE}
 
-data_restaurants_with_price_range <- mutate(data_restaurants,  
-  # compute the price range
-  priceRangeDiff = priceRangeMax - priceRangeMin
+data_crane_with_mag_magnetic <- mutate(
+  data_crane,  
+  magnitude = sqrt(mag_magnetic_field_raw_x ^ 2 + 
+                     mag_magnetic_field_raw_y ^ 2 + 
+                     mag_magnetic_field_raw_y ^ 2)
 )
 
-head(data_restaurants_with_price_range)
-
-```
-
-### Basic exercise III - Filter outliers
-
-```{r}
-data_restautants_wo_outliers <- filter(data_restaurants, priceRangeMin < 100, priceRangeMax < 100)
-
-ggplot(data_restautants_wo_outliers, aes(priceRangeMin, priceRangeMax)) +
-  geom_point()
+View(data_crane_with_mag_magnetic)
 ```
 
 
 ### Reading exercise - Pipe operator
 
+The pipe operator `%>%` is used by many tidyverse users. Read [Chapter 18](https://r4ds.had.co.nz/pipes.html)  of [R for Data
+Science](http://r4ds.had.co.nz/). Make a selection columns and rows of the data and make use of the pipe syntax.
+
 ### Optional exercise (+) - Exclude variables
 
-Create a tibble of the restaurant dataset without the latitude and longitude. 
+```{r error=TRUE}
 
-Use tidyverse and a maximum of 75 characters. (Our best result is 42 characters.)
+select(data_crane, -starts_with('location'))
 
-```{r}
-
-select(data_restaurants, -latitude, -longitude)
 ```
 
 ### Optional exercise (++) - Summarise results
 
-```{r}
+```{r error=TRUE}
 
-summarise(data_menus, 
-          mean_min_price = mean(menus.amountMin, na.rm = T),
-          mean_max_price = mean(menus.amountMax, na.rm = T),
-          mean_diff_price = mean(menus.amountMax - menus.amountMin, na.rm = T)
+summarise(
+  data_crane, 
+  min_latitude = max(location_lat, na.rm=T),
+  first_observation = min(timestamp),
+  magnitude_acceleration = mean(sqrt(acceleration_raw_x^2+acceleration_raw_y^2+acceleration_raw_x^2), na.rm=T)
 )
-
 ```
 
 ### Optional exercise (+++) - Join datasets
 
 ```{r error=TRUE}
 
-data_pizza_with_restaurant <- left_join(data_menus, data_restaurants, by="id")
-head(data_pizza_with_restaurant)
+data_crane_with_measures <- left_join(data_crane, data_crane_additional, by=`event_id`)
 
 ```
-
-Multiple options give the same results. Explain why!
-
