@@ -6,7 +6,7 @@ University](https://www.uu.nl). The workshop is organised by [Research Data
 Management Support](https://www.uu.nl/en/research/research-data-management).
 
 ## Upcoming course dates
-The next workshop will be given on **Wednesday, January 16th**, 2019, from 9:30-17:00 in the Bucheliuszaal of the Utrecht University Library, location Uithof.
+The next workshop will be given on **Wednesday, January 16th**, 2019, from 9:30-17:00 in the Bucheliuszaal of the Utrecht University Library, location Uithof. Registration is mandatory. More [here](https://www.uu.nl/en/events/introduction-to-r-data-1).
 
 ## Workshop description
 
