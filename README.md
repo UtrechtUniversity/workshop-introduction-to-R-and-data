@@ -47,7 +47,7 @@ The dataset [data/HUJI_Crane_israel_GPRS.csv](data/HUJI_Crane_Israel_GPRS.csv) w
 The dataset [data/crane_additional_observations.xlsx](data/Crane_additional_observations.xlsx) is fictional.
 
 All content in this repository with the exception of the dataset [data/HUJI_Crane_israel_GPRS.csv](data/HUJI_Crane_Israel_GPRS.csv) is licensed under Attribution 4.0
-International (CC BY 4.0). We highly encourage you to contact us when you 
+International (CC BY 4.0). We highly encourage you to contact us if you 
 would like to use the material.
 
 ## Development
