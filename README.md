@@ -63,4 +63,4 @@ and organised by:
 - Barbara Vreede ([b.m.i.vreede@uu.nl](mailto:b.m.i.vreede@uu.nl)) [@bvreede](https://github.com/bvreede)
 - Jonathan de Bruin ([j.debruin1@uu.nl](mailto:j.debruin1@uu.nl)) [@J535D165](https://github.com/J535D165)
 
-Feel free to contact us.
+Feel free to contact us. Or join us at the monthly [R Cafe](https://github.com/UtrechtUniversity/R-data-cafe).
