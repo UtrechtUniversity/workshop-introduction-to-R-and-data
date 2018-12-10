@@ -5,6 +5,9 @@ workshop 'Introduction to R & data' by the [Utrecht
 University](https://www.uu.nl). The workshop is organised by [Research Data
 Management Support](https://www.uu.nl/en/research/research-data-management).
 
+## Upcoming course dates
+The next workshop will be given on **Wednesday, January 16th**, 2019, from 9:30-17:00 in the Bucheliuszaal of the Utrecht University Library, location Uithof.
+
 ## Workshop description
 
 R is a powerful scripting language for data handling, data visualization, and
