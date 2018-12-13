@@ -1,12 +1,17 @@
 # Workshop: Introduction to R & data
 
 This repository contains the documentation, exercises and datasets of the
-workshop 'Introduction to R & data' by the [Utrecht
+single day workshop 'Introduction to R & data' at [Utrecht
 University](https://www.uu.nl). The workshop is organised by [Research Data
 Management Support](https://www.uu.nl/en/research/research-data-management).
 
 ## Upcoming course dates
-The next workshop will be given on **Wednesday, January 16th**, 2019, from 9:30-17:00 in the Bucheliuszaal of the Utrecht University Library, location Uithof. Registration is mandatory. More [here](https://www.uu.nl/en/events/introduction-to-r-data-1).
+The next workshops will be given on:
+
+- [Wednesday January 16th, 2019](https://www.uu.nl/en/events/introduction-to-r-data-1) (FULL)
+- Friday February 15th, 2019
+
+The workshops are held from 9:30-17:00 in the Bucheliuszaal of the Utrecht University Library, location Uithof. Registration is mandatory; check the link for the workshop you are interested in for information on how to register.
 
 ## Workshop description
 
