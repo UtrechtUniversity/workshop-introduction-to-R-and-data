@@ -79,7 +79,7 @@ doesn't load by default when you call `library("tidyverse")`. Load the package w
 
 ```
 
-#### c) Read the additional observations `crane_additional_observations.xlsx`.
+#### d) Read the additional observations `crane_additional_observations.xlsx`.
 
 Read the additional observations in data file `crane_additional_observations.xlsx` (Excel file!). Complete the code in the
 code cell below.
