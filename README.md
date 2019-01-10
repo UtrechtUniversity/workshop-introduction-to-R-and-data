@@ -10,7 +10,7 @@ The next workshops will be given on:
 
 - [Wednesday January 16th, 2019](https://www.uu.nl/en/events/introduction-to-r-data-1) (FULL)
 - [Friday February 15th, 2019](https://www.uu.nl/en/events/introduction-to-r-data-2) (FULL)
-- Thursday March 21st, 2019
+- [Thursday March 21st, 2019](https://www.uu.nl/en/events/introduction-to-r-data-3)
 
 The workshops are held from 9:30-17:00 in the Bucheliuszaal of the Utrecht University Library, location Uithof. Registration is mandatory; check the link for the workshop you are interested in for information on how to register.
 
