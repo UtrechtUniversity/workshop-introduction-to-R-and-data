@@ -10,9 +10,10 @@ The next workshops will be given on:
 
 - [Friday February 15th, 2019](https://www.uu.nl/en/events/introduction-to-r-data-2) (FULL)
 - [Thursday March 21st, 2019](https://www.uu.nl/en/events/introduction-to-r-data-3) (FULL)
-- [Tuesday, April 9th, 2019](https://www.uu.nl/en/events/introduction-to-r-data-4)
+- [Tuesday, April 9th, 2019](https://www.uu.nl/en/events/introduction-to-r-data-4) (FULL)
 
-Registration is mandatory; check the link for the workshop you are interested in for information on how to register.
+Registration is mandatory; check the link for the workshop you are interested in for information on how to register or be put on the waiting list.
+More dates will be announced soon.
 
 ## Workshop description
 
