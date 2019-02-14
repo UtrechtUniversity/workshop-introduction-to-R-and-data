@@ -46,8 +46,7 @@ head(data_crane)
 
 library(readxl)
 
-# open the help function
-?read_excel
+# Hint: type ?read_excel in your console
 
 ```
 
