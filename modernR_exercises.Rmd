@@ -74,8 +74,7 @@ doesn't load by default when you call `library("tidyverse")`. Load the package w
 ### enter your code here ###
 
 
-# open the help function
-?read_excel
+# Hint: type ?read_excel in your console
 
 ```
 
