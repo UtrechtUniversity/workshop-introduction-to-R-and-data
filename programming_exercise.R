@@ -2,24 +2,24 @@
 # comes pre-loaded
 
 # what measurements exist in the iris db?
-mmt <- colnames(iris)
+measure <- colnames(iris)
 # remove "Species" from the list of names
-mmt <- mmt[mmt!="Species"]
+measure <- measure[measure!="Species"]
 
 # make a df with a single column: measurements
-iris_res <- data.frame(mmt)
+iris_res<- data.frame(measure)
 
 # Determine the average size per measurement
 # Generate a vector to add averages to
 avgs <- NULL
 # iterate over each measurement with a for-loop
-for(i in mmt){
+for(m in measure){
   # select the appropriate column in the dataframe
-  col_i <- iris[,i]
+  column <- iris[,m]
   # calculate the average of this column
-  avg_i <- mean(col_i)
+  avg <- mean(column)
   # add the average to the averages vector
-  avgs <- c(avgs,avg_i)
+  avgs <- c(avgs,avg)
 }
 # add the collected averages as a column to the data frame
 iris_res$average <- avgs
@@ -28,8 +28,8 @@ iris_res$average <- avgs
 #turn this into a function
 average_df <- function(df){
   # determine measurement names and remove species
-  mmt <- names(df)
-  mmt <- mmt[mmt!="Species"]
+  measure <- colnames(df)
+  measure <- measure[measure!="Species"]
   # initiate an empty vector
   avgs <- NULL
   ### ENTER YOUR OWN CODE ###
