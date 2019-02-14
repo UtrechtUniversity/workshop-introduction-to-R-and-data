@@ -2,8 +2,6 @@
 title: "Modern R with tidyverse"
 author: '[Insert your name]'
 output:
-  pdf_document:
-    toc: yes
   html_document:
     toc: yes
 ---
