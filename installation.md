@@ -81,6 +81,11 @@ Tracing function "unpackPkgZip" in package "utils (not-exported)"
 
 Change 0.5 in line 140 to 2.5 and install the package again.
 
-## Installation of tidyverse works, but loading the library is aborted. 
+## Library(tidyverse) loading failed
 
-Run `install.packages("bindrcpp")`
+You see the following error:
+```
+Error: package or namespace load failed for 'tidyverse'in loadNamespace(...)
+namespace 'bindrcpp' 0.2 is being loaded, but >= 0.2.0.9000 is required.
+```
+Run `install.packages("bindrcpp")`to update this package.
