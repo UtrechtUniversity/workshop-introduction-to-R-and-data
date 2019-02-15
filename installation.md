@@ -47,7 +47,7 @@ Solution:
 
 ## Tidyverse installation is aborted and packages are said to have "non zero exit status"
 
-You may be dealing with an old version of R. Update R by re-installing it from CRAN(https://cran.rstudio.com/). Try installing tidyverse again.
+You may be dealing with an old version of R. Update R by installing a recent version from [CRAN](https://cran.rstudio.com/). Try installing tidyverse again.
 
 
 ## Virusscanner blocks installation
