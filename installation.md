@@ -83,4 +83,4 @@ Change 0.5 in line 140 to 2.5 and install the package again.
 
 ## Installation of tidyverse works, but loading the library is aborted. 
 
-Run `install.packages("")`
+Run `install.packages("bindrcpp")`
