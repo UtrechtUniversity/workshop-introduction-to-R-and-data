@@ -45,6 +45,11 @@ Solution:
 - Restart your R session
 - Click on `Packages`>`Install`. Is `Install to library` pointing to `C:/Users/User/R-packages`?
 
+## Tidyverse installation is aborted and packages are said to have "non zero exit status"
+
+You may be dealing with an old version of R. Update R by re-installing it from CRAN(https://cran.rstudio.com/). Try installing tidyverse again.
+
+
 ## Virusscanner blocks installation
 
 Do you get issues like this: 
@@ -76,4 +81,6 @@ Tracing function "unpackPkgZip" in package "utils (not-exported)"
 
 Change 0.5 in line 140 to 2.5 and install the package again.
 
+## Installation of tidyverse works, but loading the library is aborted. 
 
+Run `install.packages("")`
