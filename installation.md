@@ -45,9 +45,9 @@ Solution:
 - Restart your R session
 - Click on `Packages`>`Install`. Is `Install to library` pointing to `C:/Users/User/R-packages`?
 
-## Tidyverse installation is aborted and packages are said to have "non zero exit status"
+## Tidyverse installation is aborted
 
-You may be dealing with an old version of R. Update R by installing a recent version from [CRAN](https://cran.rstudio.com/). Try installing tidyverse again.
+If the installation of tidyverse is aborted, and packages are downloaded but their installation is said to have "non zero exit status", you may be dealing with an old version of R. Update R by installing a recent version from [CRAN](https://cran.rstudio.com/). Then try installing tidyverse again.
 
 
 ## Virusscanner blocks installation
