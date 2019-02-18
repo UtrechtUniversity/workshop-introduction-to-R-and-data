@@ -67,12 +67,12 @@ data_crane <- read_### enter your code here ###
 The package `readxl` is a tidyverse package to read Excel files. The package
 doesn't load by default when you call `library("tidyverse")`. Load the package with the function `library()`. Also read the help function of the `read_excel` function.
 
+**Hint**: type `?read_excel` in your console.
+
 ```{r}
 
 ### enter your code here ###
 
-
-# Hint: type ?read_excel in your console
 
 ```
 
@@ -344,7 +344,7 @@ Make use of tidyverse functions only.
 
 The function `mutate()` is a very powerful function in tidyverse (the `dplyr` package) to mutate and create new column variables in a data frame or tibble. 
 
-Create a tibble with a new variable called `mag_magnetic`, which is the magnitude of the magnetic field. You can calculate the magnetic field by taking the square root of `mag_magnetic_field_raw_x ^ 2 + mag_magnetic_field_raw_y ^ 2 + mag_magnetic_field_raw_y ^ 2`  
+Create a tibble with a new variable called `mag_magnetic`, which is the magnitude of the magnetic field. You can calculate the magnetic field by taking the square root of `mag_magnetic_field_raw_x ^ 2 + mag_magnetic_field_raw_y ^ 2 + mag_magnetic_field_raw_z ^ 2`  
 
 ```{r}
 
