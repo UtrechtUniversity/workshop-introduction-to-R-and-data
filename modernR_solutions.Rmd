@@ -279,13 +279,13 @@ select(data_crane_filter, event_id, timestamp)
 
 data_crane_with_mag_magnetic <- mutate(
   data_crane,  
-  mag_magnitude = sqrt(mag_magnetic_field_raw_x ^ 2 + 
+  magnetic_magnitude = sqrt(mag_magnetic_field_raw_x ^ 2 + 
                      mag_magnetic_field_raw_y ^ 2 + 
                      mag_magnetic_field_raw_z ^ 2)
 )
 
 ggplot(data_crane_with_mag_magnetic) + 
-  geom_histogram(aes(mag_magnitude))
+  geom_histogram(aes(magnetic_magnitude))
 ```
 
 
