@@ -36,7 +36,7 @@ An overview of the workshop material is listed here.
 
 **Workshop reference material**
 
-- [Slides](intro_R_and_data_slides.pdf)
+- Slides [pdf](intro_R_and_data_slides.pdf)|[ppt](intro_R_and_data_slides.ppt)
 
 **Exercises**
 
@@ -61,17 +61,19 @@ All content in this repository with the exception of the dataset [data/HUJI_Cran
 International (CC BY 4.0). We highly encourage you to contact us if you 
 would like to use the material.
 
-## Development
-
-Course material is developed in the `development`branch. 
 
 ## Contact 
 
 The workshop 'Introduction to R & data' by [Research Data Management
-Support](https://www.uu.nl/en/research/research-data-management) is developed
-and organised by:
+Support](https://www.uu.nl/en/research/research-data-management) has been developed by:
 
-- Barbara Vreede ([b.m.i.vreede@uu.nl](mailto:b.m.i.vreede@uu.nl)) [@bvreede](https://github.com/bvreede)
-- Jonathan de Bruin ([j.debruin1@uu.nl](mailto:j.debruin1@uu.nl)) [@J535D165](https://github.com/J535D165)
+- Barbara Vreede [@bvreede](https://github.com/bvreede)
+- Jonathan de Bruin [@J535D165](https://github.com/J535D165)
+
+Workshop teachers:
+- [Barbara Vreede](mailto:b.m.i.vreede@uu.nl)
+- [Jacques Flores](mailto:j.p.flores@uu.nl)
+- [Bianca Kramer](mailto:b.m.r.kramer@uu.nl)
+- [Jonathan de Bruin](mailto:j.debruin1@uu.nl)
 
 Feel free to contact us. Or join us at the monthly [R Cafe](https://github.com/UtrechtUniversity/R-data-cafe).
