@@ -70,10 +70,10 @@ Support](https://www.uu.nl/en/research/research-data-management) has been develo
 - Barbara Vreede [@bvreede](https://github.com/bvreede)
 - Jonathan de Bruin [@J535D165](https://github.com/J535D165)
 
-Workshop teachers:
-- [Barbara Vreede](mailto:b.m.i.vreede@uu.nl)
-- [Jacques Flores](mailto:j.p.flores@uu.nl)
-- [Bianca Kramer](mailto:b.m.r.kramer@uu.nl)
-- [Jonathan de Bruin](mailto:j.debruin1@uu.nl)
+Instructors:
+- [Barbara Vreede](https://www.uu.nl/medewerkers/bmivreede)
+- [Bianca Kramer](https://www.uu.nl/medewerkers/bmrkramer)
+- [Jacques Flores](https://www.uu.nl/medewerkers/jpflores)
+- [Jonathan de Bruin](https://www.uu.nl/medewerkers/jdebruin1)
 
-Feel free to contact us. Or join us at the monthly [R Cafe](https://github.com/UtrechtUniversity/R-data-cafe).
+Feel free to [contact us](mailto:b.m.i.vreede@uu.nl). Or join us at the monthly [R Cafe](https://github.com/UtrechtUniversity/R-data-cafe).
