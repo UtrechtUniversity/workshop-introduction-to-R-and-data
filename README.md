@@ -36,7 +36,7 @@ An overview of the workshop material is listed here.
 
 **Workshop reference material**
 
-- Slides [.pdf](intro_R_and_data_slides.pdf)|[.pptx](intro_R_and_data_slides.pptx)
+- [slides](Slides) [.pdf](slides/intro_R_and_data_slides.pdf)|[.pptx](slides/intro_R_and_data_slides.pptx)
 
 **Exercises**
 
