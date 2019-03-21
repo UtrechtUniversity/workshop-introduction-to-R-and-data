@@ -36,14 +36,14 @@ An overview of the workshop material is listed here.
 
 **Workshop reference material**
 
-- Slides [pdf](intro_R_and_data_slides.pdf)|[ppt](intro_R_and_data_slides.ppt)
+- Slides [.pdf](intro_R_and_data_slides.pdf)|[.pptx](intro_R_and_data_slides.pptx)
 
 **Exercises**
 
 - Programming exercise Part I: [programming_exercise.R](programming_exercise.R)
 - Datasets Part II: [data](data)
 - Exercises Part II: Modern R with Tidyverse [modernR_exercises.Rmd](modernR_exercises.Rmd)
-- Solutions Part II: Modern R with Tidyverse [modernR_solutions.Rmd](modernR_solutions.Rmd) [[PDF](modernR_solutions.pdf)]
+- Solutions Part II: Modern R with Tidyverse modernR_solutions[.Rmd](modernR_solutions.Rmd)|[.pdf](modernR_solutions.pdf)
 
 **External resources**
 
