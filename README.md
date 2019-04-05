@@ -73,6 +73,5 @@ Instructors:
 - [Barbara Vreede](https://www.uu.nl/medewerkers/bmivreede)
 - [Bianca Kramer](https://www.uu.nl/medewerkers/bmrkramer)
 - [Jacques Flores](https://www.uu.nl/medewerkers/jpflores)
-- [Jonathan de Bruin](https://www.uu.nl/medewerkers/jdebruin1)
 
 Feel free to [contact us](mailto:b.m.i.vreede@uu.nl). Or join us at the monthly [R Cafe](https://github.com/UtrechtUniversity/R-data-cafe).
