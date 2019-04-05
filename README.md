@@ -62,16 +62,18 @@ would like to use the material.
 
 
 ## Contact 
+The workshop 'Introduction to R & data' is developed and maintained by [Research Data Management
+Support](https://www.uu.nl/en/research/research-data-management) at Utrecht University.
 
-The workshop 'Introduction to R & data' by [Research Data Management
-Support](https://www.uu.nl/en/research/research-data-management) has been developed by:
-
-- Barbara Vreede [@bvreede](https://github.com/bvreede)
-- Jonathan de Bruin [@J535D165](https://github.com/J535D165)
+Workshop organisation:
+- [Sigrid Dekker](mailto:s.a.dekker@uu.nl)
 
 Instructors:
 - [Barbara Vreede](https://www.uu.nl/medewerkers/bmivreede)
 - [Bianca Kramer](https://www.uu.nl/medewerkers/bmrkramer)
 - [Jacques Flores](https://www.uu.nl/medewerkers/jpflores)
 
-Feel free to [contact us](mailto:b.m.i.vreede@uu.nl). Or join us at the monthly [R Cafe](https://github.com/UtrechtUniversity/R-data-cafe).
+Feel free to get in touch. Or join us at the monthly [R Cafe](https://github.com/UtrechtUniversity/R-data-cafe).
+
+## Acknowledgements
+This workshop was written by [Barbara Vreede](https://github.com/bvreede) and [Jonathan de Bruin](https://github.com/J535D165).
