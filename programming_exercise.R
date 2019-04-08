@@ -1,40 +1,92 @@
-# database in use: iris
-# comes pre-loaded
+## Programming exercise for Introduction to R and Data
+## Workshop at Utrecht University
+## more on https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data
+## Material developed by Barbara Vreede
+## Contact: b.m.i.vreede@uu.nl
+## Date: 8 April 2019
 
-# what measurements exist in the iris db?
-measure <- colnames(iris)
-# remove "Species" from the list of names
-measure <- measure[measure!="Species"]
 
-# make a df with a single column: measurements
-iris_res<- data.frame(measure)
-
-# Determine the average size per measurement
-# Generate a vector to add averages to
-avgs <- NULL
-# iterate over each measurement with a for-loop
-for(m in measure){
-  # select the appropriate column in the dataframe
-  column <- iris[,m]
-  # calculate the average of this column
-  avg <- mean(column)
-  # add the average to the averages vector
-  avgs <- c(avgs,avg)
-}
-# add the collected averages as a column to the data frame
-iris_res$average <- avgs
-
-#### EXERCISE ####
-#turn this into a function
-average_df <- function(df){
-  # determine measurement names and remove species
-  measure <- colnames(df)
-  measure <- measure[measure!="Species"]
-  # initiate an empty vector
-  avgs <- NULL
-  ### ENTER YOUR OWN CODE ###
-  return(avgs)
+# Function that returns basic statistics from a vector
+apply_calc <- function(x){
+  m <- mean(x) # mean
+  s <- sd(x) # standard deviation
+  mi <- min(x) # minimum
+  ma <- max(x) # maximum
+  allres <- c(m,s,mi,ma)
+  return(allres)
 }
 
-# apply the function: add the averages as a column to the data frame
-iris_res$average <- average_df(iris)
+# Apply the function to all columns in iris
+iriscols <- colnames(iris)
+for(i in iriscols){
+  # select the appropriate column
+  c <- iris[,i]
+  # apply the function
+  stats <- apply_calc(c)
+  # print the stats
+  print(stats)
+}
+
+### THIS DOES NOT GO WELL! One of the columns in iris is not numeric!
+###
+### EXERCISE: 
+### Add an if statement to the for-loop that ensures the stats calculation is only performed
+### if the column is numeric.
+### Hint: check the function is.numeric()
+
+# Apply the function to all NUMERIC columns in iris
+iriscols <- colnames(iris)
+for(i in iriscols){
+  # select the appropriate column
+  c <- iris[,i]
+  # apply the function ONLY TO NUMERIC COLUMNS
+  if #### ADD YOUR CODE HERE ####
+
+  
+}
+
+
+
+###############################################################
+###############################################################
+###############################################################
+
+## DO NOT SCROLL DOWN IF YOU HAVE NOT FINISHED THE EXERCISE! ##
+
+###############################################################
+###############################################################
+###############################################################
+
+
+
+
+
+
+###### BONUS ########
+
+# You could add the stats together to a data frame like this:
+statsdf <- NULL # this is how you initiate a new object without putting any information in
+measurements <- NULL # to collect the names of the numeric measurements
+
+for(i in iriscols){
+  # select the appropriate column
+  c <- iris[,i]
+  # check whether the column is numeric
+  if(is.numeric(c)){
+    # apply the function
+    stats <- apply_calc(c)
+    # bind the row to the new dataframe
+    statsdf <- rbind(statsdf,stats)
+    # add the column name to the measurements vector
+    measurements <- c(measurements, i)
+  }
+}
+
+# now for the final touch: make the object into a data frame
+statsdf <- as.data.frame(statsdf)
+
+# add column names
+colnames(statsdf) <- c("Mean","Sd","Max","Min")
+
+# and row names with the names of the measurements
+rownames(statsdf) <- measurements
