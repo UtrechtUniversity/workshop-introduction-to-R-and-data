@@ -8,7 +8,6 @@ Management Support](https://www.uu.nl/en/research/research-data-management).
 ## Upcoming course dates
 The next workshops will be given on:
 
-- [Tuesday, April 9th, 2019](https://www.uu.nl/en/events/introduction-to-r-data-4) (FULL)
 - [Thursday, May 16th, 2019](https://www.uu.nl/en/events/introduction-to-r-data-5) (FULL)
 - [Friday, June 14th, 2019](https://www.uu.nl/en/events/introduction-to-r-data-6)
 
