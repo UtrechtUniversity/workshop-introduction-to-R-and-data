@@ -9,7 +9,7 @@ Management Support](https://www.uu.nl/en/research/research-data-management).
 The next workshops will be given on:
 
 - [Thursday, May 16th, 2019](https://www.uu.nl/en/events/introduction-to-r-data-5) (FULL)
-- [Friday, June 14th, 2019](https://www.uu.nl/en/events/introduction-to-r-data-6)
+- [Friday, June 14th, 2019](https://www.uu.nl/en/events/introduction-to-r-data-6) (FULL)
 
 Registration is mandatory; check the link for the workshop you are interested in for information on how to register or be put on the waiting list.
 
