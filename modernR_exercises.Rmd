@@ -10,22 +10,22 @@ output:
 
 # Introduction
 
-In this document, we explore Crane migration, through the GPS data from 39 tagged individuals during the fall migration of 2017. The data was kindly provided for this course by Sasha Pekarsky at the Department of Ecology, Evolution, and Behavior at HUJI. The dataset has been modified by the course instructors.
+In the following exercises, we explore the migration of the Eurasian Crane (*Grus grus*), through the GPS data of 39 tagged individuals during the fall migration of 2017. The data was kindly provided for this course by Sasha Pekarsky at the Department of Ecology, Evolution, and Behavior at HUJI. The dataset included in the course materials has been modified by the course developers and may not be used for any other purposes than this workshop.
 
 
 ## Exercises
 
-This part of the workshop (part II) makes use of exercises to find answers to the research questions. The exercises are divided in two groups:
+The following exercises are divided as follows:
 
-- **basic exercises** The solution of these exercises are part of the rest of this workshop. The code for these exercises needs to work correctly. Ask questions if you are completely stuck.
+- **basic exercises**: The solutions to these exercises are part of the rest of the workshop. The code for these exercises needs to work correctly, so you will need to complete these exercises before moving on to the next section. Ask questions if you are completely stuck; if all else fails, check the [solutions manual](modernR_solutions.pdf).
 
-- **reading exercises** These are reading execises. The reading exercises make use of the book [R for Data Science](http://r4ds.had.co.nz/) by Garrett Grolemund and Hadley Wickham.
+- **reading exercises**: The reading exercises make use of the book [R for Data Science](http://r4ds.had.co.nz/) by Garrett Grolemund and Hadley Wickham.
 
-- **optional exercises** These questions might be relevant for you. Please pick a few of these exercises to enhance your skills. It doesn't matter if you do not have time to complete them all. The (+) exercises are beginner exercises. (++) Exercises are of a moderate level. The (+++) exercises are really challenging.
+- **optional exercises**: These questions might be relevant for you. Please pick a few of these exercises to enhance your skills. It does not matter if you do not have time to complete them all. The (+) exercises are beginner exercises. (++) exercises are of a moderate level. The (+++) exercises are really challenging.
 
 ## Technical requirements
 
-This project depends on the `tidyverse` package. Load tidyverse into your work environment. 
+This project depends on the `tidyverse` package. To start, load tidyverse into your work environment by running the following chunk. 
 
 ```{r} 
 library(tidyverse) 
@@ -39,22 +39,20 @@ knitr::opts_chunk$set(error = T)
 # 1. Read and save data
 
 ### Basic exercise I - Read data into R
+#### a) Read the data `HUJI_Crane_Israel_GPRS.csv` into R
 
-In this exercise, we read the dataset `HUJI_Crane_Israel_GPRS.csv` into the 
-memory of the computer. You can find the dataset in the `data` folder of your
-project.
+In this exercise, we read the dataset `HUJI_Crane_Israel_GPRS.csv` into the memory of the computer. 
 
-#### a) Find the delimiter of the dataset `HUJI_Crane_Israel_GPRS.csv`
+You will need to know three things to complete this exercise:
+- The **function** to use to read data into R;
+- The **location** of your data;
+- The **delimiter** of the data.
 
-The delimiter is the character that separates the values in a CSV file. There
-are various ways to find out how the datasets is delimited. Discuss your approach with a colleague or assistant.
+You can find the dataset in the `data` folder of your project. Note that the file location (argument `file`) should be `data/HUJI_Crane_Israel_GPRS.csv`, as you are referring to its location (or 'path') relative to the location of this script.
 
-#### b) Read the data `HUJI_Crane_Israel_GPRS.csv` into R
+The delimiter is the character that separates the values in a tabular data file. There are various ways to find out how the datasets is delimited. One way from inside Rstudio is to use the 'Import Dataset' button (in your 'Environment') window, locate your data, and play around with the settings. An **example** of the code you can use should now appear in the bottom right window. (This will also include a function!)
 
-Complete the code in the code cell below to read the data into
-`data_crane`.
-
-*Tip: The file location (argument `file`) should be 'data/HUJI_Crane_Israel_GPRS.csv'* 
+Complete the code in the chunk below:
 
 ```{r}
 
@@ -62,12 +60,14 @@ data_crane <- read_### enter your code here ###
 
 ```
 
-#### c) Load `readxl` (to read Excel files)
+#### b) Load `readxl` (to read Excel files)
 
-The package `readxl` is a tidyverse package to read Excel files. The package
-doesn't load by default when you call `library("tidyverse")`. Load the package with the function `library()`. Also read the help function of the `read_excel` function.
+`read_csv` and `read_delim` are useful functions for most tabular data files, but they are unable to read excel files. For this, we need an additional package.
 
-**Hint**: type `?read_excel` in your console.
+The package `readxl` is a tidyverse package to read Excel files. This package
+does not load by default when you call `library(tidyverse)`. 
+
+Load this package with the function `library()`:
 
 ```{r}
 
@@ -76,10 +76,14 @@ doesn't load by default when you call `library("tidyverse")`. Load the package w
 
 ```
 
-#### d) Read the additional observations `crane_additional_observations.xlsx`.
 
-Read the additional observations in data file `crane_additional_observations.xlsx` (Excel file!). Complete the code in the
-code cell below.
+#### c) Read the additional observations `crane_additional_observations.xlsx` into R.
+
+Included in the *package* `readxl` (a package is a collection of functions) is the *function* `read_excel`. You can learn how to use this function by exploring its help function. To do this, type `?read_excel` in your console.
+
+Use the function `read_excel` to read the additional observations in data file `crane_additional_observations.xlsx` (an Excel file!), also located in your `data` folder, into R.
+
+Complete the code in the code cell below:
 
 ```{r}
 
