@@ -15,13 +15,13 @@ In the following exercises, we explore the migration of the Eurasian Crane (*Gru
 
 ## Exercises
 
-The following exercises are divided as follows:
+The following exercises are labeled as follows:
 
 - **basic exercises**: The solutions to these exercises are part of the rest of the workshop. The code for these exercises needs to work correctly, so you will need to complete these exercises before moving on to the next section. Ask questions if you are completely stuck; if all else fails, check the [solutions manual](modernR_solutions.pdf).
 
-- **reading exercises**: The reading exercises make use of the book [R for Data Science](http://r4ds.had.co.nz/) by Garrett Grolemund and Hadley Wickham.
+- **optional exercises**: These questions can help you enhance your skills, but they are not essential for this workshop, so do not worry if you do not have time to complete them all. The (+) exercises are beginner exercises, (++) exercises are of a moderate level, and (+++) exercises are really challenging.
 
-- **optional exercises**: These questions might be relevant for you. Please pick a few of these exercises to enhance your skills. It does not matter if you do not have time to complete them all. The (+) exercises are beginner exercises. (++) exercises are of a moderate level. The (+++) exercises are really challenging.
+At the end of each chapter we have noted some recommended reading, in case you have time to spare, or would like a deeper understanding of the material. All reading material is from the book [R for Data Science](http://r4ds.had.co.nz/) by Garrett Grolemund and Hadley Wickham.
 
 ## Technical requirements
 
@@ -83,7 +83,7 @@ Included in the *package* `readxl` (a package is a collection of functions) is t
 
 Use the function `read_excel` to read the additional observations in data file `crane_additional_observations.xlsx` (an Excel file!), also located in your `data` folder, into R.
 
-Complete the code in the code cell below:
+Complete the code in the chunk below:
 
 ```{r}
 
@@ -95,30 +95,23 @@ data_crane_additional <- ### enter your code here ###
 
 ### Basic exercise II - Dataset properties 
 
-The structure of the dataset (i.e. number of observations, columns, data types) is very important for your initial data exploration. Tidyverse has the function `glimpse()` to output the structure of a `data.frame` or `tibble`. 
+The structure of the dataset (i.e. columns, data types, number of observations) is very important for your initial data exploration. Tidyverse has the function `glimpse()` to output the structure of a dataframe or tibble. 
 
-Output the structure of both datasets in the cell below. What does `<chr>`, `<dbl>` and `<int>` mean? Are these values what you expect?
+Output the structure of both datasets in the cell below. What do `<chr>`, `<dbl>` and `<int>` mean? Are these values what you expect?
 
 ```{r}
 
 ### enter your code here ###
 
 ```
-
-### Reading exercise - `readr` versus base R
-
-You might wonder why we’re not using base R functions for (flat) file reading like `read.csv()`, `read.csv2()` and `read.delimiter()`. These function are available by default in base R and don't require additional packages like `readr`. 
-
-Read [Chapter 11.2.1](http://r4ds.had.co.nz/data-import.html#compared-to-base-r)  of [R for Data
-Science](http://r4ds.had.co.nz/) and think about the topics like reproducibility, shareablitiy and performance. Discuss your thoughts with another workshop participant.
 
 
 ### Optional exercise (+) - Save data to a CSV file with delimiter `;`. 
 
-Save the tibble `data_crane` to a `.csv` file. Use `;` as delimiter. 
+Save the tibble `data_crane` to a `.csv` file. Use `;` as delimiter. To do this, you can use the function `write_delim`. Again, you can make use of its help function if you want to understand how the function works: type `?write_delim` in your console.
 
-*Tip: check the function `write_delim`.*
 *Tip: Use a different file name, otherwise you overwrite the original data*
+*Tip: You can save the file to a specific folder by including it in the path, just like you did when you read the file in exercise I-1. For instance:* `data/other_file_name.csv` *will save your file in the* `data` *folder*.
 
 ```{r}
 
@@ -126,17 +119,30 @@ Save the tibble `data_crane` to a `.csv` file. Use `;` as delimiter.
 
 ```
 
-### Optional exercise (++) - Read SPSS, SAS, Excel and STATA data files
 
-(Statistical) software like SPSS, SAS, Excel and STATA are popular programs in the scientific world. These programs do have their own file formats. 
+### Optional exercise (++) - Write tibble `data_crane` to an Excel file. 
 
-By default, it is not possible to read and write SPSS, SAS and STATA data files with base R. Tidyverse offers solutions to make this possible. The package `haven` can be used to do this (not loaded by default). Load the package with the following line of code:
+While the tidyverse package `readxl` can be used to read from Excel files, there is no corresponding tidyverse package or function to write data to an Excel file. However, the package `writexl` comes close! Within it, the function `write_xlsx` can be used to write a data frame or tibble to an Excel file.
+
+Use this function to write the tibble `data_crane` to an Excel file (extension `.xlsx`).
+
+```{r}
+
+### enter your code here ###
+
+
+```
+
+
+### Optional exercise (++) - Read and write SPSS, SAS, and STATA data files
+
+(Statistical) software like SPSS, SAS, and STATA are popular programs in the scientific world. These programs have their own file formats, and it is not possible to read and write SPSS, SAS, and STATA data files with base R. Tidyverse offers solutions to make this possible, with the package `haven`.
+
+Load the package with the following line of code:
 
 ```{r}
 library(haven) # to read and write SPSS, STATA and SAS files
 ```
-
-#### a) Write tibble `data_crane` to SPSS, SAS, STATA data files. 
 
 Create a code block and do at least one of the following exercises:
 
@@ -156,22 +162,17 @@ STATA:
 - Read the saved STATA data file with the function `read_dta`.
 
 
-#### b) Write tibble `data_crane` to an Excel file. 
-
-Create a code block and write the tibble `data_crane` to an Excel file (extension `.xlsx`).
-
-Is there a tidyverse function to write Excel files? If not, read on the internet about writing Excel files with R.
-
-
 ### Optional exercise (+++) - Parse datetime columns
 
-Date and time variables can be very challenging to work with in programming languages (including R). In the `data_crane` dataset, there is a variable `eobs_start_timestamp`. This column isn't recognized as a date variable. 
+Date and time variables can be very challenging to work with in programming languages (including R). In the `data_crane` dataset, there is a variable `eobs_start_timestamp`. This column is not recognized as a date variable, as you can see when you glimpse the data: 
 
 ```{r}
 glimpse(data_crane)
 ```
 
-The following code shows how you can parse columns with a specific data type. Insert the correct format for the date column.
+The following code shows how you can columns with a specific data type. As in excercise 1.I (a), you can use the 'Import Dataset' button (in your 'Environment') window to play around with the settings, and see an example of the code this corresponds to in the bottom right window.
+
+Insert the correct format for the date column:
 
 ```{r}
 
@@ -182,6 +183,16 @@ read_csv('data/HUJI_Crane_Israel_GPRS.csv',
   ))
   
 ```
+
+
+### Recommended reading - `readr` versus base R
+
+You might wonder why we are not using base R functions for (flat) file reading like `read.csv()`, `read.csv2()` and `read.delimiter()`. These function are available by default in base R and do not require additional packages like `readr`. 
+
+Read [Chapter 11.2.1](http://r4ds.had.co.nz/data-import.html#compared-to-base-r)  of [R for Data
+Science](http://r4ds.had.co.nz/) and think about topics like reproducibility, shareablity, and performance.
+
+
 
 # 2. Data visualisation
 
