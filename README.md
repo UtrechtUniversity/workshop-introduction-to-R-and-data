@@ -56,8 +56,7 @@ The dataset [data/HUJI_Crane_israel_GPRS.csv](data/HUJI_Crane_Israel_GPRS.csv) w
 The dataset [data/crane_additional_observations.xlsx](data/Crane_additional_observations.xlsx) is fictional.
 
 All content in this repository with the exception of the dataset [data/HUJI_Crane_israel_GPRS.csv](data/HUJI_Crane_Israel_GPRS.csv) is licensed under Attribution 4.0
-International (CC BY 4.0). We highly encourage you to contact us if you 
-would like to use the material.
+International (CC BY 4.0).
 
 
 ## Contact 
@@ -70,6 +69,7 @@ Workshop organisation:
 Instructors:
 - [Barbara Vreede](https://www.uu.nl/medewerkers/bmivreede)
 - [Bianca Kramer](https://www.uu.nl/medewerkers/bmrkramer)
+- [Felix Weijdema](https://www.uu.nl/medewerkers/fpweijdema)
 - [Jacques Flores](https://www.uu.nl/medewerkers/jpflores)
 
 Feel free to get in touch. Or join us at the monthly [R Cafe](https://github.com/UtrechtUniversity/R-data-cafe).
