@@ -79,7 +79,7 @@ Tracing function "unpackPkgZip" in package "utils (not-exported)"
 [1] "unpackPkgZip"
 ```
 
-Change 0.5 in line 140 to 2.5 and install the package again.
+Change 0.5 in line 142 to 2.5 and install the package again.
 
 ## Library(tidyverse) loading failed
 
@@ -89,3 +89,9 @@ Error: package or namespace load failed for 'tidyverse'in loadNamespace(...)
 namespace 'bindrcpp' 0.2 is being loaded, but >= 0.2.0.9000 is required.
 ```
 Run `install.packages("bindrcpp")`to update this package.
+
+```
+Error: package or namespace load failed for 'tidyverse'in loadNamespace(...)
+there is no package called (xxx)
+```
+The same solution as above applies: run `install.packages()` to add whatever package is missing. (At the time of writing, it is not clear why these packages are missing; this error was received over email.)
