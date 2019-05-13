@@ -287,7 +287,7 @@ Install the package `maps` and load the library in the cell below.
 
 Add a layer with the location of the observations.
 
-*tip: can you use the `geom_point()` layer for this?*
+*Tip: can you use the function `geom_point()` for this layer?*
 
 ```{r}
 world_map_polygon <- map_data("world2")
@@ -295,7 +295,7 @@ world_map_polygon <- map_data("world2")
 ggplot(data_crane) +
   geom_map(data = world_map_polygon, map= world_map_polygon, aes(x=long, y = lat, map_id = region)) + 
   scale_x_continuous(limits = c(0, 60)) +
-  scale_y_continuous(limits = c(25, 60))
+  scale_y_continuous(limits = c(25, 60)) +
   ### add your geometric layer here ###
 
 ```
@@ -323,15 +323,14 @@ Search on the internet for information about facets in ggplot. This unique featu
 
 ### Recommended reading - Statistical layers for graphs.
 
-Statistical layers reveal a strong power of ggplot. The following graph illustrates this:
+You have seen the power of statistical layers in the exercises. For another look at this, consider the following graph:
 
 ```{r echo=FALSE, message=FALSE, width=4, height=3}
 ggplot(mpg, aes(displ, hwy)) +
   geom_point() + geom_smooth()
 ```
 
-For more on geometric objects, read [Chapter 3.6](https://r4ds.had.co.nz/data-visualisation.html#geometric-objects)  of [R for Data
-Science](http://r4ds.had.co.nz/).
+For more on geometric objects, read [Chapter 3.6](https://r4ds.had.co.nz/data-visualisation.html#geometric-objects) in [R for Data Science](http://r4ds.had.co.nz/).
 
 
 # 3. Data transformation
