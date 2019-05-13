@@ -17,7 +17,7 @@ In the following exercises, we explore the migration of the Eurasian Crane (*Gru
 
 The following exercises are labeled as follows:
 
-- **basic exercises**: The solutions to these exercises are part of the rest of the workshop. The code for these exercises needs to work correctly, so you will need to complete these exercises before moving on to the next section. Ask questions if you are completely stuck; if all else fails, check the [solutions manual](modernR_solutions.pdf).
+- **basic exercises**: The solutions to these exercises are part of the rest of the workshop. In most cases, the code for these exercises needs to work correctly, so you will need to complete these exercises before moving on to the next section. Ask questions if you are completely stuck; if all else fails, check the [solutions manual](modernR_solutions.pdf).
 
 - **optional exercises**: These questions can help you enhance your skills, but they are not essential for this workshop, so do not worry if you do not have time to complete them all. The (+) exercises are beginner exercises, (++) exercises are of a moderate level, and (+++) exercises are really challenging.
 
@@ -50,7 +50,7 @@ You will need to know three things to complete this exercise:
 
 You can find the dataset in the `data` folder of your project. Note that the file location (argument `file`) should be `data/HUJI_Crane_Israel_GPRS.csv`, as you are referring to its location (or 'path') relative to the location of this script.
 
-The delimiter is the character that separates the values in a tabular data file. There are various ways to find out how the datasets is delimited. One way from inside Rstudio is to use the 'Import Dataset' button (in your 'Environment') window, locate your data, and play around with the settings. An **example** of the code you can use should now appear in the bottom right window. (This will also include a function!)
+The delimiter is the character that separates the values in a tabular data file. There are various ways to find out how the datasets is delimited. One way from inside Rstudio is to use the 'Import Dataset' button (in your 'Environment') window, choose 'from Text (readr)', locate your data, and play around with the settings. An **example** of the code you can use should now appear in the bottom right window. (This will also include a function!)
 
 Complete the code in the chunk below:
 
@@ -193,10 +193,9 @@ Read [Chapter 11.2.1](http://r4ds.had.co.nz/data-import.html#compared-to-base-r)
 Science](http://r4ds.had.co.nz/) and think about topics like reproducibility, shareablity, and performance.
 
 
-
 # 2. Data visualisation
 
-Visualizing data is important get a feeling for the content of a data set. For the crane dataset, visualisation is used to explore the values of the columns. Base R has strong plotting functions. To get even better flexibility in plotting, we use the ggplot2 functions `qplot` and `ggplot`.
+Visualizing data is an important step in getting a feel for the content of a data set. For the crane dataset, visualisation is used to explore the values of the columns. Base R has strong plotting functions. To get even better flexibility in plotting, we use the ggplot2 functions `qplot` and `ggplot`.
 
 ### Basic exercise I - Quick plots of the `data_crane`.
 
@@ -210,15 +209,16 @@ qplot(timestamp, data=data_crane)
 ### enter your code here ###
 
 ```
+
 #### b) Two column plots
 
-Make a few quick plots of combinations of columns. One example has been provided already.
+Make a few quick plots of at least 3 combinations of columns. One example has been provided already.
 
 ```{r}
 
 qplot(heading, acceleration_raw_x, data=data_crane)
 
-### enter your code here (at least 3 examples) ###
+### enter your code here ###
 
 
 ```
@@ -226,33 +226,41 @@ qplot(heading, acceleration_raw_x, data=data_crane)
 
 ### Basic exercise II - Using ggplot for plotting
 
-Complete the following code with different geometric layers. Examples are `geom_point`, `geom_line`, `geom_count` and `geom_density_2d`. 
+The power of ggplot is in the use of different layers that build up an image. Your plot consists of your data, its mapping to a plot, and one or multiple geometric layers that translate the data to a visual representation.
 
-*Tip: write `geom_` in the search field of the help tab in RStudio to find more geometric layers.
+Play with that translation in showing the cranes' ground speed by the angle in which they are heading. Try various geometric layers and see what they do. Examples are `geom_point`, `geom_line`, `geom_count` and `geom_density_2d`, but feel free to search for others!
+
+*Tip: write `geom_` in the search field of the help tab in RStudio to find more geometric layers.*
+
+Complete the following code. (Note that the plot is first generated as p, but not printed yet: it is saved as a variable. You can then always call p and add layers to it.)
 
 ```{r}
 
-ggplot(data_crane, aes(heading, ground_speed)) + 
-  ### enter your code here ###
+p <- ggplot(data_crane, aes(x = heading, y = ground_speed))
+
+p + ### enter your code here ###
 
 ```
 
-### Reading exercise - Statistical layers for graphs.
 
-Statistical layers reveal a strong power of ggplot. The following graph illustrates this:
+### Optional exercise (+) - Statistical layers for graphs.
 
-```{r echo=FALSE, message=FALSE, width=4, height=3}
-ggplot(mpg, aes(displ, hwy)) +
-  geom_point() + geom_smooth()
+Statistical layers reveal a strong power of ggplot, and can be used as stand-alone geometries, or layered onto existing plots. In this exercise, add a smooth line to a scatterplot with the plot `p` from the previous exercise, summarizing the data. Consider the functions `stat_smooth()` and `geom_smooth()` for your statistical layer. What is the difference between these functions?
+
+*Tip: take a look at the recommended reading for this chapter.*
+
+Complete the code below:
+
+```{r}
+p + ### enter your code here ###
+
 ```
 
-Read [Chapter 3.6](https://r4ds.had.co.nz/data-visualisation.html#geometric-objects)  of [R for Data
-Science](http://r4ds.had.co.nz/) and experiment with the function `geom_smooth()` and `stat_smooth()`. What is the difference between both functions? 
 
 
 ### Optional exercise (+) - Scale axes
 
-Scaling of the axes with a ggplot is easy. Take a look at the *data-visualization* cheatsheet. In the bottom right corner of the cheatsheet, you will find the code needed to scale the axes. 
+Scaling the axes with a ggplot is easy. Take a look at the [Data Visualization cheatsheet](cheatsheets/data-visualization.pdf). In the bottom right corner of the cheatsheet, you will find the code to scale the axes. 
 
 Zoom in on the acceleration between -1000 and 1000 for both the x-axis and y-axis. 
 
@@ -262,13 +270,11 @@ ggplot(data_crane, aes(acceleration_raw_x, acceleration_raw_y)) +
 ```
 
 
-
 ### Optional exercise (++) - Plot the crane positions on a map
 
-In this exercise, we plot the crane data on a map.
+Our dataset does not only contain the speed and angle of our migrating cranes, but their location as well. Using other packages in R, we can plot this location on a map, to get a complete visualization of the cranes' movement.
 
-#### a) Install package the `maps`
-
+#### a) Install the package `maps`
 Install the package `maps` and load the library in the cell below.
 
 ```{r}
@@ -282,7 +288,6 @@ Install the package `maps` and load the library in the cell below.
 Add a layer with the location of the observations.
 
 *tip: can you use the `geom_point()` layer for this?*
-
 
 ```{r}
 world_map_polygon <- map_data("world2")
@@ -307,13 +312,26 @@ The variable `individual_local_identifier` identifies the cranes. Use this varia
 
 ### Optional exercise (+++) - Create facets. 
 
-Search on the internet for information about facets in ggplot. This unique feature is a must-have for data exploration. Create a graph (it doesn't matter what kind of graph) and use facets to display all cranes (use the variable `individual_local_identifier`). 
+Search on the internet for information about facets in ggplot. This unique feature is a must-have for data exploration. Create a graph (whatever kind of graph) and use facets to display all cranes (use the variable `individual_local_identifier`). 
 
 ```{r fig.height=15, fig.width=6}
 
 ### enter your code here ###
 
 ```
+
+
+### Recommended reading - Statistical layers for graphs.
+
+Statistical layers reveal a strong power of ggplot. The following graph illustrates this:
+
+```{r echo=FALSE, message=FALSE, width=4, height=3}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point() + geom_smooth()
+```
+
+For more on geometric objects, read [Chapter 3.6](https://r4ds.had.co.nz/data-visualisation.html#geometric-objects)  of [R for Data
+Science](http://r4ds.had.co.nz/).
 
 
 # 3. Data transformation
@@ -363,7 +381,7 @@ Create a tibble with a new variable called `mag_magnetic`, which is the magnitud
 
 ```{r}
 
-data_crane_with_mag_magnetic <- mutate(data_crane,  ### enter your code here ### )
+data_crane_with_mag_magnetic <- mutate(data_crane,  ### enter your code here ### 
 
 head(data_crane_with_mag_magnetic)
 ```
@@ -417,7 +435,7 @@ The join key for our datasets is `event_id`.
 
 ```{r}
 
-# data_crane_with_measures <- ..._join()
+data_crane_with_measures <- #..._join()
 
 ```
 
