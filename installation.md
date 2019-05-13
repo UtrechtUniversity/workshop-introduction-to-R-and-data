@@ -28,7 +28,7 @@ Installing R packages on a Utrecht University laptop can be hard. This is becaus
 
 3) Open **RStudio**
 4) Write the following line of code in your console: `.libPaths()`
-5) Notify us at the beginning of the workshop if this line of code starts with `//`. 
+5) If this line of code starts with `//` or `\\\\`, you are installing on a mounted drive. Follow the steps below to change the installation location. 
 
 # Troubleshooting
 
