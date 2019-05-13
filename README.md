@@ -46,7 +46,12 @@ An overview of the workshop material is listed here.
 **External resources**
 
 - Book: [R for Data Science](https://r4ds.had.co.nz/)
-- R cheatsheets [cheatsheets](cheatsheets)
+- [R cheat sheets](https://www.rstudio.com/resources/cheatsheets/) provided by the R community and RStudio, describing common procedures and packages. We use the following cheat sheets during our workshop:
+    - [Base R](http://github.com/rstudio/cheatsheets/raw/master/base-r.pdf)
+    - [R Markdown](https://www.rstudio.com/resources/cheatsheets/#rmarkdown)
+    - [Data Import](https://www.rstudio.com/resources/cheatsheets/#import)
+    - [Data Visualization with ggplot2](https://www.rstudio.com/resources/cheatsheets/#ggplot2)
+    - [Data Transformation with dplyr](https://www.rstudio.com/resources/cheatsheets/#dplyr)
 
 **Data**
 - The dataset [data/HUJI_Crane_israel_GPRS.csv](data/HUJI_Crane_Israel_GPRS.csv) was generously provided by Sasha Pekarsky, and is the result of work done at the Department of Ecology, Evolution, and Behavior at the Hebrew University of Jerusalem in Israel. 
