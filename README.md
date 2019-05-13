@@ -39,9 +39,8 @@ An overview of the workshop material is listed here.
 **Exercises**
 
 - Programming exercise Part I: [programming_exercise.R](programming_exercise.R)
-- Datasets Part II: [data](data)
 - Exercises Part II: Modern R with Tidyverse [modernR_exercises.Rmd](modernR_exercises.Rmd)
-- Solutions Part II: Modern R with Tidyverse modernR_solutions[.Rmd](modernR_solutions.Rmd)|[.pdf](modernR_solutions.pdf)
+- Solutions Part II: Modern R with Tidyverse [modernR_solutions.Rmd](modernR_solutions.Rmd) | [.pdf](modernR_solutions.pdf)
 
 **External resources**
 
