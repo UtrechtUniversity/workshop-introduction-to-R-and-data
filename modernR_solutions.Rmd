@@ -1,7 +1,10 @@
 ---
-title: "Modern R with tidyverse"
-author: '[Insert your name]'
+title: "Modern R with tidyverse [Solutions]"
+author: "Jonathan de Bruin, Barbara Vreede"
 output:
+  pdf_document:
+    toc: yes
+    latex_engine: xelatex
   html_document:
     toc: yes
 ---
@@ -56,7 +59,9 @@ Complete the code in the chunk below:
 
 ```{r}
 
-data_crane <- read_### enter your code here ###
+data_crane <- read_csv('data/HUJI_Crane_Israel_GPRS.csv')
+
+head(data_crane)
 
 ```
 
@@ -71,8 +76,7 @@ Load this package with the function `library()`:
 
 ```{r}
 
-### enter your code here ###
-
+library(readxl)
 
 ```
 
@@ -87,8 +91,9 @@ Complete the code in the chunk below:
 
 ```{r}
 
-data_crane_additional <- ### enter your code here ###
+data_crane_additional <- read_excel('data/crane_additional_observations.xlsx')
 
+head(data_crane_additional)
 
 ```
 
@@ -101,7 +106,8 @@ Output the structure of both datasets in the cell below. What do `<chr>`, `<dbl>
 
 ```{r}
 
-### enter your code here ###
+glimpse(data_crane)
+glimpse(data_crane_additional)
 
 ```
 
@@ -115,7 +121,12 @@ Save the tibble `data_crane` to a `.csv` file. Use `;` as delimiter. To do this,
 
 ```{r}
 
-### enter your code here ###
+# create a directory for the output file
+if (!dir.exists('tmp')){
+  dir.create("tmp")
+}
+
+write_delim(data_crane, 'tmp/data_crane_csv_file.csv', delim = ';')
 
 ```
 
@@ -127,9 +138,18 @@ While the tidyverse package `readxl` can be used to read from Excel files, there
 Use this function to write the tibble `data_crane` to an Excel file (extension `.xlsx`).
 
 ```{r}
+install.packages("writexl")
+library(writexl)
 
-### enter your code here ###
+# create a directory
+if (!dir.exists('tmp')){
+  dir.create("tmp")
+}
 
+write_xlsx(data_crane, "tmp/data_crane.xlsx")
+
+# or, if you want to write to multiple sheets
+write_xlsx(list(data_crane = data_crane, additional_measurements = data_crane_additional), "tmp/data_crane_all.xlsx")
 
 ```
 
@@ -161,6 +181,34 @@ STATA:
 - Write the `data_crane` to a STATA data file (extension `.dta`) with the function `write_dta`.
 - Read the saved STATA data file with the function `read_dta`.
 
+```{r}
+# create a directory
+if (!dir.exists('tmp')){
+  dir.create("tmp")
+}
+
+# read and write SPSS file
+write_sav(data_crane, file.path("tmp", "crane_spss.sav"))
+read_sav(file.path("tmp", "crane_spss.sav"))
+
+## The SAS file will not write because a column name is too long
+## So we perform a quick fix to generate shorter but unique column names
+data_crane_sas <- data_crane
+names(data_crane_sas) <- str_c(
+  str_sub(names(data_crane_sas),1,10), 
+  str_sub(names(data_crane_sas),-5),
+  sep="_")
+
+# read and write SAS file
+write_sas(data_crane_sas, file.path("tmp", "crane_sas.sas7bdat"))
+read_sas(file.path("tmp", "crane_sas.sas7bdat"))
+
+# read and write STATA file
+write_dta(data_crane, file.path("tmp", "crane_stata.dta"))
+read_dta(file.path("tmp", "crane_stata.dta"))
+
+```
+
 
 ### Optional exercise (+++) - Parse datetime columns
 
@@ -179,7 +227,7 @@ Insert the correct format for the date column:
 read_csv('data/HUJI_Crane_Israel_GPRS.csv',
   col_types = cols(
     . = col_guess(),
-    eobs_start_timestamp = col_date(format="### insert correct format here ###")
+    eobs_start_timestamp = col_date(format="%Y,%d+%b")
   ))
   
 ```
