@@ -24,11 +24,11 @@ I.e. a laptop *with* administrator rights.
 1) Open **Software Center**
 2) Install **R for Windows**
 
-Installing R packages on a Utrecht University laptop can be hard. This is because R packages are installed on a so-called 'mounted' drive. This causes problems with the performance. Check the installation 
+Installing R packages on a Utrecht University laptop can be hard. This is because R packages are installed on a so-called 'mounted' drive. This causes problems with the performance. Check the installation as follows:
 
 3) Open **RStudio**
-4) Write the following line of code in your console: `.libPaths()`
-5) If this line of code starts with `//` or `\\`, you are installing on a mounted drive. Follow the steps below to change the installation location. 
+4) Write the following line of code in your console: `.libPaths()`, and press enter to execute.
+5) If the response starts with `//` or `\\`, you are installing on a mounted drive. Follow the steps below to change the installation location. 
 
 # Troubleshooting
 
