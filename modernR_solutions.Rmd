@@ -253,8 +253,10 @@ Make a quick plot of at least 5 columns in the `data_crane` dataset. One example
 ```{r}
 
 qplot(timestamp, data=data_crane)
-
-### enter your code here ###
+qplot(mag_magnetic_field_raw_x, data=data_crane)
+qplot(mag_magnetic_field_raw_y, data=data_crane)
+qplot(tag_voltage, data=data_crane)
+qplot(eobs_status, data=data_crane)
 
 ```
 
@@ -265,9 +267,9 @@ Make a few quick plots of at least 3 combinations of columns. One example has be
 ```{r}
 
 qplot(heading, acceleration_raw_x, data=data_crane)
-
-### enter your code here ###
-
+qplot(acceleration_raw_x, acceleration_raw_y, data=data_crane)
+qplot(acceleration_raw_x, acceleration_raw_z, data=data_crane)
+qplot(location_long, location_lat, data=data_crane)
 
 ```
 
@@ -286,7 +288,11 @@ Complete the following code. (Note that the plot is first generated as p, but no
 
 p <- ggplot(data_crane, aes(x = heading, y = ground_speed))
 
-p + ### enter your code here ###
+p + geom_count()
+
+p + geom_line()
+
+p + geom_point() + geom_density_2d()
 
 ```
 
@@ -300,7 +306,8 @@ Statistical layers reveal a strong power of ggplot, and can be used as stand-alo
 Complete the code below:
 
 ```{r}
-p + ### enter your code here ###
+
+p + geom_point() + geom_smooth()
 
 ```
 
@@ -314,7 +321,9 @@ Zoom in on the acceleration between -1000 and 1000 for both the x-axis and y-axi
 
 ```{r}
 ggplot(data_crane, aes(acceleration_raw_x, acceleration_raw_y)) + 
-  geom_point()
+  geom_point() +
+  scale_x_continuous(limits = c(-1000, 1000)) +
+  scale_y_continuous(limits = c(-1000, 1000))
 ```
 
 
@@ -327,7 +336,8 @@ Install the package `maps` and load the library in the cell below.
 
 ```{r}
 
-### enter your code here ###
+install.packages('maps')
+library(maps)
 
 ```
 
@@ -343,8 +353,8 @@ world_map_polygon <- map_data("world2")
 ggplot(data_crane) +
   geom_map(data = world_map_polygon, map= world_map_polygon, aes(x=long, y = lat, map_id = region)) + 
   scale_x_continuous(limits = c(0, 60)) +
-  scale_y_continuous(limits = c(25, 60)) +
-  ### add your geometric layer here ###
+  scale_y_continuous(limits = c(25, 60)) + 
+  geom_point(data = data_crane, aes(x = location_long, y = location_lat))
 
 ```
 
@@ -355,6 +365,13 @@ The variable `individual_local_identifier` identifies the cranes. Use this varia
 
 ```{r}
 
+world_map_polygon <- map_data("world2")
+
+ggplot(data_crane) +
+  geom_map(data = world_map_polygon, map= world_map_polygon, aes(long, lat, map_id = region)) + 
+  scale_x_continuous(limits = c(0, 60)) +
+  scale_y_continuous(limits = c(25, 60)) + 
+  geom_point(data = data_crane, aes(x = location_long, y = location_lat, colour=individual_local_identifier))
 
 ```
 
@@ -364,7 +381,9 @@ Search on the internet for information about facets in ggplot. This unique featu
 
 ```{r fig.height=15, fig.width=6}
 
-### enter your code here ###
+ggplot(data_crane, aes(mag_magnetic_field_raw_x, mag_magnetic_field_raw_y)) +
+  geom_point() + 
+  facet_wrap(~individual_local_identifier)
 
 ```
 
@@ -407,6 +426,9 @@ How many records satisfy this condition?
 ```{r}
 
 ### enter your code here ###
+
+
+nrow()
 
 ```
 
