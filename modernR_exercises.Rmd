@@ -377,7 +377,7 @@ Use the function `select` to return only columns that have status information ab
 
 #### d) Combine `filter` and `select` using the pipe operator
 
-Now, combine the results from exercise b) and c) using a pipe operator (`%>%`): make a selection of all observations of crane 'L6037' where the variable `eobs_status` isn't missing, and return only columns that start with `eobs_`. 
+Now, combine the results from exercise b) and c) using a pipe operator (`%>%`): make a selection of all observations of crane 'L6037' where the variable `eobs_status` is not missing, and return only columns that start with `eobs_`. 
 
 *Tip: take a look at the recommended reading for this chapter for more information about the pipe operator.*
 
@@ -391,15 +391,16 @@ Now, combine the results from exercise b) and c) using a pipe operator (`%>%`): 
 
 The function `mutate()` (from the `dplyr` package) makes it easy to mutate and create new column variables in a data frame or tibble. 
 
-Create a new tibble from `data_crane`, with a new variable called `mag_magnetic`, which is the magnitude of the magnetic field. You can calculate the magnetic field by taking the square root of `mag_magnetic_field_raw_x ^ 2 + mag_magnetic_field_raw_y ^ 2 + mag_magnetic_field_raw_z ^ 2`  
+Create a new tibble from `data_crane`, with a new variable called `magnetic_magnitude`, which is the magnitude of the magnetic field. You can calculate the magnetic field by taking the square root of `mag_magnetic_field_raw_x ^ 2 + mag_magnetic_field_raw_y ^ 2 + mag_magnetic_field_raw_z ^ 2`  
 
-Try to use the formatting discussed during the presentation, so that your code is as readable as possible.
+Try formatting your code so that it is as readable as possible.
 
 ```{r}
 
-data_crane_with_mag_magnetic <- mutate(data_crane,  ### enter your code here ### 
+data_crane_magnetic <- mutate(data_crane,  ### enter your code here ### 
 
-head(data_crane_with_mag_magnetic)
+# take a look at the new variable
+qplot(magnetic_magnitude, data=data_crane_magnetic)
 ```
 
 
@@ -416,14 +417,19 @@ and, if you want to be challenged (++):
 
 - the mean magnitude of the acceleration (the square root of x^2 + y^2 + z^2)
 
-Add to the code in the chunk below:
+Add to the code in the chunk below. 
+
+*Tip: check if you can use the argument `na.rm` in functions such as `mean` and `max`.*
 
 ```{r}
 summarise(
   data_crane, 
-  max_latitude = max(location_lat, na.rm=T),### enter your code here ###
-  first_observation = min(timestamp),### enter your code here ###
-  magnitude_acceleration = mean(sqrt(acceleration_raw_x ^ 2 + acceleration_raw_y ^ 2 + acceleration_raw_z ^ 2),na.rm = T))### enter your code here ###
+  min_latitude = ### enter your code here ###
+  max_latitude = ### enter your code here ###
+  first_observation = ### enter your code here ###
+  last_observation = ### enter your code here ###
+  magnitude_acceleration = ### enter your code here ###
+)
 ```
 
 ### Optional exercise (++) - Join datasets
@@ -447,7 +453,7 @@ As mentioned, this dataset is well-structured. Nevertheless, as an exercise, we 
 
 Consider the example with iris:
 
-```{r}
+```{r, echo=T, results='hide'}
 gather(iris, # dataset
        measurement, # column name for headers
        value, # column name for values
@@ -461,7 +467,7 @@ Add your code to the chunk below, and complete the `gather()` function. Note tha
 
 *Tip: follow the structure as in the example with `iris`, above.*
 
-```{r}
+```{r, echo=T, results='hide'}
 data_crane_long <- data_crane %>% 
   filter(!is.na(acceleration_raw_x) & !is.na(acceleration_raw_y) & !is.na(acceleration_raw_z)) %>% 
   gather(### enter your code here ###
