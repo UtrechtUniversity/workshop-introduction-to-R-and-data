@@ -473,7 +473,7 @@ data_crane_long <- data_crane %>%
   gather(### enter your code here ###
          )
 
-View(data_crane_long)
+head(data_crane_long)
 ```
 
 
