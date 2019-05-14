@@ -371,7 +371,7 @@ ggplot(data_crane) +
   geom_map(data = world_map_polygon, map= world_map_polygon, aes(long, lat, map_id = region)) + 
   scale_x_continuous(limits = c(0, 60)) +
   scale_y_continuous(limits = c(25, 60)) + 
-  geom_point(data = data_crane, aes(x = location_long, y = location_lat, colour=individual_local_identifier))
+  geom_point(data = data_crane, aes(location_long, location_lat, colour=individual_local_identifier))
 
 ```
 
@@ -412,8 +412,7 @@ Make a selection of observations of crane 'L6037' in column `individual_local_id
 
 ```{r}
 
-### enter your code here ###
-
+filter(data_crane, individual_local_identifier=='L6037')
 
 ```
 
@@ -425,10 +424,10 @@ How many records satisfy this condition?
 
 ```{r}
 
-### enter your code here ###
+data_crane_filtered <- filter(data_crane, individual_local_identifier=='L6037', !is.na(eobs_status))
 
-
-nrow()
+# count the number of rows
+nrow(data_crane_filtered)
 
 ```
 
@@ -440,20 +439,21 @@ Use the function `select` to return only columns that have status information ab
 
 ```{r}
 
-### enter your code here ###
+select(data_crane, starts_with("eobs_"))
 
 ```
 
 
 #### d) Combine `filter` and `select` using the pipe operator
 
-Now, combine the results from exercise b) and c) using a pipe operator (`%>%`): make a selection of all observations of crane 'L6037' where the variable `eobs_status` isn't missing, and return only columns that start with `eobs_`. 
+Now, combine the results from exercise b) and c) using a pipe operator (`%>%`): make a selection of all observations of crane 'L6037' where the variable `eobs_status` is not missing, and return only columns that start with `eobs_`. 
 
 *Tip: take a look at the recommended reading for this chapter for more information about the pipe operator.*
 
 ```{r}
 
-### enter your code here ###
+filter(data_crane, individual_local_identifier=='L6037', !is.na(eobs_status)) %>%
+  select(starts_with("eobs_"))
 
 ```
 
@@ -461,15 +461,21 @@ Now, combine the results from exercise b) and c) using a pipe operator (`%>%`): 
 
 The function `mutate()` (from the `dplyr` package) makes it easy to mutate and create new column variables in a data frame or tibble. 
 
-Create a new tibble from `data_crane`, with a new variable called `mag_magnetic`, which is the magnitude of the magnetic field. You can calculate the magnetic field by taking the square root of `mag_magnetic_field_raw_x ^ 2 + mag_magnetic_field_raw_y ^ 2 + mag_magnetic_field_raw_z ^ 2`  
+Create a new tibble from `data_crane`, with a new variable called `magnetic_magnitude`, which is the magnitude of the magnetic field. You can calculate the magnetic field by taking the square root of `mag_magnetic_field_raw_x ^ 2 + mag_magnetic_field_raw_y ^ 2 + mag_magnetic_field_raw_z ^ 2`  
 
-Try to use the formatting discussed during the presentation, so that your code is as readable as possible.
+Try formatting your code so that it is as readable as possible.
 
 ```{r}
 
-data_crane_with_mag_magnetic <- mutate(data_crane,  ### enter your code here ### 
+data_crane_magnetic <- mutate(
+  data_crane,  
+  magnetic_magnitude = sqrt(mag_magnetic_field_raw_x ^ 2 + 
+                     mag_magnetic_field_raw_y ^ 2 + 
+                     mag_magnetic_field_raw_z ^ 2)
+)
 
-head(data_crane_with_mag_magnetic)
+# take a look at the new variable
+qplot(magnetic_magnitude, data=data_crane_magnetic)
 ```
 
 
@@ -486,14 +492,19 @@ and, if you want to be challenged (++):
 
 - the mean magnitude of the acceleration (the square root of x^2 + y^2 + z^2)
 
-Add to the code in the chunk below:
+Add to the code in the chunk below.
+
+*Tip: check if you can use the argument `na.rm` in functions such as `mean` and `max`.*
 
 ```{r}
 summarise(
   data_crane, 
-  max_latitude = max(location_lat, na.rm=T),### enter your code here ###
-  first_observation = min(timestamp),### enter your code here ###
-  magnitude_acceleration = mean(sqrt(acceleration_raw_x ^ 2 + acceleration_raw_y ^ 2 + acceleration_raw_z ^ 2),na.rm = T))### enter your code here ###
+  min_latitude = min(location_lat, na.rm=T),
+  max_latitude = max(location_lat, na.rm=T),
+  first_observation = min(timestamp),
+  last_observation = max(timestamp),
+  magnitude_acceleration = mean(sqrt(acceleration_raw_x ^ 2 + acceleration_raw_y ^ 2 + acceleration_raw_z ^ 2),na.rm = T)
+)
 ```
 
 ### Optional exercise (++) - Join datasets
@@ -506,7 +517,7 @@ Join the two data frames by adding to the code below. What column should you use
 
 ```{r}
 
-data_crane_with_measures <- full_join(### enter your code here ###
+data_crane_with_measures <- full_join(data_crane, data_crane_additional, by='event_id')
 
 ```
 
@@ -517,7 +528,7 @@ As mentioned, this dataset is well-structured. Nevertheless, as an exercise, we 
 
 Consider the example with iris:
 
-```{r}
+```{r, echo=T, results='hide'}
 gather(iris, # dataset
        measurement, # column name for headers
        value, # column name for values
@@ -534,7 +545,9 @@ Add your code to the chunk below, and complete the `gather()` function. Note tha
 ```{r}
 data_crane_long <- data_crane %>% 
   filter(!is.na(acceleration_raw_x) & !is.na(acceleration_raw_y) & !is.na(acceleration_raw_z)) %>% 
-  gather(### enter your code here ###
+  gather(acceleration_direction, # column name for headers
+         acceleration_speed, # column name for values
+         acceleration_raw_x, acceleration_raw_y, acceleration_raw_z # columns that will be gathered
          )
 
 View(data_crane_long)
