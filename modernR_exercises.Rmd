@@ -337,9 +337,9 @@ For more on geometric objects, read [Chapter 3.6](https://r4ds.had.co.nz/data-vi
 
 The crane dataset is clean and well-structured. Nevertheless, you might be interested in doing additional transformations and selections. In this section, we transform and enrich the crane dataset. 
 
-### Basic exercise I - Subset data (single crane)
+### Basic exercise I - Subset data
 
-#### a) Make a selection of all observations of crane 'L6037'.
+#### a) Filter data from one individual crane
 
 Make a selection of observations of crane 'L6037' in column `individual_local_identifier`. Make use of the tidyverse (dplyr) function `filter()`. Have a look at the cheat sheet if you are stuck.
 
@@ -350,11 +350,11 @@ Make a selection of observations of crane 'L6037' in column `individual_local_id
 
 ```
 
-#### b) Make a selection of all observations of crane 'L6037' where the variable `eobs_status` isn't missing.
+#### b) Filter data with complete GPS information
+
+Make a selection of all observations of crane 'L6037' where the variable `eobs_status` is not missing. To do this, you can use the function `is.na()`, but you will have to invert its results. Search in your help window for the operator `!`, to get an idea on how to do this.
 
 How many records satisfy this condition?
-
-*Tip: Use the function `is.na()` preceded by the `!`. Check the help page for both `is.na` and `!`.*
 
 ```{r}
 
@@ -362,9 +362,24 @@ How many records satisfy this condition?
 
 ```
 
-#### c) Make a selection of all observations of crane 'L6037' where the variable `eobs_status` isn't missing. Return only the `event_id` and `timestamp` variables. 
+#### c) Select specific columns from your data
 
-Make use of tidyverse functions only.
+Use the function `select` to return only columns that have status information about the GPS. 
+
+*Tip: Note that columns with GPS information start with `eobs_`, and recall the function `starts_with` that you can use inside `select`.*
+
+```{r}
+
+### enter your code here ###
+
+```
+
+
+#### d) Combine `filter` and `select` using the pipe operator
+
+Now, combine the results from exercise b) and c) using a pipe operator (`%>%`): make a selection of all observations of crane 'L6037' where the variable `eobs_status` isn't missing, and return only columns that start with `eobs_`. 
+
+*Tip: take a look at the recommended reading for this chapter for more information about the pipe operator.*
 
 ```{r}
 
@@ -374,9 +389,11 @@ Make use of tidyverse functions only.
 
 ### Basic exercise II - Compute the magnitude of the magnetic field
 
-The function `mutate()` is a very powerful function in tidyverse (the `dplyr` package) to mutate and create new column variables in a data frame or tibble. 
+The function `mutate()` (from the `dplyr` package) makes it easy to mutate and create new column variables in a data frame or tibble. 
 
-Create a tibble with a new variable called `mag_magnetic`, which is the magnitude of the magnetic field. You can calculate the magnetic field by taking the square root of `mag_magnetic_field_raw_x ^ 2 + mag_magnetic_field_raw_y ^ 2 + mag_magnetic_field_raw_z ^ 2`  
+Create a new tibble from `data_crane`, with a new variable called `mag_magnetic`, which is the magnitude of the magnetic field. You can calculate the magnetic field by taking the square root of `mag_magnetic_field_raw_x ^ 2 + mag_magnetic_field_raw_y ^ 2 + mag_magnetic_field_raw_z ^ 2`  
+
+Try to use the formatting discussed during the presentation, so that your code is as readable as possible.
 
 ```{r}
 
@@ -385,57 +402,80 @@ data_crane_with_mag_magnetic <- mutate(data_crane,  ### enter your code here ###
 head(data_crane_with_mag_magnetic)
 ```
 
-Try to use the formatting discussed during the presentation, so that your code is as readable as possible.
 
-### Reading exercise - Pipe operator
+### Optional exercise (+) - Summarise results
 
-The pipe operator `%>%` is used by many tidyverse users. Read [Chapter 18](https://r4ds.had.co.nz/pipes.html)  of [R for Data
-Science](http://r4ds.had.co.nz/). Make a selection columns and rows of the data and make use of the pipe syntax.
+The function `summarise()` can be used to summarise variables in tibbles. Generate a summary that contains the following information: 
 
-### Optional exercise (+) - Exclude variables
+- the minimum latitude (the lowest point on the globe)
+- the maximum latitude (the highest point on the globe)
+- the earliest observation
+- the last observation
 
-Create a tibble of the crane dataset without the latitude and longitude. 
+and, if you want to be challenged (++):
 
-Use tidyverse and a maximum of 60 characters.
+- the mean magnitude of the acceleration (the square root of x^2 + y^2 + z^2)
 
-```{r}
-
-### enter your code here ###
-
-```
-
-### Optional exercise (++) - Summarise results
-
-The function `summarise()` can be used to summarise variables in tibbles. Compute the following properties: 
-
-- the maximum latitude (the highest point on the globe).
-- the first observation
-- the magnitude of the acceleration (the square root of x^2 + y^2 + z^2)
-
-*Tip: Use the cheatsheet or the book R4DS*
+Add to the code in the chunk below:
 
 ```{r}
-
 summarise(
   data_crane, 
-  min_latitude = ### enter your code here ###
-  first_observation = ### enter your code here ###
-  magnitude_acceleration = ### enter your code here ###
-)
+  max_latitude = max(location_lat, na.rm=T),### enter your code here ###
+  first_observation = min(timestamp),### enter your code here ###
+  magnitude_acceleration = mean(sqrt(acceleration_raw_x ^ 2 + acceleration_raw_y ^ 2 + acceleration_raw_z ^ 2),na.rm = T))### enter your code here ###
 ```
 
-### Optional exercise (+++) - Join datasets
+### Optional exercise (++) - Join datasets
 
-Quickly read [13.4.1](https://r4ds.had.co.nz/relational-data.html#understanding-joins)-[13.4.3](https://r4ds.had.co.nz/relational-data.html#outer-join) from R for Data Science. Focus on the images.
+In this exercise we will append the crane dataset with the additional measures. We will do a full join, combining all data from `data_crane` with all data from `data_crane_additional`. (Note though that both datasets have the same unique identifiers, so both a right join and a left join would achieve the same results.)
 
-In this exercise, append crane dataset with the additional measures. What kind of join is this? *Hint: Check the data transformation cheatsheet, section 'Combine Tables'.*
+Join the two data frames by adding to the code below. What column should you use as join key (the `by=` argument)?
 
-The join key for our datasets is `event_id`. 
+*Tip: for more information about joining data, take a look at the cheat sheet element 'Combine Tables', or the recommended reading for this chapter.*
 
 ```{r}
 
-data_crane_with_measures <- #..._join()
+data_crane_with_measures <- full_join(### enter your code here ###
 
 ```
 
-Multiple options give the same results. Explain why!
+
+### Optional exercise (+++) - gather all acceleration data
+
+As mentioned, this dataset is well-structured. Nevertheless, as an exercise, we could gather some columns to make the dataset longer. Can you gather the columns with acceleration data, and generate one column with all acceleration data values, and one column with the headers of the respective measurements (i.e. `acceleration_raw_x`, `acceleration_raw_y`, and `acceleration_raw_z`)?
+
+Consider the example with iris:
+
+```{r}
+gather(iris, # dataset
+       measurement, # column name for headers
+       value, # column name for values
+       Sepal.Length, Sepal.Width, Petal.Length, Petal.Width # columns that will be gathered
+       )
+```
+
+To perform the gather with data_crane, we are first performing a filter to remove the entries with missing acceleration data. Making this combination of tidyverse functions run smooth is the pipe operator.
+
+Add your code to the chunk below, and complete the `gather()` function. Note that due to the pipe operator, you may forgo the name of the dataset in this function.
+
+*Tip: follow the structure as in the example with `iris`, above.*
+
+```{r}
+data_crane_long <- data_crane %>% 
+  filter(!is.na(acceleration_raw_x) & !is.na(acceleration_raw_y) & !is.na(acceleration_raw_z)) %>% 
+  gather(### enter your code here ###
+         )
+
+View(data_crane_long)
+```
+
+
+### Recommended reading
+
+The pipe operator `%>%` is an elegant way to tie (tidyverse) functions together. Read [Chapter 18](https://r4ds.had.co.nz/pipes.html)  of [R for Data Science](http://r4ds.had.co.nz/) for more information on this operator.
+
+For more on joins, take a look at chapter [13.4.1](https://r4ds.had.co.nz/relational-data.html#understanding-joins)-[13.4.3](https://r4ds.had.co.nz/relational-data.html#outer-join) from the same book, to (visually) guide you through the process.
+
+Finally, if the last exercise had you down, R for Data Science devotes a [chapter on tidy data](https://r4ds.had.co.nz/tidy-data.html), including the [functions `gather` and `spread`](https://r4ds.had.co.nz/tidy-data.html#spreading-and-gathering) that is well worth a read.
+
