@@ -32,9 +32,9 @@ document with which you can easily share and showcase your work.
 
 An overview of the workshop material is listed here.
 
-**Workshop reference material**
-
-- [Slides](slides) [.pdf](slides/intro_R_and_data_slides.pdf) | [.pptx](slides/intro_R_and_data_slides.pptx)
+**Workshop reference material** ([slides](slides))
+- Morning: Basics of R [.pdf](slides/intro_R_and_data_slides_baseR.pdf) | [.pptx](slides/intro_R_and_data_slides_baseR.pptx)
+- Afternoon: Modern R with Tidyverse [.pdf](slides/intro_R_and_data_slides_tidyverse.pdf) | [.pptx](slides/intro_R_and_data_slides_tidyverse.pptx)
 
 **Exercises**
 
