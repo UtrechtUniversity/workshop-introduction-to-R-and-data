@@ -44,6 +44,8 @@ Solution:
 - Paste `.libPaths("C:/Users/User/R-packages")` in the editor and save the file.
 - Restart your R session
 - Click on `Packages`>`Install`. Is `Install to library` pointing to `C:/Users/User/R-packages`?
+- If not: check if the path is correctly spelled. Try inverting the slashes (`\` instead of `/`). You may need to use double slashes (`\\` or `//`).
+- Tick 'source on save', click save, and check `Packages`>`Install` again. 
 
 ## Tidyverse installation is aborted
 
