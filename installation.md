@@ -88,7 +88,7 @@ If the installation of tidyverse is aborted, and packages are downloaded but the
 Do you have Rtools installed? Install this via [cran.r-project.org/bin/windows/Rtools/](https://cran.r-project.org/bin/windows/Rtools/).
 
 
-## "Unable to move temporary installation"
+## "Unable to move temporary installation" (Windows error)
 
 Do you get issues like this: 
 
