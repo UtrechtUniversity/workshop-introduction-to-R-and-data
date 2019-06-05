@@ -58,6 +58,12 @@ An overview of the workshop material is listed here.
 - The dataset [data/HUJI_Crane_israel_GPRS.csv](data/HUJI_Crane_Israel_GPRS.csv) was generously provided by Sasha Pekarsky, and is the result of work done at the Department of Ecology, Evolution, and Behavior at the Hebrew University of Jerusalem in Israel. 
 - The dataset [data/crane_additional_observations.xlsx](data/Crane_additional_observations.xlsx) is fictional.
 
+## Installation requirements
+This course requires three things to be installed:
+- The language **R**
+- The IDE **Rstudio**
+- The packages in **tidyverse**
+Information on how to install these (and troubleshoot the installation) is on our [installation guide](installation.md).
 
 ## License
 All content in this repository with the exception of the dataset [data/HUJI_Crane_israel_GPRS.csv](data/HUJI_Crane_Israel_GPRS.csv) is licensed under [Creative Commons Attribution 4.0
