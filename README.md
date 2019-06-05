@@ -63,6 +63,7 @@ This course requires three things to be installed:
 - The language **R**
 - The IDE **Rstudio**
 - The packages in **tidyverse**
+
 Information on how to install these (and troubleshoot the installation) is on our [installation guide](installation.md).
 
 ## License
