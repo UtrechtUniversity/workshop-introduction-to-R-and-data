@@ -2,12 +2,14 @@
 
 The workshop *Introduction to R & Data* makes use of R and Rstudio. 
 Also, the R package `tidyverse` is used. This document shows how to install 
-R and RStudio. 
+R and RStudio, and how to install and load tidyverse from Rstudio.
 
 Most workshops on R programming make use of an RStudio server. With an RStudio
 server, the participant logs in onto the website and gets a web based RStudio
 IDE. We prefer a local installation of RStudio for our workshop. We hope that 
-this removes a barrier for users to start working with R themselves.
+this removes a barrier for users to start working with R themselves. Because  not every system
+is equally cooperative in installing everything, we have compiled here an elaborate troubleshooting guide.
+Please let us know of any errors that you encountered, and how you fixed them! We will add these to the guide.
 
 # Installation
 
@@ -30,11 +32,43 @@ Installing R packages on a Utrecht University laptop can be hard. This is becaus
 4) Write the following line of code in your console: `.libPaths()`, and press enter to execute.
 5) If the response starts with `//` or `\\`, you are installing on a mounted drive. Follow the steps below to change the installation location. 
 
+## Install Tidyverse from Rstudio
+From the console:
+1) Open Rstudio.
+2) Look for a window that says "console" (probably bottom left of your screen). 
+3) In the console, type: install.packages("tidyverse")
+4) hit 'enter'.
+
+You can also install using the RStudio GUI:
+1) Open Rstudio.
+2) At the window on the bottom right of your screen, select the tab "packages".
+3) Click "install" and type "tidyverse" in the box. 
+4) Make sure the checkbox marked "install dependencies" is checked, and click "install".
+
+The tidyverse installation might take a while, just let it run. If it asks you something, say 'yes', unless it looks particularly outlandish.
+
+If you want to check your tidyverse installation, find the 'console' window, and type:
+`library(tidyverse)`. Then hit 'enter'.
+ 
+You should see something that looks like this:
+
+```
+── Attaching packages ────────────────────────────────────────────────tidyverse 1.2.1 ──
+✔ ggplot2 2.2.1     ✔ purrr   0.2.5
+✔ tibble  1.4.2     ✔ dplyr   0.7.4
+✔ tidyr   0.8.1     ✔ stringr 1.2.0
+✔ readr   1.1.1     ✔ forcats 0.3.0
+── Conflicts ────────────────────────────────────────────────tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag() 
+```
+ 
+
 # Troubleshooting
 
-## Installing Tidyverse takes ages
+## Packages are being installed on a mounted drive
 
-Your packages are being installed on a mounted drive. 
+This can cause various errors, and even if everything goes right, installing tidyverse takes ages.
 
 Solution:
 
@@ -54,7 +88,7 @@ If the installation of tidyverse is aborted, and packages are downloaded but the
 Do you have Rtools installed? Install this via [cran.r-project.org/bin/windows/Rtools/](https://cran.r-project.org/bin/windows/Rtools/).
 
 
-## Virusscanner blocks installation
+## "Unable to move temporary installation"
 
 Do you get issues like this: 
 
@@ -73,21 +107,23 @@ The downloaded binary packages are in
 C:\Users\UserName\AppData\Local\Temp\RtmpYh5ogU\downloaded_packages
 ```
 
-Check for the line **unable to move temporary installation**.
+Check for the line **unable to move temporary installation**. Your virusscanner might be blocking the installation of tidyverse.
 
-The solution can be found here: https://code.adonline.id.au/unable-to-move-temporary-installation-r/
+The solution ([found here](https://code.adonline.id.au/unable-to-move-temporary-installation-r/)) is to enter:
+```trace(utils:::unpackPkgZip, edit=TRUE)```
 
+You should see:
 ```
-> trace(utils:::unpackPkgZip, edit=TRUE)
 Tracing function "unpackPkgZip" in package "utils (not-exported)"
 [1] "unpackPkgZip"
 ```
 
-Change 0.5 in line 142 to 2.5 and install the package again.
+And a file should open.
+Change 0.5 in line 142 to 2.5, save the file, and try installing tidyverse again.
 
 ## Library(tidyverse) loading failed
 
-You see the following error:
+Dependencies might be missing, or outdated, and need to be installed/updated manually. For instance, you see the following error:
 ```
 Error: package or namespace load failed for 'tidyverse'in loadNamespace(...)
 namespace 'bindrcpp' 0.2 is being loaded, but >= 0.2.0.9000 is required.
