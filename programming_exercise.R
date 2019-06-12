@@ -20,9 +20,9 @@ apply_calc <- function(x){
 iriscols <- colnames(iris)
 for(i in iriscols){
   # select the appropriate column
-  c <- iris[,i]
+  column <- iris[,i]
   # apply the function
-  stats <- apply_calc(c)
+  stats <- apply_calc(column)
   # print the stats
   print(stats)
 }
@@ -38,7 +38,7 @@ for(i in iriscols){
 iriscols <- colnames(iris)
 for(i in iriscols){
   # select the appropriate column
-  c <- iris[,i]
+  column <- iris[,i]
   # apply the function ONLY TO NUMERIC COLUMNS
   if #### ADD YOUR CODE HERE ####
 
@@ -70,11 +70,11 @@ measurements <- NULL # to collect the names of the numeric measurements
 
 for(i in iriscols){
   # select the appropriate column
-  c <- iris[,i]
+  column <- iris[,i]
   # check whether the column is numeric
-  if(is.numeric(c)){
+  if(is.numeric(column)){
     # apply the function
-    stats <- apply_calc(c)
+    stats <- apply_calc(column)
     # bind the row to the new dataframe
     statsdf <- rbind(statsdf,stats)
     # add the column name to the measurements vector
