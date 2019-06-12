@@ -3,32 +3,16 @@ title: "Modern R with tidyverse [Solutions]"
 author: "Jonathan de Bruin, Barbara Vreede"
 output:
   pdf_document:
-    toc: yes
+    toc: true
+    toc_depth: 4
     latex_engine: xelatex
   html_document:
-    toc: yes
+    toc: true
 ---
+
 
 *This document is part of the workshop **Introduction to R & Data** by Utrecht University RDM Support. *
 
-# Introduction
-
-In the following exercises, we explore the migration of the Eurasian Crane (*Grus grus*), through the GPS data of 39 tagged individuals during the fall migration of 2017. The data was kindly provided for this course by Sasha Pekarsky at the Department of Ecology, Evolution, and Behavior at HUJI. The dataset included in the course materials has been modified by the course developers and may not be used for any other purposes than this workshop.
-
-
-## Exercises
-
-The following exercises are labeled as follows:
-
-- **basic exercises**: The solutions to these exercises are part of the rest of the workshop. In most cases, the code for these exercises needs to work correctly, so you will need to complete these exercises before moving on to the next section. Ask questions if you are completely stuck; if all else fails, check the [solutions manual](modernR_solutions.pdf).
-
-- **optional exercises**: These questions can help you enhance your skills, but they are not essential for this workshop, so do not worry if you do not have time to complete them all. The (+) exercises are beginner exercises, (++) exercises are of a moderate level, and (+++) exercises are really challenging.
-
-At the end of each chapter we have noted some recommended reading, in case you have time to spare, or would like a deeper understanding of the material. All reading material is from the book [R for Data Science](http://r4ds.had.co.nz/) by Garrett Grolemund and Hadley Wickham.
-
-## Technical requirements
-
-This project depends on the `tidyverse` package. To start, load tidyverse into your work environment by running the following chunk. 
 
 ```{r} 
 library(tidyverse) 
@@ -41,101 +25,47 @@ knitr::opts_chunk$set(error = T)
 
 # 1. Read and save data
 
-### Basic exercise I - Read data into R
-#### a) Read the data `HUJI_Crane_Israel_GPRS.csv` into R
+## Basic exercise I - Read data into R
 
-In this exercise, we read the dataset `HUJI_Crane_Israel_GPRS.csv` into the memory of the computer. 
-
-You will need to know three things to complete this exercise:
-- The **function** to use to read data into R;
-- The **location** of your data;
-- The **delimiter** of the data.
-
-You can find the dataset in the `data` folder of your project. Note that the file location (argument `file`) should be `data/HUJI_Crane_Israel_GPRS.csv`, as you are referring to its location (or 'path') relative to the location of this script.
-
-The delimiter is the character that separates the values in a tabular data file. There are various ways to find out how the datasets is delimited. One way from inside Rstudio is to use the 'Import Dataset' button (in your 'Environment') window, choose 'from Text (readr)', locate your data, and play around with the settings. An **example** of the code you can use should now appear in the bottom right window. (This will also include a function!)
-
-Complete the code in the chunk below:
+### a) Read the data `HUJI_Crane_Israel_GPRS.csv` into R
 
 ```{r}
-
 data_crane <- read_csv('data/HUJI_Crane_Israel_GPRS.csv')
-
 head(data_crane)
-
 ```
 
-#### b) Load `readxl` (to read Excel files)
-
-`read_csv` and `read_delim` are useful functions for most tabular data files, but they are unable to read excel files. For this, we need an additional package.
-
-The package `readxl` is a tidyverse package to read Excel files. This package
-does not load by default when you call `library(tidyverse)`. 
-
-Load this package with the function `library()`:
+### b) Load `readxl` (to read Excel files)
 
 ```{r}
-
 library(readxl)
-
 ```
 
-
-#### c) Read the additional observations `crane_additional_observations.xlsx` into R.
-
-Included in the *package* `readxl` (a package is a collection of functions) is the *function* `read_excel`. You can learn how to use this function by exploring its help function. To do this, type `?read_excel` in your console.
-
-Use the function `read_excel` to read the additional observations in data file `crane_additional_observations.xlsx` (an Excel file!), also located in your `data` folder, into R.
-
-Complete the code in the chunk below:
+### c) Read the additional observations `crane_additional_observations.xlsx` into R.
 
 ```{r}
-
 data_crane_additional <- read_excel('data/crane_additional_observations.xlsx')
-
 head(data_crane_additional)
-
 ```
 
-
-### Basic exercise II - Dataset properties 
-
-The structure of the dataset (i.e. columns, data types, number of observations) is very important for your initial data exploration. Tidyverse has the function `glimpse()` to output the structure of a dataframe or tibble. 
-
-Output the structure of both datasets in the cell below. What do `<chr>`, `<dbl>` and `<int>` mean? Are these values what you expect?
+## Basic exercise II - Dataset properties 
 
 ```{r}
-
 glimpse(data_crane)
 glimpse(data_crane_additional)
-
 ```
 
-
-### Optional exercise (+) - Save data to a CSV file with delimiter `;`. 
-
-Save the tibble `data_crane` to a `.csv` file. Use `;` as delimiter. To do this, you can use the function `write_delim`. Again, you can make use of its help function if you want to understand how the function works: type `?write_delim` in your console.
-
-*Tip: Use a different file name, otherwise you overwrite the original data*
-*Tip: You can save the file to a specific folder by including it in the path, just like you did when you read the file in exercise I-1. For instance:* `data/other_file_name.csv` *will save your file in the* `data` *folder*.
+## Optional exercise (+) - Save data to a CSV file with delimiter `;`. 
 
 ```{r}
-
 # create a directory for the output file
 if (!dir.exists('tmp')){
   dir.create("tmp")
 }
 
 write_delim(data_crane, 'tmp/data_crane_csv_file.csv', delim = ';')
-
 ```
 
-
-### Optional exercise (++) - Write tibble `data_crane` to an Excel file. 
-
-While the tidyverse package `readxl` can be used to read from Excel files, there is no corresponding tidyverse package or function to write data to an Excel file. However, the package `writexl` comes close! Within it, the function `write_xlsx` can be used to write a data frame or tibble to an Excel file.
-
-Use this function to write the tibble `data_crane` to an Excel file (extension `.xlsx`).
+## Optional exercise (++) - Write tibble `data_crane` to an Excel file. 
 
 ```{r}
 install.packages("writexl")
@@ -149,37 +79,16 @@ if (!dir.exists('tmp')){
 write_xlsx(data_crane, "tmp/data_crane.xlsx")
 
 # or, if you want to write to multiple sheets
-write_xlsx(list(data_crane = data_crane, additional_measurements = data_crane_additional), "tmp/data_crane_all.xlsx")
-
+write_xlsx(list(data_crane = data_crane,
+                additional_measurements = data_crane_additional),
+           "tmp/data_crane_all.xlsx")
 ```
 
-
-### Optional exercise (++) - Read and write SPSS, SAS, and STATA data files
-
-(Statistical) software like SPSS, SAS, and STATA are popular programs in the scientific world. These programs have their own file formats, and it is not possible to read and write SPSS, SAS, and STATA data files with base R. Tidyverse offers solutions to make this possible, with the package `haven`.
-
-Load the package with the following line of code:
+## Optional exercise (++) - Read and write SPSS, SAS, and STATA data files
 
 ```{r}
 library(haven) # to read and write SPSS, STATA and SAS files
 ```
-
-Create a code block and do at least one of the following exercises:
-
-SPSS:
-
-- Write the `data_crane` to a SPSS data file (extension `.sav`) with the function `write_sav`.
-- Read the saved SPSS data file with the function `read_sav`.
-
-SAS:
-
-- Write the `data_crane` to a SAS data file (extension `.sas7bdat`) with the function `write_sas`.
-- Read the saved SAS data file with the function `read_sas`.
-
-STATA:
-
-- Write the `data_crane` to a STATA data file (extension `.dta`) with the function `write_dta`.
-- Read the saved STATA data file with the function `read_dta`.
 
 ```{r}
 # create a directory
@@ -191,8 +100,8 @@ if (!dir.exists('tmp')){
 write_sav(data_crane, file.path("tmp", "crane_spss.sav"))
 read_sav(file.path("tmp", "crane_spss.sav"))
 
-## The SAS file will not write because a column name is too long
-## So we perform a quick fix to generate shorter but unique column names
+# The SAS file will not write because a column name is too long
+# So we perform a quick fix to generate shorter but unique column names
 data_crane_sas <- data_crane
 names(data_crane_sas) <- str_c(
   str_sub(names(data_crane_sas),1,10), 
@@ -206,118 +115,65 @@ read_sas(file.path("tmp", "crane_sas.sas7bdat"))
 # read and write STATA file
 write_dta(data_crane, file.path("tmp", "crane_stata.dta"))
 read_dta(file.path("tmp", "crane_stata.dta"))
-
 ```
 
-
-### Optional exercise (+++) - Parse datetime columns
-
-Date and time variables can be very challenging to work with in programming languages (including R). In the `data_crane` dataset, there is a variable `eobs_start_timestamp`. This column is not recognized as a date variable, as you can see when you glimpse the data: 
+## Optional exercise (+++) - Parse datetime columns
 
 ```{r}
 glimpse(data_crane)
 ```
 
-The following code shows how you can columns with a specific data type. As in excercise 1.I (a), you can use the 'Import Dataset' button (in your 'Environment') window to play around with the settings, and see an example of the code this corresponds to in the bottom right window.
-
-Insert the correct format for the date column:
-
 ```{r}
-
 read_csv('data/HUJI_Crane_Israel_GPRS.csv',
   col_types = cols(
     . = col_guess(),
     eobs_start_timestamp = col_date(format="%Y,%d+%b")
   ))
-  
 ```
-
-
-### Recommended reading - `readr` versus base R
-
-You might wonder why we are not using base R functions for (flat) file reading like `read.csv()`, `read.csv2()` and `read.delimiter()`. These function are available by default in base R and do not require additional packages like `readr`. 
-
-Read [Chapter 11.2.1](http://r4ds.had.co.nz/data-import.html#compared-to-base-r)  of [R for Data
-Science](http://r4ds.had.co.nz/) and think about topics like reproducibility, shareablity, and performance.
 
 
 # 2. Data visualisation
 
-Visualizing data is an important step in getting a feel for the content of a data set. For the crane dataset, visualisation is used to explore the values of the columns. Base R has strong plotting functions. To get even better flexibility in plotting, we use the ggplot2 functions `qplot` and `ggplot`.
+## Basic exercise I - Quick plots of the `data_crane`.
 
-### Basic exercise I - Quick plots of the `data_crane`.
+### a) Single column plots
 
-#### a) Single column plots
-
-Make a quick plot of at least 5 columns in the `data_crane` dataset. One example has been provided already.
 ```{r}
-
+# for example...
 qplot(timestamp, data=data_crane)
 qplot(mag_magnetic_field_raw_x, data=data_crane)
 qplot(mag_magnetic_field_raw_y, data=data_crane)
 qplot(tag_voltage, data=data_crane)
 qplot(eobs_status, data=data_crane)
-
 ```
 
-#### b) Two column plots
-
-Make a few quick plots of at least 3 combinations of columns. One example has been provided already.
+### b) Two column plots
 
 ```{r}
-
+# for example...
 qplot(heading, acceleration_raw_x, data=data_crane)
 qplot(acceleration_raw_x, acceleration_raw_y, data=data_crane)
 qplot(acceleration_raw_x, acceleration_raw_z, data=data_crane)
 qplot(location_long, location_lat, data=data_crane)
-
 ```
 
-
-### Basic exercise II - Using ggplot for plotting
-
-The power of ggplot is in the use of different layers that build up an image. Your plot consists of your data, its mapping to a plot, and one or multiple geometric layers that translate the data to a visual representation.
-
-Play with that translation in showing the cranes' ground speed by the angle in which they are heading. Try various geometric layers and see what they do. Examples are `geom_point`, `geom_line`, `geom_count` and `geom_density_2d`, but feel free to search for others!
-
-*Tip: write `geom_` in the search field of the help tab in RStudio to find more geometric layers.*
-
-Complete the following code. (Note that the plot is first generated as p, but not printed yet: it is saved as a variable. You can then always call p and add layers to it.)
+## Basic exercise II - Using ggplot for plotting
 
 ```{r}
-
 p <- ggplot(data_crane, aes(x = heading, y = ground_speed))
 
 p + geom_count()
-
 p + geom_line()
-
 p + geom_point() + geom_density_2d()
-
 ```
 
-
-### Optional exercise (+) - Statistical layers for graphs.
-
-Statistical layers reveal a strong power of ggplot, and can be used as stand-alone geometries, or layered onto existing plots. In this exercise, add a smooth line to a scatterplot with the plot `p` from the previous exercise, summarizing the data. Consider the functions `stat_smooth()` and `geom_smooth()` for your statistical layer. What is the difference between these functions?
-
-*Tip: take a look at the recommended reading for this chapter.*
-
-Complete the code below:
+## Optional exercise (+) - Statistical layers for graphs.
 
 ```{r}
-
 p + geom_point() + geom_smooth()
-
 ```
 
-
-
-### Optional exercise (+) - Scale axes
-
-Scaling the axes with a ggplot is easy. Take a look at the [Data Visualization cheatsheet](cheatsheets/data-visualization.pdf). In the bottom right corner of the cheatsheet, you will find the code to scale the axes. 
-
-Zoom in on the acceleration between -1000 and 1000 for both the x-axis and y-axis. 
+## Optional exercise (+) - Scale axes
 
 ```{r}
 ggplot(data_crane, aes(acceleration_raw_x, acceleration_raw_y)) + 
@@ -326,239 +182,131 @@ ggplot(data_crane, aes(acceleration_raw_x, acceleration_raw_y)) +
   scale_y_continuous(limits = c(-1000, 1000))
 ```
 
+## Optional exercise (++) - Plot the crane positions on a map
 
-### Optional exercise (++) - Plot the crane positions on a map
-
-Our dataset does not only contain the speed and angle of our migrating cranes, but their location as well. Using other packages in R, we can plot this location on a map, to get a complete visualization of the cranes' movement.
-
-#### a) Install the package `maps`
-Install the package `maps` and load the library in the cell below.
+### a) Install the package `maps`
 
 ```{r}
-
 install.packages('maps')
 library(maps)
-
 ```
 
-#### b) Plot the crane data on a map.
-
-Add a layer with the location of the observations.
-
-*Tip: can you use the function `geom_point()` for this layer?*
+### b) Plot the crane data on a map.
 
 ```{r}
 world_map_polygon <- map_data("world2")
 
 ggplot(data_crane) +
-  geom_map(data = world_map_polygon, map= world_map_polygon, aes(x=long, y = lat, map_id = region)) + 
+  geom_map(data = world_map_polygon, 
+           map= world_map_polygon, 
+           aes(x=long, y = lat, map_id = region)) + 
   scale_x_continuous(limits = c(0, 60)) +
   scale_y_continuous(limits = c(25, 60)) + 
-  geom_point(data = data_crane, aes(x = location_long, y = location_lat))
-
+  geom_point(data = data_crane, 
+             aes(x = location_long, y = location_lat))
 ```
 
-
-#### c) Use an individual identifier to colour the different cranes.
-
-The variable `individual_local_identifier` identifies the cranes. Use this variable to color the points.
+### c) Use an individual identifier to colour the different cranes.
 
 ```{r}
-
 world_map_polygon <- map_data("world2")
 
 ggplot(data_crane) +
-  geom_map(data = world_map_polygon, map= world_map_polygon, aes(long, lat, map_id = region)) + 
+  geom_map(data = world_map_polygon, 
+           map= world_map_polygon, 
+           aes(long, lat, map_id = region)) + 
   scale_x_continuous(limits = c(0, 60)) +
   scale_y_continuous(limits = c(25, 60)) + 
-  geom_point(data = data_crane, aes(location_long, location_lat, colour=individual_local_identifier))
-
+  geom_point(data = data_crane, 
+             aes(location_long, 
+                 location_lat, 
+                 colour=individual_local_identifier))
 ```
 
-### Optional exercise (+++) - Create facets. 
-
-Search on the internet for information about facets in ggplot. This unique feature is a must-have for data exploration. Create a graph (whatever kind of graph) and use facets to display all cranes (use the variable `individual_local_identifier`). 
+## Optional exercise (+++) - Create facets. 
 
 ```{r fig.height=15, fig.width=6}
-
 ggplot(data_crane, aes(mag_magnetic_field_raw_x, mag_magnetic_field_raw_y)) +
   geom_point() + 
   facet_wrap(~individual_local_identifier)
-
 ```
-
-
-### Recommended reading - Statistical layers for graphs.
-
-You have seen the power of statistical layers in the exercises. For another look at this, consider the following graph:
-
-```{r echo=FALSE, message=FALSE, width=4, height=3}
-ggplot(mpg, aes(displ, hwy)) +
-  geom_point() + geom_smooth()
-```
-
-For more on geometric objects, read [Chapter 3.6](https://r4ds.had.co.nz/data-visualisation.html#geometric-objects) in [R for Data Science](http://r4ds.had.co.nz/).
-
 
 # 3. Data transformation
 
-The crane dataset is clean and well-structured. Nevertheless, you might be interested in doing additional transformations and selections. In this section, we transform and enrich the crane dataset. 
+## Basic exercise I - Subset data
 
-### Basic exercise I - Subset data
-
-#### a) Filter data from one individual crane
-
-Make a selection of observations of crane 'L6037' in column `individual_local_identifier`. Make use of the tidyverse (dplyr) function `filter()`. Have a look at the cheat sheet if you are stuck.
+### a) Filter data from one individual crane
 
 ```{r}
-
 filter(data_crane, individual_local_identifier=='L6037')
-
 ```
 
-#### b) Filter data with complete GPS information
-
-Make a selection of all observations of crane 'L6037' where the variable `eobs_status` is not missing. To do this, you can use the function `is.na()`, but you will have to invert its results. Search in your help window for the operator `!`, to get an idea on how to do this.
-
-How many records satisfy this condition?
+### b) Filter data with complete GPS information
 
 ```{r}
-
-data_crane_filtered <- filter(data_crane, individual_local_identifier=='L6037', !is.na(eobs_status))
+data_crane_filtered <- filter(data_crane, 
+                              individual_local_identifier=='L6037', 
+                              !is.na(eobs_status))
 
 # count the number of rows
 nrow(data_crane_filtered)
-
 ```
 
-#### c) Select specific columns from your data
-
-Use the function `select` to return only columns that have status information about the GPS. 
-
-*Tip: Note that columns with GPS information start with `eobs_`, and recall the function `starts_with` that you can use inside `select`.*
+### c) Select specific columns from your data
 
 ```{r}
-
 select(data_crane, starts_with("eobs_"))
-
 ```
 
-
-#### d) Combine `filter` and `select` using the pipe operator
-
-Now, combine the results from exercise b) and c) using a pipe operator (`%>%`): make a selection of all observations of crane 'L6037' where the variable `eobs_status` is not missing, and return only columns that start with `eobs_`. 
-
-*Tip: take a look at the recommended reading for this chapter for more information about the pipe operator.*
+### d) Combine `filter` and `select` using the pipe operator
 
 ```{r}
-
 filter(data_crane, individual_local_identifier=='L6037', !is.na(eobs_status)) %>%
   select(starts_with("eobs_"))
-
 ```
 
-### Basic exercise II - Compute the magnitude of the magnetic field
-
-The function `mutate()` (from the `dplyr` package) makes it easy to mutate and create new column variables in a data frame or tibble. 
-
-Create a new tibble from `data_crane`, with a new variable called `magnetic_magnitude`, which is the magnitude of the magnetic field. You can calculate the magnetic field by taking the square root of `mag_magnetic_field_raw_x ^ 2 + mag_magnetic_field_raw_y ^ 2 + mag_magnetic_field_raw_z ^ 2`  
-
-Try formatting your code so that it is as readable as possible.
+## Basic exercise II - Compute the magnitude of the magnetic field
 
 ```{r}
-
-data_crane_magnetic <- mutate(
-  data_crane,  
-  magnetic_magnitude = sqrt(mag_magnetic_field_raw_x ^ 2 + 
-                     mag_magnetic_field_raw_y ^ 2 + 
-                     mag_magnetic_field_raw_z ^ 2)
-)
+data_crane_magnetic <- mutate(data_crane, 
+                              magnetic_magnitude = sqrt(mag_magnetic_field_raw_x ^ 2 +
+                                                          mag_magnetic_field_raw_y ^ 2 +
+                                                          mag_magnetic_field_raw_z ^ 2))
 
 # take a look at the new variable
 qplot(magnetic_magnitude, data=data_crane_magnetic)
 ```
 
-
-### Optional exercise (+) - Summarise results
-
-The function `summarise()` can be used to summarise variables in tibbles. Generate a summary that contains the following information: 
-
-- the minimum latitude (the lowest point on the globe)
-- the maximum latitude (the highest point on the globe)
-- the earliest observation
-- the last observation
-
-and, if you want to be challenged (++):
-
-- the mean magnitude of the acceleration (the square root of x^2 + y^2 + z^2)
-
-Add to the code in the chunk below.
-
-*Tip: check if you can use the argument `na.rm` in functions such as `mean` and `max`.*
+## Optional exercise (+) - Summarise results
 
 ```{r}
-summarise(
-  data_crane, 
-  min_latitude = min(location_lat, na.rm=T),
-  max_latitude = max(location_lat, na.rm=T),
-  first_observation = min(timestamp),
-  last_observation = max(timestamp),
-  magnitude_acceleration = mean(sqrt(acceleration_raw_x ^ 2 + acceleration_raw_y ^ 2 + acceleration_raw_z ^ 2),na.rm = T)
-)
+summarise(data_crane,
+          min_latitude = min(location_lat, na.rm=T),
+          max_latitude = max(location_lat, na.rm=T),
+          first_observation = min(timestamp),
+          last_observation = max(timestamp),
+          magnitude_acceleration = mean(sqrt(acceleration_raw_x ^ 2 +
+                                               acceleration_raw_y ^ 2 +
+                                               acceleration_raw_z ^ 2), na.rm = T))
 ```
 
-### Optional exercise (++) - Join datasets
-
-In this exercise we will append the crane dataset with the additional measures. We will do a full join, combining all data from `data_crane` with all data from `data_crane_additional`. (Note though that both datasets have the same unique identifiers, so both a right join and a left join would achieve the same results.)
-
-Join the two data frames by adding to the code below. What column should you use as join key (the `by=` argument)?
-
-*Tip: for more information about joining data, take a look at the cheat sheet element 'Combine Tables', or the recommended reading for this chapter.*
+## Optional exercise (++) - Join datasets
 
 ```{r}
-
 data_crane_with_measures <- full_join(data_crane, data_crane_additional, by='event_id')
-
 ```
 
-
-### Optional exercise (+++) - gather all acceleration data
-
-As mentioned, this dataset is well-structured. Nevertheless, as an exercise, we could gather some columns to make the dataset longer. Can you gather the columns with acceleration data, and generate one column with all acceleration data values, and one column with the headers of the respective measurements (i.e. `acceleration_raw_x`, `acceleration_raw_y`, and `acceleration_raw_z`)?
-
-Consider the example with iris:
-
-```{r, echo=T, results='hide'}
-gather(iris, # dataset
-       measurement, # column name for headers
-       value, # column name for values
-       Sepal.Length, Sepal.Width, Petal.Length, Petal.Width # columns that will be gathered
-       )
-```
-
-To perform the gather with data_crane, we are first performing a filter to remove the entries with missing acceleration data. Making this combination of tidyverse functions run smooth is the pipe operator.
-
-Add your code to the chunk below, and complete the `gather()` function. Note that due to the pipe operator, you may forgo the name of the dataset in this function.
-
-*Tip: follow the structure as in the example with `iris`, above.*
+## Optional exercise (+++) - gather all acceleration data
 
 ```{r}
 data_crane_long <- data_crane %>% 
-  filter(!is.na(acceleration_raw_x) & !is.na(acceleration_raw_y) & !is.na(acceleration_raw_z)) %>% 
+  filter(!is.na(acceleration_raw_x) & 
+           !is.na(acceleration_raw_y) & 
+           !is.na(acceleration_raw_z)) %>% 
   gather(acceleration_direction, # column name for headers
          acceleration_speed, # column name for values
-         acceleration_raw_x, acceleration_raw_y, acceleration_raw_z # columns that will be gathered
+         acceleration_raw_x, acceleration_raw_y, acceleration_raw_z # columns to gather
          )
 
 head(data_crane_long)
 ```
-
-
-### Recommended reading
-
-The pipe operator `%>%` is an elegant way to tie (tidyverse) functions together. Read [Chapter 18](https://r4ds.had.co.nz/pipes.html)  of [R for Data Science](http://r4ds.had.co.nz/) for more information on this operator.
-
-For more on joins, take a look at chapter [13.4.1](https://r4ds.had.co.nz/relational-data.html#understanding-joins)-[13.4.3](https://r4ds.had.co.nz/relational-data.html#outer-join) from the same book, to (visually) guide you through the process.
-
-Finally, if the last exercise had you down, R for Data Science devotes a [chapter on tidy data](https://r4ds.had.co.nz/tidy-data.html), including the [functions `gather` and `spread`](https://r4ds.had.co.nz/tidy-data.html#spreading-and-gathering) that is well worth a read.
-
