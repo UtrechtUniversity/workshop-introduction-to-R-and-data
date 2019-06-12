@@ -30,7 +30,7 @@ Installing R packages on a Utrecht University laptop can be hard. This is becaus
 
 3) Open **RStudio**
 4) Write the following line of code in your console: `.libPaths()`, and press enter to execute.
-5) If the response starts with `//` or `\\`, you are installing on a mounted drive. [Follow the steps below to change the installation location.](mounteddrive) 
+5) If the response starts with `//` or `\\`, you are installing on a mounted drive. [Follow the steps below to change the installation location.](installation.md#packages-are-being-installed-on-a-mounted-drive) 
 
 ## Install Tidyverse from Rstudio
 From the console:
@@ -66,7 +66,7 @@ You should see something that looks like this:
 
 # Troubleshooting
 
-## [Packages are being installed on a mounted drive](#mounteddrive)
+## Packages are being installed on a mounted drive
 
 This can cause various errors, and even if everything goes right, installing tidyverse takes ages.
 
