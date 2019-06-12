@@ -1,10 +1,6 @@
 ## Programming exercise for Introduction to R and Data
 ## Workshop at Utrecht University
 ## more on https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data
-## Material developed by Barbara Vreede
-## Contact: b.m.i.vreede@uu.nl
-## Date: 8 April 2019
-
 
 # Function that returns basic statistics from a vector
 apply_calc <- function(x){
