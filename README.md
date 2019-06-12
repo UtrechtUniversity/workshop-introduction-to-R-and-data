@@ -34,9 +34,6 @@ An overview of the workshop material is listed here.
 **Workshop reference material** ([slides](slides))
 - Morning: [Basics of R](slides/intro_R_and_data_slides_baseR.pdf)
 - Afternoon: [Modern R with Tidyverse](slides/intro_R_and_data_slides_tidyverse.pdf)
-- Editable powerpoints can be downloaded here:
-    - [Basics of R](https://www.dropbox.com/s/4v8j6ic14s08yr7/intro_R_and_data_slides_baseR.pptx?dl=0)
-    - [Modern R with Tidyverse](https://www.dropbox.com/s/nzc4pvta41814n3/intro_R_and_data_slides_tidyverse.pptx?dl=0)
 
 **Exercises**
 
