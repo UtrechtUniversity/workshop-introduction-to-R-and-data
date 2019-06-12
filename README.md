@@ -6,9 +6,7 @@ University](https://www.uu.nl). The workshop is organised by [Research Data
 Management Support](https://www.uu.nl/en/research/research-data-management).
 
 ## Upcoming course dates
-The next workshops will be given on:
-
-- [Friday, June 14th, 2019](https://www.uu.nl/en/events/introduction-to-r-data-6) (FULL)
+The next workshops will be given after the summer holidays. New dates will be announced soon!
 
 Registration is mandatory; check the link for the workshop you are interested in for information on how to register or be put on the waiting list.
 
