@@ -6,9 +6,11 @@ University](https://www.uu.nl). The workshop is organised by [Research Data
 Management Support](https://www.uu.nl/en/research/research-data-management).
 
 ## Upcoming course dates
-The next workshops will be given after the summer holidays. New dates will be announced soon!
 
-Registration is mandatory; check the link for the workshop you are interested in for information on how to register or be put on the waiting list.
+- Thursday 26 September 2019
+- Friday 25 October 2019
+
+Registration is mandatory, and opens 2 months in advance of the course; check the link for the workshop you are interested in for information on how to register or be put on the waiting list.
 
 ## Workshop description
 
