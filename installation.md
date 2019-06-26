@@ -8,7 +8,7 @@ Most workshops on R programming make use of an RStudio server. With an RStudio
 server, the participant logs in onto the website and gets a web based RStudio
 IDE. We prefer a local installation of RStudio for our workshop. We hope that 
 this removes a barrier for users to start working with R themselves. Because  not every system
-is equally cooperative in installing everything, we have compiled [an elaborate troubleshooting guide](installation.md).
+is equally cooperative in installing everything, we have compiled [an elaborate troubleshooting guide](installation.md#troubleshooting).
 Please let us know of any errors that you encountered, and how you fixed them! We will add these to the guide.
 
 # Installation
