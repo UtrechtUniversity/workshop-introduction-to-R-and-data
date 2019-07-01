@@ -63,13 +63,6 @@ This course requires three things to be installed:
 
 Information on how to install these (and troubleshoot the installation) is on our [installation guide](installation.md).
 
-## License
-All content in this repository with the exception of the dataset [data/HUJI_Crane_israel_GPRS.csv](data/HUJI_Crane_Israel_GPRS.csv) is licensed under [Creative Commons Attribution 4.0
-International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
-
-The dataset [data/HUJI_Crane_israel_GPRS.csv](data/HUJI_Crane_Israel_GPRS.csv) may not be reused other than for the purposes of this workshop or derivative workshops.
-
-
 ## Contact 
 The workshop 'Introduction to R & data' is developed and maintained by [Research Data Management
 Support](https://www.uu.nl/en/research/research-data-management) at Utrecht University.
