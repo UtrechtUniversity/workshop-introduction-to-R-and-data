@@ -70,7 +70,11 @@ You should see something that looks like this:
 
 This can cause various errors, and even if everything goes right, installing tidyverse takes ages.
 
-Solution:
+Solution 1: 
+
+- There is a solution to prevent problems with mounted drives for applications like R, RStudio and Office. Read more about the solution on intranet. https://intranet.uu.nl/en/current-affairs/announcements/would-you-make-your-solis-laptop-work-more-efficiently
+
+Solution 2:
 
 - Create a folder `R-packages` on a local drive. 
 - Copy the location to that drive. For example: `C:/Users/User/R-packages`.
