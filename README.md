@@ -7,7 +7,7 @@ Management Support](https://www.uu.nl/en/research/research-data-management).
 
 ## Upcoming course dates
 
-- Friday 25 October 2019
+- Friday 25 October, 2019
 - Thursday 21st November, 2019
 - Friday 13th December, 2019
 
