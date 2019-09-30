@@ -8,7 +8,7 @@ Management Support](https://www.uu.nl/en/research/research-data-management).
 ## Upcoming course dates
 
 - Friday 25 October 2019
-- Thursday 21st Novemeber, 2019
+- Thursday 21st November, 2019
 - Friday 13th December, 2019
 
 Registration is mandatory, and opens 2 months in advance of the course; check the link for the workshop you are interested in for information on how to register or be put on the waiting list.
