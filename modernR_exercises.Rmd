@@ -260,7 +260,7 @@ p + ## enter your code here ##
 
 ## Optional exercise (+) - Scale axes
 
-Scaling the axes with a ggplot is easy. Take a look at the [Data Visualization cheatsheet](cheatsheets/data-visualization.pdf). In the bottom right corner of the cheatsheet, you will find the code to scale the axes. 
+Scaling the axes with a ggplot is easy. Take a look at the [Data Visualization cheatsheet](https://rstudio.com/resources/cheatsheets/). In the bottom right corner of the cheatsheet, you will find the code to scale the axes. 
 
 Zoom in on the acceleration between -1000 and 1000 for both the x-axis and y-axis. 
 
