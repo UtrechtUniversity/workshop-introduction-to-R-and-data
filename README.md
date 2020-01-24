@@ -7,9 +7,11 @@ Management Support](https://www.uu.nl/en/research/research-data-management).
 
 ## Upcoming course dates
 
-- Friday 25 October, 2019
-- Thursday 21st November, 2019
-- Friday 13th December, 2019
+- [Friday 14 February 2020](https://www.uu.nl/en/events/introduction-to-r-data-14-february-2020)
+- [Wednesday 25 March 2020](https://www.uu.nl/en/events/introduction-to-r-data-25-march-2020)
+- [Friday 17 April 2020](https://www.uu.nl/en/events/introduction-to-r-data-17-april-2020)
+- [Thursday 28 May 2020](https://www.uu.nl/en/events/introduction-to-r-data-28-may-2020)
+- [Friday 19 June 2020](https://www.uu.nl/en/events/introduction-to-r-data-19-june-2020)
 
 Registration is mandatory, and opens 2 months in advance of the course; check the link for the workshop you are interested in for information on how to register or be put on the waiting list.
 
