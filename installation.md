@@ -1,15 +1,16 @@
 # Installation and troubleshooting guide
 
 The workshop *Introduction to R & Data* makes use of R and Rstudio. 
-Also, the R package `tidyverse` is used. This document shows how to install 
-R and RStudio, and how to install and load tidyverse from Rstudio.
+Also, R packages bundled in the `tidyverse` are used.
+This document shows how to install R and RStudio, and how to install and load tidyverse from Rstudio.
 
-Most workshops on R programming make use of an RStudio server. With an RStudio
-server, the participant logs in onto the website and gets a web based RStudio
-IDE. We prefer a local installation of RStudio for our workshop. We hope that 
-this removes a barrier for users to start working with R themselves. Because  not every system
-is equally cooperative in installing everything, we have compiled [an elaborate troubleshooting guide](installation.md#troubleshooting).
-Please let us know of any errors that you encountered, and how you fixed them! We will add these to the guide.
+Most workshops on R programming make use of an RStudio server.
+With an RStudio server, the participant logs in onto the website and gets a web based RStudio IDE.
+We prefer a local installation of RStudio for our workshop.
+We hope that this removes a barrier for users to start working with R themselves.
+Because  not every system is equally cooperative in installing everything, we have compiled [an elaborate troubleshooting guide](installation.md#troubleshooting).
+Please let us know of any errors that you encountered, and how you fixed them!
+We will add these to the guide.
 
 # Installation
 
@@ -87,9 +88,12 @@ Solution 2:
 
 ## Tidyverse installation is aborted
 
-If the installation of tidyverse is aborted, and packages are downloaded but their installation is said to have "non zero exit status", you may be dealing with an old version of R. Update R by installing a recent version from [CRAN](https://cran.rstudio.com/). Then try installing tidyverse again.
+If the installation of tidyverse is aborted, and packages are downloaded but their installation is said to have "non zero exit status", you may be dealing with an old version of R.
+Update R by installing a recent version from [CRAN](https://cran.rstudio.com/).
+Then try installing tidyverse again.
 
-Do you have Rtools installed? Install this via [cran.r-project.org/bin/windows/Rtools/](https://cran.r-project.org/bin/windows/Rtools/).
+Do you have Rtools installed?
+Install this via [cran.r-project.org/bin/windows/Rtools/](https://cran.r-project.org/bin/windows/Rtools/).
 
 
 ## "Unable to move temporary installation" (Windows error)
@@ -127,7 +131,8 @@ Change 0.5 in line 142 to 2.5, save the file, and try installing tidyverse again
 
 ## Library(tidyverse) loading failed
 
-Dependencies might be missing, or outdated, and need to be installed/updated manually. For instance, you see the following error:
+Dependencies might be missing, or outdated, and need to be installed/updated manually.
+For instance, you see the following error:
 ```
 Error: package or namespace load failed for 'tidyverse'in loadNamespace(...)
 namespace 'bindrcpp' 0.2 is being loaded, but >= 0.2.0.9000 is required.
