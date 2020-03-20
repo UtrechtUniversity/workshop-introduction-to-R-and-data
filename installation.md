@@ -93,6 +93,7 @@ Update R by installing a recent version from [CRAN](https://cran.rstudio.com/).
 Then try installing tidyverse again.
 
 Do you have Rtools installed?
+(Only on Windows; it is not clear why this works but it sometimes does.)
 Install this via [cran.r-project.org/bin/windows/Rtools/](https://cran.r-project.org/bin/windows/Rtools/).
 
 
