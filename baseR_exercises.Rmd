@@ -1,0 +1,209 @@
+---
+title: "Exercises in BaseR"
+output:
+  html_document
+---
+```{r include=F}
+# The following code is used to allow errors in code blocks.
+knitr::opts_chunk$set(error = T)
+```
+
+
+#### Exercise 0: running R code
+
+Try to run this code.
+
+```{r}
+x <- 6
+
+apple <- "apple"
+```
+
+
+### Exercise 1
+
+1. Do the following calculation in R: (1+5)/9
+
+2. Assign the result of the calculation to a variable.
+
+3. Bonus: Round off the result to 1 decimal. Tip: Use the Maths Functions section of your cheat sheet!
+
+```{r}
+
+
+```
+
+
+### Exercise 2: create vectors
+
+Meet Ann, Bob, Chloe, and Dan.
+1. Make a character vector with their names, using the function c(). Save the vector as name.
+
+2. How old are Ann, Bob, Chloe, and Dan? Design a numeric vector with their respective ages. Save it as age.
+
+3. Bonus: What is their average age? Use a function in R to calculate this.
+
+```{r}
+
+
+```
+
+
+### Exercise 3: combining data
+
+1. Create a vector country containing four countries (use at least one duplicate!).
+
+2. Create a data frame combining name, age, and country, and save it as df.
+
+3. Bonus: create a list combining name, age, and country.
+
+```{r}
+
+```
+
+
+### Exercise 4: predict the answer
+
+Predict the results before you run the code. Does the real answer make sense to you?
+
+```{r}
+5 == 5
+
+5 == NA
+
+NA == NA
+```
+
+
+### Exercise 5: selecting vector elements
+
+1. Return only the first number in your vector age.
+
+2. Return the 2nd and 4th name in your vector name.
+
+3. Return only ages under 30 from your vector age.
+
+```{r}
+
+```
+
+
+### Exercise 6: predict the answer
+
+Predict the results before you run the code. Does the real answer make sense to you?
+
+```{r}
+is.na(NA)
+
+is.null(NULL)
+
+is.null(NA)
+
+is.na(NULL)
+```
+
+
+### Exercise 7: selecting from dataframe
+
+1. From your dataframe df, return the entries for everyone living in a country of your choice.
+
+2. Return only the names of everyone in your data frame df under 40. 
+   (Hint: what information should you use for row indexing? 
+	 What information should you use for column indexing?)
+	
+3. Bonus: can you use vector indexing on a column to achieve the same result?
+	
+```{r}
+
+```
+
+
+### Exercise 8: iris
+
+Explore the iris dataframe, using some of the following functions: 
+
+head()
+tail()
+names()
+summary()
+dim()
+str()
+
+Can you figure out what these functions do? What do they teach you about the kind of data in iris?
+
+```{r}
+
+```
+
+
+### Exercise 9: function
+
+1. Write a function that takes a vector as input, and returns the mean of this vector (you can use the existing function mean() inside your function).
+
+```{r}
+apply_calc <- function(...){
+    ...
+    return(...)
+}
+```
+
+2. Add further options to your function: 
+   a. for example, the standard deviation (sd()), the minimum (min()), and the maximum (max()) of your input vector. 
+   b. Put all of these calculations in a vector using the function c(), and return this result vector.
+
+
+```{r}
+apply_calc <- function(...){
+    ...
+     
+     
+     
+    allres <- c(...)
+    return(...)
+}
+
+```
+
+
+### Exercise 10: for loop
+
+1. Make a vector with all the column names in iris. 
+   Hint: use the function colnames().
+
+```{r}
+iriscols <- 
+```
+
+2. Make a for-loop that iterates over all the column names in iris, and prints these column names.
+
+```{r}
+for(...){
+    ...
+}
+```
+
+3. Elaborate on this for-loop: select the corresponding column in iris, and print the mean. Hint: yes, you should get a warning! Do you understand why?
+
+```{r}
+for(...){
+    ...
+    
+     
+}
+```
+
+
+
+### Exercise 11: if statement
+
+Copy-paste the for-loop you made in the previous exercise. Inside this for-loop, add an if-statement, so that mean() is only performed on numeric vectors. Hint: check the function is.numeric().
+
+```{r}
+for(i in iriscols){
+    column <- iris[,i]
+		...
+         
+         
+     
+}
+```
