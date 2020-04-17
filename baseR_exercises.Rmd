@@ -105,6 +105,11 @@ is.na(NULL)
 
 ### Exercise 7: selecting from dataframe
 
+Before you start, please run this code:
+```{r}
+rm(name,age,country)
+```
+
 1. From your dataframe df, return the entries for everyone living in a country of your choice.
 
 2. Return only the names of everyone in your data frame df under 40. 
