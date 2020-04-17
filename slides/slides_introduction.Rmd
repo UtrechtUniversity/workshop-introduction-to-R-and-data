@@ -1,0 +1,80 @@
+---
+title: "Welcome to Introduction to R & Data!"
+author: "Please download the course materials at [tinyurl.com/introRData](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data)"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts, 'custom.css']
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+# Welcome! Who are you?
+
+- Your name & pronouns
+
+- What is your faculty/background? (Economics, Medicine, Biology…)
+
+- What part of your education are you in? (Bachelor, PhD, prof…)
+
+- What is your motivation for learning R?
+
+- What is your experience with R?
+
+
+
+---
+# How to ask for help?
+
+#### What you can do:
+- *During presentations*: Use the Teams chat to ask questions
+- *During exercises*: Put an X in the purple column of the [status chart](https://docs.google.com/document/d/1X1btpp99IgslvqtuNew0Igcpe6y6_T_phVqzNSosX-0/edit#heading=h.8nqh57o1bbwx) (with an optional explanation of your question)
+
+![status-chart](images/statuschart.png)
+
+#### What we will do:
+- Answer your question in writing; right there, right then.
+- Invite you to an individual google hangout, where someone can assist you.
+
+#### Also: use the status chart when you are done with an exercise!
+
+---
+# Course materials
+
+### Slides, exercises, cheatsheets
+
+Go to [tinyurl.com/introRData](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data), click ![clone-download](images/clone-download.png) then ![download-zip](images/download-zip.png)
+
+Unzip the folder and store it in a single, local (i.e. not on a mounted drive), accessible location.
+
+
+### Collaborative document
+
+Go to [tinyurl.com/introRDatadoc](https://docs.google.com/document/d/1X1btpp99IgslvqtuNew0Igcpe6y6_T_phVqzNSosX-0/edit?usp=sharing), and fill out your name in the status chart!
+
+---
+# General guidelines (and advice!)
+- Ask for help when you need it, and alert us when we need to slow down!
+
+--
+
+- Please mute yourself when you are not speaking.
+
+--
+
+- Use the green column of the status chart when you finished an exercise.
+
+--
+
+- Close as many unnecessary windows and programs as possible.
+
+--
+
+- Take a computer break when we take a break: a timer will show when we return!
+
+---
