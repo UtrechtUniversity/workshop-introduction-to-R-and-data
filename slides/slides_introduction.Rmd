@@ -158,6 +158,26 @@ x = 6
 #### (in course materials folder **cheatsheets/**)]
 
 ---
+# Maths functions
+
+.pull-left[
+```{r}
+x * 3
+```
+```{r}
+y <- x + 2
+```
+```{r}
+log2(y)
+```
+
+![assignment](images/mathsfunctions.png)]
+
+--
+
+.pull-right[
+
+![cheatsheet](images/baseRcheatsheet_hl.png)]
 
 
 ---
