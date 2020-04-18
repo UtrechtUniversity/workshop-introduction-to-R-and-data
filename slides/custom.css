@@ -18,16 +18,9 @@
   text-shadow: 0 0 2px #333;
 }
 
-/*.remark-code.r{
-/*  background-color: #ffE6B2;
-/*  border: solid #e0e0e0 1px;
-/*  box-shadow: 5px 5px 10px #e0e0e0;  
-/*} */
-
 .remark-code {
   font-size: 70%;
 }
-
 
 a, a > code {
   color: rgb(214, 147, 10);
@@ -45,6 +38,7 @@ a, a > code {
 /* IMAGES */
 img[alt=clone-download] {height: 50px; margin: -17px 5px;}
 img[alt=download-zip] {height: 40px; margin: -12px 5px;}
+img[alt=cheatsheet] {width: 320px; margin: -30px 30px;}
 
 
 .large-left-column {
