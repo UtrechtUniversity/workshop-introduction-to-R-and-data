@@ -86,15 +86,107 @@ options(htmltools.dir.version = FALSE)
 --
 
 - Take a computer break when we take a break: a timer will show when we return!
+---
+class: inverse, middle, center
+# Introduction to R & Data
+
+### Part 1: Basics of R
+---
+# What is R?
+
+.left-column[
+![rlogo](images/rlogo.png)]
+
+.right-column[
+
+- A widely used programming language for data analysis
+
+- Based on statistical programming language S (1976)
+
+- Developed by **R**oss Ihaka & **R**obert Gentleman (1995)
+
+- Very active community, with many (often subject-specific) packages
+
+- Open source, and interoperable!
+
+]
+---
+# We will work in Rstudio
+
+![rstudiologo](images/rstudiologo.png)
+
+- **I**ntegrated **D**evelopment **E**nvironment (IDE) for R
+
+- Founded by J.J. Allaire, available since 2010
+
+- Bloody useful! Let’s take a look: please open RStudio!
+
+---
+# The Rstudio interface
+
+![rstudio-incremental](images/rstudio-incremental-1.png)
+
+---
+# The Rstudio interface
+
+![rstudio-incremental](images/rstudio-incremental-2.png)
+
+---
+# The Rstudio interface
+
+![rstudio-incremental](images/rstudio-incremental-3.png)
+
+---
+# The Rstudio interface
+
+![rstudio-incremental](images/rstudio-incremental-4.png)
+
+---
+# The Rstudio interface
+
+![rstudio-incremental](images/rstudio-incremental-5.png)
+---
+# Running R code
+
+#### In a script/Rmarkdown document
+- Place your cursor in the line of code you want to execute
+
+- Press ![run](images/run.png) or ctrl + enter
+
+- When running multiple lines: select all lines, then press ‘Run’ or ctrl+enter
+
+#### In an Rmarkdown document
+- You can execute a chunk as a whole with the green triangle:
+
+![run-chunk](images/run-chunk.png)
+
+---
+class: exercise
+# Exercise 0: running your first code
+
+_Before you start: make sure you have downloaded the course materials, and unzipped them to a single, accessible folder._
+
+1. In Rstudio, choose **File** > **Open Project**
+
+1. Find the location of the course materials
+
+1. Open **introduction-to-R-and-data-github.Rproj**
+
+1. From the ‘files’ menu (bottom right), select **baseR_exercises.Rmd**
+
+1. Run the R code in Exercise 0 
+
+1. When you are done: place an X in the green column of the [status chart](https://docs.google.com/document/d/1X1btpp99IgslvqtuNew0Igcpe6y6_T_phVqzNSosX-0/edit?usp=sharing).
+
 
 ---
 class: inverse, middle, center
 # R syntax & the console
 
-## - Data types in R
-## - Using functions
-## - Combining data
-## - Indexing data
+### - Data types in R
+### - Using functions
+### - Combining data
+### - Indexing data
 
 ---
 # Always distinguish:
@@ -138,6 +230,8 @@ var/x
 # Variable assignment
 
 .pull-left[
+You can assign both numbers and text to a variable:
+
 ```{r}
 x <- 6
 
@@ -161,30 +255,25 @@ x = 6
 # Maths functions
 
 .pull-left[
+You can perform math with your variables:
 ```{r}
 x * 3
 ```
+and store the results as new variables:
 ```{r}
 y <- x + 2
-```
-```{r}
+
 log2(y)
 ```
 
-![assignment](images/mathsfunctions.png)]
+![assignment-math](images/mathsfunctions.png)]
 
 --
 
 .pull-right[
 
-![cheatsheet](images/baseRcheatsheet_hl.png)]
+![cheatsheet-math](images/baseRcheatsheet_hl.png)]
 
-
----
-
-
-
----
 
 
 ---

@@ -18,6 +18,10 @@
   text-shadow: 0 0 2px #333;
 }
 
+.exercise {
+  border-top: 80px solid #aaaaaa;
+}
+
 .remark-code {
   font-size: 70%;
 }
@@ -38,8 +42,13 @@ a, a > code {
 /* IMAGES */
 img[alt=clone-download] {height: 50px; margin: -17px 5px;}
 img[alt=download-zip] {height: 40px; margin: -12px 5px;}
+img[alt=rlogo] {margin: 20px 0;}
+img[alt=rstudiologo] {width: 400px;}
+img[alt=run] {height: 40px; margin: -12px 5px;}
+img[alt=run-chunk] {width: 500px; margin: -10px 40px;}
 img[alt=cheatsheet] {width: 320px; margin: -30px 30px;}
-
+img[alt=cheatsheet-math] {width: 360px; margin: -30px 10px;}
+img[alt=assignment-math] {height: 200px; margin: -5px 40px;}
 
 .large-left-column {
   color: #000;
