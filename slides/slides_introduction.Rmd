@@ -59,7 +59,6 @@ options(htmltools.dir.version = FALSE)
 
 1. Store it in a single, local (i.e. not on a mounted drive), accessible location.
 
---
 
 ### Collaborative document
 
@@ -168,7 +167,7 @@ _Before you start: make sure you have downloaded the course materials, and unzip
 
 1. In Rstudio, choose **File** > **Open Project**
 
-1. Find the location of the course materials
+1. Navigate to the folder with course materials
 
 1. Open **introduction-to-R-and-data-github.Rproj**
 
@@ -209,6 +208,8 @@ Note:
 
 ---
 # Which are these?
+
+#### Giving information, or asking a question?
 
 ### 1: 
 ```{r}
@@ -275,9 +276,36 @@ log2(y)
 ![cheatsheet-math](images/baseRcheatsheet_hl.png)]
 
 
+---
+class: exercise
+# Exercise 1
+
+1. Do the following calculation in R: _1 plus 5, divided by 9_
+
+2. Assign the result of the calculation to a variable.
+
+1. (Bonus) Round off the result to 1 decimal.
+    
+    _Tip: Use the Maths Functions section of your cheat sheet!_
+
 
 ---
+# Exercise 1
 
+1. Do the following calculation in R: _1 plus 5, divided by 9_
+    ```{r}
+    (1+5)/9
+    ```
+
+2. Assign the result of the calculation to a variable.
+    ```{r}
+    x <- (1+5)/9
+    ```
+
+1. (Bonus) Round off the result to 1 decimal.
+    ```{r}
+    round(x,1)
+    ```
 
 ---
-
+# Another data type: logical
