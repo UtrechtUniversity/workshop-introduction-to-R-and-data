@@ -338,4 +338,170 @@ x!=10
 ```
 ]
 
+---
+# Combining data: creating vectors
+#### Vectors are created with the function `c()`
+
+A numeric vector:
+```{r}
+c(1,2,3)
+```
+
+--
+
+A character vector:
+```{r}
+c("a","b","c")
+```
+
+--
+
+A logical vector:
+```{r}
+c(T,TRUE,F)
+```
+
+---
+# Combining data: creating vectors
+
+What is this vector?
+```{r}
+c(TRUE,"a",3)
+```
+
+--
+
+#### Yep, a character vector!
+Vector type defaults to the "lowest common denominator": everything can be a character, but not everything can be a number or a logical.
+---
+# Vector functions
+#### Vectors can be used in mathematical operations
+.pull-left-medium[
+```{r}
+p <- 1:5
+p
+mean(p)
+p * 2
+```
+]
+--
+.pull-right-medium[
+| &nbsp; &nbsp; p &nbsp; &nbsp;  | &nbsp; &nbsp; 2&nbsp; &nbsp;  | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  |
+|:---:|:---:|:---:|
+| 1 | 2 | 2 |
+| 2 | 2 | 4 |
+| 3 | 2 | 6 |
+| 4 | 2 | 8 |
+| 5 | 2 | 10 |
+]
+---
+# Vector functions
+#### Operations with multiple vectors are performed by aligning the index
+.pull-left-medium[
+```{r}
+q <- 5:1
+q
+p * q
+```
+]
+
+.pull-right-medium[<br />
+
+| &nbsp; &nbsp; p &nbsp; &nbsp;  | &nbsp; &nbsp;q &nbsp; &nbsp;  | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  |
+|:---:|:---:|:---:|
+| 1 | 5 | 5 |
+| 2 | 4 | 8 |
+| 3 | 3 | 9 |
+| 4 | 2 | 8 |
+| 5 | 1 | 5 |
+]
+
+---
+class: exercise
+# Exercise 2: create vectors
+
+#### Meet Ann, Bob, Chloe, and Dan.
+
+1. Make a character vector with their names, using the function `c()`. Save the vector as name.
+
+1. How old are Ann, Bob, Chloe, and Dan? Design a numeric vector with their respective ages. Save it as `age`.
+
+1. Bonus: What is their average age? Use a function in R to calculate this.
+
+
+---
+# Excercise 2: create vectors
+
+1. Make a character vector with their names, using the function `c()`. Save the vector as name.
+    ```{r}
+    name <- c("Ann", "Bob", "Chloe", "Dan")
+    ```
+1. How old are Ann, Bob, Chloe, and Dan? Design a numeric vector with their respective ages. Save it as `age`.
+    ```{r}
+    age <- c(35,22,50,51)
+    ```
+1. Bonus: What is their average age? Use a function in R to calculate this.
+    ```{r}
+    mean(age)
+    ```
+
+---
+# Data structures: vector
+
+#### We have two vectors: `name` and `age`
+```{r}
+name
+age
+```
+
+#### Combine the vectors to a unidimensional vector, with `c()`
+```{r}
+c(name,age)
+```
+
+---
+# Data structures: list
+
+#### We have two vectors: `name` and `age`
+```{r}
+name
+age
+```
+
+#### Combine the vectors to a multidimensional list, with `list()`
+```{r}
+list(name,age)
+```
+
+---
+# Data structures: data frame
+
+#### We have two vectors: `name` and `age`
+```{r}
+name
+age
+```
+
+#### Combine the vectors to a twodimensional data frame, with `data.frame()`
+```{r}
+data.frame(name,age)
+```
+]
+---
+# Data structures: summary
+
+&nbsp;
+
+| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | number of dimensions  | &nbsp; function &nbsp; |
+|---:|:---:|:---|
+| vector | 1 | &nbsp; &nbsp; `c()` |
+| data frame | 2 | &nbsp; &nbsp; `data.frame()`  |
+| list | any number | &nbsp; &nbsp; `list()` |
+
+---
+
+
+---
+
+
 

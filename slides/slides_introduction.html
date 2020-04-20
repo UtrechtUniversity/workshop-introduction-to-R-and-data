@@ -427,6 +427,288 @@ x!=10
 ## [1] FALSE
 ```
 ]
+
+---
+# Combining data: creating vectors
+#### Vectors are created with the function `c()`
+
+A numeric vector:
+
+```r
+c(1,2,3)
+```
+
+```
+## [1] 1 2 3
+```
+
+--
+
+A character vector:
+
+```r
+c("a","b","c")
+```
+
+```
+## [1] "a" "b" "c"
+```
+
+--
+
+A logical vector:
+
+```r
+c(T,TRUE,F)
+```
+
+```
+## [1]  TRUE  TRUE FALSE
+```
+
+---
+# Combining data: creating vectors
+
+What is this vector?
+
+```r
+c(TRUE,"a",3)
+```
+
+```
+## [1] "TRUE" "a"    "3"
+```
+
+--
+
+#### Yep, a character vector!
+Vector type defaults to the "lowest common denominator": everything can be a character, but not everything can be a number or a logical.
+---
+# Vector functions
+#### Vectors can be used in mathematical operations
+.pull-left-medium[
+
+```r
+p &lt;- 1:5
+p
+```
+
+```
+## [1] 1 2 3 4 5
+```
+
+```r
+mean(p)
+```
+
+```
+## [1] 3
+```
+
+```r
+p * 2
+```
+
+```
+## [1]  2  4  6  8 10
+```
+]
+--
+.pull-right-medium[
+| &amp;nbsp; &amp;nbsp; p &amp;nbsp; &amp;nbsp;  | &amp;nbsp; &amp;nbsp; 2&amp;nbsp; &amp;nbsp;  | &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;  |
+|:---:|:---:|:---:|
+| 1 | 2 | 2 |
+| 2 | 2 | 4 |
+| 3 | 2 | 6 |
+| 4 | 2 | 8 |
+| 5 | 2 | 10 |
+]
+---
+# Vector functions
+#### Operations with multiple vectors are performed by aligning the index
+.pull-left-medium[
+
+```r
+q &lt;- 5:1
+q
+```
+
+```
+## [1] 5 4 3 2 1
+```
+
+```r
+p * q
+```
+
+```
+## [1] 5 8 9 8 5
+```
+]
+
+.pull-right-medium[&lt;br /&gt;
+
+| &amp;nbsp; &amp;nbsp; p &amp;nbsp; &amp;nbsp;  | &amp;nbsp; &amp;nbsp;q &amp;nbsp; &amp;nbsp;  | &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;  |
+|:---:|:---:|:---:|
+| 1 | 5 | 5 |
+| 2 | 4 | 8 |
+| 3 | 3 | 9 |
+| 4 | 2 | 8 |
+| 5 | 1 | 5 |
+]
+
+---
+class: exercise
+# Exercise 2: create vectors
+
+#### Meet Ann, Bob, Chloe, and Dan.
+
+1. Make a character vector with their names, using the function `c()`. Save the vector as name.
+
+1. How old are Ann, Bob, Chloe, and Dan? Design a numeric vector with their respective ages. Save it as `age`.
+
+1. Bonus: What is their average age? Use a function in R to calculate this.
+
+
+---
+# Excercise 2: create vectors
+
+1. Make a character vector with their names, using the function `c()`. Save the vector as name.
+    
+    ```r
+    name &lt;- c("Ann", "Bob", "Chloe", "Dan")
+    ```
+1. How old are Ann, Bob, Chloe, and Dan? Design a numeric vector with their respective ages. Save it as `age`.
+    
+    ```r
+    age &lt;- c(35,22,50,51)
+    ```
+1. Bonus: What is their average age? Use a function in R to calculate this.
+    
+    ```r
+    mean(age)
+    ```
+    
+    ```
+    ## [1] 39.5
+    ```
+
+---
+# Data structures: vector
+
+#### We have two vectors: `name` and `age`
+
+```r
+name
+```
+
+```
+## [1] "Ann"   "Bob"   "Chloe" "Dan"
+```
+
+```r
+age
+```
+
+```
+## [1] 35 22 50 51
+```
+
+#### Combine the vectors to a unidimensional vector, with `c()`
+
+```r
+c(name,age)
+```
+
+```
+## [1] "Ann"   "Bob"   "Chloe" "Dan"   "35"    "22"    "50"    "51"
+```
+
+---
+# Data structures: list
+
+#### We have two vectors: `name` and `age`
+
+```r
+name
+```
+
+```
+## [1] "Ann"   "Bob"   "Chloe" "Dan"
+```
+
+```r
+age
+```
+
+```
+## [1] 35 22 50 51
+```
+
+#### Combine the vectors to a multidimensional list, with `list()`
+
+```r
+list(name,age)
+```
+
+```
+## [[1]]
+## [1] "Ann"   "Bob"   "Chloe" "Dan"  
+## 
+## [[2]]
+## [1] 35 22 50 51
+```
+
+---
+# Data structures: data frame
+
+#### We have two vectors: `name` and `age`
+
+```r
+name
+```
+
+```
+## [1] "Ann"   "Bob"   "Chloe" "Dan"
+```
+
+```r
+age
+```
+
+```
+## [1] 35 22 50 51
+```
+
+#### Combine the vectors to a twodimensional data frame, with `data.frame()`
+
+```r
+data.frame(name,age)
+```
+
+```
+##    name age
+## 1   Ann  35
+## 2   Bob  22
+## 3 Chloe  50
+## 4   Dan  51
+```
+]
+---
+# Data structures: summary
+
+&amp;nbsp;
+
+| &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;  | number of dimensions  | &amp;nbsp; function &amp;nbsp; |
+|---:|:---:|:---|
+| vector | 1 | &amp;nbsp; &amp;nbsp; `c()` |
+| data frame | 2 | &amp;nbsp; &amp;nbsp; `data.frame()`  |
+| list | any number | &amp;nbsp; &amp;nbsp; `list()` |
+
+---
+
+
+---
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
