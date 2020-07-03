@@ -67,8 +67,22 @@ Meet Ann, Bob, Chloe, and Dan.
 ```
 
 
+### Exercise 4: predict the answer
 
-### Exercise 4: selecting vector elements
+Predict the results before you run the code. Does the real answer make sense to you?
+
+```{r}
+5==5
+
+5==NA
+
+NA==NA
+
+is.na(NA)
+
+```
+
+### Exercise 5: selecting vector elements
 
 1. Return only the first number in your vector age.
 
@@ -81,19 +95,6 @@ Meet Ann, Bob, Chloe, and Dan.
 ```
 
 
-### Exercise 6: predict the answer
-
-Predict the results before you run the code. Does the real answer make sense to you?
-
-```{r}
-is.na(NA)
-
-is.null(NULL)
-
-is.null(NA)
-
-is.na(NULL)
-```
 
 
 ### Exercise 7: selecting from dataframe

@@ -715,13 +715,140 @@ summary(df)
 
 ---
 class: inverse, middle, center
-# Missing values
+# Missing data
 
 ---
+# Not Available (NA)
+
+Let's add a column to our data:
+
+```r
+df$pet &lt;- factor(c("cat","none","fish",NA))
+
+df$pet
+```
+
+```
+## [1] cat  none fish &lt;NA&gt;
+## Levels: cat fish none
+```
+
+#### Note that `NA` is not a level!
+
+--
+.pull-left[
+Here is our data frame:
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; name &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; age &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; country &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; pet &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ann &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 35 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; UK &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; cat &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bob &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; US &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; none &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Chloe &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 50 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; US &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; fish &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Dan &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 51 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; UK &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+--
+
+.pull-right[
+Notice that:
+
+- we know that Bob has no pets. 
+
+- we do not know if Dan has pets
+]
 ---
+# Predict the answer
+
+```r
+5 == 5
+```
+--
+
+```
+## [1] TRUE
+```
+--
+```r
+5 == NA
+```
+--
+
+```
+## [1] NA
+```
+--
+
+```r
+NA == NA
+```
+--
+
+```
+## [1] NA
+```
+--
+
+
+```r
+is.na(NA)
+```
+
+```
+## [1] TRUE
+```
+
+
 ---
----
-# Answers to exercise 4
+# NULL: data does not exist
+
+Do we know about our participants' jobs?
+
+
+```r
+df$job
+```
+
+```
+## NULL
+```
+
+--
+
+| | |
+|---:|:---|
+| `NA` | Information is **N**ot **A**vailable |
+| `NULL` | Information does not exist |
+| `none` or `0` | Data entry specifying content of 0 |
+
 ---
 class: inverse, middle, center
 # Indexing vectors &amp; lists

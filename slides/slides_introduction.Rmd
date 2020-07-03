@@ -483,13 +483,88 @@ summary(df)
 
 ---
 class: inverse, middle, center
-# Missing values
+# Missing data
 
 ---
+# Not Available (NA)
+
+Let's add a column to our data:
+```{r}
+df$pet <- factor(c("cat","none","fish",NA))
+
+df$pet
+```
+
+#### Note that `NA` is not a level!
+
+--
+.pull-left[
+Here is our data frame:
+
+```{r, echo=F}
+knitr::kable(df, format="html")
+```
+]
+--
+
+.pull-right[
+Notice that:
+
+- we know that Bob has no pets. 
+
+- we do not know if Dan has pets
+]
 ---
+# Predict the answer
+
+```r
+5 == 5
+```
+--
+```{r echo = F}
+5 == 5
+```
+--
+```r
+5 == NA
+```
+--
+```{r echo = F}
+5 == NA
+```
+--
+
+```r
+NA == NA
+```
+--
+```{r echo = F}
+NA == NA
+```
+--
+
+```{r}
+is.na(NA)
+```
+
+
 ---
----
-# Answers to exercise 4
+# NULL: data does not exist
+
+Do we know about our participants' jobs?
+
+```{r}
+df$job
+```
+
+--
+
+| | |
+|---:|:---|
+| `NA` | Information is **N**ot **A**vailable |
+| `NULL` | Information does not exist |
+| `none` or `0` | Data entry specifying content of 0 |
+
 ---
 class: inverse, middle, center
 # Indexing vectors & lists
