@@ -368,6 +368,10 @@ p * q
     ```
 
 ---
+class: inverse, middle, center
+# Data structures
+
+---
 # Data structures: vector
 
 #### We have two vectors: `name` and `age`
@@ -408,7 +412,7 @@ age
 ```{r}
 data.frame(name,age)
 ```
-]
+
 ---
 # Data structures: summary
 
@@ -421,9 +425,123 @@ data.frame(name,age)
 | list | any number | &nbsp; &nbsp; `list()` |
 
 ---
+# Factors
 
+#### a special type of vector, defined by _levels_
+```{r}
+country <- c("UK","USA","USA","UK")
+country
+factor(country)
+```
+
+#### usually as column in a data frame: a categorical variable
+.pull-left[
+```{r}
+df <- data.frame(name, age,
+                 country = factor(country))
+df
+```
+]
+.pull-right[
+```{r}
+summary(df)
+```
+
+]
 
 ---
+# Answers to exercise 3
 
+1. Create a vector `country` containing four countries (use at least one duplicate!).
+    ```{r}
+    country <- c("UK", "US", "US", "UK")
+    ```
+--
 
+1. Create a data frame combining `name`, `age`, and `country`, and save it as `df`.
+    ```{r}
+    df <- data.frame(name, age, country)
+    ```
+--
 
+1. Check your dataframe with the function `summary()`. Does it contain a factor?
+    ```{r}
+    summary(df)
+    ```
+---
+# Answers to exercise 3 (continued)
+
+`4.` Make sure your column `country` is a factor, and confirm this with `summary()`.
+```{r}
+country <- factor(country)
+country
+
+df <- data.frame(name, age, country)
+
+summary(df)
+```
+
+---
+class: inverse, middle, center
+# Missing values
+
+---
+---
+---
+---
+# Answers to exercise 4
+---
+class: inverse, middle, center
+# Indexing vectors & lists
+
+---
+---
+---
+# Answers to exercise 5
+---
+class: inverse, middle, center
+# Indexing a data frame
+
+---
+---
+---
+---
+# Answers to exercise 6
+---
+class: inverse, middle, center
+# Recap "Basics of R"
+---
+---
+---
+
+class: inverse, middle, center
+# Programming: if-statements
+
+---
+---
+---
+# Answers to exercise 7
+---
+class: inverse, middle, center
+# Programming: functions
+
+---
+---
+---
+# Answers to exercise 8
+---
+class: inverse, middle, center
+# Programming: loops
+
+---
+---
+---
+# Answers to exercise 9
+---
+class: inverse, middle, center
+# Recap Programming
+
+---
+---
+---
+---
