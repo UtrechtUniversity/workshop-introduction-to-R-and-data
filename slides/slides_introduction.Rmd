@@ -33,16 +33,16 @@ options(htmltools.dir.version = FALSE)
 
 #### What you can do:
 - *During presentations*: Use the Teams chat to ask questions
-- *During exercises*: Put an X in the purple column of the [status chart](https://docs.google.com/document/d/1X1btpp99IgslvqtuNew0Igcpe6y6_T_phVqzNSosX-0/edit#heading=h.8nqh57o1bbwx) (with an optional explanation of your question)
+- *During exercises*: Put an X in the red column of the [status chart](https://docs.google.com/document/d/1X1btpp99IgslvqtuNew0Igcpe6y6_T_phVqzNSosX-0/edit#heading=h.8nqh57o1bbwx) (with an optional explanation of your question)
 
 ![status-chart](images/statuschart.png)
 --
 
 #### What we will do:
-- Answer your question in writing; right there, right then.
-- Invite you to an individual google hangout, where someone can assist you.
+- Answer your question either in writing or in the presentation, right there, right then.
+- Invite you to an individual helper channel, where someone can assist you.
 
-#### Also: use the status chart when you are done with an exercise!
+#### Also: indicate your progress on the status chart, so we can keep track!
 
 ---
 # Course materials
@@ -123,25 +123,7 @@ class: inverse, middle, center
 ---
 # The Rstudio interface
 
-![rstudio-incremental](images/rstudio-incremental-1.png)
 
----
-# The Rstudio interface
-
-![rstudio-incremental](images/rstudio-incremental-2.png)
-
----
-# The Rstudio interface
-
-![rstudio-incremental](images/rstudio-incremental-3.png)
-
----
-# The Rstudio interface
-
-![rstudio-incremental](images/rstudio-incremental-4.png)
-
----
-# The Rstudio interface
 
 ![rstudio-incremental](images/rstudio-incremental-5.png)
 ---
@@ -160,73 +142,23 @@ class: inverse, middle, center
 ![run-chunk](images/run-chunk.png)
 
 ---
-class: exercise
-# Exercise 0: running your first code
+# Open course materials
 
-_Before you start: make sure you have downloaded the course materials, and unzipped them to a single, accessible folder._
+_Before you start: make sure you have downloaded the [course materials](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data), and unzipped them to a single, accessible folder._
 
 1. In Rstudio, choose **File** > **Open Project**
 
 1. Navigate to the folder with course materials
 
-1. Open **introduction-to-R-and-data-github.Rproj**
+1. Open **workshop.Rproj**
 
 1. From the ‘files’ menu (bottom right), select **baseR_exercises.Rmd**
-
-1. Run the R code in Exercise 0 
-
-1. When you are done: place an X in the green column of the [status chart](https://docs.google.com/document/d/1X1btpp99IgslvqtuNew0Igcpe6y6_T_phVqzNSosX-0/edit?usp=sharing).
 
 
 ---
 class: inverse, middle, center
-# R syntax & the console
+# R syntax & data types
 
-### - Data types in R
-### - Using functions
-### - Combining data
-### - Indexing data
-
----
-# Always distinguish:
-
-Giving R information:
-```{r}
-x <- 1
-```
-Asking R a question:
-```{r}
-x
-```
-
-Note:
-- Answers on our slides will be preceded with `##`; not the case in your console
-- Answers (both in the console and on the slide) are indexed with `[i]`
-- The assignment operator in R is a 'carrot-stick' or arrow: <-
-
-#### Also: We will have plenty of exercises, so you can focus on the slides when we present!
-
----
-# Which are these?
-
-#### Giving information, or asking a question?
-
-### 1: 
-```{r}
-4 + 5
-```
---
-
-### 2: 
-```{r}
-var <- 73
-```
---
-
-### 3: 
-```{r}
-var/x
-```
 ---
 # Variable assignment
 
@@ -245,17 +177,32 @@ x = 6
 
 ![assignment](images/assignment.png)]
 
---
-
-.pull-right[
+.pull-right-center[
 
 ![cheatsheet](images/baseRcheatsheet.png) 
-#### (in course materials folder **cheatsheets/**)]
+
+[download this cheat sheet](http://github.com/rstudio/cheatsheets/raw/master/base-r.pdf)
+]
+
+---
+# Do you expect an answer?
+
+Saving information:
+```{r}
+x <- 1
+```
+Asking for information to be returned:
+```{r}
+x
+```
+
+Note the difference in syntax: when using the <- operator, you are storing the information as a variable in R, and therefore you do not expect to get an answer immediately.
+
+When calling up that information, or making calculations, you can make R show you the answer.
 
 ---
 # Maths functions
 
-.pull-left[
 You can perform math with your variables:
 ```{r}
 x * 3
@@ -267,62 +214,15 @@ y <- x + 2
 log2(y)
 ```
 
-![assignment-math](images/mathsfunctions.png)]
-
---
-
-.pull-right[
-
-![cheatsheet-math](images/baseRcheatsheet_hl.png)]
-
+Check **"Maths Functions"** on the [cheat sheet](http://github.com/rstudio/cheatsheets/raw/master/base-r.pdf):
+![assignment-math](images/mathsfunctions.png)
 
 ---
-class: exercise
-# Exercise 1
+# Logicals
 
-1. Do the following calculation in R: _1 plus 5, divided by 9_
+A logical is `True` or `False`, and can also be written as `T` or `F`.
 
-2. Assign the result of the calculation to a variable.
-
-1. (Bonus) Round off the result to 1 decimal.
-    
-    _Tip: Use the Maths Functions section of your cheat sheet!_
-
-
----
-# Exercise 1
-
-1. Do the following calculation in R: _1 plus 5, divided by 9_
-    ```{r}
-    (1+5)/9
-    ```
-
-2. Assign the result of the calculation to a variable.
-    ```{r}
-    x <- (1+5)/9
-    ```
-
-1. (Bonus) Round off the result to 1 decimal.
-    ```{r}
-    round(x,1)
-    ```
-
----
-# Another data type: logical
-
-.pull-left[A logical is `True` or `False`, and can also be written as `T` or `F`.
-
-```{r}
-TRUE
-FALSE
-T
-F
-```
-]
-
---
-
-.pull-right[Logicals are mostly used as tests:
+Logicals are mostly used as tests:
 
 | | | |
 |---|---|---|
@@ -331,12 +231,42 @@ F
 | >= | `>=` | larger than or equal to |
 | < | `<`  | smaller than |
 
+For example:
 ```{r}
-x==6
-x!=10
-2>4
+x == 6
+x != 10
 ```
-]
+
+---
+# Answers to exercise 1
+
+1. Do the following calculation in R: _1 plus 5, divided by 9_
+    ```{r}
+    (1+5)/9
+    ```
+--
+
+1. Assign the result of the calculation to a variable.
+    ```{r}
+    x <- (1+5)/9
+    ```
+--
+
+1. Test if the result is larger than 1.
+    ```{r}
+    x > 1
+    ```
+--
+
+1. Round off the result to 1 decimal.
+    ```{r}
+    round(x,1)
+    ```
+
+
+---
+class: inverse, middle, center
+# Vectors in R
 
 ---
 # Combining data: creating vectors
@@ -397,7 +327,7 @@ p * 2
 ---
 # Vector functions
 #### Operations with multiple vectors are performed by aligning the index
-.pull-left-medium[
+.pull-left-medium[<br />
 ```{r}
 q <- 5:1
 q
@@ -416,31 +346,23 @@ p * q
 | 5 | 1 | 5 |
 ]
 
----
-class: exercise
-# Exercise 2: create vectors
-
-#### Meet Ann, Bob, Chloe, and Dan.
-
-1. Make a character vector with their names, using the function `c()`. Save the vector as name.
-
-1. How old are Ann, Bob, Chloe, and Dan? Design a numeric vector with their respective ages. Save it as `age`.
-
-1. Bonus: What is their average age? Use a function in R to calculate this.
-
 
 ---
-# Excercise 2: create vectors
+# Answers to exercise 2
 
 1. Make a character vector with their names, using the function `c()`. Save the vector as name.
     ```{r}
     name <- c("Ann", "Bob", "Chloe", "Dan")
     ```
+--
+
 1. How old are Ann, Bob, Chloe, and Dan? Design a numeric vector with their respective ages. Save it as `age`.
     ```{r}
     age <- c(35,22,50,51)
     ```
-1. Bonus: What is their average age? Use a function in R to calculate this.
+--
+
+1. What is their average age? Use a function in R to calculate this.
     ```{r}
     mean(age)
     ```

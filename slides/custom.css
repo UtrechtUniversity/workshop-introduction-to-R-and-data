@@ -79,6 +79,11 @@ img[alt=assignment-math] {height: 200px; margin: -5px 40px;}
   float: right;
   width: 40%;
 }
+.pull-right-center {
+  float: right;
+  text-align: center;
+  width: 48%;
+}
 
 .quote {
   float: right;

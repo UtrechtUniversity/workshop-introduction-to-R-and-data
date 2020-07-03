@@ -20,13 +20,15 @@ apple <- "apple"
 ```
 
 
-### Exercise 1
+### Exercise 1: R syntax & data types
 
-1. Do the following calculation in R: (1+5)/9
+1. Do the following calculation in R: one plus five, divided by nine.
 
 2. Assign the result of the calculation to a variable.
 
-3. Bonus: Round off the result to 1 decimal. Tip: Use the Maths Functions section of your cheat sheet!
+3. Test if the result of your calculation is larger than 1.
+
+4. Round off the result to 1 decimal. Tip: use the Maths Functions section of the Base R cheat sheet!
 
 ```{r}
 
@@ -37,11 +39,11 @@ apple <- "apple"
 ### Exercise 2: create vectors
 
 Meet Ann, Bob, Chloe, and Dan.
-1. Make a character vector with their names, using the function c(). Save the vector as name.
+1. Make a character vector with their names, using the function c(). Save the vector as "name".
 
-2. How old are Ann, Bob, Chloe, and Dan? Design a numeric vector with their respective ages. Save it as age.
+2. How old are Ann, Bob, Chloe, and Dan? Design a numeric vector with their respective ages. Save it as "age".
 
-3. Bonus: What is their average age? Use a function in R to calculate this.
+3. What is their average age? Use a function in R to calculate this. Tip: use the Maths Functions section of the Base R cheat sheet!
 
 ```{r}
 
