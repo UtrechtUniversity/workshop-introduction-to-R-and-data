@@ -61,6 +61,8 @@ Meet Ann, Bob, Chloe, and Dan.
 
 4. Make sure your column country is a factor, and confirm this with summary().
 
+5. Create a list with your vectors name and age, and save it as mylist.
+
 ```{r}
 
 
@@ -82,13 +84,15 @@ is.na(NA)
 
 ```
 
-### Exercise 5: selecting vector elements
+### Exercise 5: selecting vector & list elements
 
 1. Return only the first number in your vector age.
 
 2. Return the 2nd and 4th name in your vector name.
 
 3. Return only ages under 30 from your vector age.
+
+4. Return the name "Chloe" from your list mylist (see exercise 3).
 
 ```{r}
 

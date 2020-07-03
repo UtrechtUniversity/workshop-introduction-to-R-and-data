@@ -481,6 +481,13 @@ df <- data.frame(name, age, country)
 summary(df)
 ```
 
+--
+
+`5.` Create a list with your vectors `name` and `age`, and save it as `mylist`.
+```{r}
+mylist <- list(name,age)
+```
+
 ---
 class: inverse, middle, center
 # Missing data
@@ -570,9 +577,122 @@ class: inverse, middle, center
 # Indexing vectors & lists
 
 ---
+# Selecting vector elements by position
+
+.pull-left[
+```{r}
+name
+name[2]
+name[1:3]
+name[c(2,2,1)]
+```
+]
+.pull-right[
+![position](images/vector_elements_position.png)
+]
+
 ---
+# Selecting vector elements by value
+
+.pull-left[
+Selecting from vector `age`:
+```{r}
+age
+
+age[age>40]
+
+age>40
+```
+
+
+
+]
+.pull-right[
+Breaking down the selection:
+```{r, echo=F}
+
+df2 <- data.frame(age, age>40)
+df2[,3] <- c("","",age[3],age[4])
+names(df2) <- c("  age  ", "  age > 40  ", "  age[age > 40]  ")
+
+knitr::kable(df2, format="html")
+```
+
+
+]
+
+---
+# Selecting vector elements by value
+```{r}
+name
+
+name[name %in% c("Chloe","Ann","Evie")]
+```
+
+![value](images/vector_elements_value.png)
+---
+# Selecting from a list
+
+```{r}
+mylist
+```
+--
+
+.pull-left[
+Selecting a list element from `mylist`:
+
+```{r}
+mylist[1]
+```
+
+Sub-selection in the list-element:
+
+```{r}
+mylist[1][2]
+```
+]
+--
+
+.pull-right[
+Selecting the content of a list element:
+
+```{r}
+mylist[[1]]
+```
+
+Subselection in the content of a list element:
+
+```{r}
+mylist[[1]][2]
+```
+]
+
 ---
 # Answers to exercise 5
+
+1. Return only the first number in your vector `age`.
+    ```{r}
+    age[1]
+    ```
+--
+
+1. Return the 2nd and 4th name in your vector `name`.
+    ```{r}
+    name[c(2,4)]
+    ```
+--
+
+1. Return only ages under 30 from your vector `age`.
+    ```{r}
+    age[age<30]
+    ```
+--
+
+1. Return the name "Chloe" from your list `mylist`.
+    ```{r}
+    mylist[[1]][name == "Chloe"]
+    ```
+
 ---
 class: inverse, middle, center
 # Indexing a data frame

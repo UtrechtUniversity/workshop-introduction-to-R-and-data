@@ -713,6 +713,14 @@ summary(df)
 ##                     Max.   :51.00
 ```
 
+--
+
+`5.` Create a list with your vectors `name` and `age`, and save it as `mylist`.
+
+```r
+mylist &lt;- list(name,age)
+```
+
 ---
 class: inverse, middle, center
 # Missing data
@@ -854,9 +862,250 @@ class: inverse, middle, center
 # Indexing vectors &amp; lists
 
 ---
+# Selecting vector elements by position
+
+.pull-left[
+
+```r
+name
+```
+
+```
+## [1] "Ann"   "Bob"   "Chloe" "Dan"
+```
+
+```r
+name[2]
+```
+
+```
+## [1] "Bob"
+```
+
+```r
+name[1:3]
+```
+
+```
+## [1] "Ann"   "Bob"   "Chloe"
+```
+
+```r
+name[c(2,2,1)]
+```
+
+```
+## [1] "Bob" "Bob" "Ann"
+```
+]
+.pull-right[
+![position](images/vector_elements_position.png)
+]
+
 ---
+# Selecting vector elements by value
+
+.pull-left[
+Selecting from vector `age`:
+
+```r
+age
+```
+
+```
+## [1] 35 22 50 51
+```
+
+```r
+age[age&gt;40]
+```
+
+```
+## [1] 50 51
+```
+
+```r
+age&gt;40
+```
+
+```
+## [1] FALSE FALSE  TRUE  TRUE
+```
+
+
+
+]
+.pull-right[
+Breaking down the selection:
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt;   age   &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt;   age &amp;gt; 40   &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt;   age[age &amp;gt; 40]   &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 35 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 50 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; TRUE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 50 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 51 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; TRUE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 51 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+]
+
+---
+# Selecting vector elements by value
+
+```r
+name
+```
+
+```
+## [1] "Ann"   "Bob"   "Chloe" "Dan"
+```
+
+```r
+name[name %in% c("Chloe","Ann","Evie")]
+```
+
+```
+## [1] "Ann"   "Chloe"
+```
+
+![value](images/vector_elements_value.png)
+---
+# Selecting from a list
+
+
+```r
+mylist
+```
+
+```
+## [[1]]
+## [1] "Ann"   "Bob"   "Chloe" "Dan"  
+## 
+## [[2]]
+## [1] 35 22 50 51
+```
+--
+
+.pull-left[
+Selecting a list element from `mylist`:
+
+
+```r
+mylist[1]
+```
+
+```
+## [[1]]
+## [1] "Ann"   "Bob"   "Chloe" "Dan"
+```
+
+Sub-selection in the list-element:
+
+
+```r
+mylist[1][2]
+```
+
+```
+## [[1]]
+## NULL
+```
+]
+--
+
+.pull-right[
+Selecting the content of a list element:
+
+
+```r
+mylist[[1]]
+```
+
+```
+## [1] "Ann"   "Bob"   "Chloe" "Dan"
+```
+
+Subselection in the content of a list element:
+
+
+```r
+mylist[[1]][2]
+```
+
+```
+## [1] "Bob"
+```
+]
+
 ---
 # Answers to exercise 5
+
+1. Return only the first number in your vector `age`.
+    
+    ```r
+    age[1]
+    ```
+    
+    ```
+    ## [1] 35
+    ```
+--
+
+1. Return the 2nd and 4th name in your vector `name`.
+    
+    ```r
+    name[c(2,4)]
+    ```
+    
+    ```
+    ## [1] "Bob" "Dan"
+    ```
+--
+
+1. Return only ages under 30 from your vector `age`.
+    
+    ```r
+    age[age&lt;30]
+    ```
+    
+    ```
+    ## [1] 22
+    ```
+--
+
+1. Return the name "Chloe" from your list `mylist`.
+    
+    ```r
+    mylist[[1]][name == "Chloe"]
+    ```
+    
+    ```
+    ## [1] "Chloe"
+    ```
+
 ---
 class: inverse, middle, center
 # Indexing a data frame
