@@ -39,10 +39,10 @@ options(htmltools.dir.version = FALSE)
 --
 
 #### What we will do:
-- Answer your question either in writing or in the presentation, right there, right then.
-- Invite you to an individual helper channel, where someone can assist you.
+- *During presentations*: Answer your question right there, right then.
+- *During exercises*: Invite you to a Teams channel, where someone can assist you.
 
-#### Also: indicate your progress on the status chart, so we can keep track!
+#### Please indicate your progress on the status chart, so we can keep track!
 
 ---
 # Course materials
@@ -698,15 +698,160 @@ class: inverse, middle, center
 # Indexing a data frame
 
 ---
+# Indexing a data frame
+.pull-left[
+![matrix](images/matrix_subsetting.png)
+]
+.pull-right[
+<br />
+<br />
+Keep this data frame in mind:
+```{r, echo=F}
+knitr::kable(df, format="html")
+```
+
+
+]
+
 ---
+# Indexing columns
+
+By position:
+```{r}
+df[,2]
+```
+
+--
+
+By name (as a character string):
+```{r}
+df[,"age"]
+```
+
+--
+
+By name (as an object):
+```{r}
+df$age
+```
+
 ---
+# Indexing rows
+
+By position:
+```{r}
+df[2,]
+```
+
+--
+
+By content:
+```{r}
+df[df$name=="Bob",]
+```
+
+--
+
+#### Combining rows and columns
+```{r}
+df[df$name=="Bob","age"]
+```
+
 ---
 # Answers to exercise 6
+
+1. Return the entries for everyone living in a country of your choice.
+    ```{r}
+    df[df$country=="UK",]
+    ```
+--
+
+2. Return only the names of everyone in your data frame df under 40.
+    ```{r}
+    df[df$age<40, "name"]
+    ```
+--
+
+3. Return the columns `name` and `age` together.
+    ```{r}
+    df[,c("name","age")]
+    ```
+
 ---
 class: inverse, middle, center
 # Recap "Basics of R"
 ---
+# Which bracket does what?
+
+.left-column[
+<br />
+## &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;`[ ]`
+&nbsp; 
+
+## &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;`(  )`
+&nbsp; 
+
+## &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;`{  }`
+&nbsp;
+
+]
+.right-column[
+&nbsp;
+### Indexing vectors, lists, dataframes… 
+&nbsp;
+
+### Passing arguments to functions
+&nbsp;
+
+### Defining content of loops, functions, etc.
+&nbsp;
+
+]
+
 ---
+# You can speak R!
+
+#### What data types have you encountered so far?  
+`logical`  
+`numeric`  
+`character`
+
+#### How can data be absent?  
+`NA` (not available)  
+`NULL` (non-existent)
+
+#### What data structures have you encountered?
+`vector` (one dimension)  
+`factor` (one dimension, level-based)  
+`data frame` (two dimensions)  
+`list` (++ dimensions)  
+
+---
+# (Un)known functions
+
+What functions have you encountered so far?
+
+`c()`  
+`factor()`  
+`data.frame()`  
+`is.na()`  
+`mean()`  
+`...`
+
+And do you still know what they mean? And how to use them? No?
+
+Type in your console:  
+`?mean`
+
+(or use the Help window to the right of your console).
+---
+# Help!
+
+![help](images/help1.png)
+
+---
+# Help? Scroll down for examples!
+![help](images/help2.png)
 ---
 
 class: inverse, middle, center

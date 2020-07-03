@@ -45,10 +45,10 @@ class: center, middle, inverse, title-slide
 --
 
 #### What we will do:
-- Answer your question either in writing or in the presentation, right there, right then.
-- Invite you to an individual helper channel, where someone can assist you.
+- *During presentations*: Answer your question right there, right then.
+- *During exercises*: Invite you to a Teams channel, where someone can assist you.
 
-#### Also: indicate your progress on the status chart, so we can keep track!
+#### Please indicate your progress on the status chart, so we can keep track!
 
 ---
 # Course materials
@@ -1111,15 +1111,246 @@ class: inverse, middle, center
 # Indexing a data frame
 
 ---
+# Indexing a data frame
+.pull-left[
+![matrix](images/matrix_subsetting.png)
+]
+.pull-right[
+&lt;br /&gt;
+&lt;br /&gt;
+Keep this data frame in mind:
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; name &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; age &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; country &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; pet &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ann &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 35 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; UK &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; cat &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bob &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; US &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; none &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Chloe &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 50 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; US &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; fish &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Dan &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 51 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; UK &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+]
+
 ---
+# Indexing columns
+
+By position:
+
+```r
+df[,2]
+```
+
+```
+## [1] 35 22 50 51
+```
+
+--
+
+By name (as a character string):
+
+```r
+df[,"age"]
+```
+
+```
+## [1] 35 22 50 51
+```
+
+--
+
+By name (as an object):
+
+```r
+df$age
+```
+
+```
+## [1] 35 22 50 51
+```
+
 ---
+# Indexing rows
+
+By position:
+
+```r
+df[2,]
+```
+
+```
+##   name age country  pet
+## 2  Bob  22      US none
+```
+
+--
+
+By content:
+
+```r
+df[df$name=="Bob",]
+```
+
+```
+##   name age country  pet
+## 2  Bob  22      US none
+```
+
+--
+
+#### Combining rows and columns
+
+```r
+df[df$name=="Bob","age"]
+```
+
+```
+## [1] 22
+```
+
 ---
 # Answers to exercise 6
+
+1. Return the entries for everyone living in a country of your choice.
+    
+    ```r
+    df[df$country=="UK",]
+    ```
+    
+    ```
+    ##   name age country  pet
+    ## 1  Ann  35      UK  cat
+    ## 4  Dan  51      UK &lt;NA&gt;
+    ```
+--
+
+2. Return only the names of everyone in your data frame df under 40.
+    
+    ```r
+    df[df$age&lt;40, "name"]
+    ```
+    
+    ```
+    ## [1] "Ann" "Bob"
+    ```
+--
+
+3. Return the columns `name` and `age` together.
+    
+    ```r
+    df[,c("name","age")]
+    ```
+    
+    ```
+    ##    name age
+    ## 1   Ann  35
+    ## 2   Bob  22
+    ## 3 Chloe  50
+    ## 4   Dan  51
+    ```
+
 ---
 class: inverse, middle, center
 # Recap "Basics of R"
 ---
+# Which bracket does what?
+
+.left-column[
+&lt;br /&gt;
+## &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;`[ ]`
+&amp;nbsp; 
+
+## &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;`(  )`
+&amp;nbsp; 
+
+## &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;`{  }`
+&amp;nbsp;
+
+]
+.right-column[
+&amp;nbsp;
+### Indexing vectors, lists, dataframes… 
+&amp;nbsp;
+
+### Passing arguments to functions
+&amp;nbsp;
+
+### Defining content of loops, functions, etc.
+&amp;nbsp;
+
+]
+
 ---
+# You can speak R!
+
+#### What data types have you encountered so far?  
+`logical`  
+`numeric`  
+`character`
+
+#### How can data be absent?  
+`NA` (not available)  
+`NULL` (non-existent)
+
+#### What data structures have you encountered?
+`vector` (one dimension)  
+`factor` (one dimension, level-based)  
+`data frame` (two dimensions)  
+`list` (++ dimensions)  
+
+---
+# (Un)known functions
+
+What functions have you encountered so far?
+
+`c()`  
+`factor()`  
+`data.frame()`  
+`is.na()`  
+`mean()`  
+`...`
+
+And do you still know what they mean? And how to use them? No?
+
+Type in your console:  
+`?mean`
+
+(or use the Help window to the right of your console).
+---
+# Help!
+
+![help](images/help1.png)
+
+---
+# Help? Scroll down for examples!
+![help](images/help2.png)
 ---
 
 class: inverse, middle, center

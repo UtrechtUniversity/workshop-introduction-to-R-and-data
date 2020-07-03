@@ -99,9 +99,7 @@ is.na(NA)
 ```
 
 
-
-
-### Exercise 7: selecting from dataframe
+### Exercise 6: selecting from dataframe
 
 Before you start, please run this code:
 ```{r}
@@ -113,100 +111,10 @@ rm(name,age,country)
 2. Return only the names of everyone in your data frame df under 40. 
    (Hint: what information should you use for row indexing? 
 	 What information should you use for column indexing?)
+	 
+3. Return the columns name and age together.
 	
-3. Bonus: can you use vector indexing on a column to achieve the same result?
-	
 ```{r}
 
 ```
 
-
-### Exercise 8: iris
-
-Explore the iris dataframe, using some of the following functions: 
-
-head()
-tail()
-names()
-summary()
-dim()
-str()
-
-Can you figure out what these functions do? What do they teach you about the kind of data in iris?
-
-```{r}
-
-```
-
-
-### Exercise 9: function
-
-1. Write a function that takes a vector as input, and returns the mean of this vector (you can use the existing function mean() inside your function).
-
-```{r}
-apply_calc <- function(...){
-    ...
-    return(...)
-}
-```
-
-2. Add further options to your function: 
-   a. for example, the standard deviation (sd()), the minimum (min()), and the maximum (max()) of your input vector. 
-   b. Put all of these calculations in a vector using the function c(), and return this result vector.
-
-
-```{r}
-apply_calc <- function(...){
-    ...
-     
-     
-     
-    allres <- c(...)
-    return(...)
-}
-
-```
-
-
-### Exercise 10: for loop
-
-1. Make a vector with all the column names in iris. 
-   Hint: use the function colnames().
-
-```{r}
-iriscols <- 
-```
-
-2. Make a for-loop that iterates over all the column names in iris, and prints these column names.
-
-```{r}
-for(...){
-    ...
-}
-```
-
-3. Elaborate on this for-loop: select the corresponding column in iris, and print the mean. Hint: yes, you should get a warning! Do you understand why?
-
-```{r}
-for(...){
-    ...
-    
-     
-}
-```
-
-
-
-### Exercise 11: if statement
-
-Copy-paste the for-loop you made in the previous exercise. Inside this for-loop, add an if-statement, so that mean() is only performed on numeric vectors. Hint: check the function is.numeric().
-
-```{r}
-for(i in iriscols){
-    column <- iris[,i]
-		...
-         
-         
-     
-}
-```
