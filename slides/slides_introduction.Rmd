@@ -9,6 +9,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+      slideNumberFormat: ""
 ---
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
