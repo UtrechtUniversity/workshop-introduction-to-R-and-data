@@ -8,20 +8,31 @@
 }
 
 
-.title-slide > h1, .title-slide > h2, .title-slide > h3 {
+.title-slide > h2, .title-slide > h3 {
   color: #303030;
 }
 
-.inverse {
+.inverse, .subheader {
   background-color: #ffffff;
   color: #FFAB00;
   text-shadow: 0 1px 1px #333;
   border-top: 0;
 }
 
-.inverse > h1 {
+.subheader > h1 {
   color: #FFAB00; 
 }
+
+.subheader > h2, .subheader > h3 {
+  color: #a0a0a0;
+}
+
+/*.subheader {
+  background-color: #ffffff;
+  color: #FFAB00;
+  text-shadow: 0 1px 1px #333;
+  border-top: 0;
+}*/
 
 .exercise {
   border-top: 80px solid #aaaaaa;
@@ -37,12 +48,12 @@ a, a > code {
 }
 
 
-.title-slide {
-  /*background-image: url(slides_version-control_files/figure-html/git.svg);*/
+/*.title-slide {
+  background-image: url(slides_version-control_files/figure-html/git.svg);
   background-color: #FFFFFF;
   background-size: cover;
   border-top: 0;
-}
+}*/
 
 /* IMAGES */
 img[alt=clone-download] {height: 50px; margin: -17px 5px;}

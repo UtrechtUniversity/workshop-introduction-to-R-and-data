@@ -87,7 +87,7 @@ options(htmltools.dir.version = FALSE)
 
 - Take a computer break when we take a break: a timer will show when we return!
 ---
-class: inverse, middle, center
+class: subheader, middle, center
 # Introduction to R & Data
 
 ### Part 1: Basics of R
@@ -157,7 +157,7 @@ _Before you start: make sure you have downloaded the [course materials](https://
 
 
 ---
-class: inverse, middle, center
+class: subheader, middle, center
 # R syntax & data types
 
 ---
@@ -266,7 +266,7 @@ x != 10
 
 
 ---
-class: inverse, middle, center
+class: subheader, middle, center
 # Vectors in R
 
 ---
@@ -369,7 +369,7 @@ p * q
     ```
 
 ---
-class: inverse, middle, center
+class: subheader, middle, center
 # Data structures
 
 ---
@@ -490,7 +490,7 @@ mylist <- list(name,age)
 ```
 
 ---
-class: inverse, middle, center
+class: subheader, middle, center
 # Missing data
 
 ---
@@ -574,7 +574,7 @@ df$job
 | `none` or `0` | Data entry specifying content of 0 |
 
 ---
-class: inverse, middle, center
+class: subheader, middle, center
 # Indexing vectors & lists
 
 ---
@@ -695,7 +695,7 @@ mylist[[1]][2]
     ```
 
 ---
-class: inverse, middle, center
+class: subheader, middle, center
 # Indexing a data frame
 
 ---
@@ -779,7 +779,7 @@ df[df$name=="Bob","age"]
     ```
 
 ---
-class: inverse, middle, center
+class: subheader, middle, center
 # Recap "Basics of R"
 ---
 # Which bracket does what?
@@ -855,7 +855,7 @@ Type in your console:
 ![help](images/help2.png)
 ---
 
-class: inverse, middle, center
+class: subheader, middle, center
 # Programming: if-statements
 
 ---
@@ -863,7 +863,7 @@ class: inverse, middle, center
 ---
 # Answers to exercise 7
 ---
-class: inverse, middle, center
+class: subheader, middle, center
 # Programming: functions
 
 ---
@@ -871,7 +871,7 @@ class: inverse, middle, center
 ---
 # Answers to exercise 8
 ---
-class: inverse, middle, center
+class: subheader, middle, center
 # Programming: loops
 
 ---
@@ -879,7 +879,7 @@ class: inverse, middle, center
 ---
 # Answers to exercise 9
 ---
-class: inverse, middle, center
+class: subheader, middle, center
 # Recap Programming
 
 ---
