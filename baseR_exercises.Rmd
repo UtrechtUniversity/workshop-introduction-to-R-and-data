@@ -41,7 +41,7 @@ apple <- "apple"
 Meet Ann, Bob, Chloe, and Dan.
 1. Make a character vector with their names, using the function c(). Save the vector as "name".
 
-2. How old are Ann, Bob, Chloe, and Dan? Design a numeric vector with their respective ages. Save it as "age".
+2. How old are Ann, Bob, Chloe, and Dan? You decide! Design a numeric vector with their respective ages. Save it as "age".
 
 3. What is their average age? Use a function in R to calculate this. Tip: use the Maths Functions section of the Base R cheat sheet!
 
