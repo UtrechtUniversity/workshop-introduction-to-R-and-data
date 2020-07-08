@@ -57,8 +57,17 @@ Move it to an accessible place on your system, and unzip.
 
 | Subject | Slides | Video | Exercise | Answer slide | Answer video |
 |:---|:---|:---|:---|:---|:---|
-| Introduction | [Slides](slides/slides_introduction.html#12) | Video | - | - | Answer video |
-| R Syntax & data types | [Slides](slides/slides_introduction.html#18) | Video | Exercise 1 | [Answer slide](slides/slides_introduction.html#24) | Answer video |
+| Introduction | [Slides](slides/slides_introduction.html#12) | Video | - | - | - |
+| R Syntax & data types | [Slides](slides/slides_introduction.html#18) | Video | Exercise 1 | [Answer slide](slides/slides_introduction.html#27) | Answer video |
+| Vectors in R | [Slides](slides/slides_introduction.html#28) | Video | Exercise 2 | [Answer slide](slides/slides_introduction.html#40) | Answer video |
+| Data structures | [Slides](slides/slides_introduction.html#41) | Video | Exercise 3 | [Answer slide](slides/slides_introduction.html#50) | Answer video |
+| Missing data | [Slides](slides/slides_introduction.html#53) | Video | Exercise 4 | [Answer slide](slides/slides_introduction.html#63) | Answer video |
+| Indexing vectors & lists | [Slides](slides/slides_introduction.html#66) | Video | Exercise 5 | [Answer slide](slides/slides_introduction.html#79) | Answer video |
+| Indexing a data frame | [Slides](slides/slides_introduction.html#80) | Video | Exercise 6 | [Answer slide](slides/slides_introduction.html#91) | Answer video |
+| Recap | [Slides](slides/slides_introduction.html#92) | - | - | - | - |
+| Programming: if statements | [Slides](slides/slides_introduction.html#98) | Video | Exercise 7 | [Answer slide](slides/slides_introduction.html#104) | Answer video |
+| Programming: functions | [Slides](slides/slides_introduction.html#105) | Video | Exercise 8 | [Answer slide](slides/slides_introduction.html#117) | Answer video |
+| Programming: loops | [Slides](slides/slides_introduction.html#118) | Video | Exercise 9 | [Answer slide](slides/slides_introduction.html#123) | Answer video |
 
 ### Exercises
 - Exercises part I: Basic R [BaseR_exercises.R](BaseR_exercises.R)
