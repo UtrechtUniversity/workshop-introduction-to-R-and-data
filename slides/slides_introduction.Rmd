@@ -598,6 +598,9 @@ name[1:3]
 name[c(2,2,1)]
 ```
 ]
+
+--
+
 .pull-right[
 ![position](images/vector_elements_position.png)
 ]
@@ -615,9 +618,8 @@ age[age>40]
 age>40
 ```
 
-
-
 ]
+--
 .pull-right[
 Breaking down the selection:
 ```{r, echo=F}
@@ -1046,7 +1048,7 @@ class: subheader, middle, center
 
 ![forloop](images/forloop.png)
 ---
-# A for loop in R
+# A for-loop in R
 
 - A loop starts with the iterable object (in this case the vector `1:6`), and the temporary name for each item (in this case `i`):
   ```r
@@ -1074,12 +1076,3 @@ for(i in 1:10){
   print(test)
 }
 ```
-
----
-class: subheader, middle, center
-# Recap Programming
-
----
----
----
----
