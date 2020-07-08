@@ -118,3 +118,43 @@ rm(name,age,country)
 
 ```
 
+### Exercise 7: if statement
+
+Make an if statement that tests if a number is even, and saves the classification in a variable called number_class.
+
+Hint: you can use the [modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) to perform this test. This finds the remainder of a division. In R this operator is %%.
+If the division is complete, e.g. 4/2 = 2, then the remainder, found with 4%%2, is 0.
+
+```{r}
+number <- 8
+
+if(){
+  
+}
+
+print(number_class)
+```
+
+### Exercise 8: function
+
+Turn the if statement from the last exercise into a function. Let the user provide the value for number, and return the number_class.
+
+```{r}
+
+even_or_odd <- function(){
+  
+}
+
+```
+
+### Exercise 9: for-loop
+
+Go over the numbers 1-10, and for each number: test if the number is even or odd, using the function you made in the last exercise. Print the results using the function print().
+
+```{r}
+for( in ){
+  
+}
+
+```
+
