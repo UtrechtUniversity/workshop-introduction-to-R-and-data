@@ -26,12 +26,13 @@ We are always available for 1:1 support during these times, and reconvene in the
 |---:|:---|
 | 9:00 | Walk-in, tech support |
 | 9:30 | Introductions |
-| 10:00 | _Basics of R, R syntax; exercises 1-6_ |
-| 11:45 | Recap of Basics of R, introduction to Programming |
-| 12:00 | _Programming; exercises 7-9_ |
-| 12:00 | _Lunch break_ |
-| 14:30 | Data architecture & introduction to Tidyverse |
-| 15:00 | _Reading data with readr_ |
+| 10:00 | _Exercises 1-6_ |
+| 11:25 | Recap & Questions |
+| 11:30 | Coffee break |
+| 11:45 | _Exercises 7-9_ |
+| 12:30 | Lunch break |
+| 13:30 | Data architecture & introduction to Tidyverse |
+| 14:00 | _Reading data with readr_ |
 | 15:00 | Data transformations and manipulations |
 | 15:15 | _Transforming data with dplyr and tidyr_ |
 | 16:00 | Data visualization |
