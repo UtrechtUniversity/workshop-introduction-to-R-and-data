@@ -43,7 +43,7 @@ Download a zipped file of the workshop material with [this link](https://github.
 Move it to an accessible place on your system, and unzip.
 
 ### Slides
-- [Introduction to R]()
+- [Introduction to R](https://utrechtuniversity.github.io/workshop-introduction-to-R-and-data/slides/slides_introduction.html)
 - [Data science with Tidyverse]()
 
 ### Exercises
