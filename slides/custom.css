@@ -67,6 +67,8 @@ img[alt=cheatsheet-math] {width: 360px; margin: -30px 10px;}
 img[alt=assignment-math] {height: 200px; margin: -5px 40px;}
 img[alt=value] {width: 400px;}
 img[alt=matrix] {width: 400px;}
+img[alt=function] {width: 350px; margin: 0 200px;}
+img[alt=environment] {width: 500px; margin: 0 110px;}
 
 .large-left-column {
   color: #000;
