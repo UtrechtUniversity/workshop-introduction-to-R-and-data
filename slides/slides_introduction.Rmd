@@ -237,6 +237,9 @@ For example:
 x == 6
 x != 10
 ```
+---
+class: subheader, middle, center
+# Go to exercise 1 in baseR_exercises.Rmd
 
 ---
 # Answers to exercise 1
@@ -347,6 +350,9 @@ p * q
 | 5 | 1 | 5 |
 ]
 
+---
+class: subheader, middle, center
+# Go to exercise 2
 
 ---
 # Answers to exercise 2
@@ -451,6 +457,10 @@ summary(df)
 ]
 
 ---
+class: subheader, middle, center
+# Go to exercise 3
+
+---
 # Answers to exercise 3
 
 1. Create a vector `country` containing four countries (use at least one duplicate!).
@@ -523,7 +533,7 @@ Notice that:
 - we do not know if Dan has pets
 ]
 ---
-# Predict the answer
+# Predict the answer (see Exercise 4)
 
 ```r
 5 == 5
@@ -667,6 +677,9 @@ Subselection in the content of a list element:
 mylist[[1]][2]
 ```
 ]
+---
+class: subheader, middle, center
+# Go to exercise 5
 
 ---
 # Answers to exercise 5
@@ -757,6 +770,9 @@ df[df$name=="Bob",]
 ```{r}
 df[df$name=="Bob","age"]
 ```
+---
+class: subheader, middle, center
+# Go to exercise 6
 
 ---
 # Answers to exercise 6
@@ -856,7 +872,7 @@ Type in your console:
 ---
 
 class: subheader, middle, center
-# Programming: if-statements
+# Programming: if statements
 
 ---
 # If statement: a conditional
@@ -870,59 +886,195 @@ class: subheader, middle, center
 ![](images/ifstatement.png)
 
 ---
-# If statement: example
+# If statement in R
 
-- We assign a value to `m`:
-
+- First, let's assign a value to `number`:
   ```{r}
-  m <- 14
+  number <- 14
   ```
-
-- In our if-statement, we:
-  - test whether `m` is larger than 10 (the _condition_)
+--
+- Here is the **if-statement**:
+  - We test whether `m` is larger than 10 (the _condition_)
   - if true: we assign "over 10" to the variable `number_class` (our _instruction A_)
   - if false: we say that `number_class` is "10 or smaller" (our _instruction B_)
-
   ```{r}
-  if(m > 10){
+  if(number > 10){
     number_class <- "over 10"
   } else{
     number_class <- "10 or smaller"
   }
   ```
-
-- Then we look at what `number class` is:
+--
+- Now, let's look at `number class`:
   ```{r}
   print(number_class)
   ```
+---
+class: subheader, middle, center
+# Go to exercise 7
 
 ---
 # Answers to exercise 7
-i <- 4
 
-if(i%%2 == 0){
+Make an if statement that tests if a number is even, and saves the classification in a variable called `number_class`.
+
+```{r}
+number <- 8
+
+if(number%%2 == 0){
   number_class <- "even"
 } else{
   number_class <- "odd"
 }
 
 print(number_class)
+```
+
 ---
 class: subheader, middle, center
 # Programming: functions
 
 ---
+# Functions: a sequence
+
+#### Functions consist of (multiple) instruction(s) that form a cohesive unit:
+![function](images/function.png)
+--
+
+#### A function can be repeated on different inputs:
+```{r}
+mean(df$age)
+mean(1:100)
+```
+
 ---
+# Functions
+
+#### Functions can also be used to make a complex line of code easier to write/read:
+
+You write the function once:
+```{r}
+find_bobs_age <- function(data){
+  bobs_age <- data[data$name == "Bob", "age"]
+  return(bobs_age)
+}
+```
+
+Now, every time you want to find Bob's age you use:
+```{r}
+find_bobs_age(df)
+```
+
+--
+
+#### Functions are the bread and butter of programming!
+
+A good script will consist mostly of functions, with a minimal amount of code that applies the functions.
+
+---
+# Functions in R
+
+- To make a function, use the function `function()`:
+  ```r
+  myFun <- function()
+  ```
+--
+- You assign names to the user's input in the function's arguments:
+  ```r
+  myFun <- function(arg1, arg2)
+  ```
+--
+- The sequence of operations is in the body of the function (between `{ }`):
+  ```{r}
+  myFun <- function(arg1, arg2){
+    multiplication <- arg1 * arg2 #<<
+  }
+  ```
+--
+- The output of the function is placed in a `return` statement:
+  ```{r}
+  myFun <- function(arg1, arg2){
+    multiplication <- arg1 * arg2
+    return(multiplication) #<<
+  }
+  ```
+---
+# Using your own function
+
+First, run the code with the function itself. It will appear in your environment:
+
+![environment](images/function_environment.png)
+
+--
+
+Now, you can use the function:
+```{r}
+myFun(3,4)
+myFun(90,71)
+```
+
+---
+class: subheader, middle, center
+# Go to exercise 8
+
 ---
 # Answers to exercise 8
+
+Turn the if-statement from the last exercise into a function. Let the user provide the value for `number`, and return the `number_class`.
+
+```{r}
+even_or_odd <- function(number){
+  if(number%%2 == 0){
+    number_class <- "even"
+  } else{
+    number_class <- "odd"
+  }
+  return(number_class)
+}
+```
+
 ---
 class: subheader, middle, center
 # Programming: loops
 
 ---
+# A for-loop
+
+- Instruction(s) that need(s) to be applied multiple times
+
+- Input is an iterable object (i.e.: it consists of multiple similar elements)
+
+![forloop](images/forloop.png)
 ---
+# A for loop in R
+
+- A loop starts with the iterable object (in this case the vector `1:6`), and the temporary name for each item (in this case `i`):
+  ```r
+  for(i in 1:6)
+  ```
+--
+- Within the now familiar brackets (`{ }`) you place the instructions:
+  ```{r}
+  for(i in 1:6){
+    print(i) #<<
+  }
+  ```
+---
+class: subheader, middle, center
+# Go to exercise 9
+
 ---
 # Answers to exercise 9
+
+Go over the numbers 1-10, and for each number: test if the number is even or odd, using the function you made in the last exercise. Print the results using the function `print()`.
+
+```{r}
+for(i in 1:10){
+  test <- even_or_odd(i)
+  print(test)
+}
+```
+
 ---
 class: subheader, middle, center
 # Recap Programming
