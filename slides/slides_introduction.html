@@ -1357,9 +1357,61 @@ class: subheader, middle, center
 # Programming: if-statements
 
 ---
+# If statement: a conditional
+
+- A test/condition: is this statement true or false?
+
+- If the statement is true: do A
+
+- If the statement is false: do B (this is optional!)
+
+![](images/ifstatement.png)
+
 ---
+# If statement: example
+
+- We assign a value to `m`:
+
+  
+  ```r
+  m &lt;- 14
+  ```
+
+- In our if-statement, we:
+  - test whether `m` is larger than 10 (the _condition_)
+  - if true: we assign "over 10" to the variable `number_class` (our _instruction A_)
+  - if false: we say that `number_class` is "10 or smaller" (our _instruction B_)
+
+  
+  ```r
+  if(m &gt; 10){
+    number_class &lt;- "over 10"
+  } else{
+    number_class &lt;- "10 or smaller"
+  }
+  ```
+
+- Then we look at what `number class` is:
+  
+  ```r
+  print(number_class)
+  ```
+  
+  ```
+  ## [1] "over 10"
+  ```
+
 ---
 # Answers to exercise 7
+i &lt;- 4
+
+if(i%%2 == 0){
+  number_class &lt;- "even"
+} else{
+  number_class &lt;- "odd"
+}
+
+print(number_class)
 ---
 class: subheader, middle, center
 # Programming: functions
