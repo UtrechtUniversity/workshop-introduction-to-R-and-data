@@ -20,13 +20,15 @@ apple <- "apple"
 ```
 
 
-### Exercise 1
+### Exercise 1: R syntax & data types
 
-1. Do the following calculation in R: (1+5)/9
+1. Do the following calculation in R: one plus five, divided by nine.
 
 2. Assign the result of the calculation to a variable.
 
-3. Bonus: Round off the result to 1 decimal. Tip: Use the Maths Functions section of your cheat sheet!
+3. Test if the result of your calculation is larger than 1.
+
+4. Round off the result to 1 decimal. Tip: use the Maths Functions section of the Base R cheat sheet!
 
 ```{r}
 
@@ -37,11 +39,11 @@ apple <- "apple"
 ### Exercise 2: create vectors
 
 Meet Ann, Bob, Chloe, and Dan.
-1. Make a character vector with their names, using the function c(). Save the vector as name.
+1. Make a character vector with their names, using the function c(). Save the vector as "name".
 
-2. How old are Ann, Bob, Chloe, and Dan? Design a numeric vector with their respective ages. Save it as age.
+2. How old are Ann, Bob, Chloe, and Dan? You decide! Design a numeric vector with their respective ages. Save it as "age".
 
-3. Bonus: What is their average age? Use a function in R to calculate this.
+3. What is their average age? Use a function in R to calculate this. Tip: use the Maths Functions section of the Base R cheat sheet!
 
 ```{r}
 
@@ -55,9 +57,14 @@ Meet Ann, Bob, Chloe, and Dan.
 
 2. Create a data frame combining name, age, and country, and save it as df.
 
-3. Bonus: create a list combining name, age, and country.
+3. Check your dataframe with the function summary(). Does it contain a factor?
+
+4. Make sure your column country is a factor, and confirm this with summary().
+
+5. Create a list with your vectors name and age, and save it as mylist.
 
 ```{r}
+
 
 ```
 
@@ -67,15 +74,17 @@ Meet Ann, Bob, Chloe, and Dan.
 Predict the results before you run the code. Does the real answer make sense to you?
 
 ```{r}
-5 == 5
+5==5
 
-5 == NA
+5==NA
 
-NA == NA
+NA==NA
+
+is.na(NA)
+
 ```
 
-
-### Exercise 5: selecting vector elements
+### Exercise 5: selecting vector & list elements
 
 1. Return only the first number in your vector age.
 
@@ -83,27 +92,14 @@ NA == NA
 
 3. Return only ages under 30 from your vector age.
 
+4. Return the name "Chloe" from your list mylist (see exercise 3).
+
 ```{r}
 
 ```
 
 
-### Exercise 6: predict the answer
-
-Predict the results before you run the code. Does the real answer make sense to you?
-
-```{r}
-is.na(NA)
-
-is.null(NULL)
-
-is.null(NA)
-
-is.na(NULL)
-```
-
-
-### Exercise 7: selecting from dataframe
+### Exercise 6: selecting from dataframe
 
 Before you start, please run this code:
 ```{r}
@@ -115,100 +111,50 @@ rm(name,age,country)
 2. Return only the names of everyone in your data frame df under 40. 
    (Hint: what information should you use for row indexing? 
 	 What information should you use for column indexing?)
+	 
+3. Return the columns name and age together.
 	
-3. Bonus: can you use vector indexing on a column to achieve the same result?
-	
 ```{r}
 
 ```
 
+### Exercise 7: if statement
 
-### Exercise 8: iris
+Make an if statement that tests if a number is even, and saves the classification in a variable called number_class.
 
-Explore the iris dataframe, using some of the following functions: 
-
-head()
-tail()
-names()
-summary()
-dim()
-str()
-
-Can you figure out what these functions do? What do they teach you about the kind of data in iris?
+Hint: you can use the [modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) to perform this test. This finds the remainder of a division. In R this operator is %%.
+If the division is complete, e.g. 4/2 = 2, then the remainder, found with 4%%2, is 0.
 
 ```{r}
+number <- 8
 
-```
-
-
-### Exercise 9: function
-
-1. Write a function that takes a vector as input, and returns the mean of this vector (you can use the existing function mean() inside your function).
-
-```{r}
-apply_calc <- function(...){
-    ...
-    return(...)
+if(){
+  
 }
+
+print(number_class)
 ```
 
-2. Add further options to your function: 
-   a. for example, the standard deviation (sd()), the minimum (min()), and the maximum (max()) of your input vector. 
-   b. Put all of these calculations in a vector using the function c(), and return this result vector.
+### Exercise 8: function
 
+Turn the if statement from the last exercise into a function. Let the user provide the value for number, and return the number_class.
 
 ```{r}
-apply_calc <- function(...){
-    ...
-     
-     
-     
-    allres <- c(...)
-    return(...)
+
+even_or_odd <- function(){
+  
 }
 
 ```
 
+### Exercise 9: for-loop
 
-### Exercise 10: for loop
-
-1. Make a vector with all the column names in iris. 
-   Hint: use the function colnames().
+Go over the numbers 1-10, and for each number: test if the number is even or odd, using the function you made in the last exercise. Print the results using the function print().
 
 ```{r}
-iriscols <- 
-```
-
-2. Make a for-loop that iterates over all the column names in iris, and prints these column names.
-
-```{r}
-for(...){
-    ...
+for( in ){
+  
 }
+
 ```
 
-3. Elaborate on this for-loop: select the corresponding column in iris, and print the mean. Hint: yes, you should get a warning! Do you understand why?
-
-```{r}
-for(...){
-    ...
-    
-     
-}
-```
-
-
-
-### Exercise 11: if statement
-
-Copy-paste the for-loop you made in the previous exercise. Inside this for-loop, add an if-statement, so that mean() is only performed on numeric vectors. Hint: check the function is.numeric().
-
-```{r}
-for(i in iriscols){
-    column <- iris[,i]
-		...
-         
-         
-     
-}
-```
