@@ -17,6 +17,14 @@ Moreover, this way you produce a human-readable document with which you can easi
 Check [uu.nl/rdm](https://www.uu.nl/en/research/research-data-management/training-workshops/introduction-to-r-data) for upcoming workshops.
 Registration is mandatory, and opens 2 months in advance of the course.
 
+## Installation requirements
+This course requires three things to be installed:
+- The language **R**
+- The IDE **Rstudio**
+- The packages in **tidyverse**
+
+Information on how to install these (and troubleshoot the installation) is on our [installation guide](installation.md).
+
 ## Schedule
 
 All activities in _cursive_ are done independently, using videos and exercises provided.
@@ -26,12 +34,13 @@ We are always available for 1:1 support during these times, and reconvene in the
 |---:|:---|
 | 9:00 | Walk-in, tech support |
 | 9:30 | Introductions |
-| 10:00 | _Basics of R, R syntax; exercises 1-6_ |
-| 11:45 | Recap of Basics of R, introduction to Programming |
-| 12:00 | _Programming; exercises 7-9_ |
-| 12:00 | _Lunch break_ |
-| 14:30 | Data architecture & introduction to Tidyverse |
-| 15:00 | _Reading data with readr_ |
+| 10:00 | _Exercises 1-6_ |
+| 11:25 | Recap & Questions |
+| 11:30 | Coffee break |
+| 11:45 | _Exercises 7-9_ |
+| 12:45 | Lunch break |
+| 13:30 | Data architecture & introduction to Tidyverse |
+| 14:00 | _Reading data with readr_ |
 | 15:00 | Data transformations and manipulations |
 | 15:15 | _Transforming data with dplyr and tidyr_ |
 | 16:00 | Data visualization |
@@ -39,12 +48,26 @@ We are always available for 1:1 support during these times, and reconvene in the
 | 17:00 | Final recap and closing |
 
 ## Material
-Download a zipped file of the workshop material with [this link](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/archive/master.zip).
+[Download a zipped file of the workshop material](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/archive/master.zip).
 Move it to an accessible place on your system, and unzip.
 
 ### Slides
-- [Introduction to R](https://utrechtuniversity.github.io/workshop-introduction-to-R-and-data/slides/slides_introduction.html)
-- [Data science with Tidyverse]()
+- [Introduction to R](slides/slides_introduction.html)
+- Data science with Tidyverse
+
+| Subject | Slides | Video | Exercise | Answer slide | Answer video |
+|:---|:---|:---|:---|:---|:---|
+| Introduction | [Slides](slides/slides_introduction.html#12) | Video | - | - | - |
+| R Syntax & data types | [Slides](slides/slides_introduction.html#18) | Video | Exercise 1 | [Answer slide](slides/slides_introduction.html#27) | Answer video |
+| Vectors in R | [Slides](slides/slides_introduction.html#28) | Video | Exercise 2 | [Answer slide](slides/slides_introduction.html#40) | Answer video |
+| Data structures | [Slides](slides/slides_introduction.html#41) | Video | Exercise 3 | [Answer slide](slides/slides_introduction.html#50) | Answer video |
+| Missing data | [Slides](slides/slides_introduction.html#53) | Video | Exercise 4 | [Answer slide](slides/slides_introduction.html#63) | Answer video |
+| Indexing vectors & lists | [Slides](slides/slides_introduction.html#66) | Video | Exercise 5 | [Answer slide](slides/slides_introduction.html#79) | Answer video |
+| Indexing a data frame | [Slides](slides/slides_introduction.html#80) | Video | Exercise 6 | [Answer slide](slides/slides_introduction.html#91) | Answer video |
+| Recap | [Slides](slides/slides_introduction.html#92) | - | - | - | - |
+| Programming: if statements | [Slides](slides/slides_introduction.html#98) | Video | Exercise 7 | [Answer slide](slides/slides_introduction.html#104) | Answer video |
+| Programming: functions | [Slides](slides/slides_introduction.html#105) | Video | Exercise 8 | [Answer slide](slides/slides_introduction.html#117) | Answer video |
+| Programming: loops | [Slides](slides/slides_introduction.html#118) | Video | Exercise 9 | [Answer slide](slides/slides_introduction.html#123) | Answer video |
 
 ### Exercises
 - Exercises part I: Basic R [BaseR_exercises.R](BaseR_exercises.R)
@@ -60,14 +83,6 @@ Move it to an accessible place on your system, and unzip.
     - [Data Visualization with ggplot2](https://www.rstudio.com/resources/cheatsheets/#ggplot2)
     - [Data Transformation with dplyr](https://www.rstudio.com/resources/cheatsheets/#dplyr)
 
-
-## Installation requirements
-This course requires three things to be installed:
-- The language **R**
-- The IDE **Rstudio**
-- The packages in **tidyverse**
-
-Information on how to install these (and troubleshoot the installation) is on our [installation guide](installation.md).
 
 ## Contact 
 The workshop 'Introduction to R & data' is developed and maintained by [Research Data Management Support](https://www.uu.nl/en/research/research-data-management) at Utrecht University.
