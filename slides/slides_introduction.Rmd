@@ -917,7 +917,7 @@ class: subheader, middle, center
   ```
 --
 - Here is the **if-statement**:
-  - We test whether `m` is larger than 10 (the _condition_)
+  - We test whether `number` is larger than 10 (the _condition_)
   - if true: we assign "over 10" to the variable `number_class` (our _instruction A_)
   - if false: we say that `number_class` is "10 or smaller" (our _instruction B_)
   ```{r}
