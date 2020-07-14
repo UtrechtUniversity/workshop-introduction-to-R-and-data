@@ -1,6 +1,6 @@
 # Workshop: Introduction to R & data
 
-This repository contains the documentation, exercises and datasets of the single day workshop 'Introduction to R & data' at [Utrecht University](https://www.uu.nl).
+This repository contains the documentation, exercises and datasets of the single day workshop ['Introduction to R & data'](https://www.uu.nl/en/research/research-data-management/training-workshops/introduction-to-r-data) at Utrecht University.
 The workshop is organised by [Research Data Management Support](https://www.uu.nl/en/research/research-data-management).
 
 ## Workshop description
@@ -55,6 +55,11 @@ Move it to an accessible place on your system, and unzip.
 - [Introduction to R](slides/slides_introduction.html)
 - Data science with Tidyverse
 
+### Exercises
+- Exercises part I: Introduction to R [BaseR_exercises.R](BaseR_exercises.R)
+- Exercises part II: Data science with Tidyverse
+
+### Videos
 | Subject | Slides | Video | Exercise | Answer slide | Answer video |
 |:---|:---|:---|:---|:---|:---|
 | Introduction | [Slides](slides/slides_introduction.html#12) | [Video](https://youtu.be/FFYSAUJ305o) | - | - | - |
@@ -69,11 +74,6 @@ Move it to an accessible place on your system, and unzip.
 | Programming: functions | [Slides](slides/slides_introduction.html#105) | [Video](https://youtu.be/P_qSXHyIUpQ) | Exercise 8 | [Answer slide](slides/slides_introduction.html#117) | [Answer video](https://youtu.be/EezEmFFbRow) |
 | Programming: loops | [Slides](slides/slides_introduction.html#118) | [Video](https://youtu.be/K4KSjizSJFk) | Exercise 9 | [Answer slide](slides/slides_introduction.html#123) | [Answer video](https://youtu.be/7iKKwP3aFuA) |
 
-### Exercises
-- Exercises part I: Basic R [BaseR_exercises.R](BaseR_exercises.R)
-- Exercises part II: Data Science with Tidyverse [modernR_exercises.Rmd](modernR_exercises.Rmd)
-- Solutions part II: Data Science with Tidyverse [modernR_solutions.Rmd](modernR_solutions.Rmd) [.pdf](modernR_solutions.pdf)
-
 ### External resources
 - Book: [R for Data Science](https://r4ds.had.co.nz/)
 - [R cheat sheets](https://www.rstudio.com/resources/cheatsheets/) provided by the R community and RStudio, describing common procedures and packages. We use the following cheat sheets during our workshop:
@@ -84,17 +84,7 @@ Move it to an accessible place on your system, and unzip.
     - [Data Transformation with dplyr](https://www.rstudio.com/resources/cheatsheets/#dplyr)
 
 
-## Contact 
-The workshop 'Introduction to R & data' is developed and maintained by [Research Data Management Support](https://www.uu.nl/en/research/research-data-management) at Utrecht University.
-
-Workshop organisation:
-- [Jacques Flores](mailto:j.p.flores@uu.nl)
-
-Instructors:
-- [Jacques Flores](https://www.uu.nl/medewerkers/jpflores)
-- [Bianca Kramer](https://www.uu.nl/medewerkers/bmrkramer)
-- [Barbara Vreede](https://www.uu.nl/medewerkers/bmivreede)
-- [Felix Weijdema](https://www.uu.nl/medewerkers/fpweijdema)
-
 ## Acknowledgements
-All videos were recorded by [Jacques Flores](https://www.uu.nl/medewerkers/jpflores). The material was written by [Barbara Vreede](https://github.com/bvreede), based on work by [Tessa Pronk](https://github.com/TessaPr) and [Jonathan de Bruin](https://github.com/J535D165).
+The workshop 'Introduction to R & data' is developed and maintained by [Research Data Management Support](https://www.uu.nl/en/research/research-data-management) at Utrecht University.
+All videos were recorded by [Jacques Flores](https://www.uu.nl/medewerkers/jpflores).
+The material was written by [Barbara Vreede](https://github.com/bvreede), based on work by [Jonathan de Bruin](https://github.com/J535D165) and [Tessa Pronk](https://github.com/TessaPr).
