@@ -61,6 +61,9 @@ Move it to an accessible place on your system, and unzip.
 
 ### Videos
 
+The morning session (Introduction to R) has been recorded for self-study.
+Links to the videos and corresponding slides are below.
+
 | Subject | Slides | Video | Exercise | Answer slide | Answer video |
 |:--------|:-------|:------|:---------|:-------------|:-------------|
 | Introduction to Rstudio | [Slides](slides/slides_introduction.html#12) | [Video](https://youtu.be/FFYSAUJ305o) | - | - | - |
