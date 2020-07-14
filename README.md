@@ -57,17 +57,17 @@ Move it to an accessible place on your system, and unzip.
 
 | Subject | Slides | Video | Exercise | Answer slide | Answer video |
 |:---|:---|:---|:---|:---|:---|
-| Introduction | [Slides](slides/slides_introduction.html#12) | Video | - | - | - |
-| R Syntax & data types | [Slides](slides/slides_introduction.html#18) | Video | Exercise 1 | [Answer slide](slides/slides_introduction.html#27) | Answer video |
-| Vectors in R | [Slides](slides/slides_introduction.html#28) | Video | Exercise 2 | [Answer slide](slides/slides_introduction.html#40) | Answer video |
-| Data structures | [Slides](slides/slides_introduction.html#41) | Video | Exercise 3 | [Answer slide](slides/slides_introduction.html#50) | Answer video |
-| Missing data | [Slides](slides/slides_introduction.html#53) | Video | Exercise 4 | [Answer slide](slides/slides_introduction.html#63) | Answer video |
-| Indexing vectors & lists | [Slides](slides/slides_introduction.html#66) | Video | Exercise 5 | [Answer slide](slides/slides_introduction.html#79) | Answer video |
-| Indexing a data frame | [Slides](slides/slides_introduction.html#80) | Video | Exercise 6 | [Answer slide](slides/slides_introduction.html#91) | Answer video |
+| Introduction | [Slides](slides/slides_introduction.html#12) | [Video](https://youtu.be/FFYSAUJ305o) | - | - | - |
+| R Syntax & data types | [Slides](slides/slides_introduction.html#18) | [Video](https://youtu.be/S8zTmEvpYYk) | Exercise 1 | [Answer slide](slides/slides_introduction.html#27) | [Answer video](https://youtu.be/V8za6GR7u8Q) |
+| Vectors in R | [Slides](slides/slides_introduction.html#28) | [Video](https://youtu.be/XMFjteCdHbQ) | Exercise 2 | [Answer slide](slides/slides_introduction.html#40) | [Answer video](https://youtu.be/rIieuoYT4z0) |
+| Data structures | [Slides](slides/slides_introduction.html#41) | [Video](https://youtu.be/Ffk2Kxa_b_M) | Exercise 3 | [Answer slide](slides/slides_introduction.html#50) | [Answer video](https://youtu.be/A1GsHC6pIio) |
+| Missing data | [Slides](slides/slides_introduction.html#53) | [Video](https://youtu.be/4gVvlg1Itzs) | Exercise 4 | [Answer slide](slides/slides_introduction.html#63) | - |
+| Indexing vectors & lists | [Slides](slides/slides_introduction.html#66) | [Video](https://youtu.be/e10nO2swYIE) | Exercise 5 | [Answer slide](slides/slides_introduction.html#79) | [Answer video](https://youtu.be/4BZGGq-nBos) |
+| Indexing a data frame | [Slides](slides/slides_introduction.html#80) | [Video](https://youtu.be/m15hbXG6I-Y) | Exercise 6 | [Answer slide](slides/slides_introduction.html#91) | [Answer video](https://youtu.be/DUk9bfcSwbA) |
 | Recap | [Slides](slides/slides_introduction.html#92) | - | - | - | - |
-| Programming: if statements | [Slides](slides/slides_introduction.html#98) | Video | Exercise 7 | [Answer slide](slides/slides_introduction.html#104) | Answer video |
-| Programming: functions | [Slides](slides/slides_introduction.html#105) | Video | Exercise 8 | [Answer slide](slides/slides_introduction.html#117) | Answer video |
-| Programming: loops | [Slides](slides/slides_introduction.html#118) | Video | Exercise 9 | [Answer slide](slides/slides_introduction.html#123) | Answer video |
+| Programming: if statements | [Slides](slides/slides_introduction.html#98) | [Video](https://youtu.be/ASVKW4dyLZI) | Exercise 7 | [Answer slide](slides/slides_introduction.html#104) | [Answer video](https://youtu.be/CV3uOPfnnt4) |
+| Programming: functions | [Slides](slides/slides_introduction.html#105) | [Video](https://youtu.be/P_qSXHyIUpQ) | Exercise 8 | [Answer slide](slides/slides_introduction.html#117) | [Answer video](https://youtu.be/EezEmFFbRow) |
+| Programming: loops | [Slides](slides/slides_introduction.html#118) | [Video](https://youtu.be/K4KSjizSJFk) | Exercise 9 | [Answer slide](slides/slides_introduction.html#123) | [Answer video](https://youtu.be/7iKKwP3aFuA) |
 
 ### Exercises
 - Exercises part I: Basic R [BaseR_exercises.R](BaseR_exercises.R)
@@ -97,4 +97,4 @@ Instructors:
 - [Felix Weijdema](https://www.uu.nl/medewerkers/fpweijdema)
 
 ## Acknowledgements
-This workshop was written by [Barbara Vreede](https://github.com/bvreede), based on work by [Tessa Pronk](https://github.com/TessaPr) and [Jonathan de Bruin](https://github.com/J535D165).
+All videos were recorded by [Jacques Flores](https://www.uu.nl/medewerkers/jpflores). The material was written by [Barbara Vreede](https://github.com/bvreede), based on work by [Tessa Pronk](https://github.com/TessaPr) and [Jonathan de Bruin](https://github.com/J535D165).
