@@ -54,9 +54,11 @@ Move it to an accessible place on your system, and unzip.
 - [Introduction to R](slides/slides_introduction.html)
 - Data science with Tidyverse
 
-### Exercises
-- Exercises part I: [BaseR_exercises.R](BaseR_exercises.R)
-- Exercises part II: Data science with Tidyverse
+### Exercises & solutions
+- Exercises part I: [baseR_exercises.Rmd](baseR_exercises.Rmd)
+- Solutions part I: see [slides](slides/slides_introduction.html)
+- Exercises part II: [datascience_exercises.Rmd](datascience_exercises.Rmd)
+- Solutions part II: [datascience_solutions.html](datascience_solutions.html)
 
 ### Videos
 
@@ -82,11 +84,12 @@ Links to the videos and corresponding slides are below.
     - [Base R](http://github.com/rstudio/cheatsheets/raw/master/base-r.pdf)
     - [R Markdown](https://www.rstudio.com/resources/cheatsheets/#rmarkdown)
     - [Data Import](https://www.rstudio.com/resources/cheatsheets/#import)
-    - [Data Visualization with ggplot2](https://www.rstudio.com/resources/cheatsheets/#ggplot2)
     - [Data Transformation with dplyr](https://www.rstudio.com/resources/cheatsheets/#dplyr)
+    - [Data Visualization with ggplot2](https://www.rstudio.com/resources/cheatsheets/#ggplot2)
+
 
 
 ## Acknowledgements
 The workshop 'Introduction to R & data' is developed and maintained by [Research Data Management Support](https://www.uu.nl/en/research/research-data-management) at Utrecht University.
 All videos were recorded by [Jacques Flores](https://www.uu.nl/medewerkers/jpflores).
-The material was written by [Barbara Vreede](https://github.com/bvreede), based on work by [Jonathan de Bruin](https://github.com/J535D165) and [Tessa Pronk](https://github.com/TessaPr).
+The material was written by [Barbara Vreede](https://github.com/bvreede), based on earlier versions by [Jonathan de Bruin](https://github.com/J535D165) and [Tessa Pronk](https://github.com/TessaPr).
