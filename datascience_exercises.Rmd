@@ -1,0 +1,490 @@
+---
+title: "Data science in the Tidyverse"
+author: "[Insert your name]"
+output:
+  html_document:
+    toc: true
+---
+<!-- This code block sets some defaults for the code chunks, and can safely be ignored! -->
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error = TRUE)
+```
+
+
+_This document is part of the workshop **Introduction to R & Data** by Utrecht University RDM Support._
+
+# Introduction
+
+In the following exercises, we will work with a dataset on penguins, collected and made available by Dr. Kristen Gorman and the Palmer Station, Antarctica LTER, a member of the Long Term Ecological Research Network.
+The dataset was processed for R by Allison Horst, and is available for use under a CC0 license.
+
+For more information on this awesome dataset, check out [the palmerpenguins repository](https://allisonhorst.github.io/palmerpenguins/).
+
+## Exercises
+
+Each of the following chapters will have multiple exercises to let you practice with the functions we introduce.
+Through these exercises, we will move a data frame through the different steps in a data science workflow.
+This means that often the results of one step will be the input for the next.
+If this is the case, the exercise will get a label: REQUIRED.
+Make sure you complete this exercise successfully, or you will not be able to proceed to the next theme.
+
+
+## Technical requirements
+
+We are going to use a series of packages that are part of the Tidyverse.
+These packages were designed with data science in mind.
+We can load them all at once using the following code:
+
+```{r} 
+library(tidyverse) 
+```
+
+# Chapter 1: Importing data
+
+## Exercise 1 (REQUIRED)
+
+In this exercise, we read the dataset `penguins_raw.tsv` into R. 
+
+You will need to know three things to complete this exercise:
+- The **location** of your data;
+- The **delimiter** of the data;
+- The **function** to use to read data into R.
+
+You can find the dataset in the `data` folder of your project.
+Note that the file **location** (argument `file`) should be `data/penguins_raw.tsv`, as you are referring to its location (or 'path') relative to the location of this exercise file.
+
+The **delimiter** is the character that separates the values in a tabular data file.
+There are various ways to find out how the dataset is delimited.
+One way from inside Rstudio is to use the 'Import Dataset' button (in your 'Environment') window, choose 'from Text (readr)', locate your data, and play around with the delimiter settings at the bottom.
+In the preview window you see the result of your settings on how your data will be loaded.
+
+With this method, you can also find the **function** to use: at the bottom-right, Rstudio shows you the code that corresponds to your settings. You only need to copy the function
+
+Complete the code in the chunk below, replacing the ??? with your code:
+
+```{r}
+penguins <- read_???(file = ???,
+                       delim = ???)
+```
+
+
+## Exercise 2
+
+The penguin dataset we just loaded contains a column with dates (`Date Egg`).
+To load the dates correctly, so we can do direct calculations on them, we need to specify the date format.
+For this, we use the argument `col_types`.
+
+Use the 'Import Dataset' button again to play around with readr settings.
+First, ensure the delimiter is set correctly so you can play with the column formats.
+For this, click on the column headers in the preview to adjust the data type.
+
+Can you figure out what %m, %d, and %Y do? And how to place them in the right order, so your date is parsed correctly?
+
+```{r}
+penguins <- read_delim(file = "data/penguins_raw.tsv",
+                       delim = "\t",
+                       col_types = ???)
+```
+
+
+## Exercise 3
+
+`read_csv` and `read_delim` are useful functions for most tabular data files, but they are unable to read excel files.
+For this, we need an additional package.
+
+The package `readxl` is a tidyverse package to read Excel files.
+It is installed when you installed the tidyverse, but it does not load by default when you call `library(tidyverse)`. 
+So, we first need to load this package with the function `library()`:
+
+```{r}
+library(readxl)
+```
+
+Included in the *package* `readxl` is the *function* `read_excel`.
+Use the function `read_excel()` to read a related data set `penguins_isotopes.xlsx` (an Excel file!), also located in your `data` folder, into R.
+If you have trouble figuring out this function, try the Help option with `?read_excel`.
+Or use the 'Import Dataset' button and choose 'From Excel'.
+
+```{r}
+
+penguins_isotopes <- read_???(path = ???)
+  
+```
+
+
+## Exercise 4
+
+Save your excel data as a value separated text file, with the function `write_delim()`.
+
+For this function, you need to provide the following information:
+- The name of the **object** you want to save
+- The **path** where you will save the file
+- The **delimiter** that will separate your values
+
+The **object** is `penguins_isotopes`, which you read from an excel file, and will now save as a .csv.
+The **path** includes both the folder and the new file name: consider "data/penguins_isotopes.csv".
+Note that the extension we are going to use is .csv, which stands for comma separated values.
+This is a common extension for a comma-separated OR a semicolon-separated file.
+The **delimiter** can be anything you want, but a common option is a comma, or semicolon.
+
+```{r}
+write_delim(penguins_isotopes,
+            path = ???,
+            delim = ???)
+```
+
+
+# Chapter 2: Subsetting and mutating
+
+## Exercise 5 (REQUIRED)
+
+We are going to clean up our data, first by subsetting only the relevant information.
+For some of the penguins, the sex was not determined.
+We want to remove those from the data frame.
+
+Use the function `filter()` to include only rows with penguins where the column `Sex` is FEMALE or MALE.
+
+One way to do this (though not the only way!), is to filter out the rows where `Sex` is NA.
+Remember the function `is.na()`, and remember that to negate a condition, you use the operator !
+
+For example, `!TRUE` is False, and `!FALSE` is True.
+
+```{r}
+
+penguins_subset <- filter(penguins, ???)
+
+```
+
+
+## Exercise 6 (REQUIRED)
+
+We are going to select columns with relevant data, for our upcoming analysis.
+The research we do is on penguin bill sizes (described in our data with the word "Culmen").
+We want to include a few relevant variables so we can analyse them later:
+- `Individual ID` (**note** that multiple words as a column name need `` to stay together!)
+- Species
+- Sex
+- Island
+
+And we want to include the data on Culmen measurements.
+
+Use the function `select()` to include the right columns in our data subset.
+
+Take a look at [tidyselect](https://tidyselect.r-lib.org/reference/language.html) for functions you can use inside the function `select()`.
+
+**Note** that in order to work with the subset from Exercise 4, we need to use that data frame (`penguin_subset`) as our data input!
+
+```{r}
+
+penguins_subset <- select(penguins_subset, ???)
+
+```
+
+
+# Exercise 7
+
+Combine your row and column subsets using the %>% operator.
+Use the code you wrote during exercises 4 and 5, and make a workflow that starts with the data `penguins`, and subsequently applies your `filter` and `select` operations.
+
+Make sure to remove the data arguments from your earlier code, as this is now provided through the %>% operator!
+
+```{r}
+
+penguins_subset <- penguins %>% ???
+  
+```
+
+
+## Exercise 8
+
+We want to make a metric called `culmen_ratio`, which is defined as the length of the bill (culmen) divided by the depth.
+
+Use the function `mutate()` to add this ratio.
+Make sure to work with the `penguins_subset` data.
+
+```{r}
+penguins_subset <- penguins_subset %>%
+  mutate(culmen_ratio = ???)
+```
+
+
+# Chapter 3: Tidy & transform
+
+## Exercise 9 (REQUIRED)
+
+We are going to turn our data frame into a long format, which will make it tidy.
+The two columns containing measurements will be placed below each other, and a column will be added to specify which measurement is called.
+
+We first rename the columns with Culmen measurements, so their names will make more sense in the pivoted format.
+This code is provided.
+Your exercise is to fill out the missing part of the function `pivot_longer`, specifying:
+- what columns are going to pivot (under the argument `cols`)
+- the arguments that fit the new column names: `names_to` and `values_to` are arguments we have used here, but which should go where?
+
+NB: From here on out, we will be working with the pipe operator (%>%) to make a clear workflow where data moves from one operation to the next.
+If you want some extra training in the use of the pipe operator, complete exercise 6 first.
+
+```{r}
+penguins_long <- penguins_subset %>%
+  rename(length = `Culmen Length (mm)`,
+         depth = `Culmen Depth (mm)`) %>%
+  pivot_longer(cols = ???,
+               ??? = "culmen_element",
+               ??? = "measurement")
+```
+
+
+### Exercise 10 (REQUIRED)
+
+One of the advantages of tidy data, is that it is perfectly suited for further processing by tidyverse functions.
+
+Use the functions `group_by()` and `summarize()` in conjunction to calculate the mean and standard deviation of all measurements, grouped by species and the type of measurement.
+
+In `group_by()`, specify `Species` and `culmen_element`
+
+In `summarize`, use the function `mean()` to calculate the average of the column `measurement`, and `sd()` to calculate the standard deviation.
+
+Make sure to feed the right data frame into the workflow: the column `culmen_element` is one that was created in the previous exercise!
+```{r}
+
+penguins_summary <- penguins_long %>%
+  group_by(???) %>%
+  summarize(avg = ???,
+            sd = ???)
+
+```
+
+
+## Exercise 11
+
+Join the summary (`penguins_summary`) and long (`penguins_long`) data frames, so that each row in the long data frame will have additional columns with the mean and standard deviation for its group.
+
+The function `full_join()` takes two datasets, and merges them, based on a column or multiple columns that contain shared values.
+These columns can be found automatically by the function, or they can be indicated with the argument `by`.
+
+NB: We did not discuss joins in the presentation.
+If you want to know more about this set of operations, read R for Data Science, [chapter 13.4.1](https://r4ds.had.co.nz/relational-data.html#understanding-joins).
+
+```{r}
+penguins_join <- full_join(???,
+                           by = c("Species", "culmen_element"))
+```
+
+
+## Exercise 12
+
+Now we have a data frame that has added averages and standard deviations for grouped measurements, we can calculate the z-scores of individual measurements, to see their distribution.
+The z-score is a metric that expresses the distance from a measurement to the mean in the number of standard deviations: ( measurement - average ) / standard deviation.
+
+Use the function `mutate()` to add a column `zscore` to the data frame `penguins_join`.
+
+```{r}
+
+penguins_join <- penguins_join %>%
+  ???
+
+```
+
+
+# Chapter 4: Data visualization
+
+## Exercise 13
+
+Using the summarized data frame, we are going to plot both the averages for the bill measurements in different penguin species.
+The standard deviations will be used for error bars.
+
+In the following steps, we will slowly build on our plot.
+Every time we save the plot as a variable, and to plot it we simply call the variable.
+With each new step, you put the variable in the next chunk, and build on it, like so:
+
+```{r}
+# Chunk 1
+p <- penguins %>%
+  ggplot(aes(x = `Body Mass (g)`))
+
+p
+  
+# Chunk 2
+p + geom_density()
+```
+
+
+### a) Plotting bar graphs
+
+Use the `penguins_summary` data frame in the function `ggplot()`, for the data layer of this chart.
+Aesthetics are the `culmen_element` on the x-axis, and the `avg` column on the y axis.
+Because our summary data frame split the summary statistics up between species, we have to separate between species in our plot, too.
+We do this with the argument `fill`.
+
+What geometry function should we use for a bar chart?
+
+```{r}
+
+p1 <- penguins_summary %>%
+  ggplot(aes(x = ???,
+             y = ???,
+             fill = ???)) +
+  geom_???(position = position_dodge(),
+           stat = "identity")
+
+p1
+
+```
+ 
+### b) Adding error bars
+ 
+Paste the code from 13 a) here, and place a + at the end to be able to add elements to it.
+Alternatively, you can save the plot as a variable
+
+For the error bars, we are going to add a geometry: `geom_errorbar`.
+You can read in its help function that this geometry requires the following aesthetics:
+- y
+- ymin
+- ymax
+The y aesthetic will be inherited from the main ggplot function, but ymin and ymax need to be specified in another aesthetics function.
+They can be a column, or they can be calculated (eg. avg + sd).
+
+The `geom_errorbar` needs some more information to be formatted correctly, but we have already filled this out.
+However, try playing with the numbers or see what happens if you delete them!
+
+```{r}
+
+p2 <- p1 +
+  geom_errorbar(aes(???),
+                width=.1,
+                position=position_dodge(.9))
+
+p2
+
+```
+ 
+### c) Making it look good
+
+On top of our geometries, we can edit and fine tune the specifics of the plot.
+
+**Labels**
+Using the function `labs()`, add labels (e.g.: a title, captions, and x and y axis labels).
+All arguments in your `aes()` can be labeled through this function.
+
+**Colors**
+Using the function `scale_fill_manual`, we are going to add our own color scheme to the colors in fill.
+You can leave these colors in, or play with them!
+
+**Theme**
+Using a theme, you can edit the background, line weights and colors, fonts, etc.
+A few themes have been predefined, such as `theme_minimal()`, `theme_dark()`, etc.
+Find a nice theme for your plot.
+
+```{r}
+
+p3 <- p2 +
+  labs(???) +
+  scale_fill_manual(values = c("darkorange","purple","cyan4")) +
+  theme_???
+
+p3
+
+```
+
+
+## Exercise 14
+
+In this exercise, we are going back to the data loaded in exercise 1.
+Before we start, we filter the data for a few outliers.
+These will cause some hiccups in the plotting, so we remove them.
+That said, because we will use the pipe operator (%>%) to enter the data into the plots, you can always change `penguin_clean` for the unfiltered `penguins`.
+See what happens if you do!
+
+```{r}
+penguins_clean <- penguins %>%
+  filter(!is.na(`Culmen Length (mm)`),  # to prevent a warning message when plotting NAs
+         !is.na(Sex))                   # to ensure proper categorization into facets
+```
+
+
+### a) Plotting a large dataset
+
+Plot culmen length by culmen depth, separating by species in different colors.
+Experiment with different geom types: if you start typing `geom_`, autocomplete in Rstudio gives you tons of options to try!
+
+If you want a place to start, try:
+- `geom_point()`
+- `geom_line()`
+- `geom_smooth()`
+- `geom_count()`
+
+To make the plot look nice from the start, we have added custom colors and a theme.
+Feel free to change/play with these!
+
+```{r}
+p4 <- penguins_clean %>%
+  ggplot(aes(x = ???,
+             y = ???,
+             color = ???)) +
+  geom_??? +
+  scale_color_manual(values = c("darkorange","purple","cyan4")) +
+  theme_bw()
+  
+p4
+```
+
+
+### b) Statistical layers
+
+The power of ggplot is in the use of different layers that build up an image.
+Your plot consists of your data, its mapping to a plot, and one or multiple geometric layers that translate the data to a visual representation.
+Now, add a statistical layer to the plot.
+
+Check out `stat_ellipse()` and `stat_density_2d()`, and try perhaps some other `stat_` layers.
+Note that they will not all work for this type of plot.
+
+```{r}
+
+p5 <- p4 +
+  stat_???
+
+p5
+
+```
+
+### c) Facet grid
+
+Separate the plot into sub-plots, using the function `facet_grid()`.
+Replace the . in the code below with a name of a column, and see what happens.
+Leaving the . in place means that no sub-plotting will take place over that axis.
+
+```{r}
+
+p4 + facet_grid(. ~ .)
+
+```
+
+## Exercise 15
+
+If you have not yet completed exercises 11 and 12, run the below code to get a data frame with distributions.
+
+With this code, the summary statistics are merged to the tidy data frame, allowing each measurement to be expressed as a z-score: the number of standard deviations this measurement is away from the mean.
+
+```{r}
+penguins_join <- full_join(penguins_long, penguins_summary,
+                           by = c("Species", "culmen_element")) %>%
+  mutate(zscore = (measurement - avg)/sd)
+```
+
+In the following exercise, you will plot the z-scores for all measurements in one figure.
+Try to:
+- Use a `geom_` that makes sense for this data.
+- Use aesthetics and facets in a way that separates the data logically (keep in mind that the z-scores were calculated by grouping species and culmen_element!)
+- Label the plot
+- Add elements to the below code! Think of themes, colors... Have fun!
+
+```{r}
+
+penguins_join %>%
+  ggplot(aes(???)) +
+  geom_???() +
+  facet_??? +
+  labs(???)
+  
+```
+
