@@ -1,6 +1,6 @@
 ---
 title: "Data science in the Tidyverse - Solutions"
-author: "Barbara Vreede"
+author: "Utrecht University RDM support"
 output:
   html_document:
     toc: true
