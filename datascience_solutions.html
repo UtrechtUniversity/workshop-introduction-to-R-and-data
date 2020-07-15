@@ -511,7 +511,7 @@ penguins_subset &lt;- filter(penguins, !is.na(Sex))</code></pre>
 <div id="exercise-12" class="section level2">
 <h2>Exercise 12</h2>
 <pre class="r"><code>penguins_join &lt;- penguins_join %&gt;%
-  mutate(standardized = (measurement - avg)/sd)</code></pre>
+  mutate(zscore = (measurement - avg)/sd)</code></pre>
 </div>
 </div>
 <div id="chapter-4-data-visualization" class="section level1">
@@ -592,7 +592,7 @@ p6</code></pre>
 <div id="exercise-15" class="section level2">
 <h2>Exercise 15</h2>
 <pre class="r"><code>penguins_join %&gt;%
-  ggplot(aes(x = standardized, color = Species)) +
+  ggplot(aes(x = zscore, color = Species)) +
   geom_density() +
   facet_wrap(&quot;culmen_element&quot;, ncol = 1) +
   scale_color_manual(values = c(&quot;darkorange&quot;,&quot;purple&quot;,&quot;cyan4&quot;)) +

@@ -108,7 +108,7 @@ penguins_join <- full_join(penguins_long, penguins_summary,
 ## Exercise 12
 ```{r}
 penguins_join <- penguins_join %>%
-  mutate(standardized = (measurement - avg)/sd)
+  mutate(zscore = (measurement - avg)/sd)
 ```
 
 
@@ -201,7 +201,7 @@ p6
 ```{r}
 
 penguins_join %>%
-  ggplot(aes(x = standardized, color = Species)) +
+  ggplot(aes(x = zscore, color = Species)) +
   geom_density() +
   facet_wrap("culmen_element", ncol = 1) +
   scale_color_manual(values = c("darkorange","purple","cyan4")) +
