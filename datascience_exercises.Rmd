@@ -208,9 +208,10 @@ penguins_subset <- penguins_subset %>%
 ```
 
 
-# Chapter 3: Tidy data
+# Chapter 3: Tidy & transform
 
 ## Exercise 9 (REQUIRED)
+
 We are going to turn our data frame into a long format, which will make it tidy.
 The two columns containing measurements will be placed below each other, and a column will be added to specify which measurement is called.
 
@@ -234,6 +235,7 @@ penguins_long <- penguins_subset %>%
 
 
 ### Exercise 10 (REQUIRED)
+
 One of the advantages of tidy data, is that it is perfectly suited for further processing by tidyverse functions.
 
 Use the functions `group_by()` and `summarize()` in conjunction to calculate the mean and standard deviation of all measurements, grouped by species and the type of measurement.
@@ -254,6 +256,7 @@ penguins_summary <- penguins_long %>%
 
 
 ## Exercise 11
+
 Join the summary (`penguins_summary`) and long (`penguins_long`) data frames, so that each row in the long data frame will have additional columns with the mean and standard deviation for its group.
 
 The function `full_join()` takes two datasets, and merges them, based on a column or multiple columns that contain shared values.
@@ -268,88 +271,196 @@ penguins_join <- full_join(???,
 ```
 
 
-### Exercise 12 (O)
+## Exercise 12
 <!-- Explain -->
 
 ```{r}
-# optional: pivot back to original
 
-
+penguins_join <- penguins_join %>%
+  mutate(standardized = (measurement - avg)/sd)
 
 ```
 
 
+# Chapter 4: Data visualization
 
+## Exercise 13
 
+Using the summarized data frame, we are going to plot both the averages for the bill measurements in different penguin species.
+The standard deviations will be used for error bars.
 
-
-### Exercise 2 (O)
-<!-- Explain -->
+In the following steps, we will slowly build on our plot.
+Every time we save the plot as a variable, and to plot it we simply call the variable.
+With each new step, you put the variable in the next chunk, and build on it, like so:
 
 ```{r}
-ggplot(penguins_summary,
-       aes(x = culmen_element,
-           y = average_mm, 
-           fill = Species)) +
-  geom_bar(position=position_dodge(), stat="identity") +
-  geom_errorbar(aes(ymin=average_mm-sd, 
-                      ymax=average_mm+sd), 
-                  width=.1, position=position_dodge(.9)) +
-  labs(title = "Penguin culmen measurements",
-       x = "Measurement",
-       y = "Size (mm)") +
+# Chunk 1
+p <- penguins %>%
+  ggplot(aes(x = `Body Mass (g)`))
+
+p
+  
+# Chunk 2
+p + geom_density()
+```
+
+
+### a) Plotting bar graphs
+
+Use the `penguins_summary` data frame in the function `ggplot()`, for the data layer of this chart.
+Aesthetics are the `culmen_element` on the x-axis, and the `avg` column on the y axis.
+Because our summary data frame split the summary statistics up between species, we have to separate between species in our plot, too.
+We do this with the argument `fill`.
+
+What geometry function should we use for a bar chart?
+
+```{r}
+
+p1 <- penguins_summary %>%
+  ggplot(aes(x = ???,
+             y = ???,
+             fill = ???)) +
+  geom_???(position = position_dodge(),
+           stat = "identity")
+
+p1
+
+```
+ 
+### b) Adding error bars
+ 
+Paste the code from 13 a) here, and place a + at the end to be able to add elements to it.
+Alternatively, you can save the plot as a variable
+
+For the error bars, we are going to add a geometry: `geom_errorbar`.
+You can read in its help function that this geometry requires the following aesthetics:
+- y
+- ymin
+- ymax
+The y aesthetic will be inherited from the main ggplot function, but ymin and ymax need to be specified in another aesthetics function.
+They can be a column, or they can be calculated (eg. avg + sd).
+
+The `geom_errorbar` needs some more information to be formatted correctly, but we have already filled this out.
+However, try playing with the numbers or see what happens if you delete them!
+
+```{r}
+
+p2 <- p1 +
+  geom_errorbar(aes(???),
+                width=.1,
+                position=position_dodge(.9))
+
+p2
+
+```
+ 
+### c) Making it look good
+
+On top of our geometries, we can edit and fine tune the specifics of the plot.
+
+**Labels**
+Using the function `labs()`, add labels (e.g.: a title, captions, and x and y axis labels).
+All arguments in your `aes()` can be labeled through this function.
+
+**Colors**
+Using the function `scale_fill_manual`, we are going to add our own color scheme to the colors in fill.
+You can leave these colors in, or play with them!
+
+**Theme**
+Using the ggplot theme, you can edit the background, line weights and colors, fonts, etc.
+A few themes have been predefined, such as `theme_minimal()`, `theme_dark()`, etc.
+Find a nice theme for your plot.
+
+```{r}
+
+p3 <- p2 +
+  labs(???) +
   scale_fill_manual(values = c("darkorange","purple","cyan4")) +
-  theme_bw()
+  theme_???
+
+p3
 
 ```
 
 
+## Exercise 14
 
-### Exercise 2 (O)
-<!-- Explain -->
+In this exercise, we are going back to the data loaded in exercise 1.
+Before we start, we filter the data for a few outliers.
+These will cause some hiccups in the plotting, so we remove them.
+That said, because we will use the pipe operator (%>%) to enter the data into the plots, you can always change `penguin_clean` for the unfiltered `penguins`.
+See what happens if you do!
 
 ```{r}
-penguins_clean <- palmerpenguins::penguins %>%
-  filter(!is.na(sex))
-
+penguins_clean <- penguins %>%
+  filter(!is.na(`Culmen Length (mm)`),  # to prevent a warning message when plotting NAs
+         !is.na(Sex))                   # to ensure proper categorization into facets
 ```
 
-The power of ggplot is in the use of different layers that build up an image. Your plot consists of your data, its mapping to a plot, and one or multiple geometric layers that translate the data to a visual representation.
 
-Play with that translation in showing the cranes' ground speed by the angle in which they are heading. Try various geometric layers and see what they do. Examples are `geom_point`, `geom_line`, `geom_count` and `geom_density_2d`, but feel free to search for others!
+### a) Plotting a large dataset
 
-*Tip: write `geom_` in the search field of the help tab in RStudio to find more geometric layers.*
+Plot culmen length by culmen depth, separating by species in different colors.
+Experiment with different geom types: if you start typing `geom_`, autocomplete in Rstudio gives you tons of options to try!
 
-Complete the following code. (Note that the plot is first generated as p, but not printed yet: it is saved as a variable. You can then always call p and add layers to it.)
+If you want a place to start, try:
+- `geom_point()`
+- `geom_line()`
+- `geom_smooth()`
+- `geom_count()`
+
+To make the plot look nice from the start, we have added custom colors and a theme.
+Feel free to change/play with these!
 
 ```{r}
-
-ggplot(penguins_clean, aes(x = bill_length_mm,
-                           y = bill_depth_mm,
-                           color = species)) +
-  geom_point() +
+p4 <- penguins_clean %>%
+  ggplot(aes(x = ???,
+             y = ???,
+             color = ???)) +
+  geom_??? +
   scale_color_manual(values = c("darkorange","purple","cyan4")) +
-  stat_density2d() +
   theme_bw()
+  
+p4
 ```
 
 
+### b) Statistical layers
+
+The power of ggplot is in the use of different layers that build up an image.
+Your plot consists of your data, its mapping to a plot, and one or multiple geometric layers that translate the data to a visual representation.
+Now, add a statistical layer to the plot.
+
+Check out `stat_ellipse()` and `stat_density_2d()`, and try perhaps some other `stat_` layers.
+Note that they will not all work for this type of plot.
 
 ```{r}
 
+p5 <- p4 +
+  stat_???
 
-
-ggplot(penguins_clean, aes(x = body_mass_g,
-                           y = flipper_length_mm,
-                           color = species)) +
-  geom_point() +
-  scale_color_manual(values = c("darkorange","purple","cyan4")) +
-  facet_grid(sex ~ island) +
-  theme_bw()
-
-
+p5
 
 ```
+
+### c) Facet grid
+
+Separate the plot into sub-plots. 
+```{r}
+
+p4 + facet_grid(. ~ .)
+
+```
+
+## Exercise 15
+
+If you have not yet completed 
+```{r}
+penguins_join <- full_join(penguins_long, penguins_summary,
+                           by = c("Species", "culmen_element")) %>%
+  mutate(standardized = (measurement - avg)/sd)
+```
+
 
 ```{r}
 penguins_join %>%
@@ -359,9 +470,6 @@ penguins_join %>%
   theme_bw()
   
 ```
-
-
-
 
 
 
