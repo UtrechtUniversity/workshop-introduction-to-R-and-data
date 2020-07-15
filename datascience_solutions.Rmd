@@ -12,8 +12,10 @@ knitr::opts_chunk$set(echo = TRUE)
 # Introduction
 
 ```{r} 
-library(tidyverse) 
+library(tidyverse)
+library(readxl)
 ```
+
 
 # Chapter 1: Import 
 
@@ -31,3 +33,109 @@ penguins <- read_delim(file = "data/penguins_raw.tsv",
                        col_types = cols(`Date Egg` = col_date(format = "%d/%m/%Y")))
 ```
 
+## Exercise 3
+```{r}
+penguins_isotopes <- read_excel(path = "data/penguins_isotopes.xlsx")
+```
+
+
+# Chapter 2: Clean
+
+## Exercise 4
+```{r}
+# option 1: filtering on the presence of MALE and FEMALE
+penguins_subset <- filter(penguins, Sex %in% c("MALE", "FEMALE"))
+
+# option 2: filtering on the absence of NA
+penguins_subset <- filter(penguins, !is.na(Sex))
+```
+
+## Exercise 5
+```{r}
+penguins_subset <- select(penguins_subset, 
+                  `Individual ID`, Species, Sex, Island, starts_with("Culmen"))
+```
+
+## Exercise 6
+```{r}
+penguins_subset <- penguins %>%
+  filter(!is.na(Sex)) %>%
+  select(`Individual ID`, Species, Sex, Island, starts_with("Culmen"))
+```
+
+
+## Exercise 7
+```{r}
+penguins_subset <- mutate(penguins_subset,
+                          culmen_ratio = `Culmen Length (mm)` / `Culmen Depth (mm)`)
+```
+
+
+
+# Chapter 3: Tidy
+
+## Exercise 3
+```{r}
+
+```
+
+## Exercise 3
+```{r}
+
+```
+
+
+## Exercise 3
+```{r}
+
+```
+
+## Exercise 3
+```{r}
+
+```
+
+## Exercise 3
+```{r}
+
+```
+
+## Exercise 3
+```{r}
+
+```
+
+## Exercise 3
+```{r}
+
+```
+
+## Exercise 3
+```{r}
+
+```
+
+## Exercise 3
+```{r}
+
+```
+
+## Exercise 3
+```{r}
+
+```
+
+## Exercise 3
+```{r}
+
+```
+
+## Exercise 3
+```{r}
+
+```
+
+## Exercise 3
+```{r}
+
+```
