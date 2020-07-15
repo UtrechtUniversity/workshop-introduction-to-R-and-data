@@ -78,7 +78,7 @@ penguins_subset <- mutate(penguins_subset,
 ```
 
 
-# Chapter 3: Tidy data
+# Chapter 3: Tidy & transform
 
 ## Exercise 9
 ```{r}
@@ -111,49 +111,102 @@ penguins_join <- penguins_join %>%
   mutate(standardized = (measurement - avg)/sd)
 ```
 
+
+# Chapter 4: Data visualization
+
 ## Exercise 13
+
+### a)
+```{r}
+p1 <- penguins_summary %>%
+  ggplot(aes(x = culmen_element,
+             y = avg,
+             fill = Species)) +
+  geom_bar(position = position_dodge(),
+           stat = "identity")
+
+p1
+```
+
+### b)
+```{r}
+p2 <- p1 +
+  geom_errorbar(aes(ymin=avg-sd,
+                  ymax=avg+sd),
+              width=.1,
+              position=position_dodge(.9))
+
+p2
+```
+
+### c)
+```{r}
+p3 <- p2 +
+  labs(title = "Measuring penguin bills",
+       x = "Bill measurement",
+       y = "Size (mm)") +
+  scale_fill_manual(values = c("darkorange","purple","cyan4")) +
+  theme_bw()
+
+p3
+```
+
+
+## Exercise 14
+
+```{r}
+penguins_clean <- penguins %>%
+  filter(!is.na(`Culmen Length (mm)`),  # to prevent a warning message when plotting NAs
+         !is.na(Sex))                   # to ensure proper categorization into facets
+```
+
+
+### a)
+```{r}
+p4 <- penguins_clean %>%
+  ggplot(aes(x = `Culmen Length (mm)`,
+             y = `Culmen Depth (mm)`,
+             color = Species)) +
+  geom_point() +
+  scale_color_manual(values = c("darkorange","purple","cyan4")) +
+  theme_bw()
+  
+p4
+```
+
+### b)
 ```{r}
 
+p5 <- p4 +
+  stat_density_2d()
 
+p5
 
 ```
 
-## Exercise 3
+
+
+### c)
 ```{r}
+
+p6 <- p4 +
+  facet_grid(Island ~ Sex)
+  
+p6
 
 ```
 
-## Exercise 3
+
+## Exercise 15
 ```{r}
 
-```
-
-## Exercise 3
-```{r}
-
-```
-
-## Exercise 3
-```{r}
-
-```
-
-## Exercise 3
-```{r}
-
-```
-
-## Exercise 3
-```{r}
-
-```
-
-## Exercise 3
-```{r}
-
-```
-
-## Exercise 3
-```{r}
+penguins_join %>%
+  ggplot(aes(x = standardized, color = Species)) +
+  geom_density() +
+  facet_wrap("culmen_element", ncol = 1) +
+  scale_color_manual(values = c("darkorange","purple","cyan4")) +
+  labs(title = "Distribution of culmen measurements",
+       x = "z-score") +
+  theme_bw()
 
 ```
