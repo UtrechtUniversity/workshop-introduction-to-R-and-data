@@ -27,7 +27,7 @@ Information on how to install these (and troubleshoot the installation) is on ou
 
 ## Schedule
 
-All activities in _cursive_ are done independently, using videos and exercises provided.
+All activities in _cursive_ (during the morning session) are done independently, using videos and exercises provided.
 We are always available for 1:1 support during these times, and reconvene in the main channel at stated times.
 
 | Time | Activity |
@@ -40,11 +40,10 @@ We are always available for 1:1 support during these times, and reconvene in the
 | 11:45 | _Exercises 7-9_ |
 | 12:45 | Lunch break |
 | 13:30 | Data architecture & introduction to Tidyverse |
-| 14:00 | _Reading data with readr_ |
-| 15:00 | Data transformations and manipulations |
-| 15:15 | _Transforming data with dplyr and tidyr_ |
-| 16:00 | Data visualization |
-| 16:15 | _Visualization with ggplot2_ |
+| 14:00 | Importing data |
+| 14:30 | Data transformation and manipulation |
+| 15:15 | Coffee break |
+| 15:30 | Data visualization |
 | 17:00 | Final recap and closing |
 
 ## Material
@@ -56,7 +55,7 @@ Move it to an accessible place on your system, and unzip.
 - Data science with Tidyverse
 
 ### Exercises
-- Exercises part I: Introduction to R [BaseR_exercises.R](BaseR_exercises.R)
+- Exercises part I: [BaseR_exercises.R](BaseR_exercises.R)
 - Exercises part II: Data science with Tidyverse
 
 ### Videos
