@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE, error = TRUE)
 ```
 
 
-*This document is part of the workshop **Introduction to R & Data** by Utrecht University RDM Support. *
+_This document is part of the workshop **Introduction to R & Data** by Utrecht University RDM Support._
 
 # Introduction
 
@@ -272,12 +272,16 @@ penguins_join <- full_join(???,
 
 
 ## Exercise 12
-<!-- Explain -->
+
+Now we have a data frame that has added averages and standard deviations for grouped measurements, we can calculate the z-scores of individual measurements, to see their distribution.
+The z-score is a metric that expresses the distance from a measurement to the mean in the number of standard deviations: ( measurement - average ) / standard deviation.
+
+Use the function `mutate()` to add a column `zscore` to the data frame `penguins_join`.
 
 ```{r}
 
 penguins_join <- penguins_join %>%
-  mutate(standardized = (measurement - avg)/sd)
+  ???
 
 ```
 
@@ -367,7 +371,7 @@ Using the function `scale_fill_manual`, we are going to add our own color scheme
 You can leave these colors in, or play with them!
 
 **Theme**
-Using the ggplot theme, you can edit the background, line weights and colors, fonts, etc.
+Using a theme, you can edit the background, line weights and colors, fonts, etc.
 A few themes have been predefined, such as `theme_minimal()`, `theme_dark()`, etc.
 Find a nice theme for your plot.
 
@@ -445,7 +449,10 @@ p5
 
 ### c) Facet grid
 
-Separate the plot into sub-plots. 
+Separate the plot into sub-plots, using the function `facet_grid()`.
+Replace the . in the code below with a name of a column, and see what happens.
+Leaving the . in place means that no sub-plotting will take place over that axis.
+
 ```{r}
 
 p4 + facet_grid(. ~ .)
@@ -454,22 +461,30 @@ p4 + facet_grid(. ~ .)
 
 ## Exercise 15
 
-If you have not yet completed 
+If you have not yet completed exercises 11 and 12, run the below code to get a data frame with distributions.
+
+With this code, the summary statistics are merged to the tidy data frame, allowing each measurement to be expressed as a z-score: the number of standard deviations this measurement is away from the mean.
+
 ```{r}
 penguins_join <- full_join(penguins_long, penguins_summary,
                            by = c("Species", "culmen_element")) %>%
-  mutate(standardized = (measurement - avg)/sd)
+  mutate(zscore = (measurement - avg)/sd)
 ```
 
+In the following exercise, you will plot the z-scores for all measurements in one figure.
+Try to:
+- Use a `geom_` that makes sense for this data.
+- Use aesthetics and facets in a way that separates the data logically (keep in mind that the z-scores were calculated by grouping species and culmen_element!)
+- Label the plot
+- Add elements to the below code! Think of themes, colors... Have fun!
 
 ```{r}
+
 penguins_join %>%
-  ggplot(aes(x = standardized, color = Species)) +
-  geom_density() +
-  facet_grid(culmen_element ~ .) +
-  theme_bw()
+  ggplot(aes(???)) +
+  geom_???() +
+  facet_??? +
+  labs(???)
   
 ```
-
-
 
