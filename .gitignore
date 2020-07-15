@@ -39,3 +39,7 @@ vignettes/*.pdf
 # Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
 rsconnect/
 .Rproj.user
+
+# Project-specific files that need to be ignored
+data/penguins_isotopes.csv
+datascience_solutions_files/
