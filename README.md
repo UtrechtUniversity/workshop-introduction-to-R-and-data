@@ -36,13 +36,14 @@ We are always available for 1:1 support during these times, and reconvene in the
 | 9:30 | Introductions |
 | 10:00 | _Exercises 1-6_ |
 | 11:25 | Recap & Questions |
-| 11:30 | Coffee break |
+| **11:30** | **Coffee break** |
 | 11:45 | _Exercises 7-9_ |
-| 12:45 | Lunch break |
+| 12:40 | Recap & Questions |
+| **12:45** | **Lunch break** |
 | 13:30 | Data architecture & introduction to Tidyverse |
 | 14:00 | Importing data |
 | 14:30 | Data transformation and manipulation |
-| 15:15 | Coffee break |
+| **15:15** | **Coffee break** |
 | 15:30 | Data visualization |
 | 17:00 | Final recap and closing |
 
@@ -55,10 +56,10 @@ Move it to an accessible place on your system, and unzip.
 - Data science with Tidyverse
 
 ### Exercises & solutions
-- Exercises part I: [baseR_exercises.Rmd](baseR_exercises.Rmd)
-- Solutions part I: see [slides](slides/slides_introduction.html)
-- Exercises part II: [datascience_exercises.Rmd](datascience_exercises.Rmd)
-- Solutions part II: [datascience_solutions.html](datascience_solutions.html)
+- Exercises morning: [baseR_exercises.Rmd](baseR_exercises.Rmd)
+- Solutions morning: see [slides](slides/slides_introduction.html)
+- Exercises afternoon: [datascience_exercises.Rmd](datascience_exercises.Rmd)
+- Solutions afternoon: [datascience_solutions.html](datascience_solutions.html)
 
 ### Videos
 
@@ -74,6 +75,7 @@ Links to the videos and corresponding slides are below.
 | Missing data | [Slides](slides/slides_introduction.html#53) | [Video](https://youtu.be/4gVvlg1Itzs) | Exercise 4 | [Answer slide](slides/slides_introduction.html#63) | - |
 | Indexing vectors & lists | [Slides](slides/slides_introduction.html#66) | [Video](https://youtu.be/e10nO2swYIE) | Exercise 5 | [Answer slide](slides/slides_introduction.html#79) | [Answer video](https://youtu.be/4BZGGq-nBos) |
 | Indexing a data frame | [Slides](slides/slides_introduction.html#80) | [Video](https://youtu.be/m15hbXG6I-Y) | Exercise 6 | [Answer slide](slides/slides_introduction.html#91) | [Answer video](https://youtu.be/DUk9bfcSwbA) |
+| Programming | - | [Video (external)](https://www.youtube.com/watch?v=eSYeHlwDCNA&) | - | - | - |
 | Programming: if statements | [Slides](slides/slides_introduction.html#98) | [Video](https://youtu.be/ASVKW4dyLZI) | Exercise 7 | [Answer slide](slides/slides_introduction.html#104) | [Answer video](https://youtu.be/CV3uOPfnnt4) |
 | Programming: functions | [Slides](slides/slides_introduction.html#105) | [Video](https://youtu.be/P_qSXHyIUpQ) | Exercise 8 | [Answer slide](slides/slides_introduction.html#117) | [Answer video](https://youtu.be/EezEmFFbRow) |
 | Programming: loops | [Slides](slides/slides_introduction.html#118) | [Video](https://youtu.be/K4KSjizSJFk) | Exercise 9 | [Answer slide](slides/slides_introduction.html#123) | [Answer video](https://youtu.be/7iKKwP3aFuA) |
