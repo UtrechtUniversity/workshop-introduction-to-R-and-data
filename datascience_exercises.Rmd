@@ -15,8 +15,15 @@ knitr::opts_chunk$set(echo = TRUE, error = TRUE)
 
 # Introduction
 
+In the following exercises, we will work with a dataset on penguins, collected and made available by Dr. Kristen Gorman and the Palmer Station, Antarctica LTER, a member of the Long Term Ecological Research Network.
+The dataset was processed for R by Allison Horst, and is available for use under a CC0 license.
+
+For more information on this awesome dataset, check out [the palmerpenguins repository](https://allisonhorst.github.io/palmerpenguins/).
+
+## Exercises
+
 Each of the following chapters will have multiple exercises to let you practice with the functions we introduce.
-Through these exercises, we will move a dataset through the different steps in a data science workflow.
+Through these exercises, we will move a data frame through the different steps in a data science workflow.
 This means that often the results of one step will be the input for the next.
 If this is the case, the exercise will get a label: REQUIRED.
 Make sure you complete this exercise successfully, or you will not be able to proceed to the next theme.
@@ -47,7 +54,7 @@ You can find the dataset in the `data` folder of your project.
 Note that the file **location** (argument `file`) should be `data/penguins_raw.tsv`, as you are referring to its location (or 'path') relative to the location of this exercise file.
 
 The **delimiter** is the character that separates the values in a tabular data file.
-There are various ways to find out how the datasets is delimited.
+There are various ways to find out how the dataset is delimited.
 One way from inside Rstudio is to use the 'Import Dataset' button (in your 'Environment') window, choose 'from Text (readr)', locate your data, and play around with the delimiter settings at the bottom.
 In the preview window you see the result of your settings on how your data will be loaded.
 
@@ -105,13 +112,35 @@ penguins_isotopes <- read_???(path = ???)
 ```
 
 
-# Chapter 2: Clean and tidy
+## Exercise 4
 
-## Exercise 4 (REQUIRED)
+Save your excel data as a value separated text file, with the function `write_delim()`.
+
+For this function, you need to provide the following information:
+- The name of the **object** you want to save
+- The **path** where you will save the file
+- The **delimiter** that will separate your values
+
+The **object** is `penguins_isotopes`, which you read from an excel file, and will now save as a .csv.
+The **path** includes both the folder and the new file name: consider "data/penguins_isotopes.csv".
+Note that the extension we are going to use is .csv, which stands for comma separated values.
+This is a common extension for a comma-separated OR a semicolon-separated file.
+The **delimiter** can be anything you want, but a common option is a comma, or semicolon.
+
+```{r}
+write_delim(penguins_isotopes,
+            path = ???,
+            delim = ???)
+```
+
+
+# Chapter 2: Subsetting and mutating
+
+## Exercise 5 (REQUIRED)
 
 We are going to clean up our data, first by subsetting only the relevant information.
 For some of the penguins, the sex was not determined.
-We want to remove those from the dataset.
+We want to remove those from the data frame.
 
 Use the function `filter()` to include only rows with penguins where the column `Sex` is FEMALE or MALE.
 
@@ -127,7 +156,7 @@ penguins_subset <- filter(penguins, ???)
 ```
 
 
-## Exercise 5 (REQUIRED)
+## Exercise 6 (REQUIRED)
 
 We are going to select columns with relevant data, for our upcoming analysis.
 The research we do is on penguin bill sizes (described in our data with the word "Culmen").
@@ -152,7 +181,7 @@ penguins_subset <- select(penguins_subset, ???)
 ```
 
 
-# Exercise 6 (REQUIRED)
+# Exercise 7
 
 Combine your row and column subsets using the %>% operator.
 Use the code you wrote during exercises 4 and 5, and make a workflow that starts with the data `penguins`, and subsequently applies your `filter` and `select` operations.
@@ -166,7 +195,7 @@ penguins_subset <- penguins %>% ???
 ```
 
 
-## Exercise 7
+## Exercise 8
 
 We want to make a metric called `culmen_ratio`, which is defined as the length of the bill (culmen) divided by the depth.
 
@@ -179,41 +208,67 @@ penguins_subset <- penguins_subset %>%
 ```
 
 
-## Exercise 8
-(Building on exercise 3)
+# Chapter 3: Tidy data
 
+## Exercise 9 (REQUIRED)
+We are going to turn our data frame into a long format, which will make it tidy.
+The two columns containing measurements will be placed below each other, and a column will be added to specify which measurement is called.
 
-In this exercise we will append the crane dataset with the additional measures. We will do a full join, combining all data from `data_crane` with all data from `data_crane_additional`. (Note though that both datasets have the same unique identifiers, so both a right join and a left join would achieve the same results.)
+We first rename the columns with Culmen measurements, so their names will make more sense in the pivoted format.
+This code is provided.
+Your exercise is to fill out the missing part of the function `pivot_longer`, specifying:
+- what columns are going to pivot (under the argument `cols`)
+- the arguments that fit the new column names: `names_to` and `values_to` are arguments we have used here, but which should go where?
 
-Join the two data frames by adding to the code below. What column should you use as join key (the `by=` argument)?
-
-*Tip: for more information about joining data, take a look at the cheat sheet element 'Combine Tables', or the recommended reading for this chapter.*
+NB: From here on out, we will be working with the pipe operator (%>%) to make a clear workflow where data moves from one operation to the next.
+If you want some extra training in the use of the pipe operator, complete exercise 6 first.
 
 ```{r}
+penguins_long <- penguins_subset %>%
+  rename(length = `Culmen Length (mm)`,
+         depth = `Culmen Depth (mm)`) %>%
+  pivot_longer(cols = ???,
+               ??? = "culmen_element",
+               ??? = "measurement")
+```
 
-data_crane_with_measures <- full_join(## enter your code here ##
+
+### Exercise 10 (REQUIRED)
+One of the advantages of tidy data, is that it is perfectly suited for further processing by tidyverse functions.
+
+Use the functions `group_by()` and `summarize()` in conjunction to calculate the mean and standard deviation of all measurements, grouped by species and the type of measurement.
+
+In `group_by()`, specify `Species` and `culmen_element`
+
+In `summarize`, use the function `mean()` to calculate the average of the column `measurement`, and `sd()` to calculate the standard deviation.
+
+Make sure to feed the right data frame into the workflow: the column `culmen_element` is one that was created in the previous exercise!
+```{r}
+
+penguins_summary <- penguins_long %>%
+  group_by(???) %>%
+  summarize(avg = ???,
+            sd = ???)
 
 ```
 
 
-## Exercise (O)
-<!-- Explain -->
+## Exercise 11
+Join the summary (`penguins_summary`) and long (`penguins_long`) data frames, so that each row in the long data frame will have additional columns with the mean and standard deviation for its group.
+
+The function `full_join()` takes two datasets, and merges them, based on a column or multiple columns that contain shared values.
+These columns can be found automatically by the function, or they can be indicated with the argument `by`.
+
+NB: We did not discuss joins in the presentation.
+If you want to know more about this set of operations, read R for Data Science, [chapter 13.4.1](https://r4ds.had.co.nz/relational-data.html#understanding-joins).
 
 ```{r}
-penguins <- rename(penguins,
-                   length = `Culmen Length (mm)`,
-                   depth = `Culmen Depth (mm)`)
-
-
-penguins <- pivot_longer(penguins, 
-                         cols = c(length, depth),
-                         names_to = "culmen_element", values_to = "measurement_mm")
-
+penguins_join <- full_join(???,
+                           by = c("Species", "culmen_element"))
 ```
 
 
-
-### Exercise 2 (O)
+### Exercise 12 (O)
 <!-- Explain -->
 
 ```{r}
@@ -225,31 +280,6 @@ penguins <- pivot_longer(penguins,
 
 
 
-### Exercise 2 (O)
-<!-- Explain -->
-
-```{r}
-penguins_summary <- penguins %>%
-  group_by(Species, culmen_element) %>%
-  summarize(average_mm = mean(measurement_mm),
-            sd = sd(measurement_mm))
-
-```
-
-
-
-### Exercise 2 (O)
-<!-- Explain -->
-
-
-Save the tibble `data_crane` to a `.csv` file. Use `;` as delimiter. To do this, you can use the function `write_delim`. Again, you can make use of its help function if you want to understand how the function works: type `?write_delim` in your console.
-
-*Tip: Use a different file name, otherwise you overwrite the original data*
-*Tip: You can save the file to a specific folder by including it in the path, just like you did when you read the file in exercise I-1. For instance:* `data/other_file_name.csv` *will save your file in the* `data` *folder*.
-```{r}
-# optional: write back to file
-
-```
 
 
 
@@ -321,6 +351,14 @@ ggplot(penguins_clean, aes(x = body_mass_g,
 
 ```
 
+```{r}
+penguins_join %>%
+  ggplot(aes(x = standardized, color = Species)) +
+  geom_density() +
+  facet_grid(culmen_element ~ .) +
+  theme_bw()
+  
+```
 
 
 

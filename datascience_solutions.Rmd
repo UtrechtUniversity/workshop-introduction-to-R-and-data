@@ -17,7 +17,7 @@ library(readxl)
 ```
 
 
-# Chapter 1: Import 
+# Chapter 1: Importing data
 
 ## Exercise 1
 ```{r}
@@ -38,10 +38,17 @@ penguins <- read_delim(file = "data/penguins_raw.tsv",
 penguins_isotopes <- read_excel(path = "data/penguins_isotopes.xlsx")
 ```
 
-
-# Chapter 2: Clean
-
 ## Exercise 4
+```{r}
+write_delim(penguins_isotopes,
+            path = "data/penguins_isotopes.csv",
+            delim = ";")
+```
+
+
+# Chapter 2: Subsetting and mutating
+
+## Exercise 5
 ```{r}
 # option 1: filtering on the presence of MALE and FEMALE
 penguins_subset <- filter(penguins, Sex %in% c("MALE", "FEMALE"))
@@ -50,13 +57,13 @@ penguins_subset <- filter(penguins, Sex %in% c("MALE", "FEMALE"))
 penguins_subset <- filter(penguins, !is.na(Sex))
 ```
 
-## Exercise 5
+## Exercise 6
 ```{r}
 penguins_subset <- select(penguins_subset, 
                   `Individual ID`, Species, Sex, Island, starts_with("Culmen"))
 ```
 
-## Exercise 6
+## Exercise 7
 ```{r}
 penguins_subset <- penguins %>%
   filter(!is.na(Sex)) %>%
@@ -64,39 +71,50 @@ penguins_subset <- penguins %>%
 ```
 
 
-## Exercise 7
+## Exercise 8
 ```{r}
 penguins_subset <- mutate(penguins_subset,
                           culmen_ratio = `Culmen Length (mm)` / `Culmen Depth (mm)`)
 ```
 
 
+# Chapter 3: Tidy data
 
-# Chapter 3: Tidy
-
-## Exercise 3
+## Exercise 9
 ```{r}
-
+penguins_long <- penguins_subset %>%
+  rename(length = `Culmen Length (mm)`,
+         depth = `Culmen Depth (mm)`) %>%
+  pivot_longer(cols = c(length, depth),
+               names_to = "culmen_element",
+               values_to = "measurement")
 ```
 
-## Exercise 3
+## Exercise 10
 ```{r}
-
+penguins_summary <- penguins_long %>%
+  group_by(Species, culmen_element) %>%
+  summarize(avg = mean(measurement),
+            sd = sd(measurement))
 ```
 
 
-## Exercise 3
+## Exercise 11
 ```{r}
-
+penguins_join <- full_join(penguins_long, penguins_summary,
+                           by = c("Species", "culmen_element"))
 ```
 
-## Exercise 3
+## Exercise 12
 ```{r}
-
+penguins_join <- penguins_join %>%
+  mutate(standardized = (measurement - avg)/sd)
 ```
 
-## Exercise 3
+## Exercise 13
 ```{r}
+
+
 
 ```
 
