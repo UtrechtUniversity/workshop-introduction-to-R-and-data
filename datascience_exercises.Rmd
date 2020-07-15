@@ -5,6 +5,10 @@ output:
   html_document:
     toc: true
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error = TRUE)
+```
+
 
 *This document is part of the workshop **Introduction to R & Data** by Utrecht University RDM Support. *
 
@@ -28,33 +32,52 @@ We are going to use a series of packages that are part of the Tidyverse. These p
 library(tidyverse) 
 ```
 
-# Import 
+# Chapter 1: Import 
 
 ## Exercise (M)
 
-In this exercise, we read the dataset `HUJI_Crane_Israel_GPRS.csv` into the memory of the computer. 
+In this exercise, we read the dataset `penguins_raw.tsv` into R. 
 
 You will need to know three things to complete this exercise:
-- The **function** to use to read data into R;
 - The **location** of your data;
-- The **delimiter** of the data.
+- The **delimiter** of the data;
+- The **function** to use to read data into R.
 
-You can find the dataset in the `data` folder of your project. Note that the file location (argument `file`) should be `data/HUJI_Crane_Israel_GPRS.csv`, as you are referring to its location (or 'path') relative to the location of this script.
+You can find the dataset in the `data` folder of your project.
+Note that the file **location** (argument `file`) should be `data/penguins_raw.tsv`, as you are referring to its location (or 'path') relative to the location of this exercise file.
 
-The delimiter is the character that separates the values in a tabular data file. There are various ways to find out how the datasets is delimited. One way from inside Rstudio is to use the 'Import Dataset' button (in your 'Environment') window, choose 'from Text (readr)', locate your data, and play around with the settings. An **example** of the code you can use should now appear in the bottom right window. (This will also include a function!)
+The **delimiter** is the character that separates the values in a tabular data file.
+There are various ways to find out how the datasets is delimited.
+One way from inside Rstudio is to use the 'Import Dataset' button (in your 'Environment') window, choose 'from Text (readr)', locate your data, and play around with the delimiter settings at the bottom.
+In the preview window you see the result of your settings on how your data will be loaded.
 
-Complete the code in the chunk below:
+With this method, you can also find the **function** to use: at the bottom-right, Rstudio shows you the code that corresponds to your settings. You only need to copy the function
+
+Complete the code in the chunk below, replacing the ??? with your code:
 
 ```{r}
-# load data
-penguins <- read_delim("data/penguins_raw.tsv", delim = "\t")
+penguins <- read_???(file = ???,
+                       delim = ???)
 ```
 
 
 
 ## Exercise (O)
 
-<!-- Load additional data from an excel file. Maybe an excel file with information on the islands? -->
+The penguin dataset we just loaded contains a column with dates (`Date Egg`).
+To load the dates correctly, so we can do direct calculations on them, we need to specify the date format.
+For this, we use the argument `col_types`.
+
+Use the 'Import Dataset' button again to play around with readr settings.
+First, ensure the delimiter is set correctly so you can play with 
+
+
+col_types = cols(`Date Egg` = col_date(format = "%d/%m/%Y")
+
+
+
+
+## Exercise (O)
 
 `read_csv` and `read_delim` are useful functions for most tabular data files, but they are unable to read excel files. For this, we need an additional package.
 
@@ -65,7 +88,7 @@ Load this package with the function `library()`:
 
 Included in the *package* `readxl` (a package is a collection of functions) is the *function* `read_excel`. You can learn how to use this function by exploring its help function. To do this, type `?read_excel` in your console.
 
-Use the function `read_excel` to read the additional observations in data file `crane_additional_observations.xlsx` (an Excel file!), also located in your `data` folder, into R.
+Use the function `read_excel` to read the additional observations in data file `` (an Excel file!), also located in your `data` folder, into R.
 
 Complete the code in the chunk below:
 

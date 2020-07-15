@@ -1,0 +1,33 @@
+---
+title: "Data science in the Tidyverse - Solutions"
+author: "Barbara Vreede"
+output:
+  html_document:
+    toc: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+```{r} 
+library(tidyverse) 
+```
+
+# Chapter 1: Import 
+
+## Exercise 1
+```{r}
+penguins <- read_delim(file = "data/penguins_raw.tsv",
+                       delim = "\t")
+```
+
+
+## Exercise 2
+```{r}
+penguins <- read_delim(file = "data/penguins_raw.tsv",
+                       delim = "\t",
+                       col_types = cols(`Date Egg` = col_date(format = "%d/%m/%Y")))
+```
+
