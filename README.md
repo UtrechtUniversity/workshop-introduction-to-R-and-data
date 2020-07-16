@@ -53,7 +53,7 @@ Move it to an accessible place on your system, and unzip.
 
 ### Slides
 - [Introduction to R](slides/slides_introduction.html)
-- Data science with Tidyverse
+- [Data science with Tidyverse](slides/slides_tidyverse.pdf)
 
 ### Exercises & solutions
 - Exercises morning: [baseR_exercises.Rmd](baseR_exercises.Rmd)
