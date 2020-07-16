@@ -40,11 +40,15 @@ We are always available for 1:1 support during these times, and reconvene in the
 | 11:45 | _Exercises 7-9_ |
 | 12:40 | Recap & Questions |
 | **12:45** | **Lunch break** |
-| 13:30 | Data architecture & introduction to Tidyverse |
-| 14:00 | Importing data |
-| 14:30 | Data transformation and manipulation |
-| **15:15** | **Coffee break** |
-| 15:30 | Data visualization |
+| 13:30 | Introduction to Tidyverse & Importing data |
+| 13:45 | Exercises 1-4 |
+| 14:15 | Subsetting and mutating data |
+| 14:30 | Exercises 5-8 |
+| **15:00** | **Coffee break** |
+| 15:15 | Transformations & tidy data |
+| 15:30 | Exercises 9-12 |
+| 16:00 | Data visualization |
+| 16:15 | Exercises 13-15 |
 | 17:00 | Final recap and closing |
 
 ## Material
