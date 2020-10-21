@@ -27,29 +27,26 @@ Information on how to install these (and troubleshoot the installation) is on ou
 
 ## Schedule
 
-All activities in _cursive_ (during the morning session) are done independently, using videos and exercises provided.
+Most activities are done independently, using videos and exercises provided.
 We are always available for 1:1 support during these times, and reconvene in the main channel at stated times.
 
 | Time | Activity |
 |---:|:---|
 | 9:00 | Walk-in, tech support |
 | 9:30 | Introductions |
-| 10:00 | _Exercises 1-6_ |
+| 10:00 | Base R: _Exercises 1-6_ |
 | 11:25 | Recap & Questions |
 | **11:30** | **Coffee break** |
-| 11:45 | _Exercises 7-9_ |
+| 11:45 | Programming: _Exercises 7-9_ |
 | 12:40 | Recap & Questions |
 | **12:45** | **Lunch break** |
-| 13:30 | Introduction to Tidyverse & Importing data |
-| 13:45 | Exercises 1-4 |
-| 14:15 | Subsetting and mutating data |
-| 14:30 | Exercises 5-8 |
+| 13:30 | Introduction to Tidyverse & Importing data: _Exercises 1-4_ |
+| 14:15 | Subsetting and mutating data: _Exercises 5-8_ |
+| 14:55 | Recap & Questions |
 | **15:00** | **Coffee break** |
-| 15:15 | Transformations & tidy data |
-| 15:30 | Exercises 9-12 |
-| 16:00 | Data visualization |
-| 16:15 | Exercises 13-15 |
-| 17:00 | Final recap and closing |
+| 15:15 | Transformations & tidy data: _Exercises 9-12_ |
+| 16:00 | Data visualization: _Exercises 13-15_ |
+| 16:55 | Final recap and closing |
 
 ## Material
 [Download a zipped file of the workshop material](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/archive/master.zip).
@@ -67,6 +64,7 @@ Move it to an accessible place on your system, and unzip.
 
 ### Videos
 
+#### Morning: Introduction to R
 The morning session (Introduction to R) has been recorded for self-study.
 Links to the videos and corresponding slides are below.
 
@@ -83,6 +81,20 @@ Links to the videos and corresponding slides are below.
 | Programming: if statements | [Slides](slides/slides_introduction.html#98) | [Video](https://youtu.be/ASVKW4dyLZI) | Exercise 7 | [Answer slide](slides/slides_introduction.html#104) | [Answer video](https://youtu.be/CV3uOPfnnt4) |
 | Programming: functions | [Slides](slides/slides_introduction.html#105) | [Video](https://youtu.be/P_qSXHyIUpQ) | Exercise 8 | [Answer slide](slides/slides_introduction.html#117) | [Answer video](https://youtu.be/EezEmFFbRow) |
 | Programming: loops | [Slides](slides/slides_introduction.html#118) | [Video](https://youtu.be/K4KSjizSJFk) | Exercise 9 | [Answer slide](slides/slides_introduction.html#123) | [Answer video](https://youtu.be/7iKKwP3aFuA) |
+
+#### Afternoon: Data science with Tidyverse
+Lectures and demos have been recorded for self-study.
+Links to the videos are below.
+The solution to all exercises can be found in the [solutions document](datascience_solutions.html).
+
+| Subject | Video | Exercises |
+|:--------|:-------|:------|
+| Introduction to Tidyverse | [Video](https://youtu.be/FIXME) | - |
+| Importing data | [Video](https://youtu.be/FIXME) | Exercise 1-4 |
+| Recap & Questions | [Video](https://youtu.be/FIXME) | Exercise 5-8 |
+| Transformations & tidy data | [Video](https://youtu.be/FIXME) | Exercise 9-12 |
+| Data visualization | [Video](https://youtu.be/FIXME) | Exercise 13-15 |
+
 
 ### External resources
 - Book: [R for Data Science](https://r4ds.had.co.nz/)
