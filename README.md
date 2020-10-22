@@ -91,9 +91,9 @@ The solution to all exercises can be found in the [solutions document](datascien
 |:--------|:-------|:------|
 | Introduction to Tidyverse | [Video](https://vimeo.com/470831693) | - |
 | Importing data | [Video](https://vimeo.com/470836273) | Exercise 1-4 |
-| Subsetting & mutating | [Video](https://youtu.be/FIXME) | Exercise 5-8 |
-| Transformations & tidy data | [Video](https://youtu.be/FIXME) | Exercise 9-12 |
-| Data visualization | [Video](https://youtu.be/FIXME) | Exercise 13-15 |
+| Subsetting & mutating | Video not yet available | Exercise 5-8 |
+| Transformations & tidy data | Video not yet available | Exercise 9-12 |
+| Data visualization | Video not yet available | Exercise 13-15 |
 
 
 ### External resources
