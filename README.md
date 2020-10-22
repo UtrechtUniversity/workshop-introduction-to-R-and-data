@@ -100,10 +100,10 @@ The solution to all exercises can be found in the [solutions document](datascien
 - Book: [R for Data Science](https://r4ds.had.co.nz/)
 - [R cheat sheets](https://www.rstudio.com/resources/cheatsheets/) provided by the R community and RStudio, describing common procedures and packages. We use the following cheat sheets during our workshop:
     - [Base R](http://github.com/rstudio/cheatsheets/raw/master/base-r.pdf)
-    - [R Markdown](https://www.rstudio.com/resources/cheatsheets/#rmarkdown)
-    - [Data Import](https://www.rstudio.com/resources/cheatsheets/#import)
-    - [Data Transformation with dplyr](https://www.rstudio.com/resources/cheatsheets/#dplyr)
-    - [Data Visualization with ggplot2](https://www.rstudio.com/resources/cheatsheets/#ggplot2)
+    - [R Markdown](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
+    - [Data Import](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf)
+    - [Data Transformation with dplyr](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
+    - [Data Visualization with ggplot2](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
 
 
 
