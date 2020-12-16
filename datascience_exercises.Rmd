@@ -26,7 +26,8 @@ Each of the following chapters will have multiple exercises to let you practice 
 Through these exercises, we will move a data frame through the different steps in a data science workflow.
 This means that often the results of one step will be the input for the next.
 If this is the case, the exercise will get a label: REQUIRED.
-Make sure you complete this exercise successfully, or you will not be able to proceed to the next theme.
+Other exercises will carry the label OPTIONAL, but please do them if you have time!
+Make sure you complete REQUIRED exercises successfully, or you will not be able to proceed to the next theme.
 
 
 ## Technical requirements
@@ -68,7 +69,7 @@ penguins <- read_???(file = ???,
 ```
 
 
-## Exercise 2
+## Exercise 2 (OPTIONAL)
 
 The penguin dataset we just loaded contains a column with dates (`Date Egg`).
 To load the dates correctly, so we can do direct calculations on them, we need to specify the date format.
@@ -87,7 +88,7 @@ penguins <- read_delim(file = "data/penguins_raw.tsv",
 ```
 
 
-## Exercise 3
+## Exercise 3 (OPTIONAL)
 
 `read_csv` and `read_delim` are useful functions for most tabular data files, but they are unable to read excel files.
 For this, we need an additional package.
@@ -112,24 +113,24 @@ penguins_isotopes <- read_???(path = ???)
 ```
 
 
-## Exercise 4
+## Exercise 4 (OPTIONAL)
 
 Save your excel data as a value separated text file, with the function `write_delim()`.
 
 For this function, you need to provide the following information:
-- The name of the **object** you want to save
-- The **path** where you will save the file
-- The **delimiter** that will separate your values
+- The name of the object you want to save
+- The name of the new file
+- The delimiter that will separate your values
 
-The **object** is `penguins_isotopes`, which you read from an excel file, and will now save as a .csv.
-The **path** includes both the folder and the new file name: consider "data/penguins_isotopes.csv".
+The object is `penguins_isotopes`, which you read from an excel file, and will now save as a .csv.
+The complete file name includes both the folder and the new file name: consider "data/penguins_isotopes.csv".
 Note that the extension we are going to use is .csv, which stands for comma separated values.
 This is a common extension for a comma-separated OR a semicolon-separated file.
-The **delimiter** can be anything you want, but a common option is a comma, or semicolon.
+The delimiter can be anything you want, but a common option is a comma (","), or semicolon (";").
 
 ```{r}
 write_delim(penguins_isotopes,
-            path = ???,
+            file = ???, # if you get an error here, consider using 'path' instead of 'file' - readr has been updated
             delim = ???)
 ```
 
@@ -181,7 +182,7 @@ penguins_subset <- select(penguins_subset, ???)
 ```
 
 
-# Exercise 7
+# Exercise 7 (OPTIONAL)
 
 Combine your row and column subsets using the %>% operator.
 Use the code you wrote during exercises 4 and 5, and make a workflow that starts with the data `penguins`, and subsequently applies your `filter` and `select` operations.
@@ -195,7 +196,7 @@ penguins_subset <- penguins %>% ???
 ```
 
 
-## Exercise 8
+## Exercise 8 (OPTIONAL)
 
 We want to make a metric called `culmen_ratio`, which is defined as the length of the bill (culmen) divided by the depth.
 
@@ -245,6 +246,11 @@ In `group_by()`, specify `Species` and `culmen_element`
 In `summarize`, use the function `mean()` to calculate the average of the column `measurement`, and `sd()` to calculate the standard deviation.
 
 Make sure to feed the right data frame into the workflow: the column `culmen_element` is one that was created in the previous exercise!
+
+NB: a warning message may appear that says: "`summarise()` regrouping output by 'Species' (override with `.groups` argument)"
+This is expected behavior!
+Don't worry.
+
 ```{r}
 
 penguins_summary <- penguins_long %>%
@@ -255,7 +261,7 @@ penguins_summary <- penguins_long %>%
 ```
 
 
-## Exercise 11
+## Exercise 11 (OPTIONAL)
 
 Join the summary (`penguins_summary`) and long (`penguins_long`) data frames, so that each row in the long data frame will have additional columns with the mean and standard deviation for its group.
 
@@ -271,7 +277,7 @@ penguins_join <- full_join(???,
 ```
 
 
-## Exercise 12
+## Exercise 12 (OPTIONAL)
 
 Now we have a data frame that has added averages and standard deviations for grouped measurements, we can calculate the z-scores of individual measurements, to see their distribution.
 The z-score is a metric that expresses the distance from a measurement to the mean in the number of standard deviations: ( measurement - average ) / standard deviation.
@@ -288,7 +294,7 @@ penguins_join <- penguins_join %>%
 
 # Chapter 4: Data visualization
 
-## Exercise 13
+## Exercise 13 (OPTIONAL)
 
 Using the summarized data frame, we are going to plot both the averages for the bill measurements in different penguin species.
 The standard deviations will be used for error bars.
@@ -387,7 +393,7 @@ p3
 ```
 
 
-## Exercise 14
+## Exercise 14 (OPTIONAL)
 
 In this exercise, we are going back to the data loaded in exercise 1.
 Before we start, we filter the data for a few outliers.
@@ -459,7 +465,7 @@ p4 + facet_grid(. ~ .)
 
 ```
 
-## Exercise 15
+## Exercise 15 (OPTIONAL)
 
 If you have not yet completed exercises 11 and 12, run the below code to get a data frame with distributions.
 

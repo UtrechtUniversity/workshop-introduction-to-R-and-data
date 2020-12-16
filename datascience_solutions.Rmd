@@ -41,7 +41,7 @@ penguins_isotopes <- read_excel(path = "data/penguins_isotopes.xlsx")
 ## Exercise 4
 ```{r}
 write_delim(penguins_isotopes,
-            path = "data/penguins_isotopes.csv",
+            file = "data/penguins_isotopes.csv",
             delim = ";")
 ```
 
