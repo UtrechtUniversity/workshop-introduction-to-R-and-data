@@ -118,19 +118,19 @@ penguins_isotopes <- read_???(path = ???)
 Save your excel data as a value separated text file, with the function `write_delim()`.
 
 For this function, you need to provide the following information:
-- The name of the **object** you want to save
-- The **path** where you will save the file
-- The **delimiter** that will separate your values
+- The name of the object you want to save
+- The name of the new file
+- The delimiter that will separate your values
 
-The **object** is `penguins_isotopes`, which you read from an excel file, and will now save as a .csv.
-The **path** includes both the folder and the new file name: consider "data/penguins_isotopes.csv".
+The object is `penguins_isotopes`, which you read from an excel file, and will now save as a .csv.
+The complete file name includes both the folder and the new file name: consider "data/penguins_isotopes.csv".
 Note that the extension we are going to use is .csv, which stands for comma separated values.
 This is a common extension for a comma-separated OR a semicolon-separated file.
-The **delimiter** can be anything you want, but a common option is a comma, or semicolon.
+The delimiter can be anything you want, but a common option is a comma (","), or semicolon (";").
 
 ```{r}
 write_delim(penguins_isotopes,
-            path = ???,
+            file = ???,
             delim = ???)
 ```
 
