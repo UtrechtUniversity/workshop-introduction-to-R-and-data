@@ -130,7 +130,7 @@ The delimiter can be anything you want, but a common option is a comma (","), or
 
 ```{r}
 write_delim(penguins_isotopes,
-            file = ???,
+            file = ???, # if you get an error here, consider using 'path' instead of 'file' - readr has been updated
             delim = ???)
 ```
 
