@@ -246,6 +246,11 @@ In `group_by()`, specify `Species` and `culmen_element`
 In `summarize`, use the function `mean()` to calculate the average of the column `measurement`, and `sd()` to calculate the standard deviation.
 
 Make sure to feed the right data frame into the workflow: the column `culmen_element` is one that was created in the previous exercise!
+
+NB: a warning message may appear that says: "`summarise()` regrouping output by 'Species' (override with `.groups` argument)"
+This is expected behavior!
+Don't worry.
+
 ```{r}
 
 penguins_summary <- penguins_long %>%
