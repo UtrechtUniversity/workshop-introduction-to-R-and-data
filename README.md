@@ -1,24 +1,26 @@
-# Workshop: Introduction to R & data
+# Workshop: Introduction to R & data for ADS students
 
-This repository contains the documentation, exercises and datasets of the single day workshop ['Introduction to R & data'](https://www.uu.nl/en/research/research-data-management/training-workshops/introduction-to-r-data) at Utrecht University.
+This repository contains the documentation, exercises and datasets of the half-day workshop ['Introduction to R & data for ADS students'](https://www.uu.nl/en/research/research-data-management/training-workshops/introduction-to-r-data) at Utrecht University.
 The workshop is organised by [Research Data Management Support](https://www.uu.nl/en/research/research-data-management).
 
-## Workshop description
+## Workshop description - choose your own adventure
 
 R is a powerful scripting language for data handling, data visualization, and statistics.
 In this workshop, we aim to give you the tools to start exploring R and all it has to offer by yourself.
 
-The course will take you from the very basics in R syntax, to data handling and visualization using a set of packages designed for data science, known as the ‘tidyverse’.
-We will also take some time to understand datasets and their architecture, preparing you to handle your own data in a clean, robust, and reproducible manner.
-We will work in RStudio and introduce R scripts as well as the R Markdown format: the latter is a great way to combine code and its output with text, allowing you to code in a narrative and intuitive way.
+This workshop will let you choose where to start: from the very **basics in R syntax** and **programming** (functions, if statements, for loops), to **data handling** and **visualization** using a set of packages designed for data science, known as the ‘tidyverse’.  
+
+You can also take the time to understand **datasets and their architecture**, preparing you to handle your own data in a clean, robust, and reproducible manner.  
+
+We will work in RStudio and introduce **R scripts** as well as the **R Markdown** format: the latter is a great way to combine code and its output with text, allowing you to code in a narrative and intuitive way.
 Moreover, this way you produce a human-readable document with which you can easily share and showcase your work.
 
 ## Upcoming workshops
-Check [uu.nl/rdm](https://www.uu.nl/en/research/research-data-management/training-workshops/introduction-to-r-data) for upcoming workshops.
-Registration is mandatory, and opens 2 months in advance of the course.
+Check [uu.nl/rdm](https://www.uu.nl/en/research/research-data-management/training-workshops/introduction-to-r-data) for upcoming workshops that are open to all UU/UMCU staff and students. 
 
 ## Installation requirements
 This course requires three things to be installed:
+
 - The language **R**
 - The IDE **Rstudio**
 - The packages in **tidyverse**
@@ -32,21 +34,15 @@ We are always available for 1:1 support during these times, and reconvene in the
 
 | Time | Activity |
 |---:|:---|
-| 9:00 | Walk-in, tech support |
-| 9:30 | Introductions |
-| 10:00 | Base R: _Exercises 1-6_ |
-| 11:25 | Recap & Questions |
-| **11:30** | **Coffee break** |
-| 11:45 | Programming: _Exercises 7-9_ |
-| 12:40 | Recap & Questions |
-| **12:45** | **Lunch break** |
-| 13:30 | Introduction to Tidyverse & Importing data: _Exercises 1-4_ |
-| 14:15 | Subsetting and mutating data: _Exercises 5-8_ |
-| 14:55 | Recap & Questions |
-| **15:00** | **Coffee break** |
-| 15:15 | Transformations & tidy data: _Exercises 9-12_ |
-| 16:00 | Data visualization: _Exercises 13-15_ |
-| 16:55 | Final recap and closing |
+| 8:30 | Walk-in, tech support |
+| 9:00 | Workshop introduction |
+| 9:15 | Choose your own adventure: _Exercises_ |
+| 10:45 | Recap & Questions - Base R and programming |
+| **11:00** | **Coffee break** |
+| 11:15 | Choose your own adventure: _Exercises_ |
+| 12:45 | Recap & Questions  - Data science with Tidyverse |
+| **13:00** | **End of workshop** |
+
 
 ## Material
 [Download a zipped file of the workshop material](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/archive/master.zip).
@@ -57,15 +53,15 @@ Move it to an accessible place on your system, and unzip.
 - [Data science with Tidyverse](slides/slides_tidyverse.pdf)
 
 ### Exercises & solutions
-- Exercises morning: [baseR_exercises.Rmd](baseR_exercises.Rmd)
-- Solutions morning: see [slides](slides/slides_introduction.html)
-- Exercises afternoon: [datascience_exercises.Rmd](datascience_exercises.Rmd)
-- Solutions afternoon: [datascience_solutions.html](datascience_solutions.html)
+- Introduction to R - **exercises**: [baseR_exercises.Rmd](baseR_exercises.Rmd)
+- Introduction to R - **solutions**: see [slides](slides/slides_introduction.html)
+- Datascience with Tidyverse - **exercises**: [datascience_exercises.Rmd](datascience_exercises.Rmd)
+- Datascience with Tidyverse - **solutions**: [datascience_solutions.html](datascience_solutions.html)
 
 ### Videos
 
-#### Morning: Introduction to R
-The morning session (Introduction to R) has been recorded for self-study.
+#### Part 1: Introduction to R
+Lectures and demos have been recorded for self-study.
 Links to the videos and corresponding slides are below.
 
 | Subject | Slides | Video | Exercise | Answer slide | Answer video |
@@ -82,7 +78,7 @@ Links to the videos and corresponding slides are below.
 | Programming: functions | [Slides](slides/slides_introduction.html#105) | [Video](https://youtu.be/P_qSXHyIUpQ) | Exercise 8 | [Answer slide](slides/slides_introduction.html#117) | [Answer video](https://youtu.be/EezEmFFbRow) |
 | Programming: loops | [Slides](slides/slides_introduction.html#118) | [Video](https://youtu.be/K4KSjizSJFk) | Exercise 9 | [Answer slide](slides/slides_introduction.html#123) | [Answer video](https://youtu.be/7iKKwP3aFuA) |
 
-#### Afternoon: Data science with Tidyverse
+#### Part 2: Data science with Tidyverse
 Lectures and demos have been recorded for self-study.
 Links to the videos are below.
 The solution to all exercises can be found in the [solutions document](datascience_solutions.html).
@@ -108,6 +104,6 @@ The solution to all exercises can be found in the [solutions document](datascien
 
 
 ## Acknowledgements
-The workshop 'Introduction to R & data' is developed and maintained by [Research Data Management Support](https://www.uu.nl/en/research/research-data-management) at Utrecht University.
+This workshop is based on the full-day course 'Introduction to R & data', developed and maintained by [Research Data Management Support](https://www.uu.nl/en/research/research-data-management) at Utrecht University.
 All videos were recorded by [Jacques Flores](https://www.uu.nl/medewerkers/jpflores).
 The material was written by [Barbara Vreede](https://github.com/bvreede), based on earlier versions by [Jonathan de Bruin](https://github.com/J535D165) and [Tessa Pronk](https://github.com/TessaPr).
