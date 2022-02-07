@@ -83,13 +83,13 @@ Lectures and demos have been recorded for self-study.
 Links to the videos are below.
 The solution to all exercises can be found in the [solutions document](datascience_solutions.html).
 
-| Subject | Video | Exercises |
-|:--------|:-------|:------|
-| Introduction to Tidyverse | [Video](https://vimeo.com/470831693) | - |
-| Importing data | [Video](https://vimeo.com/470836273) | Exercise 1-4 |
-| Subsetting & mutating | [Video](https://vimeo.com/470859983) | Exercise 5-8 |
-| Transformations & tidy data | [Video](https://vimeo.com/470864363) | Exercise 9-12 |
-| Data visualization | [Video](https://vimeo.com/470862707) | Exercise 13-15 |
+| Subject | Video | Exercises | Required exercise(s) |
+|:--------|:-------|:------| :------|
+| Introduction to Tidyverse | [Video](https://vimeo.com/470831693) | - | - |
+| Importing data | [Video](https://vimeo.com/470836273) | Exercise 1-4 | Exercise 1 |
+| Subsetting & mutating | [Video](https://vimeo.com/470859983) | Exercise 5-8 | Exercise 5-6 |
+| Transformations & tidy data | [Video](https://vimeo.com/470864363) | Exercise 9-12 | Exercise 9-10 |
+| Data visualization | [Video](https://vimeo.com/470862707) | Exercise 13-15 | - |
 
 
 ### External resources
