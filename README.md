@@ -1,6 +1,6 @@
-# Workshop: Introduction to R & data
+# Workshop: Introduction to R & Data
 
-This repository contains the documentation, exercises and datasets of the single day workshop ['Introduction to R & data'](https://www.uu.nl/en/research/research-data-management/training-workshops/introduction-to-r-data) at Utrecht University.
+This repository contains the documentation, exercises and datasets of the single day workshop ['Introduction to R & Data'](https://www.uu.nl/en/research/research-data-management/training-workshops/introduction-to-r-data) at Utrecht University.
 The workshop is organised by [Research Data Management Support](https://www.uu.nl/en/research/research-data-management).
 
 ## Workshop description
