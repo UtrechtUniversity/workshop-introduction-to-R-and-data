@@ -5,7 +5,7 @@ The workshop is organised by [Research Data Management Support](https://www.uu.n
 
 ## Workshop description
 
-R is a powerful scripting language for data handling, data visualization, and statistics.
+R is a powerful programming language for data handling, data visualization, and statistics.
 In this workshop, we aim to give you the tools to start exploring R and all it has to offer by yourself.
 
 The course will take you from the very basics in R syntax, to data handling and visualization using a set of packages designed for data science, known as the ‘tidyverse’.
