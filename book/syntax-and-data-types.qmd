@@ -1,1 +1,19 @@
 # Syntax & Data Types
+
+## Slides
+
+```{r embed-xaringan-2, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "../slides/slides_introduction.html#18", ratio = "4:3")
+```
+
+## Video
+
+{{< video https://youtu.be/S8zTmEvpYYk >}}
+
+## Exercise 1
+
+Now move on to Exercise 1 in `baseR_exercises.Rmd`.
+
+::: {.callout-tip}
+Getting lost? You can find the answers in the [slides](../slides/slides_introduction.html#27) or in [this video](https://youtu.be/V8za6GR7u8Q).
+:::
