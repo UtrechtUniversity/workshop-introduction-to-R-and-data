@@ -8,6 +8,7 @@ book:
   author: "Research Data Management Support<br>Utrecht University"
   date: last-modified
   search: true
+  favicon: favicon.ico
   chapters:
     - index.qmd
     - acknowledgements.qmd
@@ -31,6 +32,7 @@ book:
         - loops.qmd
     - part: "Working With Data"
       chapters:
+        - introduction-tidyverse.qmd
         - importing-data.qmd
         - subsetting-and-mutating-data.qmd
         - transformations-and-tidy-data.qmd
@@ -49,6 +51,8 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
+
+callout-appearance: simple
 
 
 
