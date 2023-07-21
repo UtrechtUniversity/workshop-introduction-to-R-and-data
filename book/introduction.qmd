@@ -1,18 +1,17 @@
-# Introduction
+# Introduction to RStudio
 
-This is a book created from markdown and executable code.
-
-See @knuth84 for additional discussion of literate programming.
-
-<iframe class="slide-deck" src="../slides/slides_introduction.html"></iframe>
-
-[link check](../slides/slides_introduction.html)
-
-```{r embed-xaringan-1, echo=FALSE}
-xaringanExtra::embed_xaringan(url = "../slides/slides_introduction.html", ratio = "16:9")
-```
-
+## Slides
 
 ```{r embed-xaringan-2, echo=FALSE}
-xaringanExtra::embed_xaringan(url = "../slides/slides_introduction.html", ratio = "4:3")
+xaringanExtra::embed_xaringan(url = "../slides/slides_introduction.html#12", ratio = "4:3")
 ```
+
+
+## Video
+
+{{< video https://youtu.be/FFYSAUJ305o >}}
+
+## Exercise 0
+
+The morning part of this workshop uses the file `baseR_exercises.Rmd`. Open 
+the file in your RStudio IDE. Try to run the code in Exercise 0.
