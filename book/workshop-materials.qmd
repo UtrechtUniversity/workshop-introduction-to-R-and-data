@@ -1,1 +1,44 @@
 # Workshop Materials
+
+You can download the workshop materials collectively in a zipped file or 
+separately using the links further below. Please make sure that all 
+workshop-related files are contained within a single folder and placed in a 
+location accessible to your system.
+
+## Zipped file
+
+The following zipped file contains the files you need to follow along: 
+
+- [course-materials.zip](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/raw/main/course-materials.zip)
+
+You can also see the individual files in [the GitHub repository](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/tree/main/course-materials).
+
+Don’t forget to extract the contents of the zipped file after downloading!
+
+```
+├── data
+│   ├── penguins_isotopes.xlsx
+│   └── penguins_raw.tsv
+├── baseR_exercises.Rmd
+├── datascience_exercises.Rmd
+├── datascience_solutions.html
+└── datascience_solutions.Rmd
+
+```
+
+## R markdown files
+
+We will be using the following R markdown files to work on the exercises:
+
+- `baseR_exercises.Rmd`
+- `datascience_exercises.Rmd`
+
+You can open these files using the RStudio IDE and immediately run code within
+the dedicated code chunks.
+
+## Data
+The data for this workshop is from the Palmer Penguins dataset. 
+We will be using the following files:
+
+- `penguins_raw.tsv`
+- `penguins_isotopes.xlsx`
