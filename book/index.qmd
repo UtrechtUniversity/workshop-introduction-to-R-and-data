@@ -1,5 +1,20 @@
-# Welcome {.unnumbered}
+# Welcome! {.unnumbered}
 
-This is a Quarto book.
+R is a powerful programming language for data handling, data visualization, and statistics. In this workshop, we aim to give you the tools to start exploring R 
+and all it has to offer by yourself.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+The workshop will take you from the very basics in R syntax, to data handling and
+visualization using a set of packages designed for data science, known as the 
+`tidyverse`. We will also take some time to understand datasets and their 
+architecture, preparing you to handle your own data in a clean, robust, and 
+reproducible manner.
+
+We will work in RStudio and introduce R scripts as well as the R Markdown 
+format: the latter is a great way to combine code and its output with text, 
+allowing you to code in a narrative and intuitive way. Moreover, this way you 
+produce a human-readable document with which you can easily share and showcase 
+your work.
+
+Our workshop material is licensed under a Creative Commons Attribution 4.0 
+International License. You can view the license 
+[in our GitHub repository](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/blob/main/LICENSE.md).
