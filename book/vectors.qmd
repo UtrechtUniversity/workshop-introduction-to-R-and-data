@@ -1,1 +1,19 @@
 # Vectors
+
+## Slides
+
+```{r embed-xaringan-2, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "../slides/slides_introduction.html#28", ratio = "4:3")
+```
+
+## Video
+
+{{< video https://youtu.be/XMFjteCdHbQ >}}
+
+## Exercise 2
+
+Now move on to Exercise 2 in `baseR_exercises.Rmd`.
+
+::: {.callout-tip}
+Getting lost? You can find the answers in the [slides](../slides/slides_introduction.html#40) or in [this video](https://youtu.be/rIieuoYT4z0)
+:::
