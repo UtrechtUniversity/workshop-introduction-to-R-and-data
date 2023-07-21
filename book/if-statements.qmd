@@ -1,1 +1,19 @@
 # If Statements
+
+## Slides
+
+```{r embed-xaringan-2, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "../slides/slides_introduction.html#98", ratio = "4:3")
+```
+
+## Video
+
+{{< video https://youtu.be/ASVKW4dyLZI >}}
+
+## Exercise 7
+
+Now move on to Exercise 7 in `baseR_exercises.Rmd`.
+
+::: {.callout-tip}
+Getting lost? You can find the answers in the [slides](../slides/slides_introduction.html#104) or in [this video](https://youtu.be/CV3uOPfnnt4).
+:::
