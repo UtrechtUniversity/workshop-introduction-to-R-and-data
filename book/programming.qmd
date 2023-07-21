@@ -1,1 +1,5 @@
-# Programming 
+# Programming
+
+## Video (external)
+
+{{< video https://youtu.be/eSYeHlwDCNA >}}
