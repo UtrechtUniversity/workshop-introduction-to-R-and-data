@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+title: Workshop Introduction to R and Data
+message: 'If you reuse our materials, please cite us!'
+type: software
+authors:
+  - given-names: Research Data Management Support
+    affiliation: Utrecht University
+    email: info.rdm@uu.nl
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.8167877
+    description: The concept DOI for the collection of these materials.
+repository-code: https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data
+url: 'https://uu.nl/rdm'
+abstract: >
+  This repository contains the materials for the single-day
+  workshop 'Introduction to R & Data', organized by Research
+  Data Management Support at Utrecht University, the
+  Netherlands.
+keywords:
+  - r
+  - rstudio
+  - tidyverse
+  - data science
+  - workshop
+license: CC-BY-4.0
+version: 2023.07.21
+date-released: '2023-07-21'
