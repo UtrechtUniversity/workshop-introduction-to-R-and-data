@@ -1,14 +1,18 @@
 # Workshop: Introduction to R & Data
 
-This repository contains the documentation, exercises and datasets of the single day workshop ['Introduction to R & Data'](https://www.uu.nl/en/research/research-data-management/training-workshops/introduction-to-r-data) at Utrecht University.
+<a href="https://zenodo.org/badge/latestdoi/151564918"><img src="https://zenodo.org/badge/151564918.svg" alt="DOI"></a>
+
+This repository contains the workshop materials for the single day workshop ['Introduction to R & Data'](https://www.uu.nl/en/research/research-data-management/training-workshops/introduction-to-r-data) at Utrecht University.
 The workshop is organised by [Research Data Management Support](https://www.uu.nl/en/research/research-data-management).
+
+**[Click here to go to the workshop materials](https://utrechtuniversity.github.io/workshop-intruduction-to-r-and-data)**
 
 ## Workshop description
 
 R is a powerful programming language for data handling, data visualization, and statistics.
 In this workshop, we aim to give you the tools to start exploring R and all it has to offer by yourself.
 
-The course will take you from the very basics in R syntax, to data handling and visualization using a set of packages designed for data science, known as the ‘tidyverse’.
+The course will take you from the very basics in R syntax, to data handling and visualization using a set of packages designed for data science, known as the 'tidyverse'.
 We will also take some time to understand datasets and their architecture, preparing you to handle your own data in a clean, robust, and reproducible manner.
 We will work in RStudio and introduce R scripts as well as the R Markdown format: the latter is a great way to combine code and its output with text, allowing you to code in a narrative and intuitive way.
 Moreover, this way you produce a human-readable document with which you can easily share and showcase your work.
@@ -23,46 +27,28 @@ This course requires three things to be installed:
 - The IDE **Rstudio**
 - The packages in **tidyverse**
 
-Information on how to install these (and troubleshoot the installation) is on our [installation guide](installation.md).
+Information on how to install these (and troubleshoot the installation) is on the [installation guide](https://utrechtuniversity.github.io/workshop-intruduction-to-r-and-data/installation-and-setup.html).
 
-## Schedule
+## Course materials
 
-Most activities are done independently, using videos and exercises provided.
-We are always available for 1:1 support during these times, and reconvene in the main channel at stated times.
+You can best follow the materials using the online book that contains all course materials: https://utrechtuniversity.github.io/workshop-intruduction-to-r-and-data.
 
-| Time | Activity |
-|---:|:---|
-| 9:00 | Walk-in, tech support |
-| 9:30 | Introductions |
-| 10:00 | Base R: _Exercises 1-6_ |
-| 11:25 | Recap & Questions |
-| **11:30** | **Coffee break** |
-| 11:45 | Programming: _Exercises 7-9_ |
-| 12:40 | Recap & Questions |
-| **12:45** | **Lunch break** |
-| 13:30 | Introduction to Tidyverse & Importing data: _Exercises 1-4_ |
-| 14:15 | Subsetting and mutating data: _Exercises 5-8_ |
-| 14:55 | Recap & Questions |
-| **15:00** | **Coffee break** |
-| 15:15 | Transformations & tidy data: _Exercises 9-12_ |
-| 16:00 | Data visualization: _Exercises 13-15_ |
-| 16:55 | Final recap and closing |
+The following zipped file contains the files you need to follow along: [course-materials.zip](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/raw/main/course-materials.zip).
+You can also see the individual files [here](course-materials). They are:
 
-## Material
-[Download a zipped file of the workshop material](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/archive/master.zip).
-Move it to an accessible place on your system, and unzip.
+```
+├── data                        # datasets used in the afternoon session
+│   ├── penguins_isotopes.xlsx
+│   └── penguins_raw.tsv
+├── baseR_exercises.Rmd         # morning exercises
+├── datascience_exercises.Rmd   # afternoon exercises
+├── datascience_solutions.html  # solutions afternoon in html
+└── datascience_solutions.Rmd   # solutions afternoon in Rmd
+```
 
-### Slides
-- [Introduction to R](slides/slides_introduction.html)
-- [Data science with Tidyverse](slides/slides_tidyverse.pdf)
-
-### Exercises & solutions
-- Exercises morning: [baseR_exercises.Rmd](baseR_exercises.Rmd)
-- Solutions morning: see [slides](slides/slides_introduction.html)
-- Exercises afternoon: [datascience_exercises.Rmd](datascience_exercises.Rmd)
-- Solutions afternoon: [datascience_solutions.html](datascience_solutions.html)
-
-### Videos
+### Slides and videos
+- Slides and solutions for the morning: [Introduction to R](slides/slides_introduction.html)
+- Slides for the afternoon: [Data science with Tidyverse](slides/slides_tidyverse.pdf)
 
 #### Morning: Introduction to R
 The morning session (Introduction to R) has been recorded for self-study.
@@ -95,7 +81,6 @@ The solution to all exercises can be found in the [solutions document](datascien
 | Transformations & tidy data | [Video](https://vimeo.com/470864363) | Exercise 9-12 |
 | Data visualization | [Video](https://vimeo.com/470862707) | Exercise 13-15 |
 
-
 ### External resources
 - Book: [R for Data Science](https://r4ds.had.co.nz/)
 - [R cheat sheets](https://www.rstudio.com/resources/cheatsheets/) provided by the R community and RStudio, describing common procedures and packages. We use the following cheat sheets during our workshop:
@@ -104,8 +89,6 @@ The solution to all exercises can be found in the [solutions document](datascien
     - [Data Import](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-import.pdf)
     - [Data Transformation with dplyr](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf)
     - [Data Visualization with ggplot2](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
-
-
 
 ## Acknowledgements
 The workshop 'Introduction to R & data' is developed and maintained by [Research Data Management Support](https://www.uu.nl/en/research/research-data-management) at Utrecht University.
