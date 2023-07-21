@@ -4,20 +4,349 @@
     "href": "index.html",
     "title": "Introduction to R & Data",
     "section": "",
-    "text": "Welcome\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books."
+    "text": "Welcome!\nR is a powerful programming language for data handling, data visualization, and statistics. In this workshop, we aim to give you the tools to start exploring R and all it has to offer by yourself.\nThe workshop will take you from the very basics in R syntax, to data handling and visualization using a set of packages designed for data science, known as the tidyverse. We will also take some time to understand datasets and their architecture, preparing you to handle your own data in a clean, robust, and reproducible manner.\nWe will work in RStudio and introduce R scripts as well as the R Markdown format: the latter is a great way to combine code and its output with text, allowing you to code in a narrative and intuitive way. Moreover, this way you produce a human-readable document with which you can easily share and showcase your work.\nOur workshop material is licensed under a Creative Commons Attribution 4.0 International License. You can view the license in our GitHub repository."
   },
   {
-    "objectID": "introduction.html",
-    "href": "introduction.html",
-    "title": "5  Introduction",
+    "objectID": "acknowledgements.html",
+    "href": "acknowledgements.html",
+    "title": "1  Acknowledgements",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nlink check\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "The workshop ‘Introduction to R & data’ is developed and maintained by Research Data Management Support at Utrecht University.\nAll videos were recorded by Jacques Flores. The material was written by Barbara Vreede, based on earlier versions by Jonathan de Bruin and Tessa Pronk."
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "2  Schedule",
+    "section": "",
+    "text": "Time\nActivity\n\n\n\n\n9:00\nWalk-in, tech support\n\n\n9:30\nIntroductions\n\n\n10:00\nBase R: Exercises 1-6\n\n\n11:25\nRecap & Questions\n\n\n11:30\nCoffee break\n\n\n11:45\nProgramming: Exercises 7-9\n\n\n12:40\nRecap & Questions\n\n\n12:45\nLunch break\n\n\n13:30\nIntroduction to Tidyverse & Importing data: Exercises 1-4\n\n\n14:15\nSubsetting and mutating data: Exercises 5-8\n\n\n14:55\nRecap & Questions\n\n\n15:00\nCoffee break\n\n\n15:15\nTransformations & tidy data: Exercises 9-12\n\n\n16:00\nData visualization: Exercises 13-15\n\n\n16:55\nFinal recap and closing"
+  },
+  {
+    "objectID": "installation-and-setup.html#installation",
+    "href": "installation-and-setup.html#installation",
+    "title": "3  Installation & Setup",
+    "section": "3.1 Installation",
+    "text": "3.1 Installation\n\n3.1.1 Install R and RStudio on a personal laptop.\nI.e. a laptop with administrator rights.\n\nInstall R from https://cran.rstudio.com/\nInstall Rstudio from https://www.rstudio.com/products/rstudio/download/#download\n\n\n\n3.1.2 Install R and RStudio on a Utrecht University laptop.\n\nOpen Software Center\nInstall R for Windows\n\nInstalling R packages on a Utrecht University laptop can be hard. This is because R packages are installed on a so-called ‘mounted’ drive. This causes problems with the performance. Check the installation as follows:\n\nOpen RStudio\nWrite the following line of code in your console: .libPaths(), and press enter to execute.\nIf the response starts with // or \\\\, you are installing on a mounted drive. Follow the steps below to change the installation location."
+  },
+  {
+    "objectID": "installation-and-setup.html#install-tidyverse-from-rstudio",
+    "href": "installation-and-setup.html#install-tidyverse-from-rstudio",
+    "title": "3  Installation & Setup",
+    "section": "3.2 Install Tidyverse from Rstudio",
+    "text": "3.2 Install Tidyverse from Rstudio\nFrom the console:\n\nOpen Rstudio.\nLook for a window that says “console” (probably bottom left of your screen).\nIn the console, type: install.packages(\"tidyverse\").\nHit ‘enter’.\n\nYou can also install using the RStudio GUI:\n\nOpen Rstudio.\nAt the window on the bottom right of your screen, select the tab “packages”.\nClick “install” and type “tidyverse” in the box.\nMake sure the checkbox marked “install dependencies” is checked, and click “install”.\n\nThe tidyverse installation might take a while, just let it run. If it asks you something, say ‘yes’, unless it looks particularly outlandish.\nIf you want to check your tidyverse installation, find the ‘console’ window, and type: library(tidyverse). Then hit ‘enter’.\nYou should see something that looks like this:\n── Attaching packages ────────────────────────────────────────────────tidyverse 1.2.1 ──\n✔ ggplot2 2.2.1     ✔ purrr   0.2.5\n✔ tibble  1.4.2     ✔ dplyr   0.7.4\n✔ tidyr   0.8.1     ✔ stringr 1.2.0\n✔ readr   1.1.1     ✔ forcats 0.3.0\n── Conflicts ────────────────────────────────────────────────tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()"
+  },
+  {
+    "objectID": "installation-and-setup.html#troubleshooting",
+    "href": "installation-and-setup.html#troubleshooting",
+    "title": "3  Installation & Setup",
+    "section": "3.3 Troubleshooting",
+    "text": "3.3 Troubleshooting\n\n3.3.1 Packages are being installed on a mounted drive\nThis can cause various errors, and even if everything goes right, installing tidyverse takes ages.\nSolution 1:\n\nThere is a solution to prevent problems with mounted drives for applications like R, RStudio and Office. Read more about the solution on intranet.\n\nSolution 2:\n\nCreate a folder R-packages on a local drive.\nCopy the location to that drive. For example: C:/Users/User/R-packages.\nRun the following line of code: file.edit(file.path(\"~\", \".Rprofile\"))\nPaste .libPaths(\"C:/Users/User/R-packages\") in the editor and save the file.\nRestart your R session\nClick on Packages>Install. Is Install to library pointing to C:/Users/User/R-packages?\nIf not: check if the path is correctly spelled. Try inverting the slashes (\\ instead of /). You may need to use double slashes (\\\\ or //).\nTick ‘source on save’, click save, and check Packages>Install again.\n\n\n\n3.3.2 Tidyverse installation is aborted\nIf the installation of tidyverse is aborted, and packages are downloaded but their installation is said to have “non zero exit status”, you may be dealing with an old version of R.\nUpdate R by installing a recent version from CRAN. Then try installing tidyverse again.\nDo you have Rtools installed? (Only on Windows; it is not clear why this works but it sometimes does.). Install this via cran.r-project.org/bin/windows/Rtools/.\n\n\n3.3.3 “Unable to move temporary installation” (Windows error)\nDo you get issues like this:\n> install.packages(\"tibble\")\nInstalling package into ‘C:/Users/UserName/R’\n(as ‘lib’ is unspecified)\ntrying URL 'https://cran.rstudio.com/bin/windows/contrib/3.4/tibble_1.4.2.zip'\nContent type 'application/zip' length 172649 bytes (168 KB)\ndownloaded 168 KB\n\npackage ‘tibble’ successfully unpacked and MD5 sums checked\nWarning in install.packages :\n  unable to move temporary installation ‘C:\\Users\\UserName\\R\\file18b813387562\\tibble’ to ‘C:\\Users\\UserName\\R\\tibble’\nThe downloaded binary packages are in\nC:\\Users\\UserName\\AppData\\Local\\Temp\\RtmpYh5ogU\\downloaded_packages\nCheck for the line unable to move temporary installation. Your virus scanner might be blocking the installation of tidyverse.\nThe solution (found here) is to enter:\ntrace(utils:::unpackPkgZip, edit=TRUE)\nYou should see:\nTracing function \"unpackPkgZip\" in package \"utils (not-exported)\"\n[1] \"unpackPkgZip\"\nAnd a file should open. Change 0.5 in line 142 to 2.5, save the file, and try installing tidyverse again.\n\n\n3.3.4 Library(tidyverse) loading failed\nDependencies might be missing, or outdated, and need to be installed/updated manually. For instance, you see the following error:\nError: package or namespace load failed for 'tidyverse'in loadNamespace(...)\nnamespace 'bindrcpp' 0.2 is being loaded, but >= 0.2.0.9000 is required.\nRun install.packages(\"bindrcpp\")to update this package.\nError: package or namespace load failed for 'tidyverse'in loadNamespace(...)\nthere is no package called (xxx)\nThe same solution as above applies: run install.packages() to add whatever package is missing. (At the time of writing, it is not clear why these packages are missing; this error was received over email.)"
+  },
+  {
+    "objectID": "workshop-materials.html#zipped-file",
+    "href": "workshop-materials.html#zipped-file",
+    "title": "4  Workshop Materials",
+    "section": "4.1 Zipped file",
+    "text": "4.1 Zipped file\nThe following zipped file contains the files you need to follow along:\n\ncourse-materials.zip\n\nYou can also see the individual files in the GitHub repository.\nDon’t forget to extract the contents of the zipped file after downloading!\n├── data\n│   ├── penguins_isotopes.xlsx\n│   └── penguins_raw.tsv\n├── baseR_exercises.Rmd\n├── datascience_exercises.Rmd\n├── datascience_solutions.html\n└── datascience_solutions.Rmd"
+  },
+  {
+    "objectID": "workshop-materials.html#r-markdown-files",
+    "href": "workshop-materials.html#r-markdown-files",
+    "title": "4  Workshop Materials",
+    "section": "4.2 R markdown files",
+    "text": "4.2 R markdown files\nWe will be using the following R markdown files to work on the exercises:\n\nbaseR_exercises.Rmd\ndatascience_exercises.Rmd\n\nYou can open these files using the RStudio IDE and immediately run code within the dedicated code chunks."
+  },
+  {
+    "objectID": "workshop-materials.html#data",
+    "href": "workshop-materials.html#data",
+    "title": "4  Workshop Materials",
+    "section": "4.3 Data",
+    "text": "4.3 Data\nThe data for this workshop is from the Palmer Penguins dataset. We will be using the following files:\n\npenguins_raw.tsv\npenguins_isotopes.xlsx"
+  },
+  {
+    "objectID": "introduction.html#slides",
+    "href": "introduction.html#slides",
+    "title": "5  Introduction to RStudio",
+    "section": "5.1 Slides",
+    "text": "5.1 Slides"
+  },
+  {
+    "objectID": "introduction.html#video",
+    "href": "introduction.html#video",
+    "title": "5  Introduction to RStudio",
+    "section": "5.2 Video",
+    "text": "5.2 Video"
+  },
+  {
+    "objectID": "introduction.html#exercise-0",
+    "href": "introduction.html#exercise-0",
+    "title": "5  Introduction to RStudio",
+    "section": "5.3 Exercise 0",
+    "text": "5.3 Exercise 0\nThe morning part of this workshop uses the file baseR_exercises.Rmd. Open the file in your RStudio IDE. Try to run the code in Exercise 0."
+  },
+  {
+    "objectID": "syntax-and-data-types.html#slides",
+    "href": "syntax-and-data-types.html#slides",
+    "title": "6  Syntax & Data Types",
+    "section": "6.1 Slides",
+    "text": "6.1 Slides"
+  },
+  {
+    "objectID": "syntax-and-data-types.html#video",
+    "href": "syntax-and-data-types.html#video",
+    "title": "6  Syntax & Data Types",
+    "section": "6.2 Video",
+    "text": "6.2 Video"
+  },
+  {
+    "objectID": "syntax-and-data-types.html#exercise-1",
+    "href": "syntax-and-data-types.html#exercise-1",
+    "title": "6  Syntax & Data Types",
+    "section": "6.3 Exercise 1",
+    "text": "6.3 Exercise 1\nNow move on to Exercise 1 in baseR_exercises.Rmd.\n\n\n\n\n\n\nGetting lost? You can find the answers in the slides or in this video."
+  },
+  {
+    "objectID": "vectors.html#slides",
+    "href": "vectors.html#slides",
+    "title": "7  Vectors",
+    "section": "7.1 Slides",
+    "text": "7.1 Slides"
+  },
+  {
+    "objectID": "vectors.html#video",
+    "href": "vectors.html#video",
+    "title": "7  Vectors",
+    "section": "7.2 Video",
+    "text": "7.2 Video"
+  },
+  {
+    "objectID": "vectors.html#exercise-2",
+    "href": "vectors.html#exercise-2",
+    "title": "7  Vectors",
+    "section": "7.3 Exercise 2",
+    "text": "7.3 Exercise 2\nNow move on to Exercise 2 in baseR_exercises.Rmd.\n\n\n\n\n\n\nGetting lost? You can find the answers in the slides or in this video"
+  },
+  {
+    "objectID": "data-structures.html#slides",
+    "href": "data-structures.html#slides",
+    "title": "8  Data Structures",
+    "section": "8.1 Slides",
+    "text": "8.1 Slides"
+  },
+  {
+    "objectID": "data-structures.html#video",
+    "href": "data-structures.html#video",
+    "title": "8  Data Structures",
+    "section": "8.2 Video",
+    "text": "8.2 Video"
+  },
+  {
+    "objectID": "data-structures.html#exercise-3",
+    "href": "data-structures.html#exercise-3",
+    "title": "8  Data Structures",
+    "section": "8.3 Exercise 3",
+    "text": "8.3 Exercise 3\nNow move on to Exercise 3 in baseR_exercises.Rmd.\n\n\n\n\n\n\nGetting lost? You can find the answers in the slides or in this video"
+  },
+  {
+    "objectID": "missing-data.html#slides",
+    "href": "missing-data.html#slides",
+    "title": "9  Missing Data",
+    "section": "9.1 Slides",
+    "text": "9.1 Slides"
+  },
+  {
+    "objectID": "missing-data.html#video",
+    "href": "missing-data.html#video",
+    "title": "9  Missing Data",
+    "section": "9.2 Video",
+    "text": "9.2 Video"
+  },
+  {
+    "objectID": "missing-data.html#exercise-4",
+    "href": "missing-data.html#exercise-4",
+    "title": "9  Missing Data",
+    "section": "9.3 Exercise 4",
+    "text": "9.3 Exercise 4\nNow move on to Exercise 4 in baseR_exercises.Rmd.\n\n\n\n\n\n\nGetting lost? You can find the answers in the slides."
+  },
+  {
+    "objectID": "indexing-vectors-and-lists.html#slides",
+    "href": "indexing-vectors-and-lists.html#slides",
+    "title": "10  Indexing Vectors & Lists",
+    "section": "10.1 Slides",
+    "text": "10.1 Slides"
+  },
+  {
+    "objectID": "indexing-vectors-and-lists.html#video",
+    "href": "indexing-vectors-and-lists.html#video",
+    "title": "10  Indexing Vectors & Lists",
+    "section": "10.2 Video",
+    "text": "10.2 Video"
+  },
+  {
+    "objectID": "indexing-vectors-and-lists.html#exercise-5",
+    "href": "indexing-vectors-and-lists.html#exercise-5",
+    "title": "10  Indexing Vectors & Lists",
+    "section": "10.3 Exercise 5",
+    "text": "10.3 Exercise 5\nNow move on to Exercise 5 in baseR_exercises.Rmd.\n\n\n\n\n\n\nGetting lost? You can find the answers in the slides or in this video."
+  },
+  {
+    "objectID": "indexing-dataframes.html#slides",
+    "href": "indexing-dataframes.html#slides",
+    "title": "11  Indexing Dataframes",
+    "section": "11.1 Slides",
+    "text": "11.1 Slides"
+  },
+  {
+    "objectID": "indexing-dataframes.html#video",
+    "href": "indexing-dataframes.html#video",
+    "title": "11  Indexing Dataframes",
+    "section": "11.2 Video",
+    "text": "11.2 Video"
+  },
+  {
+    "objectID": "indexing-dataframes.html#exercise-6",
+    "href": "indexing-dataframes.html#exercise-6",
+    "title": "11  Indexing Dataframes",
+    "section": "11.3 Exercise 6",
+    "text": "11.3 Exercise 6\nNow move on to Exercise 6 in baseR_exercises.Rmd.\n\n\n\n\n\n\nGetting lost? You can find the answers in the slides or in this video."
+  },
+  {
+    "objectID": "programming.html#video-external",
+    "href": "programming.html#video-external",
+    "title": "12  Programming",
+    "section": "12.1 Video (external)",
+    "text": "12.1 Video (external)"
+  },
+  {
+    "objectID": "if-statements.html#slides",
+    "href": "if-statements.html#slides",
+    "title": "13  If Statements",
+    "section": "13.1 Slides",
+    "text": "13.1 Slides"
+  },
+  {
+    "objectID": "if-statements.html#video",
+    "href": "if-statements.html#video",
+    "title": "13  If Statements",
+    "section": "13.2 Video",
+    "text": "13.2 Video"
+  },
+  {
+    "objectID": "if-statements.html#exercise-7",
+    "href": "if-statements.html#exercise-7",
+    "title": "13  If Statements",
+    "section": "13.3 Exercise 7",
+    "text": "13.3 Exercise 7\nNow move on to Exercise 7 in baseR_exercises.Rmd.\n\n\n\n\n\n\nGetting lost? You can find the answers in the slides or in this video."
+  },
+  {
+    "objectID": "functions.html#slides",
+    "href": "functions.html#slides",
+    "title": "14  Functions",
+    "section": "14.1 Slides",
+    "text": "14.1 Slides"
+  },
+  {
+    "objectID": "functions.html#video",
+    "href": "functions.html#video",
+    "title": "14  Functions",
+    "section": "14.2 Video",
+    "text": "14.2 Video"
+  },
+  {
+    "objectID": "functions.html#exercise-8",
+    "href": "functions.html#exercise-8",
+    "title": "14  Functions",
+    "section": "14.3 Exercise 8",
+    "text": "14.3 Exercise 8\nNow move on to Exercise 8 in baseR_exercises.Rmd.\n\n\n\n\n\n\nGetting lost? You can find the answers in the slides or in this video."
+  },
+  {
+    "objectID": "loops.html#slides",
+    "href": "loops.html#slides",
+    "title": "15  Loops",
+    "section": "15.1 Slides",
+    "text": "15.1 Slides"
+  },
+  {
+    "objectID": "loops.html#video",
+    "href": "loops.html#video",
+    "title": "15  Loops",
+    "section": "15.2 Video",
+    "text": "15.2 Video"
+  },
+  {
+    "objectID": "loops.html#exercise-9",
+    "href": "loops.html#exercise-9",
+    "title": "15  Loops",
+    "section": "15.3 Exercise 9",
+    "text": "15.3 Exercise 9\nNow move on to Exercise 9 in baseR_exercises.Rmd.\n\n\n\n\n\n\nGetting lost? You can find the answers in the slides or in this video."
+  },
+  {
+    "objectID": "importing-data.html#video",
+    "href": "importing-data.html#video",
+    "title": "17  Importing Data",
+    "section": "17.1 Video",
+    "text": "17.1 Video"
+  },
+  {
+    "objectID": "importing-data.html#exercise-1-4",
+    "href": "importing-data.html#exercise-1-4",
+    "title": "17  Importing Data",
+    "section": "17.2 Exercise 1-4",
+    "text": "17.2 Exercise 1-4\nWe will now move to our next exercise file: datascience_exercises.Rmd. Open the file and try out Exercises 1 through 4.\n\n\n\n\n\n\nGetting lost? You can find the answers in the datascience_solutions.Rmd file, or in the online version."
+  },
+  {
+    "objectID": "subsetting-and-mutating-data.html#video",
+    "href": "subsetting-and-mutating-data.html#video",
+    "title": "18  Subsetting & Mutating Data",
+    "section": "18.1 Video",
+    "text": "18.1 Video"
+  },
+  {
+    "objectID": "subsetting-and-mutating-data.html#exercise-5-8",
+    "href": "subsetting-and-mutating-data.html#exercise-5-8",
+    "title": "18  Subsetting & Mutating Data",
+    "section": "18.2 Exercise 5-8",
+    "text": "18.2 Exercise 5-8\nNow try out exercises 5-8 in datascience_exercises.Rmd.\n\n\n\n\n\n\nGetting lost? You can find the answers in the datascience_solutions.Rmd file, or in the online version."
+  },
+  {
+    "objectID": "transformations-and-tidy-data.html#video",
+    "href": "transformations-and-tidy-data.html#video",
+    "title": "19  Transformations & Tidy Data",
+    "section": "19.1 Video",
+    "text": "19.1 Video"
+  },
+  {
+    "objectID": "transformations-and-tidy-data.html#exercise-9-12",
+    "href": "transformations-and-tidy-data.html#exercise-9-12",
+    "title": "19  Transformations & Tidy Data",
+    "section": "19.2 Exercise 9-12",
+    "text": "19.2 Exercise 9-12\nNow try out exercises 9-12 in datascience_exercises.Rmd.\n\n\n\n\n\n\nGetting lost? You can find the answers in the datascience_solutions.Rmd file, or in the online version."
+  },
+  {
+    "objectID": "data-visualization.html#video",
+    "href": "data-visualization.html#video",
+    "title": "20  Data Visualization",
+    "section": "20.1 Video",
+    "text": "20.1 Video"
+  },
+  {
+    "objectID": "data-visualization.html#exercise-13-15",
+    "href": "data-visualization.html#exercise-13-15",
+    "title": "20  Data Visualization",
+    "section": "20.2 Exercise 13-15",
+    "text": "20.2 Exercise 13-15\nNow try out exercises 13-15 in datascience_exercises.Rmd.\n\n\n\n\n\n\nGetting lost? You can find the answers in the datascience_solutions.Rmd file, or in the online version."
+  },
+  {
+    "objectID": "what-next.html",
+    "href": "what-next.html",
+    "title": "21  What’s next?",
+    "section": "",
+    "text": "Not finished learning? Feel free to check our website, uu.nl/rdm for our other workshops and trainings."
   },
   {
     "objectID": "references.html",
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "External resources\n\nBook: R for Data Science\nR cheat sheets provided by the R community and RStudio, describing common procedures and packages. We use the following cheat sheets during our workshop:\n\nBase R\nR Markdown\nData Import\nData Transformation with dplyr\nData Visualization with ggplot2"
   }
 ]

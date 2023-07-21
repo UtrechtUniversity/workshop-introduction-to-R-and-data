@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.2.475">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -32,6 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <link href="./introduction.html" rel="next">
 <link href="./installation-and-setup.html" rel="prev">
+<link href="./favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -101,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome!</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -136,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to RStudio</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -209,29 +210,34 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./importing-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Importing Data</span></a>
+  <a href="./introduction-tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Introduction to Tidyverse</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./subsetting-and-mutating-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Subsetting &amp; Mutating Data</span></a>
+  <a href="./importing-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importing Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./transformations-and-tidy-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Transformations &amp; Tidy Data</span></a>
+  <a href="./subsetting-and-mutating-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Subsetting &amp; Mutating Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data-visualization.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Data Visualization</span></a>
+  <a href="./transformations-and-tidy-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Transformations &amp; Tidy Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-visualization.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Data Visualization</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./what-next.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">What Next?</span></a>
+  <a href="./what-next.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">What’s next?</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -244,7 +250,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#zipped-file" id="toc-zipped-file" class="nav-link active" data-scroll-target="#zipped-file"><span class="toc-section-number">4.1</span>  Zipped file</a></li>
+  <li><a href="#r-markdown-files" id="toc-r-markdown-files" class="nav-link" data-scroll-target="#r-markdown-files"><span class="toc-section-number">4.2</span>  R markdown files</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="toc-section-number">4.3</span>  Data</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/edit/main/workshop-materials.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -266,8 +280,43 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>You can download the workshop materials collectively in a zipped file or separately using the links further below. Please make sure that all workshop-related files are contained within a single folder and placed in a location accessible to your system.</p>
+<section id="zipped-file" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="zipped-file"><span class="header-section-number">4.1</span> Zipped file</h2>
+<p>The following zipped file contains the files you need to follow along:</p>
+<ul>
+<li><a href="https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/raw/main/course-materials.zip">course-materials.zip</a></li>
+</ul>
+<p>You can also see the individual files in <a href="https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/tree/main/course-materials">the GitHub repository</a>.</p>
+<p>Don’t forget to extract the contents of the zipped file after downloading!</p>
+<pre><code>├── data
+│   ├── penguins_isotopes.xlsx
+│   └── penguins_raw.tsv
+├── baseR_exercises.Rmd
+├── datascience_exercises.Rmd
+├── datascience_solutions.html
+└── datascience_solutions.Rmd
+</code></pre>
+</section>
+<section id="r-markdown-files" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="r-markdown-files"><span class="header-section-number">4.2</span> R markdown files</h2>
+<p>We will be using the following R markdown files to work on the exercises:</p>
+<ul>
+<li><code>baseR_exercises.Rmd</code></li>
+<li><code>datascience_exercises.Rmd</code></li>
+</ul>
+<p>You can open these files using the RStudio IDE and immediately run code within the dedicated code chunks.</p>
+</section>
+<section id="data" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="data"><span class="header-section-number">4.3</span> Data</h2>
+<p>The data for this workshop is from the Palmer Penguins dataset. We will be using the following files:</p>
+<ul>
+<li><code>penguins_raw.tsv</code></li>
+<li><code>penguins_isotopes.xlsx</code></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -411,7 +460,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./introduction.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to RStudio</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.2.475">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -32,6 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <link href="./workshop-materials.html" rel="next">
 <link href="./schedule.html" rel="prev">
+<link href="./favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -101,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome!</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -136,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to RStudio</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -209,29 +210,34 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./importing-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Importing Data</span></a>
+  <a href="./introduction-tidyverse.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Introduction to Tidyverse</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./subsetting-and-mutating-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Subsetting &amp; Mutating Data</span></a>
+  <a href="./importing-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importing Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./transformations-and-tidy-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Transformations &amp; Tidy Data</span></a>
+  <a href="./subsetting-and-mutating-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Subsetting &amp; Mutating Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data-visualization.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Data Visualization</span></a>
+  <a href="./transformations-and-tidy-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Transformations &amp; Tidy Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-visualization.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Data Visualization</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./what-next.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">What Next?</span></a>
+  <a href="./what-next.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">What’s next?</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -244,7 +250,25 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation"><span class="toc-section-number">3.1</span>  Installation</a>
+  <ul class="collapse">
+  <li><a href="#install-r-and-rstudio-on-a-personal-laptop." id="toc-install-r-and-rstudio-on-a-personal-laptop." class="nav-link" data-scroll-target="#install-r-and-rstudio-on-a-personal-laptop."><span class="toc-section-number">3.1.1</span>  Install R and RStudio on a personal laptop.</a></li>
+  <li><a href="#install-r-and-rstudio-on-a-utrecht-university-laptop." id="toc-install-r-and-rstudio-on-a-utrecht-university-laptop." class="nav-link" data-scroll-target="#install-r-and-rstudio-on-a-utrecht-university-laptop."><span class="toc-section-number">3.1.2</span>  Install R and RStudio on a Utrecht University laptop.</a></li>
+  </ul></li>
+  <li><a href="#install-tidyverse-from-rstudio" id="toc-install-tidyverse-from-rstudio" class="nav-link" data-scroll-target="#install-tidyverse-from-rstudio"><span class="toc-section-number">3.2</span>  Install Tidyverse from Rstudio</a></li>
+  <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting"><span class="toc-section-number">3.3</span>  Troubleshooting</a>
+  <ul class="collapse">
+  <li><a href="#packages-are-being-installed-on-a-mounted-drive" id="toc-packages-are-being-installed-on-a-mounted-drive" class="nav-link" data-scroll-target="#packages-are-being-installed-on-a-mounted-drive"><span class="toc-section-number">3.3.1</span>  Packages are being installed on a mounted drive</a></li>
+  <li><a href="#tidyverse-installation-is-aborted" id="toc-tidyverse-installation-is-aborted" class="nav-link" data-scroll-target="#tidyverse-installation-is-aborted"><span class="toc-section-number">3.3.2</span>  Tidyverse installation is aborted</a></li>
+  <li><a href="#unable-to-move-temporary-installation-windows-error" id="toc-unable-to-move-temporary-installation-windows-error" class="nav-link" data-scroll-target="#unable-to-move-temporary-installation-windows-error"><span class="toc-section-number">3.3.3</span>  “Unable to move temporary installation” (Windows error)</a></li>
+  <li><a href="#librarytidyverse-loading-failed" id="toc-librarytidyverse-loading-failed" class="nav-link" data-scroll-target="#librarytidyverse-loading-failed"><span class="toc-section-number">3.3.4</span>  Library(tidyverse) loading failed</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/edit/main/installation-and-setup.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -266,8 +290,129 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>This workshop requires three things to be installed:</p>
+<ul>
+<li>The language <strong>R</strong></li>
+<li>The IDE <strong>Rstudio</strong></li>
+<li>The R packages bundled in <strong>tidyverse</strong></li>
+</ul>
+<p>Most workshops on R programming make use of an RStudio server. With an RStudio server, the participant logs in onto the website and gets a web based RStudio IDE. We prefer a local installation of RStudio for our workshop. We hope that this removes a barrier for users to start working with R themselves.</p>
+<p>Because not every system is equally cooperative in installing everything, we have compiled <a href="#troubleshooting">an elaborate troubleshooting guide</a>. Please let us know of any errors that you encountered, and how you fixed them! We will add these to the guide.</p>
+<section id="installation" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="installation"><span class="header-section-number">3.1</span> Installation</h2>
+<section id="install-r-and-rstudio-on-a-personal-laptop." class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="install-r-and-rstudio-on-a-personal-laptop."><span class="header-section-number">3.1.1</span> Install R and RStudio on a personal laptop.</h3>
+<p>I.e. a laptop <em>with</em> administrator rights.</p>
+<ol type="1">
+<li>Install R from https://cran.rstudio.com/</li>
+<li>Install Rstudio from https://www.rstudio.com/products/rstudio/download/#download</li>
+</ol>
+</section>
+<section id="install-r-and-rstudio-on-a-utrecht-university-laptop." class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="install-r-and-rstudio-on-a-utrecht-university-laptop."><span class="header-section-number">3.1.2</span> Install R and RStudio on a Utrecht University laptop.</h3>
+<ol type="1">
+<li>Open <strong>Software Center</strong></li>
+<li>Install <strong>R for Windows</strong></li>
+</ol>
+<p>Installing R packages on a Utrecht University laptop can be hard. This is because R packages are installed on a so-called ‘mounted’ drive. This causes problems with the performance. Check the installation as follows:</p>
+<ol start="3" type="1">
+<li>Open <strong>RStudio</strong></li>
+<li>Write the following line of code in your console: <code>.libPaths()</code>, and press enter to execute.</li>
+<li>If the response starts with <code>//</code> or <code>\\</code>, you are installing on a mounted drive. <a href="#packages-are-being-installed-on-a-mounted-drive">Follow the steps below to change the installation location</a>.</li>
+</ol>
+</section>
+</section>
+<section id="install-tidyverse-from-rstudio" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="install-tidyverse-from-rstudio"><span class="header-section-number">3.2</span> Install Tidyverse from Rstudio</h2>
+<p>From the console:</p>
+<ol type="1">
+<li>Open Rstudio.</li>
+<li>Look for a window that says “console” (probably bottom left of your screen).</li>
+<li>In the console, type: <code>install.packages("tidyverse")</code>.</li>
+<li>Hit ‘enter’.</li>
+</ol>
+<p>You can also install using the RStudio GUI:</p>
+<ol type="1">
+<li>Open Rstudio.</li>
+<li>At the window on the bottom right of your screen, select the tab “packages”.</li>
+<li>Click “install” and type “tidyverse” in the box.</li>
+<li>Make sure the checkbox marked “install dependencies” is checked, and click “install”.</li>
+</ol>
+<p>The tidyverse installation might take a while, just let it run. If it asks you something, say ‘yes’, unless it looks particularly outlandish.</p>
+<p>If you want to check your tidyverse installation, find the ‘console’ window, and type: <code>library(tidyverse)</code>. Then hit ‘enter’.</p>
+<p>You should see something that looks like this:</p>
+<pre><code>── Attaching packages ────────────────────────────────────────────────tidyverse 1.2.1 ──
+✔ ggplot2 2.2.1     ✔ purrr   0.2.5
+✔ tibble  1.4.2     ✔ dplyr   0.7.4
+✔ tidyr   0.8.1     ✔ stringr 1.2.0
+✔ readr   1.1.1     ✔ forcats 0.3.0
+── Conflicts ────────────────────────────────────────────────tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag() </code></pre>
+</section>
+<section id="troubleshooting" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="troubleshooting"><span class="header-section-number">3.3</span> Troubleshooting</h2>
+<section id="packages-are-being-installed-on-a-mounted-drive" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="packages-are-being-installed-on-a-mounted-drive"><span class="header-section-number">3.3.1</span> Packages are being installed on a mounted drive</h3>
+<p>This can cause various errors, and even if everything goes right, installing tidyverse takes ages.</p>
+<p>Solution 1:</p>
+<ul>
+<li>There is a solution to prevent problems with mounted drives for applications like R, RStudio and Office. Read more about the solution on <a href="https://intranet.uu.nl/en/current-affairs/announcements/would-you-make-your-solis-laptop-work-more-efficiently">intranet</a>.</li>
+</ul>
+<p>Solution 2:</p>
+<ul>
+<li>Create a folder <code>R-packages</code> on a local drive.</li>
+<li>Copy the location to that drive. For example: <code>C:/Users/User/R-packages</code>.</li>
+<li>Run the following line of code: <code>file.edit(file.path("~", ".Rprofile"))</code></li>
+<li>Paste <code>.libPaths("C:/Users/User/R-packages")</code> in the editor and save the file.</li>
+<li>Restart your R session</li>
+<li>Click on <code>Packages</code>&gt;<code>Install</code>. Is <code>Install to library</code> pointing to <code>C:/Users/User/R-packages</code>?</li>
+<li>If not: check if the path is correctly spelled. Try inverting the slashes (<code>\</code> instead of <code>/</code>). You may need to use double slashes (<code>\\</code> or <code>//</code>).</li>
+<li>Tick ‘source on save’, click save, and check <code>Packages</code>&gt;<code>Install</code> again.</li>
+</ul>
+</section>
+<section id="tidyverse-installation-is-aborted" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="tidyverse-installation-is-aborted"><span class="header-section-number">3.3.2</span> Tidyverse installation is aborted</h3>
+<p>If the installation of tidyverse is aborted, and packages are downloaded but their installation is said to have “non zero exit status”, you may be dealing with an old version of R.</p>
+<p>Update R by installing a recent version from <a href="https://cran.rstudio.com/">CRAN</a>. Then try installing tidyverse again.</p>
+<p>Do you have Rtools installed? (Only on Windows; it is not clear why this works but it sometimes does.). Install this via <a href="https://cran.r-project.org/bin/windows/Rtools/">cran.r-project.org/bin/windows/Rtools/</a>.</p>
+</section>
+<section id="unable-to-move-temporary-installation-windows-error" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="unable-to-move-temporary-installation-windows-error"><span class="header-section-number">3.3.3</span> “Unable to move temporary installation” (Windows error)</h3>
+<p>Do you get issues like this:</p>
+<pre><code>&gt; install.packages("tibble")
+Installing package into ‘C:/Users/UserName/R’
+(as ‘lib’ is unspecified)
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.4/tibble_1.4.2.zip'
+Content type 'application/zip' length 172649 bytes (168 KB)
+downloaded 168 KB
+
+package ‘tibble’ successfully unpacked and MD5 sums checked
+Warning in install.packages :
+  unable to move temporary installation ‘C:\Users\UserName\R\file18b813387562\tibble’ to ‘C:\Users\UserName\R\tibble’
+The downloaded binary packages are in
+C:\Users\UserName\AppData\Local\Temp\RtmpYh5ogU\downloaded_packages</code></pre>
+<p>Check for the line <strong>unable to move temporary installation</strong>. Your virus scanner might be blocking the installation of tidyverse.</p>
+<p>The solution (<a href="https://code.adonline.id.au/unable-to-move-temporary-installation-r/">found here</a>) is to enter:</p>
+<p><code>trace(utils:::unpackPkgZip, edit=TRUE)</code></p>
+<p>You should see:</p>
+<pre><code>Tracing function "unpackPkgZip" in package "utils (not-exported)"
+[1] "unpackPkgZip"</code></pre>
+<p>And a file should open. Change <code>0.5</code> in line 142 to <code>2.5</code>, save the file, and try installing tidyverse again.</p>
+</section>
+<section id="librarytidyverse-loading-failed" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="librarytidyverse-loading-failed"><span class="header-section-number">3.3.4</span> Library(tidyverse) loading failed</h3>
+<p>Dependencies might be missing, or outdated, and need to be installed/updated manually. For instance, you see the following error:</p>
+<pre><code>Error: package or namespace load failed for 'tidyverse'in loadNamespace(...)
+namespace 'bindrcpp' 0.2 is being loaded, but &gt;= 0.2.0.9000 is required.</code></pre>
+<p>Run <code>install.packages("bindrcpp")</code>to update this package.</p>
+<pre><code>Error: package or namespace load failed for 'tidyverse'in loadNamespace(...)
+there is no package called (xxx)</code></pre>
+<p>The same solution as above applies: run <code>install.packages()</code> to add whatever package is missing. (At the time of writing, it is not clear why these packages are missing; this error was received over email.)</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
