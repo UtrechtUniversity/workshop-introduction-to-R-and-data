@@ -1,1 +1,10 @@
 # Acknowledgements 
+
+The workshop 'Introduction to R & data' is developed and maintained by 
+[Research Data Management Support](https://www.uu.nl/en/research/research-data-management) 
+at Utrecht University.
+
+All videos were recorded by [Jacques Flores](https://www.uu.nl/medewerkers/jpflores).
+The material was written by [Barbara Vreede](https://github.com/bvreede), based 
+on earlier versions by [Jonathan de Bruin](https://github.com/J535D165) and 
+[Tessa Pronk](https://github.com/TessaPr).
