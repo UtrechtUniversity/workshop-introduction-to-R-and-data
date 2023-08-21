@@ -1,0 +1,58 @@
+project:
+  type: book
+  output-dir: ../docs
+
+book:
+  title: "Introduction to R & Data"
+  subtitle: <a href="https://zenodo.org/badge/latestdoi/151564918"><img src="https://zenodo.org/badge/151564918.svg" alt="DOI"></a>
+  author: "Research Data Management Support<br>Utrecht University"
+  date: last-modified
+  search: true
+  favicon: favicon.ico
+  chapters:
+    - index.qmd
+    - acknowledgements.qmd
+    - schedule.qmd
+    - part: "Preparation"
+      chapters:
+        - installation-and-setup.qmd
+        - workshop-materials.qmd
+    - introduction.qmd
+    - part: "R Fundamentals"
+      chapters:
+        - syntax-and-data-types.qmd
+        - vectors.qmd
+        - data-structures.qmd
+        - missing-data.qmd
+        - indexing-vectors-and-lists.qmd
+        - indexing-dataframes.qmd
+        - programming.qmd
+        - if-statements.qmd
+        - functions.qmd
+        - loops.qmd
+    - part: "Working With Data"
+      chapters:
+        - introduction-tidyverse.qmd
+        - importing-data.qmd
+        - subsetting-and-mutating-data.qmd
+        - transformations-and-tidy-data.qmd
+        - data-visualization.qmd
+    - what-next.qmd
+    - references.qmd
+
+  repo-url: https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data
+  repo-actions: [edit]
+ 
+  sidebar:
+    logo: images/rstudio-hex-logo.jpg
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+
+callout-appearance: simple
+
+
+

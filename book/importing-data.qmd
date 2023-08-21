@@ -1,0 +1,15 @@
+# Importing Data
+
+## Video
+
+{{< video https://vimeo.com/470836273 >}}
+
+## Exercise 1-4
+
+We will now move to our next exercise file: `datascience_exercises.Rmd`. 
+Open the file and try out Exercises 1 through 4.
+
+::: {.callout-tip}
+Getting lost? You can find the answers in the `datascience_solutions.Rmd` file, 
+or in the [online version](../course-materials/datascience_solutions.html).
+:::

@@ -1,0 +1,19 @@
+# Schedule
+
+| Time | Activity |
+|---:|:---|
+| 9:00 | Walk-in, tech support |
+| 9:30 | Introductions |
+| 10:00 | Base R: _Exercises 1-6_ |
+| 11:25 | Recap & Questions |
+| **11:30** | **Coffee break** |
+| 11:45 | Programming: _Exercises 7-9_ |
+| 12:40 | Recap & Questions |
+| **12:45** | **Lunch break** |
+| 13:30 | Introduction to Tidyverse & Importing data: _Exercises 1-4_ |
+| 14:15 | Subsetting and mutating data: _Exercises 5-8_ |
+| 14:55 | Recap & Questions |
+| **15:00** | **Coffee break** |
+| 15:15 | Transformations & tidy data: _Exercises 9-12_ |
+| 16:00 | Data visualization: _Exercises 13-15_ |
+| 16:55 | Final recap and closing |

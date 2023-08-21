@@ -1,0 +1,14 @@
+# Data Visualization
+
+## Video
+
+{{< video https://vimeo.com/470862707 >}}
+
+## Exercise 13-15
+
+Now try out exercises 13-15 in `datascience_exercises.Rmd`. 
+
+::: {.callout-tip}
+Getting lost? You can find the answers in the `datascience_solutions.Rmd` file, 
+or in the [online version](../course-materials/datascience_solutions.html).
+:::

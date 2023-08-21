@@ -1,0 +1,19 @@
+# Indexing Vectors & Lists
+
+## Slides
+
+```{r embed-xaringan-2, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "../slides/slides_introduction.html#66", ratio = "4:3")
+```
+
+## Video
+
+{{< video https://youtu.be/e10nO2swYIE >}}
+
+## Exercise 5
+
+Now move on to Exercise 5 in `baseR_exercises.Rmd`.
+
+::: {.callout-tip}
+Getting lost? You can find the answers in the [slides](../slides/slides_introduction.html#79) or in [this video](https://youtu.be/4BZGGq-nBos).
+:::

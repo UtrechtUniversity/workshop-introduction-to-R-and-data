@@ -1,0 +1,14 @@
+# Transformations & Tidy Data
+
+## Video
+
+{{< video https://vimeo.com/470864363 >}}
+
+## Exercise 9-12
+
+Now try out exercises 9-12 in `datascience_exercises.Rmd`. 
+
+::: {.callout-tip}
+Getting lost? You can find the answers in the `datascience_solutions.Rmd` file, 
+or in the [online version](../course-materials/datascience_solutions.html).
+:::

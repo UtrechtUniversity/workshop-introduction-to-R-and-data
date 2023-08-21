@@ -1,0 +1,14 @@
+# References {.unnumbered}
+
+::: {#refs}
+:::
+
+
+### External resources
+- Book: [R for Data Science](https://r4ds.had.co.nz/)
+- [R cheat sheets](https://www.rstudio.com/resources/cheatsheets/) provided by the R community and RStudio, describing common procedures and packages. We use the following cheat sheets during our workshop:
+    - [Base R](http://github.com/rstudio/cheatsheets/blob/main/base-r.pdf)
+    - [R Markdown](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rmarkdown.pdf)
+    - [Data Import](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-import.pdf)
+    - [Data Transformation with dplyr](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf)
+    - [Data Visualization with ggplot2](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)

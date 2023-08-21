@@ -1,0 +1,19 @@
+# Data Structures
+
+## Slides
+
+```{r embed-xaringan-2, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "../slides/slides_introduction.html#41", ratio = "4:3")
+```
+
+## Video
+
+{{< video https://youtu.be/Ffk2Kxa_b_M >}}
+
+## Exercise 3
+
+Now move on to Exercise 3 in `baseR_exercises.Rmd`.
+
+::: {.callout-tip}
+Getting lost? You can find the answers in the [slides](../slides/slides_introduction.html#50) or in [this video](https://youtu.be/A1GsHC6pIio)
+:::
