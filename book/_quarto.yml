@@ -44,7 +44,7 @@ book:
   repo-actions: [edit]
  
   sidebar:
-    logo: images/rstudio-hex-logo.jpg
+    logo: images/static/rstudio-hex-logo.jpg
 
 bibliography: references.bib
 
