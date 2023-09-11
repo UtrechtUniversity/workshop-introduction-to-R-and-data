@@ -9,6 +9,5 @@
 Now try out exercises 5-8 in `datascience_exercises.Rmd`. 
 
 ::: {.callout-tip}
-Getting lost? You can find the answers in the `datascience_solutions.Rmd` file, 
-or in the [online version](../course-materials/datascience_solutions.html).
+Getting lost? You can find the answers in the `datascience_solutions.html` file in your course materials.
 :::

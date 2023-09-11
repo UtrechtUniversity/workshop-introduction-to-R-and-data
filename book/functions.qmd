@@ -3,7 +3,7 @@
 ## Slides
 
 ```{r embed-xaringan-2, echo=FALSE}
-xaringanExtra::embed_xaringan(url = "../slides/slides_introduction.html#105", ratio = "4:3")
+xaringanExtra::embed_xaringan(url = "slides/slides_introduction.html#105", ratio = "4:3")
 ```
 
 ## Video
@@ -15,5 +15,5 @@ xaringanExtra::embed_xaringan(url = "../slides/slides_introduction.html#105", ra
 Now move on to Exercise 8 in `baseR_exercises.Rmd`.
 
 ::: {.callout-tip}
-Getting lost? You can find the answers in the [slides](../slides/slides_introduction.html#117) or in [this video](https://youtu.be/EezEmFFbRow).
+Getting lost? You can find the answers in the [slides](slides/slides_introduction.html#117) or in [this video](https://youtu.be/EezEmFFbRow).
 :::
