@@ -11,18 +11,23 @@ The following zipped file contains the files you need to follow along:
 
 - [course-materials.zip](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/raw/main/course-materials.zip)
 
-You can also see the individual files in [the GitHub repository](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/tree/main/course-materials).
+Right-click the link and select _Save link as..._ to download the zipped file.
 
-Don’t forget to extract the contents of the zipped file after downloading!
+Make sure to save it in an accessible location on your computer and don’t forget to extract the contents of the zipped file after downloading!
+
+You can also see the individual files in [the GitHub repository](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/tree/main/course-materials).
 
 ```
 ├── data
 │   ├── penguins_isotopes.xlsx
 │   └── penguins_raw.tsv
-├── baseR_exercises.Rmd
-├── datascience_exercises.Rmd
-├── datascience_solutions.html
-└── datascience_solutions.Rmd
+├── exercises
+|   ├── baseR_exercises.Rmd
+│   └── datascience_exercises.Rmd
+├── solutions
+│   ├── datascience_solutions.html
+│   └── datascience_solutions.Rmd
+|__ animal.png
 
 ```
 

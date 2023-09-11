@@ -46,7 +46,7 @@
     "href": "workshop-materials.html#zipped-file",
     "title": "4  Workshop Materials",
     "section": "4.1 Zipped file",
-    "text": "4.1 Zipped file\nThe following zipped file contains the files you need to follow along:\n\ncourse-materials.zip\n\nYou can also see the individual files in the GitHub repository.\nDon’t forget to extract the contents of the zipped file after downloading!\n├── data\n│   ├── penguins_isotopes.xlsx\n│   └── penguins_raw.tsv\n├── baseR_exercises.Rmd\n├── datascience_exercises.Rmd\n├── datascience_solutions.html\n└── datascience_solutions.Rmd"
+    "text": "4.1 Zipped file\nThe following zipped file contains the files you need to follow along:\n\ncourse-materials.zip\n\nRight-click the link and select Save link as… to download the zipped file.\nMake sure to save it in an accessible location on your computer and don’t forget to extract the contents of the zipped file after downloading!\nYou can also see the individual files in the GitHub repository.\n├── data\n│   ├── penguins_isotopes.xlsx\n│   └── penguins_raw.tsv\n├── exercises\n|   ├── baseR_exercises.Rmd\n│   └── datascience_exercises.Rmd\n├── solutions\n│   ├── datascience_solutions.html\n│   └── datascience_solutions.Rmd\n|__ animal.png"
   },
   {
     "objectID": "workshop-materials.html#r-markdown-files",
