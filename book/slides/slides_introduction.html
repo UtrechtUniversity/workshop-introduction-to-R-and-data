@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Welcome to Introduction to R &amp; Data!</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="All course materials at tinyurl.com/introRDatasite" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/shareon/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Welcome to Introduction to R &amp; Data!
+### All course materials at <a href="https://utrechtuniversity.github.io/workshop-introduction-to-R-and-data/">tinyurl.com/introRDatasite</a>
+
+---
+
+
+
+
+
+<style>.shareagain-bar {
+--shareagain-foreground: rgb(255, 255, 255);
+--shareagain-background: rgba(0, 0, 0, 0.5);
+--shareagain-facebook: none;
+--shareagain-pinterest: none;
+--shareagain-pocket: none;
+--shareagain-reddit: none;
+}</style>
+
+# Welcome! Who are you?
+
+- Your name &amp; pronouns
+
+- What is your faculty/background? (Economics, Medicine, Biology…)
+
+- What part of your education are you in? (Bachelor, PhD, prof…)
+
+- What is your motivation for learning R?
+
+- What is your experience with R?
+
+
+
+---
+# Asking for help
+
+#### What you can do:
+- *During presentations*: Use the Teams chat to ask questions, or raise your hand
+- *During exercises*: Put an X in the red column of the [status chart](https://docs.google.com/spreadsheets/d/1qYdpXYfjBoA2gjwNNm9igLQrcKam8F4VXYTooxga2Rk/edit?usp=sharing) (with an optional explanation of your question).
+
+![status-chart](images/statuschart.png)
+--
+
+#### What we will do:
+- *During presentations*: Answer your question live or in the chat.
+- *During exercises*: Invite you to a Teams channel, where someone can assist you.
+
+#### Please indicate your progress on the status chart, so we can keep track!
+
+---
+# Course materials
+
+#### All course materials, videos, information &amp; resources are at  [tinyurl.com/introRDatasite](https://utrechtuniversity.github.io/workshop-introduction-to-R-and-data/). 
+
+### Slides &amp; exercises
+
+1. Download the [course materials here](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/archive/master.zip).
+
+1. Store it in a local (i.e. not on a mounted drive), accessible location.
+
+1. Unzip the download to create a single folder.
+
+1. If you have downloaded it, you will be able to tell us what animal is on the picture `animal.jpg`, located in the main folder :-)
+
+
+### Collaborative document
+
+1. Go to [tinyurl.com/statuschartR](https://docs.google.com/spreadsheets/d/1qYdpXYfjBoA2gjwNNm9igLQrcKam8F4VXYTooxga2Rk/edit?usp=sharing)
+
+1. Fill out your name in the first column.
+
+---
+# This morning's schedule
+
+- &amp;nbsp; 9:30 &amp;nbsp; Introductions
+
+- 10:00 &amp;nbsp; Exercise 1- 6 (_individual work with 1:1 support via Teams_)
+
+- 11:25 &amp;nbsp; Recap &amp; questions
+
+- 11:30 &amp;nbsp; Coffee break
+
+- 11:45 &amp;nbsp; Exercise 7-9 (_individual work with 1:1 support via Teams_)
+
+- 12:45 &amp;nbsp; Lunch break
+
+- 13:30 &amp;nbsp; Reconvene for afternoon program
+
+#### Get 1:1 support via the status chart!
+![status-chart](images/statuschart.png)
+---
+# General guidelines (and advice!)
+
+- Use the status chart to keep us posted on your progress;
+
+--
+
+- Ask for help whenever you need it;
+
+--
+
+- Close as many unnecessary windows and programs as possible;
+
+--
+
+- Take breaks when we have scheduled them, and step away from your computer;
+
+--
+
+- Set a timer when taking a break, we will reconvene according to schedule.
+
+---
+class: subheader, middle, center
+# Introduction to R &amp; Data
+
+### Part 1: Basics of R
+---
+# What is R?
+
+.left-column[
+![rlogo](images/rlogo.png)]
+
+.right-column[
+
+- A widely used programming language for data analysis
+
+- Based on statistical programming language S (1976)
+
+- Developed by **R**oss Ihaka &amp; **R**obert Gentleman (1995)
+
+- Very active community, with many (often subject-specific) packages
+
+- Open source, and interoperable!
+
+]
+---
+# We will work in Rstudio
+
+![rstudiologo](images/rstudiologo.png)
+
+- **I**ntegrated **D**evelopment **E**nvironment (IDE) for R
+
+- Founded by J.J. Allaire, available since 2010
+
+- Bloody useful! Let’s take a look: please open RStudio!
+
+---
+# The Rstudio interface
+
+
+
+![rstudio-incremental](images/rstudio-incremental-5.png)
+---
+# Running R code
+
+#### In a script/Rmarkdown document
+- Place your cursor in the line of code you want to execute
+
+- Press ![run](images/run.png) or ctrl + enter
+
+- When running multiple lines: select all lines, then press ‘Run’ or ctrl+enter
+
+#### In an Rmarkdown document
+- You can execute a chunk as a whole with the green triangle:
+
+![run-chunk](images/run-chunk.png)
+
+---
+# Open course materials
+
+_Before you start: make sure you have downloaded the [course materials](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/archive/master.zip), and unzipped them to a single, accessible folder._
+
+1. In Rstudio, choose **File** &gt; **Open Project**
+
+1. Navigate to the folder with course materials
+
+1. Open **workshop.Rproj**
+
+1. From the ‘files’ menu (bottom right), select **baseR_exercises.Rmd**
+
+
+---
+class: subheader, middle, center
+# R syntax &amp; data types
+
+---
+# Variable assignment
+
+.pull-left[
+You can assign both numbers and text to a variable:
+
+
+```r
+x &lt;- 6
+
+x &lt;- 'apple'
+
+x &lt;- "hello world"
+
+x = 6
+```
+
+![assignment](images/assignment.png)]
+
+.pull-right-center[
+
+![cheatsheet](images/baseRcheatsheet.png) 
+
+[download this cheat sheet](http://github.com/rstudio/cheatsheets/raw/master/base-r.pdf)
+]
+
+---
+# Do you expect an answer?
+
+Saving information:
+
+```r
+x &lt;- 1
+```
+Asking for information to be returned:
+
+```r
+x
+```
+
+```
+## [1] 1
+```
+
+Note the difference in syntax: when using the &lt;- operator, you are storing the information as a variable in R, and therefore you do not expect to get an answer immediately.
+
+When calling up that information, or making calculations, you can make R show you the answer.
+
+---
+# Maths functions
+
+You can perform math with your variables:
+
+```r
+x * 3
+```
+
+```
+## [1] 3
+```
+and store the results as new variables:
+
+```r
+y &lt;- x + 2
+
+log2(y)
+```
+
+```
+## [1] 1.584963
+```
+
+Check **"Maths Functions"** on the [cheat sheet](http://github.com/rstudio/cheatsheets/raw/master/base-r.pdf):
+![assignment-math](images/mathsfunctions.png)
+
+---
+# Logicals
+
+A logical is `True` or `False`, and can also be written as `T` or `F`.
+
+Logicals are mostly used as tests:
+
+| | | |
+|---|---|---|
+| == | `==`  |is equal to |
+| != | `!=` | is not |
+| &gt;= | `&gt;=` | larger than or equal to |
+| &lt; | `&lt;`  | smaller than |
+
+For example:
+
+```r
+x == 6
+```
+
+```
+## [1] FALSE
+```
+
+```r
+x != 10
+```
+
+```
+## [1] TRUE
+```
+---
+class: subheader, middle, center
+# Go to exercise 1 in baseR_exercises.Rmd
+
+---
+# Answers to exercise 1
+
+1. Do the following calculation in R: _1 plus 5, divided by 9_
+    
+    ```r
+    (1+5)/9
+    ```
+    
+    ```
+    ## [1] 0.6666667
+    ```
+--
+
+1. Assign the result of the calculation to a variable.
+    
+    ```r
+    x &lt;- (1+5)/9
+    ```
+--
+
+1. Test if the result is larger than 1.
+    
+    ```r
+    x &gt; 1
+    ```
+    
+    ```
+    ## [1] FALSE
+    ```
+--
+
+1. Round off the result to 1 decimal.
+    
+    ```r
+    round(x,1)
+    ```
+    
+    ```
+    ## [1] 0.7
+    ```
+
+
+---
+class: subheader, middle, center
+# Vectors in R
+
+---
+# Combining data: creating vectors
+#### Vectors are created with the function `c()`
+
+A numeric vector:
+
+```r
+c(1,2,3)
+```
+
+```
+## [1] 1 2 3
+```
+
+--
+
+A character vector:
+
+```r
+c("a","b","c")
+```
+
+```
+## [1] "a" "b" "c"
+```
+
+--
+
+A logical vector:
+
+```r
+c(T,TRUE,F)
+```
+
+```
+## [1]  TRUE  TRUE FALSE
+```
+
+---
+# Combining data: creating vectors
+
+What is this vector?
+
+```r
+c(TRUE,"a",3)
+```
+
+```
+## [1] "TRUE" "a"    "3"
+```
+
+--
+
+#### Yep, a character vector!
+Vector type defaults to the "lowest common denominator": everything can be a character, but not everything can be a number or a logical.
+---
+# Vector functions
+#### Vectors can be used in mathematical operations
+.pull-left-medium[
+
+```r
+p &lt;- 1:5
+p
+```
+
+```
+## [1] 1 2 3 4 5
+```
+
+```r
+mean(p)
+```
+
+```
+## [1] 3
+```
+
+```r
+p * 2
+```
+
+```
+## [1]  2  4  6  8 10
+```
+]
+--
+.pull-right-medium[
+| &amp;nbsp; &amp;nbsp; p &amp;nbsp; &amp;nbsp;  | &amp;nbsp; &amp;nbsp; 2&amp;nbsp; &amp;nbsp;  | &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;  |
+|:---:|:---:|:---:|
+| 1 | 2 | 2 |
+| 2 | 2 | 4 |
+| 3 | 2 | 6 |
+| 4 | 2 | 8 |
+| 5 | 2 | 10 |
+]
+---
+# Vector functions
+#### Operations with multiple vectors are performed by aligning the index
+.pull-left-medium[&lt;br /&gt;
+
+```r
+q &lt;- 5:1
+q
+```
+
+```
+## [1] 5 4 3 2 1
+```
+
+```r
+p * q
+```
+
+```
+## [1] 5 8 9 8 5
+```
+]
+
+.pull-right-medium[&lt;br /&gt;
+
+| &amp;nbsp; &amp;nbsp; p &amp;nbsp; &amp;nbsp;  | &amp;nbsp; &amp;nbsp;q &amp;nbsp; &amp;nbsp;  | &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;  |
+|:---:|:---:|:---:|
+| 1 | 5 | 5 |
+| 2 | 4 | 8 |
+| 3 | 3 | 9 |
+| 4 | 2 | 8 |
+| 5 | 1 | 5 |
+]
+
+---
+class: subheader, middle, center
+# Go to exercise 2
+
+---
+# Answers to exercise 2
+
+1. Make a character vector with their names, using the function `c()`. Save the vector as name.
+    
+    ```r
+    name &lt;- c("Ann", "Bob", "Chloe", "Dan")
+    ```
+--
+
+1. How old are Ann, Bob, Chloe, and Dan? You decide! Design a numeric vector with their respective ages. Save it as `age`.
+    
+    ```r
+    age &lt;- c(35,22,50,51)
+    ```
+--
+
+1. What is their average age? Use a function in R to calculate this.
+    
+    ```r
+    mean(age)
+    ```
+    
+    ```
+    ## [1] 39.5
+    ```
+
+---
+class: subheader, middle, center
+# Data structures
+
+---
+# Data structures: vector
+
+#### We have two vectors: `name` and `age`
+
+```r
+name
+```
+
+```
+## [1] "Ann"   "Bob"   "Chloe" "Dan"
+```
+
+```r
+age
+```
+
+```
+## [1] 35 22 50 51
+```
+
+#### Combine the vectors to a unidimensional vector, with `c()`
+
+```r
+c(name,age)
+```
+
+```
+## [1] "Ann"   "Bob"   "Chloe" "Dan"   "35"    "22"    "50"    "51"
+```
+
+---
+# Data structures: list
+
+#### We have two vectors: `name` and `age`
+
+```r
+name
+```
+
+```
+## [1] "Ann"   "Bob"   "Chloe" "Dan"
+```
+
+```r
+age
+```
+
+```
+## [1] 35 22 50 51
+```
+
+#### Combine the vectors to a multidimensional list, with `list()`
+
+```r
+list(name,age)
+```
+
+```
+## [[1]]
+## [1] "Ann"   "Bob"   "Chloe" "Dan"  
+## 
+## [[2]]
+## [1] 35 22 50 51
+```
+
+---
+# Data structures: data frame
+
+#### We have two vectors: `name` and `age`
+
+```r
+name
+```
+
+```
+## [1] "Ann"   "Bob"   "Chloe" "Dan"
+```
+
+```r
+age
+```
+
+```
+## [1] 35 22 50 51
+```
+
+#### Combine the vectors to a twodimensional data frame, with `data.frame()`
+
+```r
+data.frame(name,age)
+```
+
+```
+##    name age
+## 1   Ann  35
+## 2   Bob  22
+## 3 Chloe  50
+## 4   Dan  51
+```
+
+---
+# Data structures: summary
+
+&amp;nbsp;
+
+| &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;  | number of dimensions  | &amp;nbsp; function &amp;nbsp; |
+|---:|:---:|:---|
+| vector | 1 | &amp;nbsp; &amp;nbsp; `c()` |
+| data frame | 2 | &amp;nbsp; &amp;nbsp; `data.frame()`  |
+| list | any number | &amp;nbsp; &amp;nbsp; `list()` |
+
+---
+# Factors
+
+#### a special type of vector, defined by _levels_
+
+```r
+country &lt;- c("UK","USA","USA","UK")
+country
+```
+
+```
+## [1] "UK"  "USA" "USA" "UK"
+```
+
+```r
+factor(country)
+```
+
+```
+## [1] UK  USA USA UK 
+## Levels: UK USA
+```
+
+#### usually as column in a data frame: a categorical variable
+.pull-left[
+
+```r
+df &lt;- data.frame(name, age,
+                 country = factor(country))
+df
+```
+
+```
+##    name age country
+## 1   Ann  35      UK
+## 2   Bob  22     USA
+## 3 Chloe  50     USA
+## 4   Dan  51      UK
+```
+]
+.pull-right[
+
+```r
+summary(df)
+```
+
+```
+##      name                age        country
+##  Length:4           Min.   :22.00   UK :2  
+##  Class :character   1st Qu.:31.75   USA:2  
+##  Mode  :character   Median :42.50          
+##                     Mean   :39.50          
+##                     3rd Qu.:50.25          
+##                     Max.   :51.00
+```
+
+]
+
+---
+class: subheader, middle, center
+# Go to exercise 3
+
+---
+# Answers to exercise 3
+
+1. Create a vector `country` containing four countries (use at least one duplicate!).
+    
+    ```r
+    country &lt;- c("UK", "US", "US", "UK")
+    ```
+--
+
+1. Create a data frame combining `name`, `age`, and `country`, and save it as `df`.
+    
+    ```r
+    df &lt;- data.frame(name, age, country)
+    ```
+--
+
+1. Check your dataframe with the function `summary()`. Does it contain a factor?
+    
+    ```r
+    summary(df)
+    ```
+    
+    ```
+    ##      name                age          country         
+    ##  Length:4           Min.   :22.00   Length:4          
+    ##  Class :character   1st Qu.:31.75   Class :character  
+    ##  Mode  :character   Median :42.50   Mode  :character  
+    ##                     Mean   :39.50                     
+    ##                     3rd Qu.:50.25                     
+    ##                     Max.   :51.00
+    ```
+---
+# Answers to exercise 3 (continued)
+
+`4.` Make sure your column `country` is a factor, and confirm this with `summary()`.
+
+```r
+country &lt;- factor(country)
+country
+```
+
+```
+## [1] UK US US UK
+## Levels: UK US
+```
+
+```r
+df &lt;- data.frame(name, age, country)
+
+summary(df)
+```
+
+```
+##      name                age        country
+##  Length:4           Min.   :22.00   UK:2   
+##  Class :character   1st Qu.:31.75   US:2   
+##  Mode  :character   Median :42.50          
+##                     Mean   :39.50          
+##                     3rd Qu.:50.25          
+##                     Max.   :51.00
+```
+
+--
+
+`5.` Create a list with your vectors `name` and `age`, and save it as `mylist`.
+
+```r
+mylist &lt;- list(name,age)
+```
+
+---
+class: subheader, middle, center
+# Missing data
+
+---
+# Not Available (NA)
+
+Let's add a column to our data:
+
+```r
+df$pet &lt;- factor(c("cat","none","fish",NA))
+
+df$pet
+```
+
+```
+## [1] cat  none fish &lt;NA&gt;
+## Levels: cat fish none
+```
+
+#### Note that `NA` is not a level!
+
+--
+.pull-left[
+Here is our data frame:
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; name &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; age &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; country &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; pet &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ann &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 35 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; UK &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; cat &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bob &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; US &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; none &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Chloe &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 50 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; US &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; fish &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Dan &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 51 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; UK &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+--
+
+.pull-right[
+Notice that:
+
+- we know that Bob has no pets. 
+
+- we do not know if Dan has pets
+]
+---
+# Predict the answer (see Exercise 4)
+
+```r
+5 == 5
+```
+--
+
+```
+## [1] TRUE
+```
+--
+```r
+5 == NA
+```
+--
+
+```
+## [1] NA
+```
+--
+
+```r
+NA == NA
+```
+--
+
+```
+## [1] NA
+```
+--
+
+
+```r
+is.na(NA)
+```
+
+```
+## [1] TRUE
+```
+
+
+---
+# NULL: data does not exist
+
+Do we know about our participants' jobs?
+
+
+```r
+df$job
+```
+
+```
+## NULL
+```
+
+--
+
+| | |
+|---:|:---|
+| `NA` | Information is **N**ot **A**vailable |
+| `NULL` | Information does not exist |
+| `none` or `0` | Data entry specifying content of 0 |
+
+---
+class: subheader, middle, center
+# Indexing vectors &amp; lists
+
+---
+# Selecting vector elements by position
+
+.pull-left[
+
+```r
+name
+```
+
+```
+## [1] "Ann"   "Bob"   "Chloe" "Dan"
+```
+
+```r
+name[2]
+```
+
+```
+## [1] "Bob"
+```
+
+```r
+name[1:3]
+```
+
+```
+## [1] "Ann"   "Bob"   "Chloe"
+```
+
+```r
+name[c(2,2,1)]
+```
+
+```
+## [1] "Bob" "Bob" "Ann"
+```
+]
+
+--
+
+.pull-right[
+![position](images/vector_elements_position.png)
+]
+
+---
+# Selecting vector elements by value
+
+.pull-left[
+Selecting from vector `age`:
+
+```r
+age
+```
+
+```
+## [1] 35 22 50 51
+```
+
+```r
+age[age&gt;40]
+```
+
+```
+## [1] 50 51
+```
+
+```r
+age&gt;40
+```
+
+```
+## [1] FALSE FALSE  TRUE  TRUE
+```
+
+]
+--
+.pull-right[
+Breaking down the selection:
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt;   age   &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt;   age &amp;gt; 40   &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt;   age[age &amp;gt; 40]   &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 35 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 50 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; TRUE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 50 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 51 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; TRUE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 51 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+]
+
+---
+# Selecting vector elements by value
+
+```r
+name
+```
+
+```
+## [1] "Ann"   "Bob"   "Chloe" "Dan"
+```
+
+```r
+name[name %in% c("Chloe","Ann","Evie")]
+```
+
+```
+## [1] "Ann"   "Chloe"
+```
+
+![value](images/vector_elements_value.png)
+---
+# Selecting from a list
+
+
+```r
+mylist
+```
+
+```
+## [[1]]
+## [1] "Ann"   "Bob"   "Chloe" "Dan"  
+## 
+## [[2]]
+## [1] 35 22 50 51
+```
+--
+
+.pull-left[
+Selecting a list element from `mylist`:
+
+
+```r
+mylist[1]
+```
+
+```
+## [[1]]
+## [1] "Ann"   "Bob"   "Chloe" "Dan"
+```
+
+Sub-selection in the list-element:
+
+
+```r
+mylist[1][2]
+```
+
+```
+## [[1]]
+## NULL
+```
+]
+--
+
+.pull-right[
+Selecting the content of a list element:
+
+
+```r
+mylist[[1]]
+```
+
+```
+## [1] "Ann"   "Bob"   "Chloe" "Dan"
+```
+
+Subselection in the content of a list element:
+
+
+```r
+mylist[[1]][2]
+```
+
+```
+## [1] "Bob"
+```
+]
+---
+class: subheader, middle, center
+# Go to exercise 5
+
+---
+# Answers to exercise 5
+
+1. Return only the first number in your vector `age`.
+    
+    ```r
+    age[1]
+    ```
+    
+    ```
+    ## [1] 35
+    ```
+--
+
+1. Return the 2nd and 4th name in your vector `name`.
+    
+    ```r
+    name[c(2,4)]
+    ```
+    
+    ```
+    ## [1] "Bob" "Dan"
+    ```
+--
+
+1. Return only ages under 30 from your vector `age`.
+    
+    ```r
+    age[age&lt;30]
+    ```
+    
+    ```
+    ## [1] 22
+    ```
+--
+
+1. Return the name "Chloe" from your list `mylist`.
+    
+    ```r
+    mylist[[1]][3]
+    ```
+    
+    ```
+    ## [1] "Chloe"
+    ```
+
+---
+class: subheader, middle, center
+# Indexing a data frame
+
+---
+# Indexing a data frame
+.pull-left[
+![matrix](images/matrix_subsetting.png)
+]
+.pull-right[
+&lt;br /&gt;
+&lt;br /&gt;
+Keep this data frame in mind:
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; name &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; age &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; country &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; pet &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ann &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 35 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; UK &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; cat &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bob &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; US &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; none &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Chloe &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 50 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; US &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; fish &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Dan &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 51 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; UK &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+]
+
+---
+# Indexing columns
+
+By position:
+
+```r
+df[,2]
+```
+
+```
+## [1] 35 22 50 51
+```
+
+--
+
+By name (as a character string):
+
+```r
+df[,"age"]
+```
+
+```
+## [1] 35 22 50 51
+```
+
+--
+
+By name (as an object):
+
+```r
+df$age
+```
+
+```
+## [1] 35 22 50 51
+```
+
+---
+# Indexing rows
+
+By position:
+
+```r
+df[2,]
+```
+
+```
+##   name age country  pet
+## 2  Bob  22      US none
+```
+
+--
+
+By content:
+
+```r
+df[df$name=="Bob",]
+```
+
+```
+##   name age country  pet
+## 2  Bob  22      US none
+```
+
+--
+
+#### Combining rows and columns
+
+```r
+df[df$name=="Bob","age"]
+```
+
+```
+## [1] 22
+```
+---
+class: subheader, middle, center
+# Go to exercise 6
+
+---
+# Answers to exercise 6
+
+1. Return the entries for everyone living in a country of your choice.
+    
+    ```r
+    df[df$country=="UK",]
+    ```
+    
+    ```
+    ##   name age country  pet
+    ## 1  Ann  35      UK  cat
+    ## 4  Dan  51      UK &lt;NA&gt;
+    ```
+--
+
+2. Return only the names of everyone in your data frame df under 40.
+    
+    ```r
+    df[df$age&lt;40, "name"]
+    ```
+    
+    ```
+    ## [1] "Ann" "Bob"
+    ```
+--
+
+3. Return the columns `name` and `age` together.
+    
+    ```r
+    df[,c("name","age")]
+    ```
+    
+    ```
+    ##    name age
+    ## 1   Ann  35
+    ## 2   Bob  22
+    ## 3 Chloe  50
+    ## 4   Dan  51
+    ```
+
+---
+class: subheader, middle, center
+# Recap "Basics of R"
+---
+# Which bracket does what?
+
+.left-column[
+&lt;br /&gt;
+## &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;`[ ]`
+&amp;nbsp; 
+
+## &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;`(  )`
+&amp;nbsp; 
+
+## &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;`{  }`
+&amp;nbsp;
+
+]
+.right-column[
+&amp;nbsp;
+### Indexing vectors, lists, dataframes… 
+&amp;nbsp;
+
+### Passing arguments to functions
+&amp;nbsp;
+
+### Defining content of loops, functions, etc.
+&amp;nbsp;
+
+]
+
+---
+# You can speak R!
+
+#### What data types have you encountered so far?  
+`logical`  
+`numeric`  
+`character`
+
+#### How can data be absent?  
+`NA` (not available)  
+`NULL` (non-existent)
+
+#### What data structures have you encountered?
+`vector` (one dimension)  
+`factor` (one dimension, level-based)  
+`data frame` (two dimensions)  
+`list` (++ dimensions)  
+
+---
+# (Un)known functions
+
+What functions have you encountered so far?
+
+`c()`  
+`factor()`  
+`data.frame()`  
+`is.na()`  
+`mean()`  
+`...`
+
+And do you still know what they mean? And how to use them? No?
+
+Type in your console:  
+`?mean`
+
+(or use the Help window to the right of your console).
+---
+# Help!
+
+![help](images/help1.png)
+
+---
+# Help? Scroll down for examples!
+![help](images/help2.png)
+---
+
+class: subheader, middle, center
+# Programming: if statements
+
+---
+# If statement: a conditional
+
+- A test/condition: is this statement true or false?
+
+- If the statement is true: do A
+
+- If the statement is false: do B (this is optional!)
+
+![](images/ifstatement.png)
+
+---
+# If statement in R
+
+- First, let's assign a value to `number`:
+  
+  ```r
+  number &lt;- 14
+  ```
+--
+- Here is the **if-statement**:
+  - We test whether `number` is larger than 10 (the _condition_)
+  - if true: we assign "over 10" to the variable `number_class` (our _instruction A_)
+  - if false: we say that `number_class` is "10 or smaller" (our _instruction B_)
+  
+  ```r
+  if(number &gt; 10){
+    number_class &lt;- "over 10"
+  } else{
+    number_class &lt;- "10 or smaller"
+  }
+  ```
+--
+- Now, let's look at `number class`:
+  
+  ```r
+  print(number_class)
+  ```
+  
+  ```
+  ## [1] "over 10"
+  ```
+---
+class: subheader, middle, center
+# Go to exercise 7
+
+---
+# Answers to exercise 7
+
+Make an if statement that tests if a number is even, and saves the classification in a variable called `number_class`.
+
+
+```r
+number &lt;- 8
+
+if(number%%2 == 0){
+  number_class &lt;- "even"
+} else{
+  number_class &lt;- "odd"
+}
+
+print(number_class)
+```
+
+```
+## [1] "even"
+```
+
+---
+class: subheader, middle, center
+# Programming: functions
+
+---
+# Functions: a sequence
+
+#### Functions consist of (multiple) instruction(s) that form a cohesive unit:
+![function](images/function.png)
+--
+
+#### A function can be repeated on different inputs:
+
+```r
+mean(df$age)
+```
+
+```
+## [1] 39.5
+```
+
+```r
+mean(1:100)
+```
+
+```
+## [1] 50.5
+```
+
+---
+# Functions
+
+#### Functions can also be used to make a complex line of code easier to write/read:
+
+You write the function once:
+
+```r
+find_bobs_age &lt;- function(data){
+  bobs_age &lt;- data[data$name == "Bob", "age"]
+  return(bobs_age)
+}
+```
+
+Now, every time you want to find Bob's age you use:
+
+```r
+find_bobs_age(df)
+```
+
+```
+## [1] 22
+```
+
+--
+
+#### Functions are the bread and butter of programming!
+
+A good script will consist mostly of functions, with a minimal amount of code that applies the functions.
+
+---
+# Functions in R
+
+- To make a function, use the function `function()`:
+  ```r
+  myFun &lt;- function()
+  ```
+--
+- You assign names to the user's input in the function's arguments:
+  ```r
+  myFun &lt;- function(arg1, arg2)
+  ```
+--
+- The sequence of operations is in the body of the function (between `{ }`):
+  
+  ```r
+  myFun &lt;- function(arg1, arg2){
+  * multiplication &lt;- arg1 * arg2
+  }
+  ```
+--
+- The output of the function is placed in a `return` statement:
+  
+  ```r
+  myFun &lt;- function(arg1, arg2){
+    multiplication &lt;- arg1 * arg2
+  * return(multiplication)
+  }
+  ```
+---
+# Using your own function
+
+First, run the code with the function itself. It will appear in your environment:
+
+![environment](images/function_environment.png)
+
+--
+
+Now, you can use the function:
+
+```r
+myFun(3,4)
+```
+
+```
+## [1] 12
+```
+
+```r
+myFun(90,71)
+```
+
+```
+## [1] 6390
+```
+
+---
+class: subheader, middle, center
+# Go to exercise 8
+
+---
+# Answers to exercise 8
+
+Turn the if-statement from the last exercise into a function. Let the user provide the value for `number`, and return the `number_class`.
+
+
+```r
+even_or_odd &lt;- function(number){
+  if(number%%2 == 0){
+    number_class &lt;- "even"
+  } else{
+    number_class &lt;- "odd"
+  }
+  return(number_class)
+}
+```
+
+---
+class: subheader, middle, center
+# Programming: loops
+
+---
+# A for-loop
+
+- Instruction(s) that need(s) to be applied multiple times
+
+- Input is an iterable object (i.e.: it consists of multiple similar elements)
+
+![forloop](images/forloop.png)
+---
+# A for-loop in R
+
+- A loop starts with the iterable object (in this case the vector `1:6`), and the temporary name for each item (in this case `i`):
+  ```r
+  for(i in 1:6)
+  ```
+--
+- Within the now familiar brackets (`{ }`) you place the instructions:
+  
+  ```r
+  for(i in 1:6){
+  * print(i)
+  }
+  ```
+  
+  ```
+  ## [1] 1
+  ## [1] 2
+  ## [1] 3
+  ## [1] 4
+  ## [1] 5
+  ## [1] 6
+  ```
+---
+class: subheader, middle, center
+# Go to exercise 9
+
+---
+# Answers to exercise 9
+
+Go over the numbers 1-10, and for each number: test if the number is even or odd, using the function you made in the last exercise. Print the results using the function `print()`.
+
+
+```r
+for(i in 1:10){
+  test &lt;- even_or_odd(i)
+  print(test)
+}
+```
+
+```
+## [1] "odd"
+## [1] "even"
+## [1] "odd"
+## [1] "even"
+## [1] "odd"
+## [1] "even"
+## [1] "odd"
+## [1] "even"
+## [1] "odd"
+## [1] "even"
+```
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"slideNumberFormat": ""
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
