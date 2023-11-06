@@ -37,24 +37,6 @@ xaringanExtra::style_share_again(
 
 - What is your experience with R?
 
-
-
----
-# Asking for help
-
-#### What you can do:
-- *During presentations*: Use the Teams chat to ask questions, or raise your hand
-- *During exercises*: Put an X in the red column of the [status chart](https://docs.google.com/spreadsheets/d/1qYdpXYfjBoA2gjwNNm9igLQrcKam8F4VXYTooxga2Rk/edit?usp=sharing) (with an optional explanation of your question).
-
-![status-chart](images/statuschart.png)
---
-
-#### What we will do:
-- *During presentations*: Answer your question live or in the chat.
-- *During exercises*: Invite you to a Teams channel, where someone can assist you.
-
-#### Please indicate your progress on the status chart, so we can keep track!
-
 ---
 # Course materials
 
@@ -62,46 +44,34 @@ xaringanExtra::style_share_again(
 
 ### Slides & exercises
 
-1. Download the [course materials here](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/archive/master.zip).
+1. Download the [course materials here](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/raw/main/course-materials.zip).
 
-1. Store it in a local (i.e. not on a mounted drive), accessible location.
+2. Store it in a local (i.e. not on a mounted drive), accessible location.
 
-1. Unzip the download to create a single folder.
+3. Unzip the download to create a single folder.
 
-1. If you have downloaded it, you will be able to tell us what animal is on the picture `animal.jpg`, located in the main folder :-)
-
-
-### Collaborative document
-
-1. Go to [tinyurl.com/statuschartR](https://docs.google.com/spreadsheets/d/1qYdpXYfjBoA2gjwNNm9igLQrcKam8F4VXYTooxga2Rk/edit?usp=sharing)
-
-1. Fill out your name in the first column.
+4. If you have downloaded it, you will be able to tell us what animal is on the picture `animal.jpg`, located in the main folder :-)
 
 ---
 # This morning's schedule
 
 - &nbsp; 9:30 &nbsp; Introductions
 
-- 10:00 &nbsp; Exercise 1- 6 (_individual work with 1:1 support via Teams_)
+- 10:00 &nbsp; Base R + Exercises 1- 6
 
 - 11:25 &nbsp; Recap & questions
 
 - 11:30 &nbsp; Coffee break
 
-- 11:45 &nbsp; Exercise 7-9 (_individual work with 1:1 support via Teams_)
+- 11:45 &nbsp; Programming + Exercises 7-9
 
 - 12:45 &nbsp; Lunch break
 
 - 13:30 &nbsp; Reconvene for afternoon program
 
-#### Get 1:1 support via the status chart!
-![status-chart](images/statuschart.png)
 ---
 # General guidelines (and advice!)
 
-- Use the status chart to keep us posted on your progress;
-
---
 
 - Ask for help whenever you need it;
 
@@ -113,9 +83,6 @@ xaringanExtra::style_share_again(
 
 - Take breaks when we have scheduled them, and step away from your computer;
 
---
-
-- Set a timer when taking a break, we will reconvene according to schedule.
 
 ---
 class: subheader, middle, center
@@ -176,13 +143,13 @@ class: subheader, middle, center
 ---
 # Open course materials
 
-_Before you start: make sure you have downloaded the [course materials](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/archive/master.zip), and unzipped them to a single, accessible folder._
+_Before you start: make sure you have downloaded the [course materials](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/raw/main/course-materials.zip), and unzipped them to a single, accessible folder._
 
 1. In Rstudio, choose **File** > **Open Project**
 
 1. Navigate to the folder with course materials
 
-1. Open **workshop.Rproj**
+1. Open **course-materials.Rproj**
 
 1. From the ‘files’ menu (bottom right), select **baseR_exercises.Rmd**
 
@@ -213,7 +180,7 @@ x = 6
 
 ![cheatsheet](images/baseRcheatsheet.png) 
 
-[download this cheat sheet](http://github.com/rstudio/cheatsheets/raw/master/base-r.pdf)
+[download this cheat sheet](http://github.com/rstudio/cheatsheets/raw/main/base-r.pdf)
 ]
 
 ---
