@@ -7,7 +7,7 @@ The workshop is organised by [Research Data Management Support](https://www.uu.n
 
 **[Click here to go to the workshop materials](https://utrechtuniversity.github.io/workshop-introduction-to-R-and-data/)**
 
-## Workshop description
+## Workshop description number 1
 
 R is a powerful programming language for data handling, data visualization, and statistics.
 In this workshop, we aim to give you the tools to start exploring R and all it has to offer by yourself.
