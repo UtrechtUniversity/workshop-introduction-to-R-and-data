@@ -64,8 +64,9 @@ With this method, you can also find the **function** to use: at the bottom-right
 Complete the code in the chunk below, replacing the ??? with your code:
 
 ```{r}
-penguins <- read_???(file = ???,
-                       delim = ???)
+penguins_raw <- read_delim("data/penguins_raw.tsv", 
+    delim = "\t", escape_double = FALSE, 
+    trim_ws = TRUE)
 ```
 
 
@@ -82,11 +83,11 @@ For this, click on the column headers in the preview to adjust the data type.
 Can you figure out what %m, %d, and %Y do? And how to place them in the right order, so your date is parsed correctly?
 
 ```{r}
-penguins <- read_delim(file = "data/penguins_raw.tsv",
-                       delim = "\t",
-                       col_types = ???)
+penguins_raw <- read_delim("data/penguins_raw.tsv", 
+    delim = "\t", escape_double = FALSE, 
+    col_types = cols(`Date Egg` = col_date(format = "%d/%m/%Y")), 
+    trim_ws = TRUE)
 ```
-
 
 ## Exercise 3 (OPTIONAL)
 
@@ -108,7 +109,7 @@ Or use the 'Import Dataset' button and choose 'From Excel'.
 
 ```{r}
 
-penguins_isotopes <- read_???(path = ???)
+penguins_isotopes <- read_excel(path = "data/penguins_isotopes.xlsx")
   
 ```
 
@@ -130,8 +131,8 @@ The delimiter can be anything you want, but a common option is a comma (","), or
 
 ```{r}
 write_delim(penguins_isotopes,
-            file = ???, # if you get an error here, consider using 'path' instead of 'file' - readr has been updated
-            delim = ???)
+            file = "data/penguins_isotopes.csv", # if you get an error here, consider using 'path' instead of 'file' - readr has been updated
+            delim = ",")
 ```
 
 
@@ -152,7 +153,9 @@ For example, `!TRUE` is False, and `!FALSE` is True.
 
 ```{r}
 
-penguins_subset <- filter(penguins, ???)
+penguins_subset <- filter(penguins_raw, !is.na(Sex))
+
+# penguins_subset <- filter(penguins, Sex %in% c("MALE", "FEMALE"))
 
 ```
 
@@ -177,7 +180,7 @@ Take a look at [tidyselect](https://tidyselect.r-lib.org/reference/language.html
 
 ```{r}
 
-penguins_subset <- select(penguins_subset, ???)
+penguins_subset <- select(penguins_subset, `Individual ID`, Species, Sex, Island, contains("Culmen"))
 
 ```
 
@@ -191,7 +194,9 @@ Make sure to remove the data arguments from your earlier code, as this is now pr
 
 ```{r}
 
-penguins_subset <- penguins %>% ???
+penguins_subset <- penguins_raw %>% 
+                   filter(!is.na(Sex)) %>%
+                   select(`Individual ID`, Species, Sex, Island, contains("Culmen"))
   
 ```
 
@@ -205,9 +210,8 @@ Make sure to work with the `penguins_subset` data.
 
 ```{r}
 penguins_subset <- penguins_subset %>%
-  mutate(culmen_ratio = ???)
+  mutate(culmen_ratio = `Culmen Length (mm)`/`Culmen Depth (mm)`)
 ```
-
 
 # Chapter 3: Tidy & transform
 
@@ -229,9 +233,9 @@ If you want some extra training in the use of the pipe operator, complete exerci
 penguins_long <- penguins_subset %>%
   rename(length = `Culmen Length (mm)`,
          depth = `Culmen Depth (mm)`) %>%
-  pivot_longer(cols = ???,
-               ??? = "culmen_element",
-               ??? = "measurement")
+  pivot_longer(cols = c(length, depth),
+               names_to = "culmen_element",
+               values_to = "measurement")
 ```
 
 
@@ -254,9 +258,9 @@ Don't worry.
 ```{r}
 
 penguins_summary <- penguins_long %>%
-  group_by(???) %>%
-  summarize(avg = ???,
-            sd = ???)
+  group_by(Species, culmen_element) %>%
+  summarize(avg = mean(measurement),
+            sd = sd(measurement))
 
 ```
 
@@ -272,7 +276,7 @@ NB: We did not discuss joins in the presentation.
 If you want to know more about this set of operations, read R for Data Science, [chapter 13.4.1](https://r4ds.had.co.nz/relational-data.html#understanding-joins).
 
 ```{r}
-penguins_join <- full_join(???,
+penguins_join <- full_join(penguins_summary, penguins_long,
                            by = c("Species", "culmen_element"))
 ```
 
@@ -287,7 +291,7 @@ Use the function `mutate()` to add a column `zscore` to the data frame `penguins
 ```{r}
 
 penguins_join <- penguins_join %>%
-  ???
+                 mutate(zscore = (measurement - avg)/sd)
 
 ```
 

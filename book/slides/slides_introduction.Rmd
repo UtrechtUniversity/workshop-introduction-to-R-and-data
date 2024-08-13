@@ -27,32 +27,16 @@ xaringanExtra::style_share_again(
 
 # Welcome! Who are you?
 
-- Your name & pronouns
+- What part of your education are you in? (Bachelor, PhD, prof…)
 
 - What is your faculty/background? (Economics, Medicine, Biology…)
-
-- What part of your education are you in? (Bachelor, PhD, prof…)
 
 - What is your motivation for learning R?
 
 - What is your experience with R?
 
 ---
-# Course materials
 
-#### All course materials, videos, information & resources are at  [tinyurl.com/introRDatasite](https://utrechtuniversity.github.io/workshop-introduction-to-R-and-data/). 
-
-### Slides & exercises
-
-1. Download the [course materials here](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/raw/main/course-materials.zip).
-
-2. Store it in a local (i.e. not on a mounted drive), accessible location.
-
-3. Unzip the download to create a single folder.
-
-4. If you have downloaded it, you will be able to tell us what animal is on the picture `animal.jpg`, located in the main folder :-)
-
----
 # This morning's schedule
 
 - &nbsp; 9:30 &nbsp; Introductions
@@ -68,21 +52,6 @@ xaringanExtra::style_share_again(
 - 12:45 &nbsp; Lunch break
 
 - 13:30 &nbsp; Reconvene for afternoon program
-
----
-# General guidelines (and advice!)
-
-
-- Ask for help whenever you need it;
-
---
-
-- Close as many unnecessary windows and programs as possible;
-
---
-
-- Take breaks when we have scheduled them, and step away from your computer;
-
 
 ---
 class: subheader, middle, center
@@ -126,7 +95,43 @@ class: subheader, middle, center
 
 ![rstudio-incremental](images/rstudio-incremental-5.png)
 ---
+
+---
+
+# Course materials
+
+#### All course materials, videos, information & resources are at  [tinyurl.com/introRDatasite](https://utrechtuniversity.github.io/workshop-introduction-to-R-and-data/). 
+
+### Slides & exercises
+
+1. Download the [course materials here](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/raw/main/course-materials.zip).
+
+2. Store it in a local (i.e. not on a mounted drive), accessible location.
+
+3. Unzip the download to create a single folder.
+
+4. If you have downloaded it, you will be able to tell us what animal is on the picture `animal.png`, located in the main folder :-)
+
+---
+
+# Open course materials
+
+_Before you start: make sure you have downloaded the [course materials](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/raw/main/course-materials.zip), and unzipped them to a single, accessible folder._
+
+1. Navigate to the folder with course materials
+
+1. Double-click the **course-materials.Rproj** file.
+
+1. From the ‘files’ menu (bottom right), click **baseR_exercises.Rmd**
+
+---
+
 # Running R code
+
+#### In the **baseR_exercises.Rmd**:
+- You can execute _Exercise 0_ chunk as a whole with the green triangle:
+
+![run-chunk](images/run-chunk.png)
 
 #### In a script/Rmarkdown document
 - Place your cursor in the line of code you want to execute
@@ -134,25 +139,6 @@ class: subheader, middle, center
 - Press ![run](images/run.png) or ctrl + enter
 
 - When running multiple lines: select all lines, then press ‘Run’ or ctrl+enter
-
-#### In an Rmarkdown document
-- You can execute a chunk as a whole with the green triangle:
-
-![run-chunk](images/run-chunk.png)
-
----
-# Open course materials
-
-_Before you start: make sure you have downloaded the [course materials](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/raw/main/course-materials.zip), and unzipped them to a single, accessible folder._
-
-1. In Rstudio, choose **File** > **Open Project**
-
-1. Navigate to the folder with course materials
-
-1. Open **course-materials.Rproj**
-
-1. From the ‘files’ menu (bottom right), select **baseR_exercises.Rmd**
-
 
 ---
 class: subheader, middle, center
@@ -183,6 +169,7 @@ x = 6
 [download this cheat sheet](http://github.com/rstudio/cheatsheets/raw/main/base-r.pdf)
 ]
 
+[a second link, in case the first doesn't work](https://github.com/rstudio/cheatsheets/blob/main/base-r.pdf)
 ---
 # Do you expect an answer?
 
@@ -219,7 +206,7 @@ Check **"Maths Functions"** on the [cheat sheet](http://github.com/rstudio/cheat
 ---
 # Logicals
 
-A logical is `True` or `False`, and can also be written as `T` or `F`.
+A logical is `TRUE` or `FALSE`, and can also be written as `T` or `F`.
 
 Logicals are mostly used as tests:
 
@@ -355,19 +342,30 @@ class: subheader, middle, center
 ---
 # Answers to exercise 2
 
-1. Make a character vector with their names, using the function `c()`. Save the vector as name.
+1. _Meet Ann, Bob, Chloe, and Dan._ 
+Create a character vector called "name" and add these names to the vector using the `c()` function.
     ```{r}
     name <- c("Ann", "Bob", "Chloe", "Dan")
     ```
 --
 
-1. How old are Ann, Bob, Chloe, and Dan? You decide! Design a numeric vector with their respective ages. Save it as `age`.
+1. _How old are Ann, Bob, Chloe, and Dan?_ 
+Create a numeric vector called "age" and add their ages to the vector. You can decide their ages.
     ```{r}
     age <- c(35,22,50,51)
     ```
 --
 
-1. What is their average age? Use a function in R to calculate this.
+1. Use the `class()` function to check the data type of the `name` and `age` vectors.
+```{r}
+class(name)
+class(age)
+```
+
+
+1. _What is their average age?_ 
+Use a function in R to calculate this. 
+**Tip:** use the Maths Functions section of the Base R cheat sheet!
     ```{r}
     mean(age)
     ```
@@ -377,6 +375,7 @@ class: subheader, middle, center
 # Data structures
 
 ---
+
 # Data structures: vector
 
 #### We have two vectors: `name` and `age`
@@ -391,20 +390,6 @@ c(name,age)
 ```
 
 ---
-# Data structures: list
-
-#### We have two vectors: `name` and `age`
-```{r}
-name
-age
-```
-
-#### Combine the vectors to a multidimensional list, with `list()`
-```{r}
-list(name,age)
-```
-
----
 # Data structures: data frame
 
 #### We have two vectors: `name` and `age`
@@ -416,6 +401,21 @@ age
 #### Combine the vectors to a twodimensional data frame, with `data.frame()`
 ```{r}
 data.frame(name,age)
+```
+
+---
+
+# Data structures: list
+
+#### We have three vectors: `name` and `age`
+```{r}
+name
+age
+```
+
+#### Combine the vectors to a multidimensional list, with `list()`
+```{r}
+list(name,age)
 ```
 
 ---
@@ -461,222 +461,38 @@ class: subheader, middle, center
 ---
 # Answers to exercise 3
 
-1. Create a vector `country` containing four countries (use at least one duplicate!).
+1. Create a vector called "country" containing four countries of your choice..
     ```{r}
-    country <- c("UK", "US", "US", "UK")
+    country <- c("UK", "US", "NL", "BE")
     ```
 --
 
-1. Create a data frame combining `name`, `age`, and `country`, and save it as `df`.
+1. Create a data frame called "df" combining name, age, and country.
     ```{r}
     df <- data.frame(name, age, country)
     ```
 --
 
-1. Check your dataframe with the function `summary()`. Does it contain a factor?
-    ```{r}
-    summary(df)
-    ```
----
-# Answers to exercise 3 (continued)
-
-`4.` Make sure your column `country` is a factor, and confirm this with `summary()`.
+3. Create a list called "mylist" with the 3 vectors and 1 dataframe you have just created. 
 ```{r}
-country <- factor(country)
-country
-
-df <- data.frame(name, age, country)
-
-summary(df)
+mylist <- list(name, age, country, df)
 ```
-
---
-
-`5.` Create a list with your vectors `name` and `age`, and save it as `mylist`.
-```{r}
-mylist <- list(name,age)
-```
-
----
-class: subheader, middle, center
-# Missing data
-
----
-# Not Available (NA)
-
-Let's add a column to our data:
-```{r}
-df$pet <- factor(c("cat","none","fish",NA))
-
-df$pet
-```
-
-#### Note that `NA` is not a level!
-
---
-.pull-left[
-Here is our data frame:
-
-```{r, echo=F}
-knitr::kable(df, format="html")
-```
-]
---
-
-.pull-right[
-Notice that:
-
-- we know that Bob has no pets. 
-
-- we do not know if Dan has pets
-]
----
-# Predict the answer (see Exercise 4)
-
-```r
-5 == 5
-```
---
-```{r echo = F}
-5 == 5
-```
---
-```r
-5 == NA
-```
---
-```{r echo = F}
-5 == NA
-```
---
-
-```r
-NA == NA
-```
---
-```{r echo = F}
-NA == NA
-```
---
-
-```{r}
-is.na(NA)
-```
-
-
----
-# NULL: data does not exist
-
-Do we know about our participants' jobs?
-
-```{r}
-df$job
-```
-
---
-
-| | |
-|---:|:---|
-| `NA` | Information is **N**ot **A**vailable |
-| `NULL` | Information does not exist |
-| `none` or `0` | Data entry specifying content of 0 |
 
 ---
 class: subheader, middle, center
 # Indexing vectors & lists
 
 ---
-# Selecting vector elements by position
+# Selecting vector elements
 
 .pull-left[
-```{r}
-name
-name[2]
-name[1:3]
-name[c(2,2,1)]
-```
-]
-
---
-
-.pull-right[
 ![position](images/vector_elements_position.png)
 ]
 
----
-# Selecting vector elements by value
-
-.pull-left[
-Selecting from vector `age`:
-```{r}
-age
-
-age[age>40]
-
-age>40
-```
-
-]
---
 .pull-right[
-Breaking down the selection:
-```{r, echo=F}
-
-df2 <- data.frame(age, age>40)
-df2[,3] <- c("","",age[3],age[4])
-names(df2) <- c("  age  ", "  age > 40  ", "  age[age > 40]  ")
-
-knitr::kable(df2, format="html")
-```
-
-
-]
-
----
-# Selecting vector elements by value
-```{r}
-name
-
-name[name %in% c("Chloe","Ann","Evie")]
-```
-
 ![value](images/vector_elements_value.png)
----
-# Selecting from a list
-
-```{r}
-mylist
-```
---
-
-.pull-left[
-Selecting a list element from `mylist`:
-
-```{r}
-mylist[1]
-```
-
-Sub-selection in the list-element:
-
-```{r}
-mylist[1][2]
-```
 ]
---
 
-.pull-right[
-Selecting the content of a list element:
-
-```{r}
-mylist[[1]]
-```
-
-Subselection in the content of a list element:
-
-```{r}
-mylist[[1]][2]
-```
-]
 ---
 class: subheader, middle, center
 # Go to exercise 5
@@ -702,11 +518,6 @@ class: subheader, middle, center
     ```
 --
 
-1. Return the name "Chloe" from your list `mylist`.
-    ```{r}
-    mylist[[1]][3]
-    ```
-
 ---
 class: subheader, middle, center
 # Indexing a data frame
@@ -715,16 +526,6 @@ class: subheader, middle, center
 # Indexing a data frame
 .pull-left[
 ![matrix](images/matrix_subsetting.png)
-]
-.pull-right[
-<br />
-<br />
-Keep this data frame in mind:
-```{r, echo=F}
-knitr::kable(df, format="html")
-```
-
-
 ]
 
 ---
@@ -795,80 +596,124 @@ class: subheader, middle, center
     ```
 
 ---
+
+# Selecting from a list
+
+```{r}
+mylist
+```
+--
+
+.pull-left[
+Selecting a list element from `mylist`:
+
+```{r}
+mylist[1]
+```
+
+Sub-selection in the list-element:
+
+```{r}
+mylist[1][2]
+```
+]
+--
+
+.pull-right[
+Selecting the content of a list element:
+
+```{r}
+mylist[[1]]
+```
+
+Subselection in the content of a list element:
+
+```{r}
+mylist[[1]][2]
+```
+]
+---
+
 class: subheader, middle, center
-# Recap "Basics of R"
+# Missing data
+
 ---
-# Which bracket does what?
+# Not Available (NA)
 
-.left-column[
-<br />
-## &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;`[ ]`
-&nbsp; 
+Let's add a column to our data:
+```{r}
+df$pet <- c("cat","none","",NA)
 
-## &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;`(  )`
-&nbsp; 
+df
+```
 
-## &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;`{  }`
-&nbsp;
+--
+.pull-left[
+Here is our data frame:
 
+```{r, echo=F}
+knitr::kable(df, format="html")
+```
 ]
-.right-column[
-&nbsp;
-### Indexing vectors, lists, dataframes… 
-&nbsp;
+--
 
-### Passing arguments to functions
-&nbsp;
+.pull-right[
+Notice that:
 
-### Defining content of loops, functions, etc.
-&nbsp;
+- we know that Bob has no pets. 
 
+- we do not know if Dan has pets
 ]
+---
+# Predict the answer (see Exercise 6)
+
+```r
+5 == 5
+```
+--
+```{r echo = F}
+5 == 5
+```
+--
+```r
+5 == NA
+```
+--
+```{r echo = F}
+5 == NA
+```
+--
+
+```r
+NA == NA
+```
+--
+```{r echo = F}
+NA == NA
+```
+--
+
+```{r}
+is.na(NA)
+```
 
 ---
-# You can speak R!
+# NULL: data does not exist
 
-#### What data types have you encountered so far?  
-`logical`  
-`numeric`  
-`character`
+Do we know about our participants' jobs?
 
-#### How can data be absent?  
-`NA` (not available)  
-`NULL` (non-existent)
+```{r}
+df$job
+```
 
-#### What data structures have you encountered?
-`vector` (one dimension)  
-`factor` (one dimension, level-based)  
-`data frame` (two dimensions)  
-`list` (++ dimensions)  
+--
 
----
-# (Un)known functions
+| | |
+|---:|:---|
+| `NA` | Information is **N**ot **A**vailable |
+| `NULL` | Information does not exist |
+| `none` or `0` | Data entry specifying content of 0 |
 
-What functions have you encountered so far?
-
-`c()`  
-`factor()`  
-`data.frame()`  
-`is.na()`  
-`mean()`  
-`...`
-
-And do you still know what they mean? And how to use them? No?
-
-Type in your console:  
-`?mean`
-
-(or use the Help window to the right of your console).
----
-# Help!
-
-![help](images/help1.png)
-
----
-# Help? Scroll down for examples!
-![help](images/help2.png)
 ---
 
 class: subheader, middle, center
@@ -877,17 +722,47 @@ class: subheader, middle, center
 ---
 # If statement: a conditional
 
-- A test/condition: is this statement true or false?
-
-- If the statement is true: do A
-
-- If the statement is false: do B (this is optional!)
+An if statement tests if a condition is TRUE or FALSE and exectues code depending on the outcome of that test.
 
 ![](images/ifstatement.png)
 
 ---
 # If statement in R
 
+- To build an if-statement, start with the function `if()`:
+  ```r
+  if()
+  ```
+--
+
+- Within the `()`, insert the condition you want to test for:
+
+  ```r
+  if(number > 10)
+  ```
+--
+
+- The code that should be executed if the condition is met is contained within the `{}`:
+
+  ```{r}
+  if(number > 10) {
+    test_result <- "number is greater than 10"
+}
+  ```
+--
+
+- This code can be expanded to include what needs to be done if the condition is **not** met. For this, we use `else{}`
+
+  ```{r}
+  if(number > 10) {
+    test_result <- "number is greater than 10"
+} else {
+  test_result <- "number is not greater than 10"
+}
+  ```
+--
+
+OLD
 - First, let's assign a value to `number`:
   ```{r}
   number <- 14
@@ -1074,3 +949,78 @@ for(i in 1:10){
   print(test)
 }
 ```
+
+class: subheader, middle, center
+# Recap "Basics of R"
+---
+# Which bracket does what?
+
+.left-column[
+<br />
+## &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;`[ ]`
+&nbsp; 
+
+## &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;`(  )`
+&nbsp; 
+
+## &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;`{  }`
+&nbsp;
+
+]
+.right-column[
+&nbsp;
+### Indexing vectors, lists, dataframes… 
+&nbsp;
+
+### Passing arguments to functions
+&nbsp;
+
+### Defining content of loops, functions, etc.
+&nbsp;
+
+]
+
+---
+# You can speak R!
+
+#### What data types have you encountered so far?  
+`logical`  
+`numeric`  
+`character`
+
+#### How can data be absent?  
+`NA` (not available)  
+`NULL` (non-existent)
+
+#### What data structures have you encountered?
+`vector` (one dimension)  
+`factor` (one dimension, level-based)  
+`data frame` (two dimensions)  
+`list` (++ dimensions)  
+
+---
+# (Un)known functions
+
+What functions have you encountered so far?
+
+`c()`  
+`factor()`  
+`data.frame()`  
+`is.na()`  
+`mean()`  
+`...`
+
+And do you still know what they mean? And how to use them? No?
+
+Type in your console:  
+`?mean`
+
+(or use the Help window to the right of your console).
+---
+# Help!
+
+![help](images/help1.png)
+
+---
+# Help? Scroll down for examples!
+![help](images/help2.png)

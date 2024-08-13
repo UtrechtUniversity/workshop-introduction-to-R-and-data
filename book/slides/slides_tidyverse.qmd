@@ -1,0 +1,149 @@
+---
+format:
+  revealjs:
+    theme: default
+    embed-resources: true
+    smaller: true
+---
+
+# Into The Tidyverse {background-color=#FFCD00}
+
+## What is the `tidyverse`?
+
+The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures ([tidyverse.org](https://www.tidyverse.org/)).
+
+Its primary goal is to facilitate a conversation between a human and a computer about data ([Wickham et al., 2019](https://joss.theoj.org/papers/10.21105/joss.01686)).
+
+```{r, echo=F, out.width='25%', out.height='25%', fig.align='center'}
+knitr::include_graphics("https://www.tidyverse.org/images/hex-tidyverse.png")
+```
+
+## `tidyverse` core packages 
+
+- `readr`: data import
+- `tibble`: modern data frame object
+- `stringr`: working with strings
+- `forcats`: working with factors
+- `tidyr`: data tidying
+- `dplyr`: data manipulation
+- `ggplot2`: data visualization
+- `purrr`: functional programming
+
+## Tidy Data
+
+> Tidy data sets are all alike; but every messy data set is messy in its own way ([Wickham/Grolemund, 2017](https://r4ds.had.co.nz/tidy-data.html)]
+
+**Tidy Data Principles:** 
+
+The concept of tidy data has been coined by Hadley Wickham in his 2014 paper, [_Tidy Data_](https://www.jstatsoft.org/article/view/v059i10). 
+
+The concept formulates principles for structuring rectangular, tabular data sets consisting of rows and columns:
+
+1. Each variable forms a column.
+
+2. Each observation forms a row.
+
+3. Each type of observational unit forms a table.
+
+# Side Trip:<br>We're Going To Antarctica...{background-color=#FFCD00}
+
+## Data: `palmerpenguins`
+
+To learn about the `tidyverse`, we will use data from the `palmerpenguins` package by Allison Horst.
+
+The package comes with data about penguins observed on islands in the Palmer Archipelago near Palmer Station, Antarctica.
+
+# Importing Data {background-color=#FFCD00}
+
+## `readr`: Read Rectangular Text Data
+
+`readr` provides read and write functions for multiple different file formats:
+
+- `read_delim()`: general delimited files
+- `read_csv()`: comma separated files
+- `read_csv2()`: semicolon separated files
+- `read_tsv()`: tab separated files
+
+Conveniently, the `write_*()` functions are analogous to the `read_*()` functions: 
+
+- `write_delim()`: general delimited files
+- `write_csv()`: comma separated files
+- `write_csv2()`: semicolon separated files
+- `write_tsv()`: tab separated files
+
+## Reading Data 
+
+In addition, you can use the following packages to read data in other file formats:
+
+- `readxl`: Excel files
+- `haven`: SPSS & STATA files
+- `googlesheets4`: Google Sheets 
+- `rvest`: HTML files
+
+# Subsetting & Mutating Data {background-color=#FFCD00}
+
+## `dplyr`: A Grammar of Data Manipulation
+
+`dplyr` provides a set of functions for manipulating data frame objects while relying on a consistent grammar. Functions are intuitively represented by "verbs" that reflect the underlying operations.
+
+Today, we will use the following functions from `dplyr`:
+
+**Operations on rows:**
+
+- `filter()` picks rows that meet one or several logical criteria
+
+**Operations on columns:**
+
+- `select()` picks respectively drops certain columns
+- `rename()` changes the column names
+- `mutate()` transforms the column values and/or creates new columns
+
+**Operations on grouped data:**
+
+- `group_by()` partitions data based on one or several columns
+- `summarize()` reduces a group of data into a single row
+
+# Piping Operations
+
+## `magrittr`: The Forward-Pipe Operator
+
+`magrittr` comes with a set of operators, of which we will only use one:
+
+- Pipe Operator: `%>%`
+
+Essentially, the pipe operator aims to improve the readability of your code in multiple ways:
+
+- arrange operations into an easily readable pipeline of chained commands (left-to-right),
+- avoid nested function calls (inside-out),
+- minimize the use of local variable assignments (<-) and function definitions, and
+- easily add and/or delete steps in your pipeline without breaking the code.
+
+# Transformations & Tidy Data {background-color=#FFCD00}
+
+## `tidyr`: Tidy Messy Data
+
+`tidyr` provides several functions that help you bring your data into the *tidy data* format (e.g., reshaping data, splitting columns, handling missing values or nesting data).
+
+Today, we will use the following functions from `dplyr`:
+
+- `pivot_longer()`: "lengthens" data, increasing the number of rows and decreasing the number of columns. 
+- `pivot_wider()`: "widens" data, increasing the number of columns and decreasing the number of rows. 
+
+# Data Visualization {background-color=#FFCD00}
+
+## `ggplot2`: Elegant Data Visualisations
+
+`ggplot2` is Hadley Wickham's [reimplementation](https://www.tandfonline.com/doi/abs/10.1198/jcgs.2009.07098) of the 2005 published *The Grammar of Graphics* by Leland Wilkinson. It provides a large amount of functions for generating high-quality graphs in a layer-based fashion and has even sparked a whole ecosystem of 'gg'-style visualization packages.
+
+```{r, echo=F, out.width='90%', out.height='90%', fig.align='center'}
+knitr::include_graphics("https://simonschoe.github.io/introduction-to-the-tidyverse/img/grammar-of-graphic-layers.png")
+```
+
+## `ggplot2`: Elegant Data Visualisations
+
+{{< video https://vimeo.com/470862707 >}}
+
+## `ggplot2`: Elegant Data Visualisations
+
+Let's check out the `ggplot flipbook`[https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html)
+
