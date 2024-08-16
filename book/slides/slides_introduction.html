@@ -43,32 +43,16 @@ class: center, middle, inverse, title-slide
 
 # Welcome! Who are you?
 
-- Your name &amp; pronouns
+- What part of your education are you in? (Bachelor, PhD, prof…)
 
 - What is your faculty/background? (Economics, Medicine, Biology…)
-
-- What part of your education are you in? (Bachelor, PhD, prof…)
 
 - What is your motivation for learning R?
 
 - What is your experience with R?
 
 ---
-# Course materials
 
-#### All course materials, videos, information &amp; resources are at  [tinyurl.com/introRDatasite](https://utrechtuniversity.github.io/workshop-introduction-to-R-and-data/). 
-
-### Slides &amp; exercises
-
-1. Download the [course materials here](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/raw/main/course-materials.zip).
-
-2. Store it in a local (i.e. not on a mounted drive), accessible location.
-
-3. Unzip the download to create a single folder.
-
-4. If you have downloaded it, you will be able to tell us what animal is on the picture `animal.jpg`, located in the main folder :-)
-
----
 # This morning's schedule
 
 - &amp;nbsp; 9:30 &amp;nbsp; Introductions
@@ -84,21 +68,6 @@ class: center, middle, inverse, title-slide
 - 12:45 &amp;nbsp; Lunch break
 
 - 13:30 &amp;nbsp; Reconvene for afternoon program
-
----
-# General guidelines (and advice!)
-
-
-- Ask for help whenever you need it;
-
---
-
-- Close as many unnecessary windows and programs as possible;
-
---
-
-- Take breaks when we have scheduled them, and step away from your computer;
-
 
 ---
 class: subheader, middle, center
@@ -142,33 +111,38 @@ class: subheader, middle, center
 
 ![rstudio-incremental](images/rstudio-incremental-5.png)
 ---
+
+# Course materials
+
+#### All course materials, videos, information &amp; resources are at  [tinyurl.com/introRDatasite](https://utrechtuniversity.github.io/workshop-introduction-to-R-and-data/). 
+
+1. Download the [course materials](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/raw/main/course-materials.zip).
+
+2. Store them in a local (i.e. not on a mounted drive), accessible location.
+
+3. Unzip the download to create a single folder. **What animal is displayed on `animal.png`?**
+
+4. Double-click the **course-materials.Rproj** file.
+        Or: Go to File &gt; Open Project &gt; select course-materials.Rproj &gt; Open
+
+5. From the ‘Files’ menu (bottom right), click **baseR_exercises.Rmd**.
+
+---
+
 # Running R code
+
+#### In the **baseR_exercises.Rmd**:
+
+You can execute _Exercise 0_ chunk as a whole with the green triangle:
+
+![run-chunk](images/run-chunk.png)
 
 #### In a script/Rmarkdown document
 - Place your cursor in the line of code you want to execute
 
 - Press ![run](images/run.png) or ctrl + enter
 
-- When running multiple lines: select all lines, then press ‘Run’ or ctrl+enter
-
-#### In an Rmarkdown document
-- You can execute a chunk as a whole with the green triangle:
-
-![run-chunk](images/run-chunk.png)
-
----
-# Open course materials
-
-_Before you start: make sure you have downloaded the [course materials](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/raw/main/course-materials.zip), and unzipped them to a single, accessible folder._
-
-1. In Rstudio, choose **File** &gt; **Open Project**
-
-1. Navigate to the folder with course materials
-
-1. Open **course-materials.Rproj**
-
-1. From the ‘files’ menu (bottom right), select **baseR_exercises.Rmd**
-
+- When running multiple lines: select all lines, then press ‘Run’ or ctrl + enter
 
 ---
 class: subheader, middle, center
@@ -183,27 +157,23 @@ You can assign both numbers and text to a variable:
 
 ```r
 x &lt;- 6
-
 x &lt;- 'apple'
-
 x &lt;- "hello world"
-
-x = 6
 ```
 
-![assignment](images/assignment.png)]
+You will see your variabe (R object) appear in your Environment (top right panel).
+]
 
 .pull-right-center[
 
 ![cheatsheet](images/baseRcheatsheet.png) 
-
-[download this cheat sheet](http://github.com/rstudio/cheatsheets/raw/main/base-r.pdf)
+See the `cheatsheets` folder. Or [download it](https://github.com/rstudio/cheatsheets/blob/main/base-r.pdf).
 ]
 
 ---
 # Do you expect an answer?
 
-Saving information:
+Saving information as an R object:
 
 ```r
 x &lt;- 1
@@ -218,9 +188,10 @@ x
 ## [1] 1
 ```
 
-Note the difference in syntax: when using the &lt;- operator, you are storing the information as a variable in R, and therefore you do not expect to get an answer immediately.
+Note the difference in syntax: 
 
-When calling up that information, or making calculations, you can make R show you the answer.
+- `&lt;-` operator: storing information = no immediate 'answer'
+- calling up an object, or making calculations: R shows you the answer
 
 ---
 # Maths functions
@@ -246,13 +217,13 @@ log2(y)
 ## [1] 1.584963
 ```
 
-Check **"Maths Functions"** on the [cheat sheet](http://github.com/rstudio/cheatsheets/raw/master/base-r.pdf):
+Check **"Maths Functions"** on the Base R cheatsheet:
 ![assignment-math](images/mathsfunctions.png)
 
 ---
 # Logicals
 
-A logical is `True` or `False`, and can also be written as `T` or `F`.
+A logical is `TRUE` or `FALSE`, and can also be written as `T` or `F`.
 
 Logicals are mostly used as tests:
 
@@ -298,14 +269,14 @@ class: subheader, middle, center
     ```
 --
 
-1. Assign the result of the calculation to a variable.
+2. Assign the result of the calculation to a variable.
     
     ```r
     x &lt;- (1+5)/9
     ```
 --
 
-1. Test if the result is larger than 1.
+3. Test if the result is larger than 1.
     
     ```r
     x &gt; 1
@@ -316,7 +287,7 @@ class: subheader, middle, center
     ```
 --
 
-1. Round off the result to 1 decimal.
+4. Round off the result to 1 decimal.
     
     ```r
     round(x,1)
@@ -386,6 +357,15 @@ c(TRUE,"a",3)
 
 #### Yep, a character vector!
 Vector type defaults to the "lowest common denominator": everything can be a character, but not everything can be a number or a logical.
+
+--
+
+Order:
+
+1. Character
+2. Numeric
+3. Logical
+
 ---
 # Vector functions
 #### Vectors can be used in mathematical operations
@@ -416,7 +396,7 @@ p * 2
 ## [1]  2  4  6  8 10
 ```
 ]
---
+
 .pull-right-medium[
 | &amp;nbsp; &amp;nbsp; p &amp;nbsp; &amp;nbsp;  | &amp;nbsp; &amp;nbsp; 2&amp;nbsp; &amp;nbsp;  | &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;  |
 |:---:|:---:|:---:|
@@ -467,21 +447,46 @@ class: subheader, middle, center
 ---
 # Answers to exercise 2
 
-1. Make a character vector with their names, using the function `c()`. Save the vector as name.
+1. _Meet Ann, Bob, Chloe, and Dan._ 
+Create a character vector called "name" and add these names to the vector using the `c()` function.
     
     ```r
     name &lt;- c("Ann", "Bob", "Chloe", "Dan")
     ```
 --
 
-1. How old are Ann, Bob, Chloe, and Dan? You decide! Design a numeric vector with their respective ages. Save it as `age`.
+2. _How old are Ann, Bob, Chloe, and Dan?_ 
+Create a numeric vector called "age" and add their ages to the vector. You can decide their ages.
     
     ```r
     age &lt;- c(35,22,50,51)
     ```
 --
 
-1. What is their average age? Use a function in R to calculate this.
+3. Use the `class()` function to check the data type of the `name` and `age` vectors.
+    
+    ```r
+    class(name)
+    ```
+    
+    ```
+    ## [1] "character"
+    ```
+    
+    ```r
+    class(age)
+    ```
+    
+    ```
+    ## [1] "numeric"
+    ```
+
+---
+# Answers to exercise 2 (continued)
+
+4. _What is their average age?_ 
+Use a function in R to calculate this. 
+**Tip:** use the Maths Functions section of the Base R cheat sheet!
     
     ```r
     mean(age)
@@ -496,6 +501,7 @@ class: subheader, middle, center
 # Data structures
 
 ---
+
 # Data structures: vector
 
 #### We have two vectors: `name` and `age`
@@ -516,7 +522,11 @@ age
 ## [1] 35 22 50 51
 ```
 
-#### Combine the vectors to a unidimensional vector, with `c()`
+How do we combine them?
+
+--
+
+#### Into a one-dimensional vector: `c()`
 
 ```r
 c(name,age)
@@ -527,62 +537,11 @@ c(name,age)
 ```
 
 ---
-# Data structures: list
 
-#### We have two vectors: `name` and `age`
-
-```r
-name
-```
-
-```
-## [1] "Ann"   "Bob"   "Chloe" "Dan"
-```
-
-```r
-age
-```
-
-```
-## [1] 35 22 50 51
-```
-
-#### Combine the vectors to a multidimensional list, with `list()`
-
-```r
-list(name,age)
-```
-
-```
-## [[1]]
-## [1] "Ann"   "Bob"   "Chloe" "Dan"  
-## 
-## [[2]]
-## [1] 35 22 50 51
-```
-
----
 # Data structures: data frame
 
-#### We have two vectors: `name` and `age`
+How about combining `name` and `age` in a two-dimensional table structure?
 
-```r
-name
-```
-
-```
-## [1] "Ann"   "Bob"   "Chloe" "Dan"
-```
-
-```r
-age
-```
-
-```
-## [1] 35 22 50 51
-```
-
-#### Combine the vectors to a twodimensional data frame, with `data.frame()`
 
 ```r
 data.frame(name,age)
@@ -596,6 +555,35 @@ data.frame(name,age)
 ## 4   Dan  51
 ```
 
+Two dimensions:
+
+- Rows
+- Columns
+
+---
+
+# Data structures: list
+
+Or: in a multi-dimensional list.
+
+
+```r
+list(name,age)
+```
+
+```
+## [[1]]
+## [1] "Ann"   "Bob"   "Chloe" "Dan"  
+## 
+## [[2]]
+## [1] 35 22 50 51
+```
+
+Dimensions: any
+
+Lists can contain *any* R object. 
+Not just dataframes and vectors, but also other lists.
+
 ---
 # Data structures: summary
 
@@ -607,12 +595,18 @@ data.frame(name,age)
 | data frame | 2 | &amp;nbsp; &amp;nbsp; `data.frame()`  |
 | list | any number | &amp;nbsp; &amp;nbsp; `list()` |
 
+NB: dataframes and lists appear under `Data` in the Environment (top right panel in RStudio), vectors under `Values`.
+
 ---
 # Factors
 
-#### a special type of vector, defined by _levels_
+#### Special type of vector, defined by _levels_. Usually as categorical variable in a data frame.
+
+--
+
 
 ```r
+# Create vector country
 country &lt;- c("UK","USA","USA","UK")
 country
 ```
@@ -622,7 +616,9 @@ country
 ```
 
 ```r
-factor(country)
+# Turn country into a factor
+country_fac &lt;- as.factor(country)
+country_fac
 ```
 
 ```
@@ -630,21 +626,21 @@ factor(country)
 ## Levels: UK USA
 ```
 
-#### usually as column in a data frame: a categorical variable
+--
+
 .pull-left[
 
 ```r
-df &lt;- data.frame(name, age,
-                 country = factor(country))
+df &lt;- data.frame(name, age, country_fac)
 df
 ```
 
 ```
-##    name age country
-## 1   Ann  35      UK
-## 2   Bob  22     USA
-## 3 Chloe  50     USA
-## 4   Dan  51      UK
+##    name age country_fac
+## 1   Ann  35          UK
+## 2   Bob  22         USA
+## 3 Chloe  50         USA
+## 4   Dan  51          UK
 ```
 ]
 .pull-right[
@@ -654,12 +650,12 @@ summary(df)
 ```
 
 ```
-##      name                age        country
-##  Length:4           Min.   :22.00   UK :2  
-##  Class :character   1st Qu.:31.75   USA:2  
-##  Mode  :character   Median :42.50          
-##                     Mean   :39.50          
-##                     3rd Qu.:50.25          
+##      name                age        country_fac
+##  Length:4           Min.   :22.00   UK :2      
+##  Class :character   1st Qu.:31.75   USA:2      
+##  Mode  :character   Median :42.50              
+##                     Mean   :39.50              
+##                     3rd Qu.:50.25              
 ##                     Max.   :51.00
 ```
 
@@ -672,420 +668,49 @@ class: subheader, middle, center
 ---
 # Answers to exercise 3
 
-1. Create a vector `country` containing four countries (use at least one duplicate!).
+1. Create a vector called "country" containing four countries of your choice.
     
     ```r
-    country &lt;- c("UK", "US", "US", "UK")
+    country &lt;- c("UK", "US", "NL", "BE")
     ```
 --
 
-1. Create a data frame combining `name`, `age`, and `country`, and save it as `df`.
+2. Create a data frame called "df" combining name, age, and country.
     
     ```r
     df &lt;- data.frame(name, age, country)
     ```
 --
 
-1. Check your dataframe with the function `summary()`. Does it contain a factor?
+3. Create a list called "mylist" with the 3 vectors and 1 dataframe you have just created. 
     
     ```r
-    summary(df)
+    mylist &lt;- list(name, age, country, df)
     ```
-    
-    ```
-    ##      name                age          country         
-    ##  Length:4           Min.   :22.00   Length:4          
-    ##  Class :character   1st Qu.:31.75   Class :character  
-    ##  Mode  :character   Median :42.50   Mode  :character  
-    ##                     Mean   :39.50                     
-    ##                     3rd Qu.:50.25                     
-    ##                     Max.   :51.00
-    ```
----
-# Answers to exercise 3 (continued)
-
-`4.` Make sure your column `country` is a factor, and confirm this with `summary()`.
-
-```r
-country &lt;- factor(country)
-country
-```
-
-```
-## [1] UK US US UK
-## Levels: UK US
-```
-
-```r
-df &lt;- data.frame(name, age, country)
-
-summary(df)
-```
-
-```
-##      name                age        country
-##  Length:4           Min.   :22.00   UK:2   
-##  Class :character   1st Qu.:31.75   US:2   
-##  Mode  :character   Median :42.50          
-##                     Mean   :39.50          
-##                     3rd Qu.:50.25          
-##                     Max.   :51.00
-```
-
---
-
-`5.` Create a list with your vectors `name` and `age`, and save it as `mylist`.
-
-```r
-mylist &lt;- list(name,age)
-```
-
----
-class: subheader, middle, center
-# Missing data
-
----
-# Not Available (NA)
-
-Let's add a column to our data:
-
-```r
-df$pet &lt;- factor(c("cat","none","fish",NA))
-
-df$pet
-```
-
-```
-## [1] cat  none fish &lt;NA&gt;
-## Levels: cat fish none
-```
-
-#### Note that `NA` is not a level!
-
---
-.pull-left[
-Here is our data frame:
-
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; name &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; age &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; country &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; pet &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Ann &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 35 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; UK &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; cat &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Bob &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; US &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; none &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Chloe &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 50 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; US &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; fish &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Dan &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 51 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; UK &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-]
---
-
-.pull-right[
-Notice that:
-
-- we know that Bob has no pets. 
-
-- we do not know if Dan has pets
-]
----
-# Predict the answer (see Exercise 4)
-
-```r
-5 == 5
-```
---
-
-```
-## [1] TRUE
-```
---
-```r
-5 == NA
-```
---
-
-```
-## [1] NA
-```
---
-
-```r
-NA == NA
-```
---
-
-```
-## [1] NA
-```
---
-
-
-```r
-is.na(NA)
-```
-
-```
-## [1] TRUE
-```
-
-
----
-# NULL: data does not exist
-
-Do we know about our participants' jobs?
-
-
-```r
-df$job
-```
-
-```
-## NULL
-```
-
---
-
-| | |
-|---:|:---|
-| `NA` | Information is **N**ot **A**vailable |
-| `NULL` | Information does not exist |
-| `none` or `0` | Data entry specifying content of 0 |
 
 ---
 class: subheader, middle, center
 # Indexing vectors &amp; lists
 
 ---
-# Selecting vector elements by position
+# Selecting vector elements
 
 .pull-left[
-
-```r
-name
-```
-
-```
-## [1] "Ann"   "Bob"   "Chloe" "Dan"
-```
-
-```r
-name[2]
-```
-
-```
-## [1] "Bob"
-```
-
-```r
-name[1:3]
-```
-
-```
-## [1] "Ann"   "Bob"   "Chloe"
-```
-
-```r
-name[c(2,2,1)]
-```
-
-```
-## [1] "Bob" "Bob" "Ann"
-```
-]
-
---
-
-.pull-right[
 ![position](images/vector_elements_position.png)
 ]
 
----
-# Selecting vector elements by value
-
-.pull-left[
-Selecting from vector `age`:
-
-```r
-age
-```
-
-```
-## [1] 35 22 50 51
-```
-
-```r
-age[age&gt;40]
-```
-
-```
-## [1] 50 51
-```
-
-```r
-age&gt;40
-```
-
-```
-## [1] FALSE FALSE  TRUE  TRUE
-```
-
-]
 --
+
 .pull-right[
-Breaking down the selection:
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt;   age   &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt;   age &amp;gt; 40   &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt;   age[age &amp;gt; 40]   &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 35 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 50 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; TRUE &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 50 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 51 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; TRUE &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 51 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-
-]
-
----
-# Selecting vector elements by value
-
-```r
-name
-```
-
-```
-## [1] "Ann"   "Bob"   "Chloe" "Dan"
-```
-
-```r
-name[name %in% c("Chloe","Ann","Evie")]
-```
-
-```
-## [1] "Ann"   "Chloe"
-```
-
 ![value](images/vector_elements_value.png)
----
-# Selecting from a list
-
-
-```r
-mylist
-```
-
-```
-## [[1]]
-## [1] "Ann"   "Bob"   "Chloe" "Dan"  
-## 
-## [[2]]
-## [1] 35 22 50 51
-```
---
-
-.pull-left[
-Selecting a list element from `mylist`:
-
-
-```r
-mylist[1]
-```
-
-```
-## [[1]]
-## [1] "Ann"   "Bob"   "Chloe" "Dan"
-```
-
-Sub-selection in the list-element:
-
-
-```r
-mylist[1][2]
-```
-
-```
-## [[1]]
-## NULL
-```
 ]
---
 
-.pull-right[
-Selecting the content of a list element:
-
-
-```r
-mylist[[1]]
-```
-
-```
-## [1] "Ann"   "Bob"   "Chloe" "Dan"
-```
-
-Subselection in the content of a list element:
-
-
-```r
-mylist[[1]][2]
-```
-
-```
-## [1] "Bob"
-```
-]
 ---
 class: subheader, middle, center
-# Go to exercise 5
+# Go to exercise 4
 
 ---
-# Answers to exercise 5
+# Answers to exercise 4
 
 1. Return only the first number in your vector `age`.
     
@@ -1098,7 +723,7 @@ class: subheader, middle, center
     ```
 --
 
-1. Return the 2nd and 4th name in your vector `name`.
+2. Return the 2nd and 4th name in your vector `name`.
     
     ```r
     name[c(2,4)]
@@ -1109,7 +734,7 @@ class: subheader, middle, center
     ```
 --
 
-1. Return only ages under 30 from your vector `age`.
+3. Return only ages under 30 from your vector `age`.
     
     ```r
     age[age&lt;30]
@@ -1118,17 +743,7 @@ class: subheader, middle, center
     ```
     ## [1] 22
     ```
---
 
-1. Return the name "Chloe" from your list `mylist`.
-    
-    ```r
-    mylist[[1]][3]
-    ```
-    
-    ```
-    ## [1] "Chloe"
-    ```
 
 ---
 class: subheader, middle, center
@@ -1136,52 +751,8 @@ class: subheader, middle, center
 
 ---
 # Indexing a data frame
-.pull-left[
+
 ![matrix](images/matrix_subsetting.png)
-]
-.pull-right[
-&lt;br /&gt;
-&lt;br /&gt;
-Keep this data frame in mind:
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; name &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; age &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; country &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; pet &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Ann &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 35 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; UK &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; cat &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Bob &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; US &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; none &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Chloe &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 50 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; US &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; fish &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Dan &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 51 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; UK &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-
-]
 
 ---
 # Indexing columns
@@ -1230,8 +801,8 @@ df[2,]
 ```
 
 ```
-##   name age country  pet
-## 2  Bob  22      US none
+##   name age country
+## 2  Bob  22      US
 ```
 
 --
@@ -1243,8 +814,8 @@ df[df$name=="Bob",]
 ```
 
 ```
-##   name age country  pet
-## 2  Bob  22      US none
+##   name age country
+## 2  Bob  22      US
 ```
 
 --
@@ -1260,25 +831,24 @@ df[df$name=="Bob","age"]
 ```
 ---
 class: subheader, middle, center
-# Go to exercise 6
+# Go to exercise 5
 
 ---
-# Answers to exercise 6
+# Answers to exercise 5
 
-1. Return the entries for everyone living in a country of your choice.
+1. From your dataframe `df`, return complete rows for everyone living in a country of your choice.
     
     ```r
-    df[df$country=="UK",]
+    df[df$country=="UK", ]
     ```
     
     ```
-    ##   name age country  pet
-    ## 1  Ann  35      UK  cat
-    ## 4  Dan  51      UK &lt;NA&gt;
+    ##   name age country
+    ## 1  Ann  35      UK
     ```
 --
 
-2. Return only the names of everyone in your data frame df under 40.
+2. Return only the names of everyone in your data frame `df` under 40. 
     
     ```r
     df[df$age&lt;40, "name"]
@@ -1292,7 +862,7 @@ class: subheader, middle, center
 3. Return the columns `name` and `age` together.
     
     ```r
-    df[,c("name","age")]
+    df[, c("name","age")]
     ```
     
     ```
@@ -1304,80 +874,162 @@ class: subheader, middle, center
     ```
 
 ---
+
+# Selecting from a list
+
+.pull-left[
+Selecting a list element from `mylist`:
+
+
+```r
+mylist[1]
+```
+
+```
+## [[1]]
+## [1] "Ann"   "Bob"   "Chloe" "Dan"
+```
+
+Selecting the *content* of a list element:
+
+
+```r
+mylist[[1]]
+```
+
+```
+## [1] "Ann"   "Bob"   "Chloe" "Dan"
+```
+
+]
+--
+
+.pull-right[
+
+Subselection *in the content* of a list element:
+
+
+```r
+mylist[[4]][2]
+```
+
+```
+##   age
+## 1  35
+## 2  22
+## 3  50
+## 4  51
+```
+
+```r
+mylist[[4]][1,2]
+```
+
+```
+## [1] 35
+```
+]
+---
+
 class: subheader, middle, center
-# Recap "Basics of R"
----
-# Which bracket does what?
-
-.left-column[
-&lt;br /&gt;
-## &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;`[ ]`
-&amp;nbsp; 
-
-## &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;`(  )`
-&amp;nbsp; 
-
-## &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;`{  }`
-&amp;nbsp;
-
-]
-.right-column[
-&amp;nbsp;
-### Indexing vectors, lists, dataframes… 
-&amp;nbsp;
-
-### Passing arguments to functions
-&amp;nbsp;
-
-### Defining content of loops, functions, etc.
-&amp;nbsp;
-
-]
+# Missing data
 
 ---
-# You can speak R!
+# Not Available (NA)
 
-#### What data types have you encountered so far?  
-`logical`  
-`numeric`  
-`character`
+Let's add a column to our data:
 
-#### How can data be absent?  
-`NA` (not available)  
-`NULL` (non-existent)
+```r
+df$pet &lt;- c("cat","none","",NA)
 
-#### What data structures have you encountered?
-`vector` (one dimension)  
-`factor` (one dimension, level-based)  
-`data frame` (two dimensions)  
-`list` (++ dimensions)  
+df
+```
 
----
-# (Un)known functions
+```
+##    name age country  pet
+## 1   Ann  35      UK  cat
+## 2   Bob  22      US none
+## 3 Chloe  50      NL     
+## 4   Dan  51      BE &lt;NA&gt;
+```
 
-What functions have you encountered so far?
+--
 
-`c()`  
-`factor()`  
-`data.frame()`  
-`is.na()`  
-`mean()`  
-`...`
+Notice that:
 
-And do you still know what they mean? And how to use them? No?
-
-Type in your console:  
-`?mean`
-
-(or use the Help window to the right of your console).
----
-# Help!
-
-![help](images/help1.png)
+- we know that Bob has no pets. 
+- we do not know if Dan has pets.
+- the value for Chloe is empty.
 
 ---
-# Help? Scroll down for examples!
-![help](images/help2.png)
+# Predict the answer (see Exercise 6)
+
+```r
+5 == 5
+```
+--
+
+```
+## [1] TRUE
+```
+--
+```r
+5 == NA
+```
+--
+
+```
+## [1] NA
+```
+--
+
+```r
+NA == NA
+```
+--
+
+```
+## [1] NA
+```
+--
+
+```r
+is.na(NA)
+```
+--
+
+```
+## [1] TRUE
+```
+
+--
+
+**So: want to test if a value is NA? Use `is.na()`!**
+
+---
+# NULL: data does not exist
+
+Do we know about our participants' jobs?
+
+
+```r
+# Select the column "job" from df
+df$job
+```
+
+```
+## NULL
+```
+
+--
+
+| | |
+|---:|:---|
+| `NA` | Information is **N**ot **A**vailable |
+| `NULL` | Information does not exist |
+| `none` or `0` | Data entry specifying content of 0 |
+| `""` | Empty character value |
+
 ---
 
 class: subheader, middle, center
@@ -1386,45 +1038,45 @@ class: subheader, middle, center
 ---
 # If statement: a conditional
 
-- A test/condition: is this statement true or false?
-
-- If the statement is true: do A
-
-- If the statement is false: do B (this is optional!)
+An if statement tests if a condition is TRUE or FALSE and exectues code depending on the outcome of that test.
 
 ![](images/ifstatement.png)
 
 ---
 # If statement in R
 
-- First, let's assign a value to `number`:
-  
+- To build an if-statement, start with the function `if()`:
   ```r
-  number &lt;- 14
+  if()
   ```
 --
-- Here is the **if-statement**:
-  - We test whether `number` is larger than 10 (the _condition_)
-  - if true: we assign "over 10" to the variable `number_class` (our _instruction A_)
-  - if false: we say that `number_class` is "10 or smaller" (our _instruction B_)
-  
+
+- Within the `()`, insert the condition you want to test for:
+
   ```r
-  if(number &gt; 10){
-    number_class &lt;- "over 10"
-  } else{
-    number_class &lt;- "10 or smaller"
+  if(number &gt; 10)
+  ```
+--
+
+- Within the `{}`, insert the code that should be executed if the condition is met:
+
+  ```r
+  if(number &gt; 10) {
+      test_result &lt;- "number is greater than 10"
   }
   ```
 --
-- Now, let's look at `number class`:
-  
+
+- You can expand the statement with `else {}` if the condition is **not** met.
+
   ```r
-  print(number_class)
+  if(number &gt; 10) {
+      test_result &lt;- "number is greater than 10"
+  } else {
+      test_result &lt;- "number is not greater than 10"
+  }
   ```
-  
-  ```
-  ## [1] "over 10"
-  ```
+
 ---
 class: subheader, middle, center
 # Go to exercise 7
@@ -1432,23 +1084,24 @@ class: subheader, middle, center
 ---
 # Answers to exercise 7
 
-Make an if statement that tests if a number is even, and saves the classification in a variable called `number_class`.
+Make an if statement that tests if a number is larger than 18. 
+Assign the result to the variable `age_category`.
 
 
 ```r
 number &lt;- 8
 
-if(number%%2 == 0){
-  number_class &lt;- "even"
+if(number &gt;= 18){
+  age_category &lt;- "adult"
 } else{
-  number_class &lt;- "odd"
+  age_category &lt;- "minor"
 }
 
-print(number_class)
+print(age_category)
 ```
 
 ```
-## [1] "even"
+## [1] "minor"
 ```
 
 ---
@@ -1527,7 +1180,7 @@ A good script will consist mostly of functions, with a minimal amount of code th
   
   ```r
   myFun &lt;- function(arg1, arg2){
-  * multiplication &lt;- arg1 * arg2
+  *   multiplication &lt;- arg1 * arg2
   }
   ```
 --
@@ -1535,8 +1188,8 @@ A good script will consist mostly of functions, with a minimal amount of code th
   
   ```r
   myFun &lt;- function(arg1, arg2){
-    multiplication &lt;- arg1 * arg2
-  * return(multiplication)
+      multiplication &lt;- arg1 * arg2
+  *   return(multiplication)
   }
   ```
 ---
@@ -1573,18 +1226,38 @@ class: subheader, middle, center
 ---
 # Answers to exercise 8
 
-Turn the if-statement from the last exercise into a function. Let the user provide the value for `number`, and return the `number_class`.
+Turn the if-statement from the last exercise into a function. Let the user provide the value for `number`, and return the `age_category`.
 
 
 ```r
-even_or_odd &lt;- function(number){
-  if(number%%2 == 0){
-    number_class &lt;- "even"
+test_age &lt;- function(number){
+  if(number &gt;= 18){
+    age_category &lt;- "adult"
   } else{
-    number_class &lt;- "odd"
+    age_category &lt;- "minor"
   }
-  return(number_class)
+  return(age_category)
 }
+```
+
+--
+
+
+```r
+# Test the function
+test_age(20)
+```
+
+```
+## [1] "adult"
+```
+
+```r
+test_age(2)
+```
+
+```
+## [1] "minor"
 ```
 
 ---
@@ -1594,24 +1267,23 @@ class: subheader, middle, center
 ---
 # A for-loop
 
-- Instruction(s) that need(s) to be applied multiple times
-
-- Input is an iterable object (i.e.: it consists of multiple similar elements)
+- Perform the same action(s) for mutiple inputs at a time
+- Input is an object with multiple similar elements (e.g., a vector, row in a dataframe, etc.) that can be iterated over
 
 ![forloop](images/forloop.png)
 ---
 # A for-loop in R
 
-- A loop starts with the iterable object (in this case the vector `1:6`), and the temporary name for each item (in this case `i`):
+- A loop starts with the iterable object (in this case the vector `1:5`), and the temporary name for each item (in this case `a_number`):
   ```r
-  for(i in 1:6)
+  for(a_number in 1:5)
   ```
 --
-- Within the now familiar brackets (`{ }`) you place the instructions:
+- Within `{ }`, you place the instructions:
   
   ```r
-  for(i in 1:6){
-  * print(i)
+  for(a_number in 1:5){
+  * print(a_number)
   }
   ```
   
@@ -1621,8 +1293,11 @@ class: subheader, middle, center
   ## [1] 3
   ## [1] 4
   ## [1] 5
-  ## [1] 6
   ```
+
+--
+Note that `a_number` is 1 in the first iteration of the loop, 2 in the second, etc. It does not exist outside the for loop!
+
 ---
 class: subheader, middle, center
 # Go to exercise 9
@@ -1630,28 +1305,138 @@ class: subheader, middle, center
 ---
 # Answers to exercise 9
 
-Go over the numbers 1-10, and for each number: test if the number is even or odd, using the function you made in the last exercise. Print the results using the function `print()`.
+Go over the age column in your dataframe df, and for each age: `print()` the age category using the test_age function from the previous exercise.
+
 
 
 ```r
-for(i in 1:10){
-  test &lt;- even_or_odd(i)
+print(df$age)
+```
+
+```
+## [1] 35 22 50 51
+```
+
+```r
+for(the_age in df$age){
+  test &lt;- test_age(the_age)
   print(test)
 }
 ```
 
 ```
-## [1] "odd"
-## [1] "even"
-## [1] "odd"
-## [1] "even"
-## [1] "odd"
-## [1] "even"
-## [1] "odd"
-## [1] "even"
-## [1] "odd"
-## [1] "even"
+## [1] "adult"
+## [1] "adult"
+## [1] "adult"
+## [1] "adult"
 ```
+
+---
+class: subheader, middle, center
+# Recap "Basics of R"
+---
+# Which bracket does what?
+
+.left-column[
+&lt;br /&gt;
+## &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;`[ ]`
+&amp;nbsp; 
+
+## &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;`(  )`
+&amp;nbsp; 
+
+## &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;`{  }`
+&amp;nbsp;
+
+]
+.right-column[
+&amp;nbsp;
+### Indexing vectors, lists, dataframes… 
+&amp;nbsp;
+
+### Passing arguments to functions
+&amp;nbsp;
+
+### Defining content of if-statements, functions, loops, etc.
+&amp;nbsp;
+
+]
+
+---
+# You can speak R!
+
+#### What data types have you encountered so far?  
+`logical`   
+`numeric`   
+`character`
+
+#### How can data be missing?  
+`NA` (not available)  
+`NULL` (non-existent)   
+`""` (empty)
+
+#### What data structures have you encountered?
+`vector` (one dimension)  
+`data frame` (two dimensions)  
+`list` (++ dimensions)  
+
+---
+# Functions
+
+#### What functions have you encountered so far?
+
+`c()`  
+`data.frame()`  
+`is.na()`  
+`mean()`  
+`summary()`    
+`...`
+
+#### Programming basics
+
+- If-statements
+- Functions
+- For-loops
+
+---
+# Help!
+
+- How does a function work? Type in your console:  
+     `?mean`
+
+- Use a search engine (often useful: Stackoverflow)
+- (Generative AI)
+    - Upside: can write all code for you
+    - Downside: you learn less, can hallucinate, not certain what sources it uses
+
+---
+# Help!
+
+![help](images/help1.png)
+
+---
+# Help? Scroll down for examples!
+![help](images/help2.png)
+
+---
+# Note on R projects
+
+When you start programming for yourself:
+
+- Create a folder dedicated to your project
+- Start a new R project: File &gt; New Project &gt; Existing Directory
+- An `.RProj` file will be created
+
+--
+
+Advantages:
+
+- Automatically set your working directory to that folder
+- Automatically retrieve only the history and objects from that R project
+
+---
+class: subheader, middle, center
+# Lunch break!
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
