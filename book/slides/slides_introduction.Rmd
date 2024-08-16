@@ -96,40 +96,28 @@ class: subheader, middle, center
 ![rstudio-incremental](images/rstudio-incremental-5.png)
 ---
 
----
-
 # Course materials
 
 #### All course materials, videos, information & resources are at  [tinyurl.com/introRDatasite](https://utrechtuniversity.github.io/workshop-introduction-to-R-and-data/). 
 
-### Slides & exercises
+1. Download the [course materials](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/raw/main/course-materials.zip).
 
-1. Download the [course materials here](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/raw/main/course-materials.zip).
+2. Store them in a local (i.e. not on a mounted drive), accessible location.
 
-2. Store it in a local (i.e. not on a mounted drive), accessible location.
+3. Unzip the download to create a single folder. **What animal is displayed on `animal.png`?**
 
-3. Unzip the download to create a single folder.
+4. Double-click the **course-materials.Rproj** file.
+        Or: Go to File > Open Project > select course-materials.Rproj > Open
 
-4. If you have downloaded it, you will be able to tell us what animal is on the picture `animal.png`, located in the main folder :-)
-
----
-
-# Open course materials
-
-_Before you start: make sure you have downloaded the [course materials](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/raw/main/course-materials.zip), and unzipped them to a single, accessible folder._
-
-1. Navigate to the folder with course materials
-
-1. Double-click the **course-materials.Rproj** file.
-
-1. From the ‘files’ menu (bottom right), click **baseR_exercises.Rmd**
+5. From the ‘Files’ menu (bottom right), click **baseR_exercises.Rmd**.
 
 ---
 
 # Running R code
 
 #### In the **baseR_exercises.Rmd**:
-- You can execute _Exercise 0_ chunk as a whole with the green triangle:
+
+You can execute _Exercise 0_ chunk as a whole with the green triangle:
 
 ![run-chunk](images/run-chunk.png)
 
@@ -138,7 +126,7 @@ _Before you start: make sure you have downloaded the [course materials](https://
 
 - Press ![run](images/run.png) or ctrl + enter
 
-- When running multiple lines: select all lines, then press ‘Run’ or ctrl+enter
+- When running multiple lines: select all lines, then press ‘Run’ or ctrl + enter
 
 ---
 class: subheader, middle, center
@@ -152,28 +140,23 @@ You can assign both numbers and text to a variable:
 
 ```{r}
 x <- 6
-
 x <- 'apple'
-
 x <- "hello world"
-
-x = 6
 ```
 
-![assignment](images/assignment.png)]
+You will see your variabe (R object) appear in your Environment (top right panel).
+]
 
 .pull-right-center[
 
 ![cheatsheet](images/baseRcheatsheet.png) 
-
-[download this cheat sheet](http://github.com/rstudio/cheatsheets/raw/main/base-r.pdf)
+See the `cheatsheets` folder. Or [download it](https://github.com/rstudio/cheatsheets/blob/main/base-r.pdf).
 ]
 
-[a second link, in case the first doesn't work](https://github.com/rstudio/cheatsheets/blob/main/base-r.pdf)
 ---
 # Do you expect an answer?
 
-Saving information:
+Saving information as an R object:
 ```{r}
 x <- 1
 ```
@@ -182,9 +165,10 @@ Asking for information to be returned:
 x
 ```
 
-Note the difference in syntax: when using the <- operator, you are storing the information as a variable in R, and therefore you do not expect to get an answer immediately.
+Note the difference in syntax: 
 
-When calling up that information, or making calculations, you can make R show you the answer.
+- `<-` operator: storing information = no immediate 'answer'
+- calling up an object, or making calculations: R shows you the answer
 
 ---
 # Maths functions
@@ -200,7 +184,7 @@ y <- x + 2
 log2(y)
 ```
 
-Check **"Maths Functions"** on the [cheat sheet](http://github.com/rstudio/cheatsheets/raw/master/base-r.pdf):
+Check **"Maths Functions"** on the Base R cheatsheet:
 ![assignment-math](images/mathsfunctions.png)
 
 ---
@@ -235,19 +219,19 @@ class: subheader, middle, center
     ```
 --
 
-1. Assign the result of the calculation to a variable.
+2. Assign the result of the calculation to a variable.
     ```{r}
     x <- (1+5)/9
     ```
 --
 
-1. Test if the result is larger than 1.
+3. Test if the result is larger than 1.
     ```{r}
     x > 1
     ```
 --
 
-1. Round off the result to 1 decimal.
+4. Round off the result to 1 decimal.
     ```{r}
     round(x,1)
     ```
@@ -292,6 +276,15 @@ c(TRUE,"a",3)
 
 #### Yep, a character vector!
 Vector type defaults to the "lowest common denominator": everything can be a character, but not everything can be a number or a logical.
+
+--
+
+Order:
+
+1. Character
+2. Numeric
+3. Logical
+
 ---
 # Vector functions
 #### Vectors can be used in mathematical operations
@@ -303,7 +296,7 @@ mean(p)
 p * 2
 ```
 ]
---
+
 .pull-right-medium[
 | &nbsp; &nbsp; p &nbsp; &nbsp;  | &nbsp; &nbsp; 2&nbsp; &nbsp;  | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  |
 |:---:|:---:|:---:|
@@ -349,21 +342,23 @@ Create a character vector called "name" and add these names to the vector using 
     ```
 --
 
-1. _How old are Ann, Bob, Chloe, and Dan?_ 
+2. _How old are Ann, Bob, Chloe, and Dan?_ 
 Create a numeric vector called "age" and add their ages to the vector. You can decide their ages.
     ```{r}
     age <- c(35,22,50,51)
     ```
 --
 
-1. Use the `class()` function to check the data type of the `name` and `age` vectors.
-```{r}
-class(name)
-class(age)
-```
+3. Use the `class()` function to check the data type of the `name` and `age` vectors.
+    ```{r}
+    class(name)
+    class(age)
+    ```
 
+---
+# Answers to exercise 2 (continued)
 
-1. _What is their average age?_ 
+4. _What is their average age?_ 
 Use a function in R to calculate this. 
 **Tip:** use the Maths Functions section of the Base R cheat sheet!
     ```{r}
@@ -384,39 +379,44 @@ name
 age
 ```
 
-#### Combine the vectors to a unidimensional vector, with `c()`
+How do we combine them?
+
+--
+
+#### Into a one-dimensional vector: `c()`
 ```{r}
 c(name,age)
 ```
 
 ---
+
 # Data structures: data frame
 
-#### We have two vectors: `name` and `age`
-```{r}
-name
-age
-```
+How about combining `name` and `age` in a two-dimensional table structure?
 
-#### Combine the vectors to a twodimensional data frame, with `data.frame()`
 ```{r}
 data.frame(name,age)
 ```
+
+Two dimensions:
+
+- Rows
+- Columns
 
 ---
 
 # Data structures: list
 
-#### We have three vectors: `name` and `age`
-```{r}
-name
-age
-```
+Or: in a multi-dimensional list.
 
-#### Combine the vectors to a multidimensional list, with `list()`
 ```{r}
 list(name,age)
 ```
+
+Dimensions: any
+
+Lists can contain *any* R object. 
+Not just dataframes and vectors, but also other lists.
 
 ---
 # Data structures: summary
@@ -429,21 +429,30 @@ list(name,age)
 | data frame | 2 | &nbsp; &nbsp; `data.frame()`  |
 | list | any number | &nbsp; &nbsp; `list()` |
 
+NB: dataframes and lists appear under `Data` in the Environment (top right panel in RStudio), vectors under `Values`.
+
 ---
 # Factors
 
-#### a special type of vector, defined by _levels_
+#### Special type of vector, defined by _levels_. Usually as categorical variable in a data frame.
+
+--
+
 ```{r}
+# Create vector country
 country <- c("UK","USA","USA","UK")
 country
-factor(country)
+
+# Turn country into a factor
+country_fac <- as.factor(country)
+country_fac
 ```
 
-#### usually as column in a data frame: a categorical variable
+--
+
 .pull-left[
 ```{r}
-df <- data.frame(name, age,
-                 country = factor(country))
+df <- data.frame(name, age, country_fac)
 df
 ```
 ]
@@ -461,22 +470,22 @@ class: subheader, middle, center
 ---
 # Answers to exercise 3
 
-1. Create a vector called "country" containing four countries of your choice..
+1. Create a vector called "country" containing four countries of your choice.
     ```{r}
     country <- c("UK", "US", "NL", "BE")
     ```
 --
 
-1. Create a data frame called "df" combining name, age, and country.
+2. Create a data frame called "df" combining name, age, and country.
     ```{r}
     df <- data.frame(name, age, country)
     ```
 --
 
 3. Create a list called "mylist" with the 3 vectors and 1 dataframe you have just created. 
-```{r}
-mylist <- list(name, age, country, df)
-```
+    ```{r}
+    mylist <- list(name, age, country, df)
+    ```
 
 ---
 class: subheader, middle, center
@@ -489,16 +498,18 @@ class: subheader, middle, center
 ![position](images/vector_elements_position.png)
 ]
 
+--
+
 .pull-right[
 ![value](images/vector_elements_value.png)
 ]
 
 ---
 class: subheader, middle, center
-# Go to exercise 5
+# Go to exercise 4
 
 ---
-# Answers to exercise 5
+# Answers to exercise 4
 
 1. Return only the first number in your vector `age`.
     ```{r}
@@ -506,17 +517,17 @@ class: subheader, middle, center
     ```
 --
 
-1. Return the 2nd and 4th name in your vector `name`.
+2. Return the 2nd and 4th name in your vector `name`.
     ```{r}
     name[c(2,4)]
     ```
 --
 
-1. Return only ages under 30 from your vector `age`.
+3. Return only ages under 30 from your vector `age`.
     ```{r}
     age[age<30]
     ```
---
+
 
 ---
 class: subheader, middle, center
@@ -524,9 +535,8 @@ class: subheader, middle, center
 
 ---
 # Indexing a data frame
-.pull-left[
+
 ![matrix](images/matrix_subsetting.png)
-]
 
 ---
 # Indexing columns
@@ -573,18 +583,18 @@ df[df$name=="Bob","age"]
 ```
 ---
 class: subheader, middle, center
-# Go to exercise 6
+# Go to exercise 5
 
 ---
-# Answers to exercise 6
+# Answers to exercise 5
 
-1. Return the entries for everyone living in a country of your choice.
+1. From your dataframe `df`, return complete rows for everyone living in a country of your choice.
     ```{r}
-    df[df$country=="UK",]
+    df[df$country=="UK", ]
     ```
 --
 
-2. Return only the names of everyone in your data frame df under 40.
+2. Return only the names of everyone in your data frame `df` under 40. 
     ```{r}
     df[df$age<40, "name"]
     ```
@@ -592,17 +602,12 @@ class: subheader, middle, center
 
 3. Return the columns `name` and `age` together.
     ```{r}
-    df[,c("name","age")]
+    df[, c("name","age")]
     ```
 
 ---
 
 # Selecting from a list
-
-```{r}
-mylist
-```
---
 
 .pull-left[
 Selecting a list element from `mylist`:
@@ -611,25 +616,22 @@ Selecting a list element from `mylist`:
 mylist[1]
 ```
 
-Sub-selection in the list-element:
-
-```{r}
-mylist[1][2]
-```
-]
---
-
-.pull-right[
-Selecting the content of a list element:
+Selecting the *content* of a list element:
 
 ```{r}
 mylist[[1]]
 ```
 
-Subselection in the content of a list element:
+]
+--
+
+.pull-right[
+
+Subselection *in the content* of a list element:
 
 ```{r}
-mylist[[1]][2]
+mylist[[4]][2]
+mylist[[4]][1,2]
 ```
 ]
 ---
@@ -648,22 +650,13 @@ df
 ```
 
 --
-.pull-left[
-Here is our data frame:
 
-```{r, echo=F}
-knitr::kable(df, format="html")
-```
-]
---
-
-.pull-right[
 Notice that:
 
 - we know that Bob has no pets. 
+- we do not know if Dan has pets.
+- the value for Chloe is empty.
 
-- we do not know if Dan has pets
-]
 ---
 # Predict the answer (see Exercise 6)
 
@@ -693,9 +686,17 @@ NA == NA
 ```
 --
 
-```{r}
+```r
 is.na(NA)
 ```
+--
+```{r echo=F}
+is.na(NA)
+```
+
+--
+
+**So: want to test if a value is NA? Use `is.na()`!**
 
 ---
 # NULL: data does not exist
@@ -703,6 +704,7 @@ is.na(NA)
 Do we know about our participants' jobs?
 
 ```{r}
+# Select the column "job" from df
 df$job
 ```
 
@@ -713,6 +715,7 @@ df$job
 | `NA` | Information is **N**ot **A**vailable |
 | `NULL` | Information does not exist |
 | `none` or `0` | Data entry specifying content of 0 |
+| `""` | Empty character value |
 
 ---
 
@@ -742,48 +745,25 @@ An if statement tests if a condition is TRUE or FALSE and exectues code dependin
   ```
 --
 
-- The code that should be executed if the condition is met is contained within the `{}`:
+- Within the `{}`, insert the code that should be executed if the condition is met:
 
   ```r
   if(number > 10) {
-    test_result <- "number is greater than 10"
-}
-  ```
---
-
-- This code can be expanded to include what needs to be done if the condition is **not** met. For this, we use `else{}`
-
-  ```r
-  if(number > 10) {
-    test_result <- "number is greater than 10"
-} else {
-  test_result <- "number is not greater than 10"
-}
-  ```
---
-
-OLD
-- First, let's assign a value to `number`:
-  ```{r}
-  number <- 14
-  ```
---
-- Here is the **if-statement**:
-  - We test whether `number` is larger than 10 (the _condition_)
-  - if true: we assign "over 10" to the variable `number_class` (our _instruction A_)
-  - if false: we say that `number_class` is "10 or smaller" (our _instruction B_)
-  ```{r}
-  if(number > 10){
-    number_class <- "over 10"
-  } else{
-    number_class <- "10 or smaller"
+      test_result <- "number is greater than 10"
   }
   ```
 --
-- Now, let's look at `number class`:
-  ```{r}
-  print(number_class)
+
+- You can expand the statement with `else {}` if the condition is **not** met.
+
+  ```r
+  if(number > 10) {
+      test_result <- "number is greater than 10"
+  } else {
+      test_result <- "number is not greater than 10"
+  }
   ```
+
 ---
 class: subheader, middle, center
 # Go to exercise 7
@@ -791,18 +771,19 @@ class: subheader, middle, center
 ---
 # Answers to exercise 7
 
-Make an if statement that tests if a number is even, and saves the classification in a variable called `number_class`.
+Make an if statement that tests if a number is larger than 18. 
+Assign the result to the variable `age_category`.
 
 ```{r}
 number <- 8
 
-if(number%%2 == 0){
-  number_class <- "even"
+if(number >= 18){
+  age_category <- "adult"
 } else{
-  number_class <- "odd"
+  age_category <- "minor"
 }
 
-print(number_class)
+print(age_category)
 ```
 
 ---
@@ -862,15 +843,15 @@ A good script will consist mostly of functions, with a minimal amount of code th
 - The sequence of operations is in the body of the function (between `{ }`):
   ```{r}
   myFun <- function(arg1, arg2){
-    multiplication <- arg1 * arg2 #<<
+      multiplication <- arg1 * arg2 #<<
   }
   ```
 --
 - The output of the function is placed in a `return` statement:
   ```{r}
   myFun <- function(arg1, arg2){
-    multiplication <- arg1 * arg2
-    return(multiplication) #<<
+      multiplication <- arg1 * arg2
+      return(multiplication) #<<
   }
   ```
 ---
@@ -895,17 +876,25 @@ class: subheader, middle, center
 ---
 # Answers to exercise 8
 
-Turn the if-statement from the last exercise into a function. Let the user provide the value for `number`, and return the `number_class`.
+Turn the if-statement from the last exercise into a function. Let the user provide the value for `number`, and return the `age_category`.
 
 ```{r}
-even_or_odd <- function(number){
-  if(number%%2 == 0){
-    number_class <- "even"
+test_age <- function(number){
+  if(number >= 18){
+    age_category <- "adult"
   } else{
-    number_class <- "odd"
+    age_category <- "minor"
   }
-  return(number_class)
+  return(age_category)
 }
+```
+
+--
+
+```{r}
+# Test the function
+test_age(20)
+test_age(2)
 ```
 
 ---
@@ -915,25 +904,28 @@ class: subheader, middle, center
 ---
 # A for-loop
 
-- Instruction(s) that need(s) to be applied multiple times
-
-- Input is an iterable object (i.e.: it consists of multiple similar elements)
+- Perform the same action(s) for mutiple inputs at a time
+- Input is an object with multiple similar elements (e.g., a vector, row in a dataframe, etc.) that can be iterated over
 
 ![forloop](images/forloop.png)
 ---
 # A for-loop in R
 
-- A loop starts with the iterable object (in this case the vector `1:6`), and the temporary name for each item (in this case `i`):
+- A loop starts with the iterable object (in this case the vector `1:5`), and the temporary name for each item (in this case `a_number`):
   ```r
-  for(i in 1:6)
+  for(a_number in 1:5)
   ```
 --
-- Within the now familiar brackets (`{ }`) you place the instructions:
+- Within `{ }`, you place the instructions:
   ```{r}
-  for(i in 1:6){
-    print(i) #<<
+  for(a_number in 1:5){
+    print(a_number) #<<
   }
   ```
+
+--
+Note that `a_number` is 1 in the first iteration of the loop, 2 in the second, etc. It does not exist outside the for loop!
+
 ---
 class: subheader, middle, center
 # Go to exercise 9
@@ -941,15 +933,19 @@ class: subheader, middle, center
 ---
 # Answers to exercise 9
 
-Go over the numbers 1-10, and for each number: test if the number is even or odd, using the function you made in the last exercise. Print the results using the function `print()`.
+Go over the age column in your dataframe df, and for each age: `print()` the age category using the test_age function from the previous exercise.
+
 
 ```{r}
-for(i in 1:10){
-  test <- even_or_odd(i)
+print(df$age)
+
+for(the_age in df$age){
+  test <- test_age(the_age)
   print(test)
 }
 ```
 
+---
 class: subheader, middle, center
 # Recap "Basics of R"
 ---
@@ -975,7 +971,7 @@ class: subheader, middle, center
 ### Passing arguments to functions
 &nbsp;
 
-### Defining content of loops, functions, etc.
+### Defining content of if-statements, functions, loops, etc.
 &nbsp;
 
 ]
@@ -984,38 +980,49 @@ class: subheader, middle, center
 # You can speak R!
 
 #### What data types have you encountered so far?  
-`logical`  
-`numeric`  
+`logical`   
+`numeric`   
 `character`
 
-#### How can data be absent?  
+#### How can data be missing?  
 `NA` (not available)  
-`NULL` (non-existent)
+`NULL` (non-existent)   
+`""` (empty)
 
 #### What data structures have you encountered?
 `vector` (one dimension)  
-`factor` (one dimension, level-based)  
 `data frame` (two dimensions)  
 `list` (++ dimensions)  
 
 ---
-# (Un)known functions
+# Functions
 
-What functions have you encountered so far?
+#### What functions have you encountered so far?
 
 `c()`  
-`factor()`  
 `data.frame()`  
 `is.na()`  
 `mean()`  
+`summary()`    
 `...`
 
-And do you still know what they mean? And how to use them? No?
+#### Programming basics
 
-Type in your console:  
-`?mean`
+- If-statements
+- Functions
+- For-loops
 
-(or use the Help window to the right of your console).
+---
+# Help!
+
+- How does a function work? Type in your console:  
+     `?mean`
+
+- Use a search engine (often useful: Stackoverflow)
+- (Generative AI)
+    - Upside: can write all code for you
+    - Downside: you learn less, can hallucinate, not certain what sources it uses
+
 ---
 # Help!
 
@@ -1024,3 +1031,23 @@ Type in your console:
 ---
 # Help? Scroll down for examples!
 ![help](images/help2.png)
+
+---
+# Note on R projects
+
+When you start programming for yourself:
+
+- Create a folder dedicated to your project
+- Start a new R project: File > New Project > Existing Directory
+- An `.RProj` file will be created
+
+--
+
+Advantages:
+
+- Automatically set your working directory to that folder
+- Automatically retrieve only the history and objects from that R project
+
+---
+class: subheader, middle, center
+# Lunch break!
