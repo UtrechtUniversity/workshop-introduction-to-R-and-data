@@ -744,7 +744,7 @@ An if statement tests if a condition is TRUE or FALSE and exectues code dependin
 
 - The code that should be executed if the condition is met is contained within the `{}`:
 
-  ```{r}
+  ```r
   if(number > 10) {
     test_result <- "number is greater than 10"
 }
@@ -753,7 +753,7 @@ An if statement tests if a condition is TRUE or FALSE and exectues code dependin
 
 - This code can be expanded to include what needs to be done if the condition is **not** met. For this, we use `else{}`
 
-  ```{r}
+  ```r
   if(number > 10) {
     test_result <- "number is greater than 10"
 } else {
