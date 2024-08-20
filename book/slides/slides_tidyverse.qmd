@@ -8,6 +8,16 @@ format:
 
 # Into The Tidyverse {background-color=#FFCD00}
 
+## Packages and functions
+
+functions > in packages
+
+installing vs. using
+
+
+we will move a data frame through the different steps in a data science workflow.
+This means that often the results of one step will be the input for the next
+
 ## What is the `tidyverse`?
 
 The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures ([tidyverse.org](https://www.tidyverse.org/)).
@@ -57,6 +67,11 @@ The package comes with data about penguins observed on islands in the Palmer Arc
 
 ## `readr`: Read Rectangular Text Data
 
+To read text data, you need to know three things:
+- The **location** of the data;
+- The **delimiter** of the data (value separator, e.g. , or ; or tab);
+- The **function** to use to read data into R.
+
 `readr` provides read and write functions for multiple different file formats:
 
 - `read_delim()`: general delimited files
@@ -80,7 +95,7 @@ In addition, you can use the following packages to read data in other file forma
 - `googlesheets4`: Google Sheets 
 - `rvest`: HTML files
 
-# Subsetting & Mutating Data {background-color=#FFCD00}
+# Selecting & filtering data {background-color=#FFCD00}
 
 ## `dplyr`: A Grammar of Data Manipulation
 
@@ -94,7 +109,7 @@ Today, we will use the following functions from `dplyr`:
 
 **Operations on columns:**
 
-- `select()` picks respectively drops certain columns
+- `select()` picks respectively drops certain columns. You can use contains() or starts_with() within select, see <https://tidyselect.r-lib.org/reference/language.html>
 - `rename()` changes the column names
 - `mutate()` transforms the column values and/or creates new columns
 
@@ -118,10 +133,19 @@ Essentially, the pipe operator aims to improve the readability of your code in m
 - minimize the use of local variable assignments (<-) and function definitions, and
 - easily add and/or delete steps in your pipeline without breaking the code.
 
-# Transformations & Tidy Data {background-color=#FFCD00}
+# Tidy Data {background-color=#FFCD00}
 
 ## `tidyr`: Tidy Messy Data
 
+Wide data
+
+
+Long data = tidy
+Pivot_longer: The two columns containing measurements will be placed below each other, and a column will be added to specify which measurement is called.
+Specify: what columns are going to pivot + the names of the new columns (names_to, values_to)
+
+
+## Pivot data 
 `tidyr` provides several functions that help you bring your data into the *tidy data* format (e.g., reshaping data, splitting columns, handling missing values or nesting data).
 
 Today, we will use the following functions from `dplyr`:
@@ -129,7 +153,22 @@ Today, we will use the following functions from `dplyr`:
 - `pivot_longer()`: "lengthens" data, increasing the number of rows and decreasing the number of columns. 
 - `pivot_wider()`: "widens" data, increasing the number of columns and decreasing the number of rows. 
 
+## Combining data
+
+Full join, left join, right join
+
+Example
+
+The function `full_join()` takes two datasets, and merges them, based on a column or multiple columns that contain shared values. These columns can be found automatically by the function, or they can be indicated with the argument `by`.
+
+If you want to know more about this set of operations, read R for Data Science, [chapter 13.4.1](https://r4ds.had.co.nz/relational-data.html#understanding-joins).
+
+
 # Data Visualization {background-color=#FFCD00}
+
+## New
+
+Use the flipbook to show how ggplot works.
 
 ## `ggplot2`: Elegant Data Visualisations
 
