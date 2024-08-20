@@ -1,96 +1,188 @@
 ---
-title: "Data science in the Tidyverse - Solutions"
-author: "Utrecht University RDM support"
+title: "Data Science with the Tidyverse"
 output:
   html_document:
     toc: true
 ---
+<!-- This code block sets some defaults for the code chunks, and can safely be ignored! -->
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, error = TRUE)
 ```
+
+
+_This document is part of the workshop **Introduction to R & Data** by Utrecht University RDM Support._
 
 # Introduction
 
+In the following exercises, we will work with a dataset on penguins, collected and made available by Dr. Kristen Gorman and the Palmer Station, Antarctica LTER, a member of the Long Term Ecological Research Network.
+
+The dataset was processed for R by Allison Horst, and is available for use under a CC0 license. For more information on this awesome dataset, check out [the palmerpenguins repository](https://allisonhorst.github.io/palmerpenguins/).
+
+## Exercise 0
+
+Load the `tidyverse` package.
+
 ```{r} 
-library(tidyverse)
+library(tidyverse) 
+```
+# Chapter 1: Importing data
+
+## Exercise 1 
+
+In this exercise, we read the dataset `penguins.tsv` into R. 
+
+You will need to know three things to complete this exercise:
+- The **location** of your data;
+- The **function** to use to read data into R.
+
+You can find the dataset in the `data` folder of your project.
+
+Complete the code in the chunk below, replacing the ??? with the with the correct code:
+
+```{r}
+penguins <- read_tsv("data/penguins.tsv")
+```
+
+## Exercise 2
+
+`read_tsv` and similar functions like `read_csv()` are useful functions for most tabular data files, but they are unable to read Excel files. For this, we need an additional package called `readxl`.
+
+`readxl` was installed when you installed `tidyverse`, but it does not load by default when you call `library(tidyverse)`. 
+
+So, we first need to load this package with the function `library()`:
+
+```{r}
 library(readxl)
 ```
 
+Use the function `read_excel()` to read a related data set `penguins_isotopes.xlsx` (an Excel file!), also located in your `data` folder, into R.
 
-# Chapter 1: Importing data
-
-## Exercise 1
 ```{r}
-penguins <- read_delim(file = "data/penguins_raw.tsv",
-                       delim = "\t")
-```
 
-
-## Exercise 2
-```{r}
-penguins <- read_delim(file = "data/penguins_raw.tsv",
-                       delim = "\t",
-                       col_types = cols(`Date Egg` = col_date(format = "%d/%m/%Y")))
+penguins_isotopes <- read_excel(path = "data/penguins_isotopes.xlsx")
+  
 ```
 
 ## Exercise 3
+
+Save your Excel data as a _comma separated values_ file, with the function `write_csv()`.
+
+For this function, you need to provide:
+- The name of the R object you want to save: `penguins_isotopes`
+- The name of the folder and the file name: "data/penguins_isotopes.csv"
+
 ```{r}
-penguins_isotopes <- read_excel(path = "data/penguins_isotopes.xlsx")
+write_csv(penguins_isotopes,
+          file = "data/penguins_isotopes.csv")
 ```
+
+# Chapter 2: Selecting & Filtering Data
+
+We are going to clean up our data by selecting/filtering only the relevant information.
 
 ## Exercise 4
+
+For some of the penguins, the sex was not determined. Use the function `filter()` to keep only the rows where the column `Sex` specifies either "FEMALE" or "MALE".
+
+One way to do this (though not the only way) is to filter out the rows where `Sex` is NA. Remember the function `is.na()` and remember that to negate a condition, you use the operator! For example, `!is.na(NA)` returns `FALSE`.
+
 ```{r}
-write_delim(penguins_isotopes,
-            file = "data/penguins_isotopes.csv",
-            delim = ";")
+
+penguins_subset <- filter(penguins, !is.na(Sex))
+
+# penguins_subset <- filter(penguins, (Sex == "FEMALE" | Sex == "MALE"))
+
+# penguins_subset <- filter(penguins, Sex %in% c("MALE", "FEMALE"))
+
 ```
-
-
-# Chapter 2: Subsetting and mutating
 
 ## Exercise 5
-```{r}
-# option 1: filtering on the presence of MALE and FEMALE
-penguins_subset <- filter(penguins, Sex %in% c("MALE", "FEMALE"))
 
-# option 2: filtering on the absence of NA
-penguins_subset <- filter(penguins, !is.na(Sex))
+We are going to select columns with relevant data, for our upcoming analysis.
+The research we do is on penguin bill sizes (described in our data with the word "Culmen").
+
+We want to include a few relevant variables so we can analyse them later:
+- Individual_ID
+- Species
+- Sex
+- Island
+- Culmen_Depth_mm
+- Culmen_Length_mm
+
+Use the function `select()` to include the right columns in our data subset. 
+
+**Note** that in order to work with the subset from Exercise 4, we need to use that data frame (`penguin_subset`) as our data input!
+
+```{r}
+penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,Sex, Island, Culmen_Depth_mm, Culmen_Length_mm)
+
+#penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,Sex, Island, starts_with("Culmen"))
+ 
+#penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,Sex, Island, contains("Culmen"))
 ```
 
-## Exercise 6
+# Exercise 6
+
+Use %>% (the pipe operator) to combine the code you wrote in Exercises 4 and 5. 
+
+Make a workflow that starts with the data `penguins` and subsequently applies your `filter` and `select` operations. Make sure to remove references to the original dataframe in subsequent operations, as this is now provided through the %>% operator.
+
 ```{r}
-penguins_subset <- select(penguins_subset, 
-                  `Individual ID`, Species, Sex, Island, starts_with("Culmen"))
+penguins_subset_3 <- penguins %>% 
+                   filter(!is.na(Sex)) %>%
+                   select(Individual_ID, Species, Sex, Island, starts_with("Culmen"))
 ```
 
 ## Exercise 7
+
+Use the `mutate()` function to create a new column called `culmen_ratio`, which is calculated as `Culmen_Length_mm` divided by `Culmen_Depth_mm`.
+
+Make sure to work with the `penguins_subset_3` dataframe.
+
 ```{r}
-penguins_subset <- penguins %>%
-  filter(!is.na(Sex)) %>%
-  select(`Individual ID`, Species, Sex, Island, starts_with("Culmen"))
+penguins_subset_4 <- penguins_subset_3 %>%
+  mutate(culmen_ratio = Culmen_Length_mm / Culmen_Depth_mm)
 ```
 
+# Chapter 3: Tidy Data
 
 ## Exercise 8
+
+In this chapter, we will make our dataframe tidy. Before we do that, we will rename the `Culmen_Length_mm` and `Culmen_Depth_mm` columns in order to make subsequent operations easier.
+
 ```{r}
-penguins_subset <- mutate(penguins_subset,
-                          culmen_ratio = `Culmen Length (mm)` / `Culmen Depth (mm)`)
+penguins_subset_5 <- penguins_subset_4 %>%
+  rename(length = Culmen_Length_mm, depth = Culmen_Depth_mm)
 ```
 
-
-# Chapter 3: Tidy & transform
-
 ## Exercise 9
+
+Now that we've renamed our columns, we will transform the dataframe from wide to long format using the function `pivot_longer()`:
+
+For this, you need to specify:
+- what columns are going to become rows (under the argument `cols`)
+- where the original column names will go using `names_to`
+- where the values of the original column will go using `values_to`
+
 ```{r}
-penguins_long <- penguins_subset %>%
-  rename(length = `Culmen Length (mm)`,
-         depth = `Culmen Depth (mm)`) %>%
+penguins_long <- penguins_subset_5 %>%
   pivot_longer(cols = c(length, depth),
                names_to = "culmen_element",
                values_to = "measurement")
 ```
 
-## Exercise 10
+### Exercise 10 
+
+Use the functions `group_by()` and `summarize()` in conjunction to calculate the mean and standard deviation of all measurements, grouped by species and the type of measurement.
+
+- Within `group_by()`, specify `Species` and `culmen_element`
+
+- Within `summarize()`, use the functions `mean()` and `sd()` to calculate the average and standard deviation of the column `measurement`.
+
+Make sure to feed the right data frame into the workflow: the column `culmen_element` is one that was created in the previous exercise!
+
+**Note:** a warning message may appear that says: "`summarise()` regrouping output by 'Species' (override with `.groups` argument)". This is expected behavior, don't worry!
+
 ```{r}
 penguins_summary <- penguins_long %>%
   group_by(Species, culmen_element) %>%
@@ -98,115 +190,96 @@ penguins_summary <- penguins_long %>%
             sd = sd(measurement))
 ```
 
+## Exercise 11 
 
-## Exercise 11
+Use the function `full_join()` to merge the `penguins_summary` and `penguins_long` data frames, so that each row in the long data frame will have additional columns with the mean and standard deviation for its group.
+
 ```{r}
-penguins_join <- full_join(penguins_long, penguins_summary,
+penguins_join <- full_join(penguins_summary, penguins_long,
                            by = c("Species", "culmen_element"))
 ```
 
+# Chapter 4: Data Visualization
+
 ## Exercise 12
+
+Using the `ggplot()` package in a step-by-step manner, we will slowly build up the layers of a simple bar plot of the culmen elements and their average size for each species of penguin.
+
+### Step 1
+
+First, load the data:
+
 ```{r}
-penguins_join <- penguins_join %>%
-  mutate(zscore = (measurement - avg)/sd)
+ggplot(penguins_summary)
 ```
 
+### Step 2
 
-# Chapter 4: Data visualization
+Add the variables we want to plot, i.e. `culmen_element` and `avg`: 
 
-## Exercise 13
-
-### a)
 ```{r}
-p1 <- penguins_summary %>%
-  ggplot(aes(x = culmen_element,
-             y = avg,
-             fill = Species)) +
-  geom_bar(position = position_dodge(),
-           stat = "identity")
-
-p1
+ggplot(penguins_summary) +
+  aes(x = culmen_element, y=avg )
 ```
 
-### b)
-```{r}
-p2 <- p1 +
-  geom_errorbar(aes(ymin=avg-sd,
-                  ymax=avg+sd),
-              width=.1,
-              position=position_dodge(.9))
+### Step 3
 
-p2
+Give your data a geometric element - in this case, bars - using `geom_col()`:
+
+```{r}
+ggplot(penguins_summary) +
+  aes(x = culmen_element, y=avg ) +
+  geom_col()
 ```
 
-### c)
+### Step 4
+
+Add the aesthetic layer `aes()` and within it use the `fill =` argument to give your `culmen_element` color:
+
 ```{r}
-p3 <- p2 +
-  labs(title = "Measuring penguin bills",
-       x = "Bill measurement",
-       y = "Size (mm)") +
-  scale_fill_manual(values = c("darkorange","purple","cyan4")) +
+ggplot(penguins_summary) +
+  aes(x = culmen_element, y=avg ) +
+  geom_col() +
+  aes(fill = culmen_element)
+```
+
+### Step 5
+
+Use `facet_wrap()` to create subplots for each species. The `~` needs to be used before the variable you wish to subplot. The `ncol =` argument lets you specify how many columns you want.
+
+```{r}
+ggplot(penguins_summary) +
+  aes(x = culmen_element, y=avg ) +
+  geom_col() +
+  aes(fill = culmen_element) +
+  facet_wrap(~Species, ncol = 1)
+```
+
+### Step 6
+
+We will now add a 'theme' layer to our plot, to make it look nicer!
+
+There are many default themes available, check them out here: https://ggplot2.tidyverse.org/reference/ggtheme.html. Feel free to try them out if you would like. 
+
+```{r}
+ggplot(penguins_summary) +
+  aes(x = culmen_element, y=avg ) +
+  geom_col() +
+  aes(fill = culmen_element) +
+  facet_wrap(~Species, ncol = 1) +
   theme_bw()
-
-p3
 ```
 
+### Step 7
 
-## Exercise 14
+Let's finish up by adding some error bars. Within `geom_errorbar()`, we will use the `aes()` layer to determine the `ymin =` and `ymax =` end points of our error bars. Calculate these using the `avg` and the `sd`. 
 
 ```{r}
-penguins_clean <- penguins %>%
-  filter(!is.na(`Culmen Length (mm)`),  # to prevent a warning message when plotting NAs
-         !is.na(Sex))                   # to ensure proper categorization into facets
-```
-
-
-### a)
-```{r}
-p4 <- penguins_clean %>%
-  ggplot(aes(x = `Culmen Length (mm)`,
-             y = `Culmen Depth (mm)`,
-             color = Species)) +
-  geom_point() +
-  scale_color_manual(values = c("darkorange","purple","cyan4")) +
-  theme_bw()
-  
-p4
-```
-
-### b)
-```{r}
-
-p5 <- p4 +
-  stat_density_2d()
-
-p5
-
-```
-
-
-
-### c)
-```{r}
-
-p6 <- p4 +
-  facet_grid(Island ~ Sex)
-  
-p6
-
-```
-
-
-## Exercise 15
-```{r}
-
-penguins_join %>%
-  ggplot(aes(x = zscore, color = Species)) +
-  geom_density() +
-  facet_wrap("culmen_element", ncol = 1) +
-  scale_color_manual(values = c("darkorange","purple","cyan4")) +
-  labs(title = "Distribution of culmen measurements",
-       x = "z-score") +
-  theme_bw()
-
+ggplot(penguins_summary) +
+  aes(x = culmen_element, y=avg ) +
+  geom_col() +
+  aes(fill = culmen_element) +
+  facet_wrap(~Species, ncol = 1) +
+  theme_bw() +
+  geom_errorbar(aes(ymin= avg-sd, ymax= avg+sd), width= .1)
 ```
