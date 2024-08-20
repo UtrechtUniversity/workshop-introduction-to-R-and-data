@@ -1,4 +1,4 @@
-studyName	Sample Number	Species	Region	Island	Stage	Individual ID	Clutch Completion	Date Egg	Culmen Length (mm)	Culmen Depth (mm)	Flipper Length (mm)	Body Mass (g)	Sex
+studyName	Sample Number	Species	Region	Island	Stage	Individual_ID	Clutch_Completion	Date_Egg	Culmen_Length_mm	Culmen_Depth_mm	Flipper_Length_mm	Body_Mass_g	Sex
 PAL0708	1	Adelie Penguin (Pygoscelis adeliae)	Anvers	Torgersen	"Adult, 1 Egg Stage"	N1A1	Yes	11/11/2007	39.1	18.7	181	3750	MALE
 PAL0708	2	Adelie Penguin (Pygoscelis adeliae)	Anvers	Torgersen	"Adult, 1 Egg Stage"	N1A2	Yes	11/11/2007	39.5	17.4	186	3800	FEMALE
 PAL0708	3	Adelie Penguin (Pygoscelis adeliae)	Anvers	Torgersen	"Adult, 1 Egg Stage"	N2A1	Yes	16/11/2007	40.3	18	195	3250	FEMALE
