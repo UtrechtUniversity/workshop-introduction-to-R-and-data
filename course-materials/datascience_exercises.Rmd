@@ -33,7 +33,6 @@ In this exercise, we read the dataset `penguins.tsv` into R.
 
 You will need to know three things to complete this exercise:
 - The **location** of your data;
-- The **delimiter** of the data;
 - The **function** to use to read data into R.
 
 You can find the dataset in the `data` folder of your project.
@@ -41,7 +40,7 @@ You can find the dataset in the `data` folder of your project.
 Complete the code in the chunk below, replacing the ??? with the with the correct code:
 
 ```{r}
-penguins <- read_delim("data/penguins.tsv")
+penguins <- read_tsv("???")
 ```
 
 ## Exercise 2
@@ -59,9 +58,7 @@ library(readxl)
 Use the function `read_excel()` to read a related data set `penguins_isotopes.xlsx` (an Excel file!), also located in your `data` folder, into R.
 
 ```{r}
-
-penguins_isotopes <- read_excel(path = "data/penguins_isotopes.xlsx")
-  
+penguins_isotopes <- ???(path = "???")
 ```
 
 ## Exercise 3
@@ -73,8 +70,9 @@ For this function, you need to provide:
 - The name of the folder and the file name: "data/penguins_isotopes.csv"
 
 ```{r}
-write_csv(penguins_isotopes,
-          file = "data/penguins_isotopes.csv")
+???(penguins_isotopes,
+    # Name of the file, including extension (.csv)
+    file = "???")
 ```
 
 # Chapter 2: Selecting & Filtering Data
@@ -88,13 +86,7 @@ For some of the penguins, the sex was not determined. Use the function `filter()
 One way to do this (though not the only way) is to filter out the rows where `Sex` is NA. Remember the function `is.na()` and remember that to negate a condition, you use the operator! For example, `!is.na(NA)` returns `FALSE`.
 
 ```{r}
-
-penguins_subset <- filter(penguins, !is.na(Sex))
-
-# penguins_subset <- filter(penguins, (Sex == "FEMALE" | Sex == "MALE"))
-
-# penguins_subset <- filter(penguins, Sex %in% c("MALE", "FEMALE"))
-
+penguins_subset <- filter(penguins, ???)
 ```
 
 ## Exercise 5
@@ -115,11 +107,7 @@ Use the function `select()` to include the right columns in our data subset.
 **Note** that in order to work with the subset from Exercise 4, we need to use that data frame (`penguin_subset`) as our data input!
 
 ```{r}
-penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,Sex, Island, Culmen_Depth_mm, Culmen_Length_mm)
-
-#penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,Sex, Island, starts_with("Culmen"))
- 
-#penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,Sex, Island, contains("Culmen"))
+penguins_subset_2 <- select(???)
 ```
 
 # Exercise 6
@@ -129,9 +117,9 @@ Use %>% (the pipe operator) to combine the code you wrote in Exercises 4 and 5.
 Make a workflow that starts with the data `penguins` and subsequently applies your `filter` and `select` operations. Make sure to remove references to the original dataframe in subsequent operations, as this is now provided through the %>% operator.
 
 ```{r}
-penguins_subset_3 <- penguins %>% 
-                   filter(!is.na(Sex)) %>%
-                   select(Individual_ID, Species, Sex, Island, starts_with("Culmen"))
+penguins_subset_3 <- penguins %>%
+  ??? %>%
+  ???
 ```
 
 ## Exercise 7
@@ -142,7 +130,7 @@ Make sure to work with the `penguins_subset_3` dataframe.
 
 ```{r}
 penguins_subset_4 <- penguins_subset_3 %>%
-  mutate(culmen_ratio = Culmen_Length_mm / Culmen_Depth_mm)
+  ???(culmen_ratio = ???)
 ```
 
 # Chapter 3: Tidy Data
@@ -153,7 +141,8 @@ In this chapter, we will make our dataframe tidy. Before we do that, we will ren
 
 ```{r}
 penguins_subset_5 <- penguins_subset_4 %>%
-  rename(length = Culmen_Length_mm, depth = Culmen_Depth_mm)
+  rename(length = ???, 
+         depth = ???)
 ```
 
 ## Exercise 9
@@ -167,7 +156,7 @@ For this, you need to specify:
 
 ```{r}
 penguins_long <- penguins_subset_5 %>%
-  pivot_longer(cols = c(length, depth),
+  pivot_longer(cols = c(???, ???),
                names_to = "culmen_element",
                values_to = "measurement")
 ```
@@ -186,9 +175,9 @@ Make sure to feed the right data frame into the workflow: the column `culmen_ele
 
 ```{r}
 penguins_summary <- penguins_long %>%
-  group_by(Species, culmen_element) %>%
-  summarize(avg = mean(measurement),
-            sd = sd(measurement))
+  group_by(???) %>%
+  summarize(avg = ???,
+            sd = ???)
 ```
 
 ## Exercise 11 
@@ -196,8 +185,8 @@ penguins_summary <- penguins_long %>%
 Use the function `full_join()` to merge the `penguins_summary` and `penguins_long` data frames, so that each row in the long data frame will have additional columns with the mean and standard deviation for its group.
 
 ```{r}
-penguins_join <- full_join(penguins_summary, penguins_long,
-                           by = c("Species", "culmen_element"))
+penguins_join <- full_join(???, ???,
+                           by = c(???, ???))
 ```
 
 # Chapter 4: Data Visualization
@@ -220,7 +209,7 @@ Add the variables we want to plot, i.e. `culmen_element` and `avg`:
 
 ```{r}
 ggplot(penguins_summary) +
-  aes(x = culmen_element, y=avg )
+  aes(x = ???, y = ???)
 ```
 
 ### Step 3
@@ -229,8 +218,8 @@ Give your data a geometric element - in this case, bars - using `geom_col()`:
 
 ```{r}
 ggplot(penguins_summary) +
-  aes(x = culmen_element, y=avg ) +
-  geom_col()
+  aes(x = culmen_element, y = avg) +
+  ???
 ```
 
 ### Step 4
@@ -239,9 +228,9 @@ Add the aesthetic layer `aes()` and within it use the `fill =` argument to give 
 
 ```{r}
 ggplot(penguins_summary) +
-  aes(x = culmen_element, y=avg ) +
+  aes(x = culmen_element, y = avg) +
   geom_col() +
-  aes(fill = culmen_element)
+  ???
 ```
 
 ### Step 5
@@ -253,7 +242,7 @@ ggplot(penguins_summary) +
   aes(x = culmen_element, y=avg ) +
   geom_col() +
   aes(fill = culmen_element) +
-  facet_wrap(~Species, ncol = 1)
+  facet_wrap(~ ???, ncol = 1)
 ```
 
 ### Step 6
@@ -264,11 +253,11 @@ There are many default themes available, check them out here: https://ggplot2.ti
 
 ```{r}
 ggplot(penguins_summary) +
-  aes(x = culmen_element, y=avg ) +
+  aes(x = culmen_element, y = avg) +
   geom_col() +
   aes(fill = culmen_element) +
   facet_wrap(~Species, ncol = 1) +
-  theme_bw()
+  theme_bw() # Or replace with a theme of your preference!
 ```
 
 ### Step 7
@@ -277,10 +266,10 @@ Let's finish up by adding some error bars. Within `geom_errorbar()`, we will use
 
 ```{r}
 ggplot(penguins_summary) +
-  aes(x = culmen_element, y=avg ) +
+  aes(x = culmen_element, y = avg) +
   geom_col() +
   aes(fill = culmen_element) +
   facet_wrap(~Species, ncol = 1) +
   theme_bw() +
-  geom_errorbar(aes(ymin= avg-sd, ymax= avg+sd), width= .1)
+  ???(???(???, ???), width= .1)
 ```
