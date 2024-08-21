@@ -108,27 +108,28 @@ Use the function `select()` to include the right columns in our data subset.
 penguins_subset_2 <- select(???)
 ```
 
-# Exercise 6
-
-Use %>% (the pipe operator) to combine the code you wrote in Exercises 4 and 5. 
-
-Make a workflow that starts with the data `penguins` and subsequently applies your `filter` and `select` operations. Make sure to remove references to the original dataframe in subsequent operations, as this is now provided through the %>% operator.
-
-```{r}
-penguins_subset_3 <- penguins %>%
-  ??? %>%
-  ???
-```
-
-## Exercise 7
+## Exercise 6
 
 Use the `mutate()` function to create a new column called `culmen_ratio`, which is calculated as `Culmen_Length_mm` divided by `Culmen_Depth_mm`.
 
-Make sure to work with the `penguins_subset_3` dataframe.
+Make sure to work with the `penguins_subset_2` dataframe.
 
 ```{r}
-penguins_subset_4 <- penguins_subset_3 %>%
+penguins_subset_3 <- penguins_subset_2 %>%
   ???(culmen_ratio = ???)
+```
+
+# Exercise 7
+
+Use %>% (the pipe operator) to combine the code you wrote in Exercises 4, 5 and 6. 
+
+Make a workflow that starts with the data `penguins` and subsequently applies your `filter`, `select` and `mutate` operations. Make sure to remove references to the original dataframe in subsequent operations, as this is now provided through the %>% operator.
+
+```{r}
+penguins_subset_4 <- penguins %>%
+  ??? %>%
+  ??? >%>
+  ???
 ```
 
 # Chapter 3: Tidy Data
