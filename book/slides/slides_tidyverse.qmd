@@ -1,35 +1,92 @@
 ---
-format:
+title: "The data science workflow with Tidyverse"
+subtitle: "Afternoon session: Tidyverse"
+author: "Research Data Management Support"
+execute: 
+  eval: true
+  echo: true
+format: 
   revealjs:
     theme: default
     embed-resources: true
     smaller: true
+  gfm:
+    mermaid-format: png
 ---
 
-# Into The Tidyverse {background-color=#FFCD00}
+<!-- NB this should come in a separate css file -->
+```{css}
+/* Make sure the code and code output is larger than the default */
+/* Source: https://stackoverflow.com/questions/75907436/quarto-revealjs-increase-relative-font-size-of-code-chunks */
+code.sourceCode {
+  font-size: 1.4em;
+  /* or try font-size: xx-large; */
+}
 
-## Packages and functions
+/* Also increase the size of the cell output */
+div.cell-output-stdout {
+  font-size: 1.4em;
+}
+```
+<!---->
 
-functions > in packages
+# {background-color=#FFCD00}
 
-installing vs. using
-
-
-we will move a data frame through the different steps in a data science workflow.
-This means that often the results of one step will be the input for the next
+![](https://www.tidyverse.org/images/hex-tidyverse.png "The Tidyverse logo"){fig-align="center"}
 
 ## What is the `tidyverse`?
 
-The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures ([tidyverse.org](https://www.tidyverse.org/)).
+> The tidyverse is an opinionated collection of R packages **designed for data science**. All packages **share an underlying design** philosophy, grammar, and data structures ([tidyverse.org](https://www.tidyverse.org/)).
 
-Its primary goal is to facilitate a conversation between a human and a computer about data ([Wickham et al., 2019](https://joss.theoj.org/papers/10.21105/joss.01686)).
 
-```{r, echo=F, out.width='25%', out.height='25%', fig.align='center'}
-knitr::include_graphics("https://www.tidyverse.org/images/hex-tidyverse.png")
+![](https://elixir-luxembourg.org/assets/events_photos/2021_05_06_R_Tidyverse.png "Logos of common tidyverse packages"){fig-align="center"}
+
+## Packages and functions
+
+![](images/collection_package_function.png "Visualization of functions, packages and package collections like the Tidyverse")
+
+## Working with packages and functions
+
+1. Installing a package (once):
+
+```r
+#| label: install-package
+install.packages("dplyr")
 ```
+
+. . .
+
+2. Loading a package (every time you want to use it):
+```{r}
+#| label: load-package
+library(dplyr)
+```
+
+. . .
+
+3. Now you can use functions from this package! (every time you want to use it)
+
+```{r}
+#| label: use-a-function
+dplyr::rename(iris, petal_length = Petal.Length)
+```
+
+# Go to Exercise 0 in `datascience_exercises.Rmd`
+
+## The Data Science workflow
+
+![Source: [R 4 Data Science](https://r4ds.had.co.nz/introduction.html)](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png "The data science workflow."){fig-align="center"}
+
+::: notes
+We will move a data frame through the different steps in a data science workflow.
+This means that often the results of one step will be the input for the next
+:::
 
 ## `tidyverse` core packages 
 
+![](images/tidyverse_packages_per_step.png)
+
+::: notes
 - `readr`: data import
 - `tibble`: modern data frame object
 - `stringr`: working with strings
@@ -38,6 +95,323 @@ knitr::include_graphics("https://www.tidyverse.org/images/hex-tidyverse.png")
 - `dplyr`: data manipulation
 - `ggplot2`: data visualization
 - `purrr`: functional programming
+:::
+
+## Afternoon workflow
+
+::: {.incremental}
+1. Read a file into R
+2. Clean the data:
+   - Filter on relevant rows
+   - Select only relevant columns
+3. Calculate a new column
+4. Rename a column
+5. Put the dataframe into a long (tidy) format
+6. Summarize the dataframe
+7. Visualize the dataframe
+8. Write the summarized dataframe to a file
+:::
+
+
+# Side Trip:<br>We're Going To Antarctica...{background-color=#FFCD00}
+
+## Data: `palmerpenguins`
+
+- Observations about penguins from the Palmer Archipelago (Antarctica)
+- Package created by Allison Horst for worldwide use
+- species, island, culmen length and depth, flipper length, etc.
+
+![](https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png){width="10%"}
+
+# Importing Data {background-color=#FFCD00}
+
+## Reading data into R
+
+```{mermaid}
+%%| echo: false
+%%| fig-width: 25
+
+flowchart LR
+    %% Subgraph Styling
+    subgraph Filesystem
+        style Filesystem fill:#e0f7fa,stroke:#333,stroke-width:2px,color:#333,font-size:30px
+        style A fill:#ffffff,stroke:#333,stroke-width:2px,color:#333,font-size:20px
+        style C fill:#ffffff,stroke:#333,stroke-width:2px,color:#333,font-size:20px
+        A[Data file <br>.tsv, .csv .xlsx]
+        C[Exported File]
+    end
+    subgraph R-Environment
+        style R-Environment fill:#e8f5e9,stroke:#333,stroke-width:2px,color:#333,font-size:30px
+        style B fill:#ffffff,stroke:#333,stroke-width:2px,color:#333,font-size:20px
+        style D fill:#ffffff,stroke:#333,stroke-width:2px,color:#333,font-size:20px
+        B[df in <br>R Environment] --> |Transform, Tidy, <br>Model, Visualize| D[df in<br> R Environment]
+    end
+
+    %% Connections
+    A -->|Read into R| B
+    D -->|Export as File| C
+```
+
+
+## `readr`: Read Rectangular Text Data
+
+To read text data, you need:
+
+- **location** of the data (path)
+- **delimiter** (value separator) of the data, e.g. `,`, `;` or `\t`
+- **function** to use to read data into R
+
+. . .
+
+| Read *from* file | Write *to* file | Value separator |
+| --- | --- | --- |
+| `read_delim()`| `write_delim()` | catch-all: user needs to specify |
+| `read_csv()`| `write_csv()` | comma separated |
+| `read_csv2()`| `write_csv2()` | semicolon separated |
+| `read_tsv()` | `write_tsv()` | tab separated |
+
+
+## Reading non-text data file
+
+For non-text data files, there are other R packages:
+
+- `readxl`: Excel files
+- `haven`: SPSS & STATA files
+- `googlesheets4`: Google Sheets 
+- `rvest`: HTML files
+
+## Example: reading data
+
+Read a file located in the same folder as your script:
+```r
+raw_tsv_data <- read_tsv("my_raw_data.tsv")
+```
+
+. . . 
+
+Read a file located in a different folder:
+```r
+raw_csv_data <- read_csv("data/raw/my_raw_data.csv")
+```
+
+. . .
+
+Or from the web:
+
+```r
+# Source: https://catalog.data.gov/dataset/electric-vehicle-population-data
+electric_vehicles <- read_csv("https://data.wa.gov/api/views/f6w7-q2d2/rows.csv")
+```
+
+. . .
+
+Bonus: use an in-built dataset from R
+
+```r
+data(iris)        # Observational data on iris flowers
+data(mtcars)      # Motor Trend Car Road Tests
+
+data()            # Check all the available in-built datasets!
+```
+# Go to Exercise 1, 2 and 3
+
+```{r}
+#| echo: false
+library(tidyverse)
+``` 
+
+## Answers Exercise 1, 2 and 3
+
+1. Reading the penguins dataset into R.
+
+```{r}
+#| echo: false
+penguins <- read_tsv("../../course-materials/data/penguins.tsv")
+```
+
+```r
+penguins <- read_tsv("data/penguins.tsv")
+```
+
+. . .
+
+2. Reading penguins_isotopes.xlsx into R.
+
+```{r}
+#| echo: false
+library(readxl)
+penguins_isotopes <- read_excel("../../course-materials/data/penguins_isotopes.xlsx")
+```
+
+```r
+penguins_isotopes <- read_excel(path = "data/penguins_isotopes.xlsx")
+```
+
+. . .
+
+3. Writing `penguins_isotopes` to a csv file.
+
+```r
+write_csv(penguins_isotopes,
+          file = "data/penguins_isotopes.csv")
+```
+
+# Selecting & filtering data {background-color=#FFCD00}
+
+## `dplyr`: Data Manipulation
+
+`dplyr` contains functions for many types of data manipulation, such as:
+
+- `filter()`: select **rows** that meet one or several logical criteria
+- `select()`: select (or drop) **columns**  
+- `rename()`: change column name
+- `mutate()`: transform column values or create new column
+- `group_by()`: group data on one or more columns
+- `summarize()`: reduces a group of data into a single row
+
+## Filter
+
+Selects **rows** in your dataframe.
+
+Use:
+```r
+filter(your-dataframe, your-condition)
+```
+
+. . .
+
+```{r}
+#| output: false
+#| echo: false
+df <- data.frame(name = c("Ann", "Bob", "Chloe", "Dan"),
+                 age = c(35,22,50,51),
+                 country = c("UK","USA","USA","UK")
+)
+```
+
+From the morning session: "From your dataframe `df`, return complete rows for everyone living in a country of your choice."
+
+```{r}
+#| eval: false
+# Base R:
+df[df$country=="UK", ]
+```
+
+. . .
+
+```{r}
+# Tidyverse:
+filter(df, country == "UK")
+```
+
+# Go to Exercise 4
+
+## Select
+
+Select or drop **columns** in your dataframe.
+
+Basic use:
+```r
+select(your-dataframe, col1, col2)  # select col1 and col2
+```
+
+. . .
+
+
+```r
+select(your-dataframe, -col3)       # select all but col3
+```
+. . .
+
+Use special [selecting functions](https://tidyselect.r-lib.org/reference/language.html)
+```r
+select(your-dataframe, contain("col"))    # select cols containing "col"
+``` 
+
+. . .
+
+From the morning session: "Return the columns `name` and `age` together."
+
+```{r}
+#| eval: false
+df[, c("name","age")] # Base R
+```
+
+. . .
+
+```{r}
+select(df, name, age)
+```
+
+# Go to Exercise 5
+
+
+## Mutate
+
+Transform column values or create new column.
+
+Basic use:
+```r
+mutate(your-dataframe, column_name = an_operation)
+```
+
+. . .
+
+
+Add a new column:
+
+<!-- TODO FROM HERE ON -->
+```{r}
+#| eval: false
+df$adult <- c()
+```
+
+
+# Go to Exercise 6
+
+# Piping Operations {background-color=#FFCD00}
+
+## `magrittr`: The Forward-Pipe Operator
+
+A key tidyverse component that chains all data science steps together: 
+
+`%>%`
+
+. . .
+
+Why?
+
+- create an easily readable **pipeline of chained commands**
+- no nested function calls
+- no need to save intermediate R objects with `<-`
+- easily add and/or delete steps in your pipeline without breaking the code
+
+## Pipe operator: how it works
+
+```{r}
+#| eval: false
+#| code-line-numbers: 1-2|4-5|7-8
+# Name the object that you use as initial input
+my_new_df <- df %>%
+  
+  # Perform a function using that object as input
+  filter(country == "UK") %>%
+  
+  # Add another operation
+  select(name, age)
+  
+```
+
+. . .
+
+Note:
+
+- `df` is only mentioned once
+- final line of the operation does not get a `%>%`
+
+# Go to exercise 7
+
+# Tidy Data {background-color=#FFCD00}
 
 ## Tidy Data
 
@@ -55,85 +429,6 @@ The concept formulates principles for structuring rectangular, tabular data sets
 
 3. Each type of observational unit forms a table.
 
-# Side Trip:<br>We're Going To Antarctica...{background-color=#FFCD00}
-
-## Data: `palmerpenguins`
-
-To learn about the `tidyverse`, we will use data from the `palmerpenguins` package by Allison Horst.
-
-The package comes with data about penguins observed on islands in the Palmer Archipelago near Palmer Station, Antarctica.
-
-# Importing Data {background-color=#FFCD00}
-
-## `readr`: Read Rectangular Text Data
-
-To read text data, you need to know three things:
-- The **location** of the data;
-- The **delimiter** of the data (value separator, e.g. , or ; or tab);
-- The **function** to use to read data into R.
-
-`readr` provides read and write functions for multiple different file formats:
-
-- `read_delim()`: general delimited files
-- `read_csv()`: comma separated files
-- `read_csv2()`: semicolon separated files
-- `read_tsv()`: tab separated files
-
-Conveniently, the `write_*()` functions are analogous to the `read_*()` functions: 
-
-- `write_delim()`: general delimited files
-- `write_csv()`: comma separated files
-- `write_csv2()`: semicolon separated files
-- `write_tsv()`: tab separated files
-
-## Reading Data 
-
-In addition, you can use the following packages to read data in other file formats:
-
-- `readxl`: Excel files
-- `haven`: SPSS & STATA files
-- `googlesheets4`: Google Sheets 
-- `rvest`: HTML files
-
-# Selecting & filtering data {background-color=#FFCD00}
-
-## `dplyr`: A Grammar of Data Manipulation
-
-`dplyr` provides a set of functions for manipulating data frame objects while relying on a consistent grammar. Functions are intuitively represented by "verbs" that reflect the underlying operations.
-
-Today, we will use the following functions from `dplyr`:
-
-**Operations on rows:**
-
-- `filter()` picks rows that meet one or several logical criteria
-
-**Operations on columns:**
-
-- `select()` picks respectively drops certain columns. You can use contains() or starts_with() within select, see <https://tidyselect.r-lib.org/reference/language.html>
-- `rename()` changes the column names
-- `mutate()` transforms the column values and/or creates new columns
-
-**Operations on grouped data:**
-
-- `group_by()` partitions data based on one or several columns
-- `summarize()` reduces a group of data into a single row
-
-# Piping Operations
-
-## `magrittr`: The Forward-Pipe Operator
-
-`magrittr` comes with a set of operators, of which we will only use one:
-
-- Pipe Operator: `%>%`
-
-Essentially, the pipe operator aims to improve the readability of your code in multiple ways:
-
-- arrange operations into an easily readable pipeline of chained commands (left-to-right),
-- avoid nested function calls (inside-out),
-- minimize the use of local variable assignments (<-) and function definitions, and
-- easily add and/or delete steps in your pipeline without breaking the code.
-
-# Tidy Data {background-color=#FFCD00}
 
 ## `tidyr`: Tidy Messy Data
 
