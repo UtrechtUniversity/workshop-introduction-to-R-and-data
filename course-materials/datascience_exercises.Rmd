@@ -25,17 +25,15 @@ Load the `tidyverse` package.
 ```{r} 
 library(tidyverse) 
 ```
+
 # Chapter 1: Importing data
 
 ## Exercise 1 
 
 In this exercise, we read the dataset `penguins.tsv` into R. 
 
-You will need to know three things to complete this exercise:
-- The **location** of your data;
-- The **function** to use to read data into R.
-
-You can find the dataset in the `data` folder of your project.
+You will need to know the **location** of your data (hint: check the `data` folder),
+and the **function** to use to read data into R.
 
 Complete the code in the chunk below, replacing the ??? with the with the correct code:
 
