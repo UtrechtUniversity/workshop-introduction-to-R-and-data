@@ -293,15 +293,14 @@ From the morning session: "From your dataframe `df`, return complete rows for ev
 
 ```{r}
 #| eval: false
-# Base R:
-df[df$country=="UK", ]
+
+df[df$country=="UK", ]        # Base R
 ```
 
 . . .
 
 ```{r}
-# Tidyverse:
-filter(df, country == "UK")
+filter(df, country == "UK")   # Tidyverse
 ```
 
 # Go to Exercise 4
@@ -334,13 +333,13 @@ From the morning session: "Return the columns `name` and `age` together."
 
 ```{r}
 #| eval: false
-df[, c("name","age")] # Base R
+df[, c("name","age")]       # Base R
 ```
 
 . . .
 
 ```{r}
-select(df, name, age)
+select(df, name, age)       # Tidyverse
 ```
 
 # Go to Exercise 5
@@ -348,7 +347,7 @@ select(df, name, age)
 
 ## Mutate
 
-Transform column values or create new column.
+Transform column values, or create new column.
 
 Basic use:
 ```r
@@ -360,12 +359,18 @@ mutate(your-dataframe, column_name = an_operation)
 
 Add a new column:
 
-<!-- TODO FROM HERE ON -->
 ```{r}
 #| eval: false
-df$adult <- c()
+df$adult <- c("adult", "minor",     # Base R
+              "adult", "adult")
 ```
 
+. . .
+
+```{r}
+df <- mutate(df,                    # Tidyverse
+            adult = c("adult", "minor", "adult", "adult"))
+```
 
 # Go to Exercise 6
 
@@ -395,7 +400,7 @@ Why?
 my_new_df <- df %>%
   
   # Perform a function using that object as input
-  filter(country == "UK") %>%
+  filter(adult == "adult") %>%
   
   # Add another operation
   select(name, age)
@@ -406,7 +411,7 @@ my_new_df <- df %>%
 
 Note:
 
-- `df` is only mentioned once
+- `df` is only mentioned once at the beginning
 - final line of the operation does not get a `%>%`
 
 # Go to exercise 7
@@ -417,36 +422,129 @@ Note:
 
 > Tidy data sets are all alike; but every messy data set is messy in its own way ([Wickham/Grolemund, 2017](https://r4ds.had.co.nz/tidy-data.html)]
 
-**Tidy Data Principles:** 
+. . .
 
-The concept of tidy data has been coined by Hadley Wickham in his 2014 paper, [_Tidy Data_](https://www.jstatsoft.org/article/view/v059i10). 
-
-The concept formulates principles for structuring rectangular, tabular data sets consisting of rows and columns:
+Tidy Data Principles: principles for structuring tabular data sets:
 
 1. Each variable forms a column.
-
 2. Each observation forms a row.
-
 3. Each type of observational unit forms a table.
 
+## Our df - but extended
+
+```{r}
+#| echo: false
+
+df_ext <- df %>%
+  mutate(mood_wk1 = c(4, 3, 4, 2),
+         mood_wk2 = c(2, 3, 5, 4))
+
+df_ext
+```
+
+. . .
+
+Wide or long?
+
+. . .
+
+That's right: **wide**. Why is this not tidy?
+
+. . .
+
+- Values in column names
+- Multiple observations per row
+
+## Our extended df - Long format
+
+```{r}
+#| echo: false
+
+df_long <- df_ext %>%
+            pivot_longer(cols = starts_with("mood_"),
+                        names_to = "week",
+                        values_to = "mood") %>%
+           mutate(week = as.numeric(gsub("mood_wk", "", week))) %>%
+           arrange(name, week)
+
+df_long
+```
+
+. . .
+
+- 1 observation (week) per row
+- multiple rows per individual
+
+## Wide vs Long
+
+
+::: columns
+::: {.column width="53%"}
+**Wide**
+
+```{r}
+#| echo: false
+head(df_ext, 4)
+```
+
+- All observations on 1 individual in 1 row
+- Not tidy
+
+:::
+
+::: {.column width="47%"}
+:::  {.fragment}
+
+**Long**
+
+```{r}
+#| echo: false
+head(df_long, 4)
+```
+
+- No values as column headers
+- Single observation (weight, mood) in a single row
+- Often needed for data visualization
+:::
+:::
+:::
 
 ## `tidyr`: Tidy Messy Data
 
-Wide data
+Do It Yourself:
 
+- `pivot_longer()`: lengthen data: more rows, fewer columns (long format, tidy)
+- `pivot_wider()`: widen data: fewer rows, more columns (wide format)
 
-Long data = tidy
-Pivot_longer: The two columns containing measurements will be placed below each other, and a column will be added to specify which measurement is called.
-Specify: what columns are going to pivot + the names of the new columns (names_to, values_to)
+. . .
 
+BASIC use:
+```r
+pivot_longer(your-dataframe, cols = c(col_to_pivot1, col_to_pivot2, etc),
+            names_to = "name_of_measurement",
+            values_to = "values_of_measurement")
+```
 
-## Pivot data 
-`tidyr` provides several functions that help you bring your data into the *tidy data* format (e.g., reshaping data, splitting columns, handling missing values or nesting data).
+. . .
 
-Today, we will use the following functions from `dplyr`:
+Check `?pivot_longer()` and Google! for examples and other function arguments.
 
-- `pivot_longer()`: "lengthens" data, increasing the number of rows and decreasing the number of columns. 
-- `pivot_wider()`: "widens" data, increasing the number of columns and decreasing the number of rows. 
+. . .
+
+In our example:
+
+```r
+pivot_longer(df_ext, 
+             cols = starts_with("mood_"),
+             names_to = "week",
+             values_to = "mood")
+```
+
+# Go to Exercise 9
+
+## `group_by` and `summarize()`
+
+Some text here
 
 ## Combining data
 
