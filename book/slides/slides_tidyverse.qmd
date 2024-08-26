@@ -303,8 +303,6 @@ df[df$country=="UK", ]        # Base R
 filter(df, country == "UK")   # Tidyverse
 ```
 
-# Go to Exercise 4
-
 ## Select
 
 Select or drop **columns** in your dataframe.
@@ -342,8 +340,6 @@ df[, c("name","age")]       # Base R
 select(df, name, age)       # Tidyverse
 ```
 
-# Go to Exercise 5
-
 
 ## Mutate
 
@@ -372,7 +368,103 @@ df <- mutate(df,                    # Tidyverse
             adult = c("adult", "minor", "adult", "adult"))
 ```
 
-# Go to Exercise 6
+## Rename
+
+Renaming columns.
+
+Basic use:
+```r
+rename(your-dataframe, new_column_name = old_column_name)
+```
+
+. . .
+
+
+Rename a column:
+
+```{r}
+#| eval: false
+df$Adult <- df$adult          # Base R
+```
+
+. . .
+
+```{r}
+df <- rename(df, Adult = adult) # Tidyverse
+df
+```
+
+# Go to Exercise 4 - 7
+
+## Answers exercise 4
+
+4. Filter `penguins` to leave out the NAs.
+
+```{r}
+penguins_subset <- filter(penguins, !is.na(Sex))
+```
+
+. . .
+
+Or
+```{r}
+penguins_subset <- filter(penguins, Sex == "MALE" | Sex == "FEMALE")
+```
+
+. . .
+
+Or
+
+```{r}
+penguins_subset <- filter(penguins, Sex %in% c("MALE", "FEMALE"))
+```
+
+## Answers exercise 5
+
+5. Select the columns Individual_ID, Species, Sex, Island, Culmen_Depth_mm and Culmen_Length_mm
+
+```{r}
+penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,
+                            Sex, Island, 
+                            Culmen_Depth_mm, Culmen_Length_mm)
+```
+
+. . .
+
+Or
+```{r}
+penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,
+                            Sex, Island, 
+                            starts_with("Culmen"))
+```
+
+. . .
+
+Or
+```{r}
+penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,
+                            Sex, Island, 
+                            contains("Culmen"))
+```
+
+## Answers exercises 6 and 7
+
+6. Use `mutate()` to create a new column `culmen_ratio`.
+
+```{r}
+penguins_subset_3 <- mutate(penguins_subset_2,
+                            culmen_ratio = Culmen_Length_mm / Culmen_Depth_mm)
+```
+
+. . .
+
+7. Rename the columns `Culmen_Length_mm` and `Culmen_Depth_mm`.
+
+```{r}
+penguins_subset_4 <- rename(penguins_subset_3,
+                            length = Culmen_Length_mm, 
+                            depth = Culmen_Depth_mm)
+```
 
 # Piping Operations {background-color=#FFCD00}
 
@@ -395,7 +487,7 @@ Why?
 
 ```{r}
 #| eval: false
-#| code-line-numbers: 1-2|4-5|7-8
+#| code-line-numbers: 1-2|4-5|7-8|10-11
 # Name the object that you use as initial input
 my_new_df <- df %>%
   
@@ -403,7 +495,10 @@ my_new_df <- df %>%
   filter(adult == "adult") %>%
   
   # Add another operation
-  select(name, age)
+  select(name, age) %>%
+  
+  # And another, etc.
+  mutate(adult = c("adult", "minor", "adult", "adult"))
   
 ```
 
@@ -414,7 +509,29 @@ Note:
 - `df` is only mentioned once at the beginning
 - final line of the operation does not get a `%>%`
 
-# Go to exercise 7
+# Go to exercise 8
+
+## Answers exercise 8
+
+Make a workflow that starts with the data `penguins` and subsequently applies your `filter`, `select`, `mutate` and `rename` operations.
+
+```{r}
+penguins_subset_5 <- penguins %>%
+  
+  # Filter out NAs
+  filter(!is.na(Sex)) %>%
+  
+  # Select only relevant columns
+  select(Individual_ID, Species, Sex, Island, starts_with("Culmen")) %>%
+  
+  # Add a new columns culmen_ratio
+  mutate(culmen_ratio =  Culmen_Length_mm / Culmen_Depth_mm) %>%
+  
+  # Rename Culmen measurement columns
+  rename(length = Culmen_Length_mm,
+         depth = Culmen_Depth_mm)
+  
+```
 
 # Tidy Data {background-color=#FFCD00}
 
@@ -541,6 +658,17 @@ pivot_longer(df_ext,
 ```
 
 # Go to Exercise 9
+
+## Answer exercise 9
+
+Transform the dataframe from wide to long format using the function `pivot_longer()`.
+
+```{r}
+penguins_long <- penguins_subset_5 %>%
+  pivot_longer(cols = c(length, depth),
+               names_to = "culmen_element",
+               values_to = "measurement")
+```
 
 ## `group_by` and `summarize()`
 
