@@ -119,30 +119,30 @@ penguins_subset_3 <- penguins_subset_2 %>%
   ???(culmen_ratio = ???)
 ```
 
-# Exercise 7
+## Exercise 7
 
-Use %>% (the pipe operator) to combine the code you wrote in Exercises 4, 5 and 6. 
-
-Make a workflow that starts with the data `penguins` and subsequently applies your `filter`, `select` and `mutate` operations. Make sure to remove references to the original dataframe in subsequent operations, as this is now provided through the %>% operator.
+In the next chapter, we will make our dataframe tidy. Before we do that, we will rename the `Culmen_Length_mm` and `Culmen_Depth_mm` columns in order to make subsequent operations easier.
 
 ```{r}
-penguins_subset_4 <- penguins %>%
-  ??? %>%
-  ??? >%>
-  ???
-```
-
-# Chapter 3: Tidy Data
-
-## Exercise 8
-
-In this chapter, we will make our dataframe tidy. Before we do that, we will rename the `Culmen_Length_mm` and `Culmen_Depth_mm` columns in order to make subsequent operations easier.
-
-```{r}
-penguins_subset_5 <- penguins_subset_4 %>%
+penguins_subset_4 <- penguins_subset_3 %>%
   rename(length = ???, 
          depth = ???)
 ```
+
+# Exercise 8
+
+Use %>% (the pipe operator) to combine the code you wrote in Exercises 4, 5, 6 and 7. 
+
+Make a workflow that starts with the data `penguins` and subsequently applies your `filter`, `select`, `mutate` and `rename` operations. Make sure to remove references to the original dataframe in subsequent operations, as this is now provided through the %>% operator.
+
+```{r}
+penguins_subset_5 <- penguins %>%
+  ??? %>%
+  ??? >%>
+  ??? %>%
+```
+
+# Chapter 3: Tidy Data
 
 ## Exercise 9
 
