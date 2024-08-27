@@ -1,34 +1,18 @@
 ---
 title: "The data science workflow with Tidyverse"
-subtitle: "Afternoon session: Tidyverse"
 author: "Research Data Management Support"
 execute: 
   eval: true
   echo: true
 format: 
   revealjs:
-    theme: default
+    theme: [default]
+    css: custom.css
     embed-resources: true
     smaller: true
   gfm:
     mermaid-format: png
 ---
-
-<!-- NB this should come in a separate css file -->
-```{css}
-/* Make sure the code and code output is larger than the default */
-/* Source: https://stackoverflow.com/questions/75907436/quarto-revealjs-increase-relative-font-size-of-code-chunks */
-code.sourceCode {
-  font-size: 1.4em;
-  /* or try font-size: xx-large; */
-}
-
-/* Also increase the size of the cell output */
-div.cell-output-stdout {
-  font-size: 1.4em;
-}
-```
-<!---->
 
 # {background-color=#FFCD00}
 
@@ -111,7 +95,6 @@ This means that often the results of one step will be the input for the next
 7. Visualize the dataframe
 8. Write the summarized dataframe to a file
 :::
-
 
 # Side Trip:<br>We're Going To Antarctica...{background-color=#FFCD00}
 
@@ -509,7 +492,9 @@ Note:
 - `df` is only mentioned once at the beginning
 - final line of the operation does not get a `%>%`
 
-# Go to exercise 8
+# Go to exercise 8 
+
+![](https://raw.githubusercontent.com/tidyverse/magrittr/master/man/figures/logo.png "Logo of the piping operator, saying 'Leci n'est pas un pipe'"){fig-align="center" height="30%"}
 
 ## Answers exercise 8
 
@@ -659,6 +644,9 @@ pivot_longer(df_ext,
 
 # Go to Exercise 9
 
+![](https://raw.githubusercontent.com/apreshill/teachthat/master/pivot/pivot_longer_smaller.gif "Visualization of the pivot_longer() process")
+*Source: [Allison Hill](https://github.com/apreshill/teachthat/blob/master/pivot/pivot_longer_smaller.gif)*
+
 ## Answer exercise 9
 
 Transform the dataframe from wide to long format using the function `pivot_longer()`.
@@ -672,38 +660,308 @@ penguins_long <- penguins_subset_5 %>%
 
 ## `group_by` and `summarize()`
 
-Some text here
+Group by one or more columns and perform some summarizing operation.
 
-## Combining data
+Basic use:
+```r
+group_by(your-dataframe, column1_to_group_by, column2_to_group_by, [etc])
+summarize(your-dataframe, new_column = <some_summarizing_operation>)
+```
 
-Full join, left join, right join
+. . .
 
-Example
+::: columns
+::: {.column width="50%"}
+Example 1:
 
-The function `full_join()` takes two datasets, and merges them, based on a column or multiple columns that contain shared values. These columns can be found automatically by the function, or they can be indicated with the argument `by`.
+```{r}
+df_ext %>% 
+    group_by(country) %>% 
+    summarize(count = n())
+```
+:::
 
-If you want to know more about this set of operations, read R for Data Science, [chapter 13.4.1](https://r4ds.had.co.nz/relational-data.html#understanding-joins).
+::: {.column width="50%"}
+::: {.fragment}
+Example 2
 
+```{r}
+df_long %>% 
+    group_by(week) %>% 
+    summarize(avg_mood = mean(mood))
+```
+:::
+:::
+:::
+
+## Combining data (joins)
+
+Read more about joins in [R for Data Science](https://r4ds.hadley.nz/joins#how-do-joins-work).
+
+::: columns
+::: {.column width="50%"}
+![](https://r4ds.hadley.nz/diagrams/join/full.png "The  full_join function joins 2 dataframes x and y completely, resulting in a dataframe with all rows and all columns from both dataframes"){width="80%"}
+
+::: {.fragment}
+![](https://r4ds.hadley.nz/diagrams/join/inner.png "The inner_join function joins 2 dataframes x and y and leaves only the rows that overlap between the two dataframes"){width="80%"}
+:::
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+![](https://r4ds.hadley.nz/diagrams/join/left.png "The left_join function joins 2 dataframes x and y and leaves all rows from dataframe x in the combined dataframe"){width="80%"}
+:::
+
+:::{.fragment}
+![](https://r4ds.hadley.nz/diagrams/join/right.png "The right_join function joins 2 dataframes x and y and leaves all rows from dataframe y in the combined dataframe"){width="80%"}
+:::
+:::
+:::
+
+
+# Go to Exercises 10 and 11
+
+## Answers Exercises 10 and 11
+
+10. Use `group_by()` and `summarize()` to calculate the mean and standard deviation of all measurements, grouped by species and the type of measurement.
+
+```{r}
+penguins_summary <- penguins_long %>%
+  group_by(Species, culmen_element) %>%
+  summarize(avg = mean(measurement),
+            sd = sd(measurement))
+```
+
+. . .
+
+11. Merge `penguins_summary` and `penguins_long`.
+
+```{r}
+penguins_join <- full_join(penguins_summary, penguins_long,
+                           by = c("Species", "culmen_element"))
+```
 
 # Data Visualization {background-color=#FFCD00}
 
-## New
-
-Use the flipbook to show how ggplot works.
-
 ## `ggplot2`: Elegant Data Visualisations
 
-`ggplot2` is Hadley Wickham's [reimplementation](https://www.tandfonline.com/doi/abs/10.1198/jcgs.2009.07098) of the 2005 published *The Grammar of Graphics* by Leland Wilkinson. It provides a large amount of functions for generating high-quality graphs in a layer-based fashion and has even sparked a whole ecosystem of 'gg'-style visualization packages.
+- `ggplot2` is Hadley Wickham's [reimplementation](https://doi.org/10.1198/jcgs.2009.07098) of *The Grammar of Graphics* (Leland Wilkinson, 2005). 
+- MANY functions to generate MANY graphs
+- Graphs built up from multiple layers
 
-```{r, echo=F, out.width='90%', out.height='90%', fig.align='center'}
-knitr::include_graphics("https://simonschoe.github.io/introduction-to-the-tidyverse/img/grammar-of-graphic-layers.png")
+. . .
+
+![](https://simonschoe.github.io/introduction-to-the-tidyverse/img/grammar-of-graphic-layers.png "Visualization of the layer-based approach of ggplot2. At the bottom is the Data which should be plotted, followed by Aesthetics (axes, plot positions, encodings), Scale (scale values, represent multiple values?), Geometric objects (line, bar, point, etc.), Statistics (mean, quantile, confidence intervals?), Facets (create subplots based on multiple dimensions) and Coordinate system (cartesian, polar)."){height="90%" fig-align="center"}
+*Source: [towardsdatascience](https://towardsdatascience.com/a-comprehensive-guide-to-the-grammar-of-graphics-for-effective-visualization-of-multi-dimensional-1f92b4ed4149)*
+
+## Our first plots - data
+
+Remember `df_ext`?
+
+```{r}
+df_ext
 ```
 
-## `ggplot2`: Elegant Data Visualisations
+. . .
 
-{{< video https://vimeo.com/470862707 >}}
+And `df_long`?
 
-## `ggplot2`: Elegant Data Visualisations
+```{r}
+df_long
+```
 
-Let's check out the `ggplot flipbook`[https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html)
+## Our first plot
 
+First layer: the data
+
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "1"
+ggplot(df_ext)
+```
+
+## Our first plot
+
+Second layer: aesthetics
+
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "2"
+ggplot(df_ext) +
+  aes(x = country)
+```
+
+## Our first plot
+
+Third layer: geom
+
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "3"
+ggplot(df_ext) +
+  aes(x = country) +
+  geom_bar()
+```
+
+## Our first plot
+
+Another layer: labels
+
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "4-6"
+ggplot(df_ext) +
+  aes(x = country) +
+  geom_bar() +
+  labs(title="Countries in `df_ext`", 
+       x ="Country", 
+       y = "Count")
+```
+
+## Our second plot
+
+Turn week into character (to prevent ugly plotting) + plot data.
+
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "1-3"
+df_long %>%
+  mutate(week = as.character(week)) %>%
+  ggplot()
+```
+
+## Our second plot
+
+Add aesthetics.
+
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "4"
+df_long %>%
+  mutate(week = as.character(week)) %>%
+  ggplot() +
+  aes(x = week, y = mood)
+```
+
+## Our second plot
+
+Add a geom.
+
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "5"
+df_long %>%
+  mutate(week = as.character(week)) %>%
+  ggplot() +
+  aes(x = week, y = mood) + 
+  geom_boxplot() 
+```
+
+## Our second plot
+
+Create a separate plot per country.
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "6"
+df_long %>%
+  mutate(week = as.character(week)) %>%
+  ggplot() +
+  aes(x = week, y = mood) + 
+  geom_boxplot() +
+  facet_wrap(~ country)
+```
+
+## Our second plot
+
+Use a nicer theme.
+
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "7"
+df_long %>%
+  mutate(week = as.character(week)) %>%
+  ggplot() +
+  aes(x = week, y = mood) + 
+  geom_boxplot() +
+  facet_wrap(~ country) +
+  theme_minimal()
+```
+
+## Our second plot
+
+Larger text
+
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "8"
+df_long %>%
+  mutate(week = as.character(week)) %>%
+  ggplot() +
+  aes(x = week, y = mood) + 
+  geom_boxplot() +
+  facet_wrap(~ country) +
+  theme_minimal() +
+  theme(text = element_text(size = 25))
+```
+
+# Go to Exercise 12
+
+## Answers to Exercise 12
+
+Plot a barplot of `culmen_element` and `avg` with error bars.
+
+```{r}
+#| output-location: column-fragment
+ggplot(penguins_summary) +
+  aes(x = culmen_element, 
+      y = avg ) +
+  geom_col() +
+  aes(fill = culmen_element) +
+  facet_wrap(~Species, 
+             ncol = 1) +
+  theme_bw() +
+  geom_errorbar(aes(ymin = avg-sd, 
+                    ymax = avg+sd), 
+                width= .1)
+```
+
+## More plotting
+
+Resources:
+
+- Choose a visualization > Get example code: <https://www.data-to-viz.com/>
+- ggplot2 book: <https://ggplot2-book.org/>
+- ggplot flipbook: <https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html>
+- For fancy pants: ggplot2 extensions gallery: <https://exts.ggplot2.tidyverse.org/gallery/>
+
+## Wrap-up
+
+What have we learned this afternoon?
+
+:::{.incremental}
+- Packages vs. functions
+- Reading data into R: `read_csv()`, `read_tsv()`, `read_excel()`
+- Writing R objects to a csv file: `write_csv`
+- Wrangling data with `filter()`, `select()`, `mutate()`, `rename()`
+- Chaining operations together with `%>%`
+- Creating tidy data
+- Summarizing and combining datasets
+- Using `ggplot2` to make some basic plots
+:::
+
+## Where to find us
+
+- Our website: [uu.nl/rdm](https://uu.nl/rdm/)
+- [Weekly Walk-in Hours Research Data & Software](https://www.uu.nl/en/research/research-data-management/workshops/walk-in-hours-research-data-and-software)
+- [Monthly Programming Cafe](https://www.uu.nl/en/research/research-data-management/workshops/programming-cafe)
+- Or contact us for support: <info.rdm@uu.nl>
+
+# Thank you! {background-color=#FFCD00}
+
+```{r}
+useR <- function(){
+  print("Good luck and see you!")
+}
+
+useR()
+```
