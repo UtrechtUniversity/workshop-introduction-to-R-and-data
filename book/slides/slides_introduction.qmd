@@ -8,26 +8,12 @@ execute:
 format: 
   revealjs:
     theme: default
+    css: custom.css
     embed-resources: true
     smaller: true
 ---
-<!-- NB this should come in a separate css file -->
-```{css}
-/* Make sure the code and code output is larger than the default */
-/* Source: https://stackoverflow.com/questions/75907436/quarto-revealjs-increase-relative-font-size-of-code-chunks */
-code.sourceCode {
-  font-size: 1.4em;
-  /* or try font-size: xx-large; */
-}
 
-/* Also increase the size of the cell output */
-div.cell-output-stdout {
-  font-size: 1.4em;
-}
-```
-<!---->
-
-# Welcome!
+# Welcome! {background-color=#FFCD00}
 
 All course materials at [tinyurl.com/introRDatasite](https://utrechtuniversity.github.io/workshop-introduction-to-R-and-data/)
 
@@ -59,7 +45,7 @@ All course materials at [tinyurl.com/introRDatasite](https://utrechtuniversity.g
 
 - 13:30 &nbsp; Reconvene for afternoon program
 
-# Introduction to R & Data
+# Introduction to R & Data {background-color=#FFCD00}
 Part 1: Basics of R
 
 ## What is R?
@@ -120,7 +106,7 @@ You can execute _Exercise 0_ chunk as a whole with the green triangle:
 - Press ![](images/run.png "run button"){width="10%"} or ctrl + enter
 - When running multiple lines: select all lines, then press ‘Run’ or ctrl + enter
 
-# R syntax & data types
+# R syntax & data types {background-color=#FFCD00}
 
 ## Variable assignment
 
@@ -239,7 +225,7 @@ x > 1
 round(x,1)
 ```
 
-# Vectors in R
+# Vectors in R {background-color=#FFCD00}
 
 ## Combining data: creating vectors
 
@@ -371,7 +357,7 @@ Use a function in R to calculate this.
 mean(age)
 ```
 
-# Data structures
+# Data structures {background-color=#FFCD00}
 
 ## Data structures: vector
 
@@ -489,7 +475,7 @@ df <- data.frame(name, age, country)
 mylist <- list(name, age, country, df)
 ```
 
-# Indexing vectors & lists
+# Indexing vectors & lists {background-color=#FFCD00}
 
 ## Selecting vector elements
 
@@ -528,7 +514,7 @@ name[c(2,4)]
 age[age<30]
 ```
 
-# Indexing a data frame
+# Indexing a data frame {background-color=#FFCD00}
 
 ## Indexing a data frame
 
@@ -632,7 +618,7 @@ mylist[[4]][1,2]
 :::
 :::
 
-# Missing data
+# Missing data {background-color=#FFCD00}
 
 ## Not Available (NA)
 
@@ -721,7 +707,7 @@ df$job
 | `none` or `0` | Data entry specifying content of 0 |
 | `""` | Empty character value |
 
-# Programming: if statements
+# Programming: if statements {background-color=#FFCD00}
 
 ## If statement: a conditional
 
@@ -785,7 +771,7 @@ if(number >= 18){
 print(age_category)
 ```
 
-# Programming: functions
+# Programming: functions {background-color=#FFCD00}
 
 ## Functions: a sequence
 
@@ -899,7 +885,7 @@ test_age(20)
 test_age(2)
 ```
 
-# Programming: loops
+# Programming: loops {background-color=#FFCD00}
 
 # A for-loop
 
@@ -944,7 +930,7 @@ for(the_age in df$age){
 }
 ```
 
-# Recap "Basics of R"
+# Recap "Basics of R" {background-color=#FFCD00}
 
 ## Which bracket does what?
 
@@ -1045,4 +1031,4 @@ Advantages:
 - Automatically set your working directory to that folder
 - Automatically retrieve only the history and objects from that R project
 
-# Lunch break!
+# Lunch break! {background-color=#FFCD00}
