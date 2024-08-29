@@ -1,13 +1,19 @@
-# Subsetting & Mutating Data
+# Selecting & filtering data
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="slides/slides_tidyverse.html#selecting-filtering-data" title="Selecting and filtering data" width="100%" height="540"></iframe>
+```
 
 ## Video
 
 {{< video https://vimeo.com/470859983 >}}
 
-## Exercise 5-8
+## Exercise 4-7
 
-Now try out exercises 5-8 in `datascience_exercises.Rmd`. 
+Now try out exercises 4-7 in `datascience_exercises.Rmd`. 
 
 ::: {.callout-tip}
-Getting lost? You can find the answers in the `datascience_solutions.html` file in your course materials.
+Getting lost? You can find the answers in the [slides](slides/slides_tidyverse.html#answers-exercise-4).
 :::

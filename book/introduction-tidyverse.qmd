@@ -1,3 +1,18 @@
-# Introduction to Tidyverse
+# The data science workflow with Tidyverse
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="slides/slides_tidyverse.html" title="Introduction to the Tidyverse" width="100%" height="540"></iframe>
+```
+
+## Video
 
 {{< video https://vimeo.com/470831693 >}}
+
+
+## Exercise 0
+
+The morning part of this workshop uses the file `datascience_exercises.Rmd`. Open 
+the file in your RStudio IDE. Run the code in Exercise 0 to load the necessary packages.
+
