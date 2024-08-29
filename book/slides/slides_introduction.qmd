@@ -1,12 +1,13 @@
 ---
-title: "Introduction to R and Data"
-subtitle: "Morning session: Base R"
-author: "Research Data Management Support"
+#title: "Introduction to R and Data"
+#subtitle: "Morning session: Base R"
+#author: "Research Data Management Support"
 execute: 
   eval: true
   echo: true
 format: 
   revealjs:
+    pagetitle: "Introduction to R and Data - Base R"
     theme: default
     css: custom.css
     embed-resources: true
@@ -48,20 +49,19 @@ All course materials at [tinyurl.com/introRDatasite](https://utrechtuniversity.g
 # Introduction to R & Data {background-color=#FFCD00}
 Part 1: Basics of R
 
-## What is R?
-
+## What is R
+     
 ::: columns
-::: {.column width="50%"}
-![](images/rlogo.png "R logo")
-:::
-
-
 ::: {.column width="50%"}
 - A widely used programming language for data analysis
 - Based on statistical programming language S (1976)
 - Developed by **R**oss Ihaka & **R**obert Gentleman (1995)
 - Very active community, with many (often subject-specific) packages
 - Open source, and interoperable!
+:::
+
+::: {.column width="50%"}
+![](images/rlogo.png "R logo"){width="60%"}
 :::
 :::
 
@@ -115,6 +115,7 @@ You can execute _Exercise 0_ chunk as a whole with the green triangle:
 You can assign both numbers and text to a variable:
 
 ```{r}
+#| label: variable-assignment
 x <- 6
 x <- 'apple'
 x <- "hello world"
@@ -136,12 +137,14 @@ See the `cheatsheets` folder. Or [download it](https://github.com/rstudio/cheats
 
 Saving information as an R object:
 ```{r}
+#| label: save-x
 x <- 1
 ```
     
     
 Asking for information to be returned:
 ```{r}
+#| label: ask-x
 x
 ```
 
@@ -155,11 +158,13 @@ Note the difference in syntax:
 
 You can perform math with your variables:
 ```{r}
+#| label: multiply-x
 x * 3
 ```
     
 and store the results as new variables:
 ```{r}
+#| label: store-calculation
 y <- x + 2
 
 log2(y)
@@ -191,6 +196,7 @@ Logicals are mostly used as tests:
 
 For example:
 ```{r}
+#| label: logicals
 x == 6
 x != 10
 ```
@@ -201,6 +207,7 @@ x != 10
 
 1. Do the following calculation in R: _1 plus 5, divided by 9_
 ```{r}
+#| label: exercise-1.1
 (1+5)/9
 ```
 
@@ -208,6 +215,7 @@ x != 10
 
 2. Assign the result of the calculation to a variable.
 ```{r}
+#| label: exercise-1.2
 x <- (1+5)/9
 ```
 
@@ -215,6 +223,7 @@ x <- (1+5)/9
 
 3. Test if the result is larger than 1.
 ```{r}
+#| label: exercise-1.3
 x > 1
 ```
 
@@ -222,6 +231,7 @@ x > 1
 
 4. Round off the result to 1 decimal.
 ```{r}
+#| label: exercise-1.4
 round(x,1)
 ```
 
@@ -233,6 +243,7 @@ round(x,1)
 
 A numeric vector:
 ```{r}
+#| label: numeric-vector
 c(1,2,3)
 ```
 
@@ -241,6 +252,7 @@ c(1,2,3)
 
 A character vector:
 ```{r}
+#| label: character-vector
 c("a","b","c")
 ```
 
@@ -248,6 +260,7 @@ c("a","b","c")
 
 A logical vector:
 ```{r}
+#| label: logical-vector
 c(T,TRUE,F)
 ```
 
@@ -255,6 +268,7 @@ c(T,TRUE,F)
 
 What is this vector?
 ```{r}
+#| label: combined-vector
 c(TRUE,"a",3)
 ```
 
@@ -279,6 +293,7 @@ Order:
 ::: columns
 ::: {.column width="70%"}
 ```{r}
+#| label: vectors-math
 p <- 1:5
 p
 mean(p)
@@ -305,6 +320,7 @@ p * 2
 
 
 ```{r}
+#| label: vectors-math2
 q <- 5:1
 q
 p * q
@@ -324,11 +340,12 @@ p * q
 
 # Go to exercise 2
 
-# Answers to exercise 2
+## Answers to exercise 2
 
 1. _Meet Ann, Bob, Chloe, and Dan._ 
 Create a character vector called "name" and add these names to the vector using the `c()` function.
 ```{r}
+#| label: exercise-2.1
 name <- c("Ann", "Bob", "Chloe", "Dan")
 ```
 
@@ -337,6 +354,7 @@ name <- c("Ann", "Bob", "Chloe", "Dan")
 2. _How old are Ann, Bob, Chloe, and Dan?_ 
 Create a numeric vector called "age" and add their ages to the vector. You can decide their ages.
 ```{r}
+#| label: exercise-2.2
 age <- c(35,22,50,51)
 ```
 
@@ -344,6 +362,7 @@ age <- c(35,22,50,51)
 
 3. Use the `class()` function to check the data type of the `name` and `age` vectors.
 ```{r}
+#| label: exercise-2.3
 class(name)
 class(age)
 ```
@@ -354,6 +373,7 @@ class(age)
 Use a function in R to calculate this. 
 **Tip:** use the Maths Functions section of the Base R cheat sheet!
 ```{r}
+#| label: avg-age
 mean(age)
 ```
 
@@ -364,6 +384,7 @@ mean(age)
 **We have two vectors: `name` and `age`**
 
 ```{r}
+#| label: name-age-vectors
 name
 age
 ```
@@ -374,6 +395,7 @@ How do we combine them?
 
 **Into a one-dimensional vector: `c()`**
 ```{r}
+#| label: vector-of-vectors
 c(name,age)
 ```
 
@@ -384,6 +406,7 @@ How about combining `name` and `age` in a two-dimensional table structure?
 . . .
 
 ```{r}
+#| label: combine-in-df
 data.frame(name,age)
 ```
 
@@ -399,6 +422,7 @@ Or: in a multi-dimensional list.
 . . .
 
 ```{r}
+#| label: combine-in-list
 list(name,age)
 ```
 
@@ -426,6 +450,7 @@ NB: dataframes and lists appear under `Data` in the Environment (top right panel
 . . .
 
 ```{r}
+#| label: factors
 # Create vector country
 country <- c("UK","USA","USA","UK")
 country
@@ -441,12 +466,14 @@ country_fac
 ::: {.column width="50%"}
 
 ```{r}
+#| label: factors-df
 df <- data.frame(name, age, country_fac)
 df
 ```
 :::
 ::: {.column width="50%"}
 ```{r}
+#| label: summary-factor-df
 summary(df)
 ```
 :::
@@ -458,6 +485,7 @@ summary(df)
 
 1. Create a vector called "country" containing four countries of your choice.
 ```{r}
+#| label: exercise-3.1
 country <- c("UK", "US", "NL", "BE")
 ```
 
@@ -465,6 +493,7 @@ country <- c("UK", "US", "NL", "BE")
 
 2. Create a data frame called "df" combining name, age, and country.
 ```{r}
+#| label: exercise-3.2
 df <- data.frame(name, age, country)
 ```
 
@@ -472,6 +501,7 @@ df <- data.frame(name, age, country)
 
 3. Create a list called "mylist" with the 3 vectors and 1 dataframe you have just created. 
 ```{r}
+#| label: exercise-3.3
 mylist <- list(name, age, country, df)
 ```
 
@@ -497,6 +527,7 @@ mylist <- list(name, age, country, df)
 
 1. Return only the first number in your vector `age`.
 ```{r}
+#| label: exercise-4.1
 age[1]
 ```
 
@@ -504,6 +535,7 @@ age[1]
 
 2. Return the 2nd and 4th name in your vector `name`.
 ```{r}
+#| label: exercise-4.2
 name[c(2,4)]
 ```
 
@@ -511,6 +543,7 @@ name[c(2,4)]
 
 3. Return only ages under 30 from your vector `age`.
 ```{r}
+#| label: exercise-4.3
 age[age<30]
 ```
 
@@ -524,6 +557,7 @@ age[age<30]
 
 By position:
 ```{r}
+#| label: select-col-pos
 df[,2]
 ```
 
@@ -531,6 +565,7 @@ df[,2]
 
 By name (as a character string):
 ```{r}
+#| label: select-col-name
 df[,"age"]
 ```
 
@@ -538,6 +573,7 @@ df[,"age"]
 
 By name (as an object):
 ```{r}
+#| label: select-col-obj
 df$age
 ```
 
@@ -546,6 +582,7 @@ df$age
 
 By position:
 ```{r}
+#| label: select-row-pos
 df[2,]
 ```
 
@@ -553,6 +590,7 @@ df[2,]
 
 By content:
 ```{r}
+#| label: select-row-content
 df[df$name=="Bob",]
 ```
 
@@ -560,6 +598,7 @@ df[df$name=="Bob",]
 
 **Combining rows and columns**
 ```{r}
+#| label: select-row-col
 df[df$name=="Bob","age"]
 ```
 
@@ -569,6 +608,7 @@ df[df$name=="Bob","age"]
 
 1. From your dataframe `df`, return complete rows for everyone living in a country of your choice.
 ```{r}
+#| label: exercise-5.1
 df[df$country=="UK", ]
 ```
 
@@ -576,6 +616,7 @@ df[df$country=="UK", ]
 
 2. Return only the names of everyone in your data frame `df` under 40. 
 ```{r}
+#| label: exercise-5.2
 df[df$age<40, "name"]
 ```
 
@@ -583,6 +624,7 @@ df[df$age<40, "name"]
 
 3. Return the columns `name` and `age` together.
 ```{r}
+#| label: exercise-5.3
 df[, c("name","age")]
 ```
 
@@ -594,6 +636,7 @@ df[, c("name","age")]
 Selecting a list element from `mylist`:
 
 ```{r}
+#| label: select-list
 mylist[1]
 ```
 
@@ -601,6 +644,7 @@ mylist[1]
 Selecting the *content* of a list element:
 
 ```{r}
+#| label: select-list-content
 mylist[[1]]
 ```
 :::
@@ -611,6 +655,7 @@ mylist[[1]]
 Subselection *in the content* of a list element:
 
 ```{r}
+#| label: select-list-sub
 mylist[[4]][2]
 mylist[[4]][1,2]
 ```
@@ -624,6 +669,7 @@ mylist[[4]][1,2]
 
 Let's add a column to our data:
 ```{r}
+#| label: na-df
 df$pet <- c("cat","none","",NA)
 
 df
@@ -646,6 +692,7 @@ Notice that:
 . . .
 
 ```{r echo = F}
+#| label: 5-is-5
 5 == 5
 ```
 
@@ -658,6 +705,7 @@ Notice that:
 . . .
 
 ```{r echo = F}
+#| label: 5-is-na
 5 == NA
 ```
 
@@ -670,6 +718,7 @@ NA == NA
 . . .
 
 ```{r echo = F}
+#| label: na-is-na
 NA == NA
 ```
 
@@ -682,6 +731,7 @@ is.na(NA)
 . . .
 
 ```{r echo=F}
+#| label: is-na-na
 is.na(NA)
 ```
 
@@ -694,6 +744,7 @@ is.na(NA)
 Do we know about our participants' jobs?
 
 ```{r}
+#| label: select-job-null
 # Select the column "job" from df
 df$job
 ```
@@ -760,6 +811,7 @@ Make an if statement that tests if a number is larger than 18.
 Assign the result to the variable `age_category`.
 
 ```{r}
+#| label: exercise-7
 number <- 8
 
 if(number >= 18){
@@ -784,6 +836,7 @@ print(age_category)
 **A function can be repeated on different inputs:**
 
 ```{r}
+#| label: mean-function
 mean(df$age)
 mean(1:100)
 ```
@@ -794,6 +847,7 @@ mean(1:100)
 
 You write the function once:
 ```{r}
+#| label: function-find-bobs-age
 find_bobs_age <- function(data){
   bobs_age <- data[data$name == "Bob", "age"]
   return(bobs_age)
@@ -802,6 +856,7 @@ find_bobs_age <- function(data){
 
 Now, every time you want to find Bob's age you use:
 ```{r}
+#| label: use-find-bobs-age
 find_bobs_age(df)
 ```
 
@@ -855,6 +910,7 @@ First, run the code with the function itself. It will appear in your environment
 
 Now, you can use the function:
 ```{r}
+#| label: use-myfun
 myFun(3,4)
 myFun(90,71)
 ```
@@ -866,6 +922,7 @@ myFun(90,71)
 Turn the if-statement from the last exercise into a function. Let the user provide the value for `number`, and return the `age_category`.
 
 ```{r}
+#| label: exercise-8
 test_age <- function(number){
   if(number >= 18){
     age_category <- "adult"
@@ -880,6 +937,7 @@ test_age <- function(number){
 
 
 ```{r}
+#| label: exercise-8-test-function
 # Test the function
 test_age(20)
 test_age(2)
@@ -887,7 +945,7 @@ test_age(2)
 
 # Programming: loops {background-color=#FFCD00}
 
-# A for-loop
+## A for-loop
 
 - Perform the same action(s) for mutiple inputs at a time
 - Input is an object with multiple similar elements (e.g., a vector, row in a dataframe, etc.) that can be iterated over
@@ -922,6 +980,7 @@ Note that `a_number` is 1 in the first iteration of the loop, 2 in the second, e
 Go over the age column in your dataframe df, and for each age: `print()` the age category using the test_age function from the previous exercise.
 
 ```{r}
+#| label: exercise-9
 print(df$age)
 
 for(the_age in df$age){
@@ -1021,7 +1080,7 @@ for(the_age in df$age){
 When you start programming for yourself:
 
 - Create a folder dedicated to your project
-- Start a new R project: File > New Project > Existing Directory
+- Start a new R project: **File > New Project > Existing Directory**
 - An `.RProj` file will be created
 
 . . .
@@ -1030,5 +1089,6 @@ Advantages:
 
 - Automatically set your working directory to that folder
 - Automatically retrieve only the history and objects from that R project
+- More reproducible (relative vs. absolute paths)
 
 # Lunch break! {background-color=#FFCD00}
