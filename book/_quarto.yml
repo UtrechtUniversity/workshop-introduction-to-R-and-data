@@ -35,7 +35,9 @@ book:
         - introduction-tidyverse.qmd
         - importing-data.qmd
         - subsetting-and-mutating-data.qmd
+        - piping.qmd
         - transformations-and-tidy-data.qmd
+        - summarizing-combining-data.qmd
         - data-visualization.qmd
     - what-next.qmd
     - references.qmd
