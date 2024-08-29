@@ -31,22 +31,15 @@ Information on how to install these (and troubleshoot the installation) is on th
 
 ## Course materials
 
-You can best follow the materials using the online book that contains all course materials: https://utrechtuniversity.github.io/workshop-intruduction-to-r-and-data.
+You can best follow the materials using the online book that contains all course materials: https://utrechtuniversity.github.io/workshop-intruduction-to-R-and-data.
 
 The following zipped file contains the files you need to follow along: [course-materials.zip](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/raw/main/course-materials.zip).
 You can also see the individual files [here](course-materials).
 
-### External resources
-
-- Book: [R for Data Science](https://r4ds.had.co.nz/)
-- [R cheat sheets](https://www.rstudio.com/resources/cheatsheets/) provided by the R community and RStudio, describing common procedures and packages. We use the following cheat sheets during our workshop:
-    - [Base R](http://github.com/rstudio/cheatsheets/blob/main/base-r.pdf)
-    - [R Markdown](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rmarkdown.pdf)
-    - [Data Import](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-import.pdf)
-    - [Data Transformation with dplyr](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf)
-    - [Data Visualization with ggplot2](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
-
 ## Acknowledgements
+
 The workshop 'Introduction to R & data' is developed and maintained by [Research Data Management Support](https://www.uu.nl/en/research/research-data-management) at Utrecht University.
-All videos were recorded by [Jacques Flores](https://www.uu.nl/medewerkers/jpflores).
-The material was written by [Barbara Vreede](https://github.com/bvreede), based on earlier versions by [Jonathan de Bruin](https://github.com/J535D165) and [Tessa Pronk](https://github.com/TessaPr).
+
+- All videos were recorded by [Jacques Flores](https://www.uu.nl/medewerkers/jpflores) and [Barbara Vreede](https://github.com/bvreede)
+- The earlier material were updated and further refined by [Neha Moopen](https://www.uu.nl/staff/NMoopen), [Jacques Flores](https://www.uu.nl/medewerkers/jpflores) and [Dorien Huijser](https://www.uu.nl/staff/DCHuijser)
+- The course is based on earlier versions by [Jonathan de Bruin](https://github.com/J535D165) and [Tessa Pronk](https://github.com/TessaPr)
