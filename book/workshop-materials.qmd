@@ -18,17 +18,16 @@ Make sure to save it in an accessible location on your computer and don’t forg
 You can also see the individual files in [the GitHub repository](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/tree/main/course-materials).
 
 ```
+├── cheatsheets
+│   ├── tidyverse_data-wrangling-cheatsheets.pdf
+│   ├── Posit Cheatsheets.url
+│   └── base-r.pdf
 ├── data
 │   ├── penguins_isotopes.xlsx
-│   └── penguins_raw.tsv
-├── exercises
-|   ├── baseR_exercises.Rmd
-│   └── datascience_exercises.Rmd
-├── solutions
-│   ├── datascience_solutions.html
-│   └── datascience_solutions.Rmd
-|__ animal.png
-
+│   └── penguins.tsv
+├── animal.png
+├── baseR_exercises.Rmd
+|__ datascience_exercises.Rmd
 ```
 
 ## R markdown files
@@ -45,5 +44,5 @@ the dedicated code chunks.
 The data for this workshop is from the Palmer Penguins dataset. 
 We will be using the following files:
 
-- `penguins_raw.tsv`
+- `penguins.tsv`
 - `penguins_isotopes.xlsx`
