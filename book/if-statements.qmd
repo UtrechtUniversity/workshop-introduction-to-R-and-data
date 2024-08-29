@@ -2,8 +2,8 @@
 
 ## Slides
 
-```{r embed-xaringan-2, echo=FALSE}
-xaringanExtra::embed_xaringan(url = "slides/slides_introduction.html#98", ratio = "4:3")
+```{=html}
+<iframe class="slide-deck" src="slides/slides_introduction.html#programming-if-statements" title="If-statements" width="100%" height="540"></iframe>
 ```
 
 ## Video
@@ -15,5 +15,5 @@ xaringanExtra::embed_xaringan(url = "slides/slides_introduction.html#98", ratio 
 Now move on to Exercise 7 in `baseR_exercises.Rmd`.
 
 ::: {.callout-tip}
-Getting lost? You can find the answers in the [slides](slides/slides_introduction.html#104) or in [this video](https://youtu.be/CV3uOPfnnt4).
+Getting lost? You can find the answers in the [slides](slides/slides_introduction.html#answers-to-exercise-7) or in [this video](https://youtu.be/CV3uOPfnnt4).
 :::
