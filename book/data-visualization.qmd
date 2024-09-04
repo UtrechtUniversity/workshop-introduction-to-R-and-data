@@ -1,13 +1,19 @@
 # Data Visualization
 
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="slides/slides_tidyverse.html#data-visualization" title="Data visualization with ggplot2" width="100%" height="540"></iframe>
+```
+
 ## Video
 
 {{< video https://vimeo.com/470862707 >}}
 
-## Exercise 13-15
+## Exercise 12
 
-Now try out exercises 13-15 in `datascience_exercises.Rmd`. 
+Now try out exercise 12 in `datascience_exercises.Rmd`. 
 
 ::: {.callout-tip}
-Getting lost? You can find the answers in the `datascience_solutions.html` file in your course materials.
+Getting lost? You can find the answers in the [slides](slides/slides_tidyverse.html#answers-to-exercise-12).
 :::

@@ -1,134 +1,32 @@
-.remark-slide-content {
-  background-color: #FFFFFF;
-  border-top: 80px solid #FFAB00;
+/* Make sure the code and code output is larger than the default */
+/* Source: https://stackoverflow.com/questions/75907436/quarto-revealjs-increase-relative-font-size-of-code-chunks */
+code.sourceCode {
+  font-size: 1.4em;
+  /* or try font-size: xx-large; */
 }
 
-.clear{
-  border-top: 0;
+/* Also increase the size of the cell output */
+div.cell-output-stdout {
+  font-size: 1.4em;
 }
 
-
-.title-slide > h2, .title-slide > h3 {
-  color: #303030;
+/* Add yellow line under 2nd level header */
+/* With thanks to ChatGPT... */
+h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    padding-bottom: 6px;
 }
 
-.inverse, .subheader {
-  background-color: #ffffff;
-  color: #FFAB00;
-  text-shadow: 0 1px 1px #333;
-  border-top: 0;
-}
-
-.subheader > h1 {
-  color: #FFAB00; 
-}
-
-.subheader > h2, .subheader > h3 {
-  color: #a0a0a0;
-}
-
-/*.subheader {
-  background-color: #ffffff;
-  color: #FFAB00;
-  text-shadow: 0 1px 1px #333;
-  border-top: 0;
-}*/
-
-.exercise {
-  border-top: 80px solid #aaaaaa;
-}
-
-.remark-code {
-  font-size: 70%;
-}
-
-a, a > code {
-  color: rgb(214, 147, 10);
-  font-weight: 400;
-}
-
-
-/*.title-slide {
-  background-image: url(slides_version-control_files/figure-html/git.svg);
-  background-color: #FFFFFF;
-  background-size: cover;
-  border-top: 0;
-}*/
-
-/* IMAGES */
-img[alt=clone-download] {height: 50px; margin: -17px 5px;}
-img[alt=download-zip] {height: 40px; margin: -12px 5px;}
-img[alt=rlogo] {margin: 20px 0;}
-img[alt=rstudiologo] {width: 400px;}
-img[alt=run] {height: 40px; margin: -12px 5px;}
-img[alt=run-chunk] {width: 500px; margin: -10px 40px;}
-img[alt=cheatsheet] {width: 320px; margin: -30px 30px;}
-img[alt=cheatsheet-math] {width: 360px; margin: -30px 10px;}
-img[alt=assignment-math] {height: 200px; margin: -5px 40px;}
-img[alt=value] {width: 400px;}
-img[alt=matrix] {width: 400px;}
-img[alt=function] {width: 350px; margin: 0 200px;}
-img[alt=environment] {width: 500px; margin: 0 110px;}
-
-.large-left-column {
-  color: #000;
-  width: 80%;
-  height: 92%;
-  float: left;
-}
-
-.large-left-column h2:last-of-type, .left-column h3:last-child {
-  color: #000;
-}
-
-
-.pull-left-larger {
-  float: left;
-  width: 63%;
-}
-.pull-right-smaller {
-  float: right;
-  width: 30%;
-}
-
-.pull-left-medium {
-  float: left;
-  width: 55%;
-}
-.pull-right-medium {
-  float: right;
-  width: 40%;
-}
-.pull-right-center {
-  float: right;
-  text-align: center;
-  width: 48%;
-}
-
-.quote {
-  float: right;
-  width: 90%;
-  font-style: italic;
-  color: #EB811B;
-  text-align: center;
-  font-size: 220%;
-  background-image: url(images/quote.png);
-}
-
-.source {
-  float: right;
-  width: 20%;
-  font-style: italic;
-  color: #888;
-  text-align: left;
-}
-
-
-.custom-code {
-  background: #F5F5F5; /* lighter */
-  /* background: #e7e8e2; /* darker */
-  border-radius: 5px;
-  padding: 5px 20px;
-  font-family: 'Courier', 'Fira Code', monospace;
-  font-weight: 500;
+h2::after {
+    content: "";
+    display: block;
+    width: 100%; /* as wide as the text */
+    height: 9px; /* line thickness */
+    background-color: #FFCD00;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }

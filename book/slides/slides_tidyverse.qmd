@@ -1,0 +1,999 @@
+---
+#title: "The data science workflow with Tidyverse"
+#author: "Research Data Management Support"
+execute: 
+  eval: true
+  echo: true
+format: 
+  revealjs:
+    pagetitle: "The data science workflow with Tidyverse"
+    theme: [default]
+    css: custom.css
+    embed-resources: true
+    smaller: true
+  gfm:
+    mermaid-format: png
+---
+
+# {background-color=#FFCD00}
+
+![](https://www.tidyverse.org/images/hex-tidyverse.png "The Tidyverse logo"){fig-align="center"}
+
+## What is the tidyverse?
+
+> The tidyverse is an opinionated collection of R packages **designed for data science**. All packages **share an underlying design** philosophy, grammar, and data structures ([tidyverse.org](https://www.tidyverse.org/)).
+
+
+![](https://elixir-luxembourg.org/assets/events_photos/2021_05_06_R_Tidyverse.png "Logos of common tidyverse packages"){fig-align="center"}
+
+## Packages and functions
+
+![](images/collection_package_function.png "Visualization of functions, packages and package collections like the Tidyverse")
+
+## Working with packages and functions
+
+1. Installing a package (once):
+
+```r
+#| label: install-package
+install.packages("dplyr")
+```
+
+. . .
+
+2. Loading a package (every time you want to use it):
+```{r}
+#| label: load-package
+library(dplyr)
+```
+
+. . .
+
+3. Now you can use functions from this package! (every time you want to use it)
+
+```{r}
+#| label: use-a-function
+dplyr::rename(iris, petal_length = Petal.Length)
+```
+
+# Go to Exercise 0 in `datascience_exercises.Rmd`
+
+## The Data Science workflow
+
+![Source: [R 4 Data Science](https://r4ds.had.co.nz/introduction.html)](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png "The data science workflow."){fig-align="center"}
+
+::: notes
+We will move a data frame through the different steps in a data science workflow.
+This means that often the results of one step will be the input for the next
+:::
+
+## tidyverse core packages 
+
+![](images/tidyverse_packages_per_step.png)
+
+::: notes
+- `readr`: data import
+- `tibble`: modern data frame object
+- `stringr`: working with strings
+- `forcats`: working with factors
+- `tidyr`: data tidying
+- `dplyr`: data manipulation
+- `ggplot2`: data visualization
+- `purrr`: functional programming
+:::
+
+## Afternoon workflow
+
+::: {.incremental}
+1. Read a file into R
+2. Clean the data:
+   - Filter on relevant rows
+   - Select only relevant columns
+3. Calculate a new column
+4. Rename a column
+5. Put the dataframe into a long (tidy) format
+6. Summarize the dataframe
+7. Visualize the dataframe
+8. Write the summarized dataframe to a file
+:::
+
+# Side Trip:<br>We're Going To Antarctica...{background-color=#FFCD00}
+
+## Data: palmerpenguins
+
+- Observations about penguins from the Palmer Archipelago (Antarctica)
+- Package created by Allison Horst for worldwide use
+- species, island, culmen length and depth, flipper length, etc.
+
+![](https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png){width="10%"}
+
+# Importing Data {background-color=#FFCD00}
+
+## Reading data into R
+
+![](../images/reading_writing.png "Importing files into R, and exporting them into a file again")
+
+
+## readr: Read Rectangular Text Data
+
+To read text data, you need:
+
+- **location** of the data (path)
+- **delimiter** (value separator) of the data, e.g. `,`, `;` or `\t`
+- **function** to use to read data into R
+
+. . .
+
+| Read *from* file | Write *to* file | Value separator |
+| --- | --- | --- |
+| `read_delim()`| `write_delim()` | catch-all: user needs to specify |
+| `read_csv()`| `write_csv()` | comma separated |
+| `read_csv2()`| `write_csv2()` | semicolon separated |
+| `read_tsv()` | `write_tsv()` | tab separated |
+
+
+## Reading non-text data file
+
+For non-text data files, there are other R packages:
+
+- `readxl`: Excel files
+- `haven`: SPSS & STATA files
+- `googlesheets4`: Google Sheets 
+- `rvest`: HTML files
+
+## Example: reading data
+
+Read a file located in the same folder as your script:
+```r
+raw_tsv_data <- read_tsv("my_raw_data.tsv")
+```
+
+. . . 
+
+Read a file located in a different folder:
+```r
+raw_csv_data <- read_csv("data/raw/my_raw_data.csv")
+```
+
+. . .
+
+Or from the web:
+
+```r
+# Source: https://catalog.data.gov/dataset/electric-vehicle-population-data
+electric_vehicles <- read_csv("https://data.wa.gov/api/views/f6w7-q2d2/rows.csv")
+```
+
+. . .
+
+Bonus: use an in-built dataset from R
+
+```r
+data(iris)        # Observational data on iris flowers
+data(mtcars)      # Motor Trend Car Road Tests
+
+data()            # Check all the available in-built datasets!
+```
+# Go to Exercise 1, 2 and 3
+
+```{r}
+#| echo: false
+#| label: load-tidyverse
+library(tidyverse)
+``` 
+
+## Answers Exercise 1, 2 and 3
+
+1. Reading the penguins dataset into R.
+
+```{r}
+#| label: exercise-1
+#| echo: false
+penguins <- read_tsv("../../course-materials/data/penguins.tsv")
+```
+
+```r
+penguins <- read_tsv("data/penguins.tsv")
+```
+
+. . .
+
+2. Reading penguins_isotopes.xlsx into R.
+
+```{r}
+#| label: exercise-2
+#| echo: false
+library(readxl)
+penguins_isotopes <- read_excel("../../course-materials/data/penguins_isotopes.xlsx")
+```
+
+```r
+penguins_isotopes <- read_excel(path = "data/penguins_isotopes.xlsx")
+```
+
+. . .
+
+3. Writing `penguins_isotopes` to a csv file.
+
+```r
+write_csv(penguins_isotopes,
+          file = "data/penguins_isotopes.csv")
+```
+
+# Selecting & filtering data {background-color=#FFCD00}
+
+## dplyr: Data Manipulation
+
+`dplyr` contains functions for many types of data manipulation, such as:
+
+- `filter()`: select **rows** that meet one or several logical criteria
+- `select()`: select (or drop) **columns**  
+- `rename()`: change column name
+- `mutate()`: transform column values or create new column
+- `group_by()`: group data on one or more columns
+- `summarize()`: reduces a group of data into a single row
+
+## Filter
+
+Selects **rows** in your dataframe.
+
+Use:
+```r
+filter(your-dataframe, your-condition)
+```
+
+. . .
+
+```{r}
+#| label: load-df-morning-session
+#| output: false
+#| echo: false
+df <- data.frame(name = c("Ann", "Bob", "Chloe", "Dan"),
+                 age = c(35,22,50,51),
+                 country = c("UK","USA","USA","UK")
+)
+```
+
+From the morning session: "From your dataframe `df`, return complete rows for everyone living in a country of your choice."
+
+```{r}
+#| label: filter-baser
+#| eval: false
+df[df$country=="UK", ]        # Base R
+```
+
+. . .
+
+```{r}
+#| label: filter-tidyverse
+filter(df, country == "UK")   # Tidyverse
+```
+
+## Select
+
+Select or drop **columns** in your dataframe.
+
+Basic use:
+```r
+select(your-dataframe, col1, col2)  # select col1 and col2
+```
+
+. . .
+
+
+```r
+select(your-dataframe, -col3)       # select all but col3
+```
+. . .
+
+Use special [selecting functions](https://tidyselect.r-lib.org/reference/language.html)
+```r
+select(your-dataframe, contain("col"))    # select cols containing "col"
+``` 
+
+. . .
+
+From the morning session: "Return the columns `name` and `age` together."
+
+```{r}
+#| label: select-baser
+#| eval: false
+df[, c("name","age")]       # Base R
+```
+
+. . .
+
+```{r}
+#| label: select-tidyverse
+select(df, name, age)       # Tidyverse
+```
+
+
+## Mutate
+
+Transform column values, or create new column.
+
+Basic use:
+```r
+mutate(your-dataframe, column_name = an_operation)
+```
+
+. . .
+
+
+Add a new column:
+
+```{r}
+#| label: newcol-baser
+#| eval: false
+df$adult <- c("adult", "minor",     # Base R
+              "adult", "adult")
+```
+
+. . .
+
+```{r}
+#| label: newcol-tidyverse
+df <- mutate(df,                    # Tidyverse
+            adult = c("adult", "minor", "adult", "adult"))
+```
+
+## Rename
+
+Renaming columns.
+
+Basic use:
+```r
+rename(your-dataframe, new_column_name = old_column_name)
+```
+
+. . .
+
+
+Rename a column:
+
+```{r}
+#| label: rename-baser
+#| eval: false
+df$Adult <- df$adult          # Base R
+```
+
+. . .
+
+```{r}
+#| label: rename-tidyverse
+df <- rename(df, Adult = adult) # Tidyverse
+df
+```
+
+# Go to Exercise 4 - 7
+
+## Answers exercise 4
+
+4. Filter `penguins` to leave out the NAs.
+
+```{r}
+#| label: exercise-4a
+penguins_subset <- filter(penguins, !is.na(Sex))
+```
+
+. . .
+
+Or
+```{r}
+#| label: exercise-4b
+penguins_subset <- filter(penguins, Sex == "MALE" | Sex == "FEMALE")
+```
+
+. . .
+
+Or
+
+```{r}
+#| label: exercise-4c
+penguins_subset <- filter(penguins, Sex %in% c("MALE", "FEMALE"))
+```
+
+## Answers exercise 5
+
+5. Select the columns Individual_ID, Species, Sex, Island, Culmen_Depth_mm and Culmen_Length_mm
+
+```{r}
+#| label: exercise-5a
+penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,
+                            Sex, Island, 
+                            Culmen_Depth_mm, Culmen_Length_mm)
+```
+
+. . .
+
+Or
+```{r}
+#| label: exercise-5b
+penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,
+                            Sex, Island, 
+                            starts_with("Culmen"))
+```
+
+. . .
+
+Or
+```{r}
+#| label: exercise-5c
+penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,
+                            Sex, Island, 
+                            contains("Culmen"))
+```
+
+## Answers exercises 6 and 7
+
+6. Use `mutate()` to create a new column `culmen_ratio`.
+
+```{r}
+#| label: exercise-6
+penguins_subset_3 <- mutate(penguins_subset_2,
+                            culmen_ratio = Culmen_Length_mm / Culmen_Depth_mm)
+```
+
+. . .
+
+7. Rename the columns `Culmen_Length_mm` and `Culmen_Depth_mm`.
+
+```{r}
+#| label: exercise-7
+penguins_subset_4 <- rename(penguins_subset_3,
+                            length = Culmen_Length_mm, 
+                            depth = Culmen_Depth_mm)
+```
+
+# Piping Operations {background-color=#FFCD00}
+
+## magrittr: The Forward-Pipe Operator %>%
+
+A key tidyverse component that chains all data science steps together: 
+
+`%>%`
+
+. . .
+
+Why?
+
+- create an easily readable **pipeline of chained commands**
+- no nested function calls
+- no need to save intermediate R objects with `<-`
+- easily add and/or delete steps in your pipeline without breaking the code
+
+## Pipe operator: how it works
+
+```{r}
+#| label: piping-operator-expl
+#| eval: false
+#| code-line-numbers: 1-2|4-5|7-8|10-11
+# Name the object that you use as initial input
+my_new_df <- df %>%
+  
+  # Perform a function using that object as input
+  filter(adult == "adult") %>%
+  
+  # Add another operation
+  select(name, age) %>%
+  
+  # And another, etc.
+  mutate(adult = c("adult", "minor", "adult", "adult"))
+  
+```
+
+. . .
+
+Note:
+
+- `df` is only mentioned once at the beginning
+- final line of the operation does not get a `%>%`
+
+# Go to exercise 8 
+
+![](https://raw.githubusercontent.com/tidyverse/magrittr/master/man/figures/logo.png "Logo of the piping operator, saying 'Leci n'est pas un pipe'"){fig-align="center" height="30%"}
+
+## Answers exercise 8
+
+Make a workflow that starts with the data `penguins` and subsequently applies your `filter`, `select`, `mutate` and `rename` operations.
+
+```{r}
+#| label:  exercise-8
+penguins_subset_5 <- penguins %>%
+  
+  # Filter out NAs
+  filter(!is.na(Sex)) %>%
+  
+  # Select only relevant columns
+  select(Individual_ID, Species, Sex, Island, starts_with("Culmen")) %>%
+  
+  # Add a new columns culmen_ratio
+  mutate(culmen_ratio =  Culmen_Length_mm / Culmen_Depth_mm) %>%
+  
+  # Rename Culmen measurement columns
+  rename(length = Culmen_Length_mm,
+         depth = Culmen_Depth_mm)
+  
+```
+
+# Tidy Data {background-color=#FFCD00}
+
+## Tidy Data
+
+> Tidy data sets are all alike; but every messy data set is messy in its own way ([Wickham/Grolemund, 2017](https://r4ds.had.co.nz/tidy-data.html)]
+
+. . .
+
+Tidy Data Principles: principles for structuring tabular data sets:
+
+1. Each variable forms a column.
+2. Each observation forms a row.
+3. Each type of observational unit forms a table.
+
+## Our df - but extended
+
+```{r}
+#| label: extended-df-morning-sesion
+#| echo: false
+
+df_ext <- df %>%
+  mutate(mood_wk1 = c(4, 3, 4, 2),
+         mood_wk2 = c(2, 3, 5, 4))
+
+df_ext
+```
+
+. . .
+
+Wide or long?
+
+. . .
+
+That's right: **wide**. Why is this not tidy?
+
+. . .
+
+- Values in column names
+- Multiple observations per row
+
+## Our extended df - Long format
+
+```{r}
+#| label: pivot-ext-df
+#| echo: false
+
+df_long <- df_ext %>%
+            pivot_longer(cols = starts_with("mood_"),
+                        names_to = "week",
+                        values_to = "mood") %>%
+           mutate(week = as.numeric(gsub("mood_wk", "", week))) %>%
+           arrange(name, week)
+
+df_long
+```
+
+. . .
+
+- 1 observation (week) per row
+- multiple rows per individual
+
+## Wide vs Long
+
+
+::: columns
+::: {.column width="53%"}
+**Wide**
+
+```{r}
+#| label: print-head-df_ext
+#| echo: false
+head(df_ext, 4)
+```
+
+- All observations on 1 individual in 1 row
+- Not tidy
+
+:::
+
+::: {.column width="47%"}
+:::  {.fragment}
+
+**Long**
+
+```{r}
+#| label: print-head-df_long
+#| echo: false
+head(df_long, 4)
+```
+
+- No values as column headers
+- Single observation (weight, mood) in a single row
+- Often needed for data visualization
+:::
+:::
+:::
+
+## tidyr: Tidy Messy Data
+
+Do It Yourself:
+
+- `pivot_longer()`: lengthen data: more rows, fewer columns (long format, tidy)
+- `pivot_wider()`: widen data: fewer rows, more columns (wide format)
+
+. . .
+
+BASIC use:
+```r
+pivot_longer(your-dataframe, cols = c(col_to_pivot1, col_to_pivot2, etc),
+            names_to = "name_of_measurement",
+            values_to = "values_of_measurement")
+```
+
+. . .
+
+Check `?pivot_longer()` and Google! for examples and other function arguments.
+
+. . .
+
+In our example:
+
+```r
+pivot_longer(df_ext, 
+             cols = starts_with("mood_"),
+             names_to = "week",
+             values_to = "mood")
+```
+
+# Go to Exercise 9
+
+![](https://raw.githubusercontent.com/apreshill/teachthat/master/pivot/pivot_longer_smaller.gif "Visualization of the pivot_longer() process")
+*Source: [Allison Hill](https://github.com/apreshill/teachthat/blob/master/pivot/pivot_longer_smaller.gif)*
+
+## Answer exercise 9
+
+Transform the dataframe from wide to long format using the function `pivot_longer()`.
+
+```{r}
+#| label: exercise-9
+penguins_long <- penguins_subset_5 %>%
+  pivot_longer(cols = c(length, depth),
+               names_to = "culmen_element",
+               values_to = "measurement")
+```
+
+# Summarizing and combining data {background-color=#FFCD00}
+
+## group_by() and summarize()
+
+Group by one or more columns and perform some summarizing operation.
+
+Basic use:
+```r
+group_by(your-dataframe, column1_to_group_by, column2_to_group_by, [etc])
+summarize(your-dataframe, new_column = <some_summarizing_operation>)
+```
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+Example 1:
+
+```{r}
+#| label: group-summarize-count
+df_ext %>% 
+    group_by(country) %>% 
+    summarize(count = n())
+```
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+Example 2
+
+```{r}
+#| label: group-summarize-mean
+df_long %>% 
+    group_by(week) %>% 
+    summarize(avg_mood = mean(mood))
+```
+:::
+:::
+:::
+
+## Combining data (joins)
+
+Read more about joins in [R for Data Science](https://r4ds.hadley.nz/joins#how-do-joins-work).
+
+::: columns
+::: {.column width="50%"}
+![](https://r4ds.hadley.nz/diagrams/join/full.png "The  full_join function joins 2 dataframes x and y completely, resulting in a dataframe with all rows and all columns from both dataframes"){width="80%"}
+
+::: {.fragment}
+![](https://r4ds.hadley.nz/diagrams/join/inner.png "The inner_join function joins 2 dataframes x and y and leaves only the rows that overlap between the two dataframes"){width="80%"}
+:::
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+![](https://r4ds.hadley.nz/diagrams/join/left.png "The left_join function joins 2 dataframes x and y and leaves all rows from dataframe x in the combined dataframe"){width="80%"}
+:::
+
+:::{.fragment}
+![](https://r4ds.hadley.nz/diagrams/join/right.png "The right_join function joins 2 dataframes x and y and leaves all rows from dataframe y in the combined dataframe"){width="80%"}
+:::
+:::
+:::
+
+
+# Go to Exercises 10 and 11
+
+## Answers Exercises 10 and 11
+
+10. Use `group_by()` and `summarize()` to calculate the mean and standard deviation of all measurements, grouped by species and the type of measurement.
+
+```{r}
+#| label: exercise-10
+penguins_summary <- penguins_long %>%
+  group_by(Species, culmen_element) %>%
+  summarize(avg = mean(measurement),
+            sd = sd(measurement))
+```
+
+. . .
+
+11. Merge `penguins_summary` and `penguins_long`.
+
+```{r}
+#| label: exercise-11
+penguins_join <- full_join(penguins_summary, penguins_long,
+                           by = c("Species", "culmen_element"))
+```
+
+# Data Visualization {background-color=#FFCD00}
+
+## ggplot2: Elegant Data Visualisations
+
+- `ggplot2` is Hadley Wickham's [reimplementation](https://doi.org/10.1198/jcgs.2009.07098) of *The Grammar of Graphics* (Leland Wilkinson, 2005). 
+- MANY functions to generate MANY graphs
+- Graphs built up from multiple layers
+
+. . .
+
+![](https://simonschoe.github.io/introduction-to-the-tidyverse/img/grammar-of-graphic-layers.png "Visualization of the layer-based approach of ggplot2. At the bottom is the Data which should be plotted, followed by Aesthetics (axes, plot positions, encodings), Scale (scale values, represent multiple values?), Geometric objects (line, bar, point, etc.), Statistics (mean, quantile, confidence intervals?), Facets (create subplots based on multiple dimensions) and Coordinate system (cartesian, polar)."){height="90%" fig-align="center"}
+*Source: [towardsdatascience](https://towardsdatascience.com/a-comprehensive-guide-to-the-grammar-of-graphics-for-effective-visualization-of-multi-dimensional-1f92b4ed4149)*
+
+## Our first plots - data
+
+Remember `df_ext`?
+
+```{r}
+#| label: print-df_ext
+df_ext
+```
+
+. . .
+
+And `df_long`?
+
+```{r}
+#| label: print-df_long
+df_long
+```
+
+## Our first plot
+
+First layer: the data
+
+```{r}
+#| label: plot-1a
+#| output-location: column
+#| code-line-numbers: "1"
+ggplot(df_ext)
+```
+
+## Our first plot
+
+Second layer: aesthetics
+
+```{r}
+#| label: plot-1b
+#| output-location: column
+#| code-line-numbers: "2"
+ggplot(df_ext) +
+  aes(x = country)
+```
+
+## Our first plot
+
+Third layer: geom
+
+```{r}
+#| label: plot-1c
+#| output-location: column
+#| code-line-numbers: "3"
+ggplot(df_ext) +
+  aes(x = country) +
+  geom_bar()
+```
+
+## Our first plot
+
+Another layer: labels
+
+```{r}
+#| label: plot-1d
+#| output-location: column
+#| code-line-numbers: "4-6"
+ggplot(df_ext) +
+  aes(x = country) +
+  geom_bar() +
+  labs(title="Countries in `df_ext`", 
+       x ="Country", 
+       y = "Count")
+```
+
+## Our second plot
+
+Turn week into character (to prevent ugly plotting) + plot data.
+
+```{r}
+#| label: plot-2a
+#| output-location: column
+#| code-line-numbers: "1-3"
+df_long %>%
+  mutate(week = as.character(week)) %>%
+  ggplot()
+```
+
+## Our second plot
+
+Add aesthetics.
+
+```{r}
+#| label: plot-2b
+#| output-location: column
+#| code-line-numbers: "4"
+df_long %>%
+  mutate(week = as.character(week)) %>%
+  ggplot() +
+  aes(x = week, y = mood)
+```
+
+## Our second plot
+
+Add a geom.
+
+```{r}
+#| label: plot-2c
+#| output-location: column
+#| code-line-numbers: "5"
+df_long %>%
+  mutate(week = as.character(week)) %>%
+  ggplot() +
+  aes(x = week, y = mood) + 
+  geom_boxplot() 
+```
+
+## Our second plot
+
+Create a separate plot per country.
+```{r}
+#| label: plot-2d
+#| output-location: column
+#| code-line-numbers: "6"
+df_long %>%
+  mutate(week = as.character(week)) %>%
+  ggplot() +
+  aes(x = week, y = mood) + 
+  geom_boxplot() +
+  facet_wrap(~ country)
+```
+
+## Our second plot
+
+Use a nicer theme.
+
+```{r}
+#| label: plot-2e
+#| output-location: column
+#| code-line-numbers: "7"
+df_long %>%
+  mutate(week = as.character(week)) %>%
+  ggplot() +
+  aes(x = week, y = mood) + 
+  geom_boxplot() +
+  facet_wrap(~ country) +
+  theme_minimal()
+```
+
+## Our second plot
+
+Larger text
+
+```{r}
+#| label: plot-2f
+#| output-location: column
+#| code-line-numbers: "8"
+df_long %>%
+  mutate(week = as.character(week)) %>%
+  ggplot() +
+  aes(x = week, y = mood) + 
+  geom_boxplot() +
+  facet_wrap(~ country) +
+  theme_minimal() +
+  theme(text = element_text(size = 25))
+```
+
+# Go to Exercise 12
+
+## Answers to Exercise 12
+
+Plot a barplot of `culmen_element` and `avg` with error bars.
+
+```{r}
+#| label: exercise-12
+#| output-location: column
+ggplot(penguins_summary) +
+  aes(x = culmen_element, 
+      y = avg ) +
+  geom_col() +
+  aes(fill = culmen_element) +
+  facet_wrap(~Species, 
+             ncol = 1) +
+  theme_bw() +
+  geom_errorbar(aes(ymin = avg-sd, 
+                    ymax = avg+sd), 
+                width= .1)
+```
+
+## Learn more
+
+Learning R:
+
+- R 4 Data Science: <https://r4ds.hadley.nz/>
+- Data Science in a Box: <https://datasciencebox.org/content>
+- Learning statistics with R: <https://learningstatisticswithr.com/book/>
+- Statistical Inference via Data Science: A ModernDive into R and the Tidyverse: <https://moderndive.com/>
+
+. . .
+
+Plotting:
+
+- Choose a visualization > Get example code: <https://www.data-to-viz.com/>
+- ggplot2 book: <https://ggplot2-book.org/>
+- ggplot flipbook: <https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html>
+
+## Wrap-up
+
+What have we learned this afternoon?
+
+:::{.incremental}
+- Packages vs. functions
+- Reading data into R: `read_csv()`, `read_tsv()`, `read_excel()`
+- Writing R objects to a csv file: `write_csv`
+- Wrangling data with `filter()`, `select()`, `mutate()`, `rename()`
+- Chaining operations together with `%>%`
+- Creating tidy data
+- Summarizing and combining datasets
+- Using `ggplot2` to make some basic plots
+:::
+
+## Where to find us
+
+- Our website: [uu.nl/rdm](https://uu.nl/rdm/)
+- [Weekly Walk-in Hours Research Data & Software](https://www.uu.nl/en/research/research-data-management/workshops/walk-in-hours-research-data-and-software)
+- [Monthly Programming Cafe](https://www.uu.nl/en/research/research-data-management/workshops/programming-cafe)
+- Or contact us for support: <info.rdm@uu.nl>
+
+# Thank you! {background-color=#FFCD00}
+
+```{r}
+#| label: good-luck
+useR <- function(){
+  print("Good luck and see you!")
+}
+
+useR()
+```

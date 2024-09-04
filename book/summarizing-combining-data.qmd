@@ -1,0 +1,15 @@
+# Summarizing & combining data
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="slides/slides_tidyverse.html#summarizing-and-combining-data" title="Summarizing and combining data" width="100%" height="540"></iframe>
+```
+
+## Exercise 10-11
+
+Now try out exercises 10 and 11 in `datascience_exercises.Rmd`. 
+
+::: {.callout-tip}
+Getting lost? You can find the answers in the [slides](slides/slides_tidyverse.html#answers-exercises-10-and-11).
+:::

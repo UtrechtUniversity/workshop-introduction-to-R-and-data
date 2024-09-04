@@ -1,13 +1,20 @@
-# Transformations & Tidy Data
+# Tidy Data
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="slides/slides_tidyverse.html#tidy-data" title="Tidy data" width="100%" height="540"></iframe>
+```
+
 
 ## Video
 
 {{< video https://vimeo.com/470864363 >}}
 
-## Exercise 9-12
+## Exercise 9
 
-Now try out exercises 9-12 in `datascience_exercises.Rmd`. 
+Now try out exercise 9 in `datascience_exercises.Rmd`. 
 
 ::: {.callout-tip}
-Getting lost? You can find the answers in the `datascience_solutions.html` file in your course materials.
+Getting lost? You can find the answers in the [slides](slides/slides_tidyverse.html#answer-exercise-9).
 :::
