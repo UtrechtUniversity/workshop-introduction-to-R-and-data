@@ -111,31 +111,7 @@ This means that often the results of one step will be the input for the next
 
 ## Reading data into R
 
-```{mermaid}
-%%| label: importing-data-into-R
-%%| echo: false
-%%| fig-width: 25
-
-flowchart LR
-    %% Subgraph Styling
-    subgraph Filesystem
-        style Filesystem fill:#e0f7fa,stroke:#333,stroke-width:2px,color:#333,font-size:30px
-        style A fill:#ffffff,stroke:#333,stroke-width:2px,color:#333,font-size:20px
-        style C fill:#ffffff,stroke:#333,stroke-width:2px,color:#333,font-size:20px
-        A[Data file <br>.tsv, .csv .xlsx]
-        C[Exported File]
-    end
-    subgraph R-Environment
-        style R-Environment fill:#e8f5e9,stroke:#333,stroke-width:2px,color:#333,font-size:30px
-        style B fill:#ffffff,stroke:#333,stroke-width:2px,color:#333,font-size:20px
-        style D fill:#ffffff,stroke:#333,stroke-width:2px,color:#333,font-size:20px
-        B[df in <br>R Environment] --> |Transform, Tidy, <br>Model, Visualize| D[df in<br> R Environment]
-    end
-
-    %% Connections
-    A -->|Read into R| B
-    D -->|Export as File| C
-```
+![](../images/reading_writing.png "Importing files into R, and exporting them into a file again")
 
 
 ## readr: Read Rectangular Text Data
@@ -812,7 +788,7 @@ First layer: the data
 
 ```{r}
 #| label: plot-1a
-#| output-location: column-fragment
+#| output-location: column
 #| code-line-numbers: "1"
 ggplot(df_ext)
 ```
@@ -823,7 +799,7 @@ Second layer: aesthetics
 
 ```{r}
 #| label: plot-1b
-#| output-location: column-fragment
+#| output-location: column
 #| code-line-numbers: "2"
 ggplot(df_ext) +
   aes(x = country)
@@ -835,7 +811,7 @@ Third layer: geom
 
 ```{r}
 #| label: plot-1c
-#| output-location: column-fragment
+#| output-location: column
 #| code-line-numbers: "3"
 ggplot(df_ext) +
   aes(x = country) +
@@ -848,7 +824,7 @@ Another layer: labels
 
 ```{r}
 #| label: plot-1d
-#| output-location: column-fragment
+#| output-location: column
 #| code-line-numbers: "4-6"
 ggplot(df_ext) +
   aes(x = country) +
@@ -864,7 +840,7 @@ Turn week into character (to prevent ugly plotting) + plot data.
 
 ```{r}
 #| label: plot-2a
-#| output-location: column-fragment
+#| output-location: column
 #| code-line-numbers: "1-3"
 df_long %>%
   mutate(week = as.character(week)) %>%
@@ -877,7 +853,7 @@ Add aesthetics.
 
 ```{r}
 #| label: plot-2b
-#| output-location: column-fragment
+#| output-location: column
 #| code-line-numbers: "4"
 df_long %>%
   mutate(week = as.character(week)) %>%
@@ -891,7 +867,7 @@ Add a geom.
 
 ```{r}
 #| label: plot-2c
-#| output-location: column-fragment
+#| output-location: column
 #| code-line-numbers: "5"
 df_long %>%
   mutate(week = as.character(week)) %>%
@@ -905,7 +881,7 @@ df_long %>%
 Create a separate plot per country.
 ```{r}
 #| label: plot-2d
-#| output-location: column-fragment
+#| output-location: column
 #| code-line-numbers: "6"
 df_long %>%
   mutate(week = as.character(week)) %>%
@@ -921,7 +897,7 @@ Use a nicer theme.
 
 ```{r}
 #| label: plot-2e
-#| output-location: column-fragment
+#| output-location: column
 #| code-line-numbers: "7"
 df_long %>%
   mutate(week = as.character(week)) %>%
@@ -938,7 +914,7 @@ Larger text
 
 ```{r}
 #| label: plot-2f
-#| output-location: column-fragment
+#| output-location: column
 #| code-line-numbers: "8"
 df_long %>%
   mutate(week = as.character(week)) %>%
@@ -958,7 +934,7 @@ Plot a barplot of `culmen_element` and `avg` with error bars.
 
 ```{r}
 #| label: exercise-12
-#| output-location: column-fragment
+#| output-location: column
 ggplot(penguins_summary) +
   aes(x = culmen_element, 
       y = avg ) +
