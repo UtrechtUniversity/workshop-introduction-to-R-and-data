@@ -154,6 +154,27 @@ Note the difference in syntax:
 - calling up an object, or making calculations: R shows you the answer
 
 
+## Functions
+
+Functions: code that performs a specific task based on the arguments provided.
+
+Examples:
+
+- `mean(x)`: calculate the mean of x
+- `mean(x, na.rm = TRUE)`: calculate the mean of x by leaving out the NAs
+- `getwd()`: print the working directory to the screen (requires no arguments)
+
+. . .
+
+
+:::{.callout-tip title="Help with functions"}
+What does this function do, and what arguments does it need?
+
+```r
+?mean
+```
+:::
+
 ## Maths functions
 
 You can perform math with your variables:
