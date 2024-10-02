@@ -51,7 +51,7 @@ Create a character vector called "name" and add these names to the vector using 
 2. _How old are Ann, Bob, Chloe, and Dan?_ 
 Create a numeric vector called "age" and add their ages to the vector. You can decide their ages.
 
-3. Use the `class()` function to check the data type of the `name` and `age` vectors.
+3. Use the `class()` function to check the data type of the `name` vector. Do the same for the `age` vector.
 
 4. _What is their average age?_ 
 Use a function in R to calculate this. 
