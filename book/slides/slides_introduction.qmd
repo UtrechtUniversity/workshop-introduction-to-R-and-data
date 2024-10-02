@@ -253,7 +253,7 @@ x > 1
 4. Round off the result to 1 decimal.
 ```{r}
 #| label: exercise-1.4
-round(x,1)
+round(x, 1)
 ```
 
 # Vectors in R {background-color=#FFCD00}
@@ -282,7 +282,7 @@ c("a","b","c")
 A logical vector:
 ```{r}
 #| label: logical-vector
-c(T,TRUE,F)
+c(T, TRUE, F)
 ```
 
 ## Combining data: creating vectors
@@ -290,7 +290,7 @@ c(T,TRUE,F)
 What is this vector?
 ```{r}
 #| label: combined-vector
-c(TRUE,"a",3)
+c(TRUE, "a", 3)
 ```
 
 . . .
@@ -376,7 +376,7 @@ name <- c("Ann", "Bob", "Chloe", "Dan")
 Create a numeric vector called "age" and add their ages to the vector. You can decide their ages.
 ```{r}
 #| label: exercise-2.2
-age <- c(35,22,50,51)
+age <- c(35, 22, 50, 51)
 ```
 
 . . .
@@ -428,7 +428,7 @@ How about combining `name` and `age` in a two-dimensional table structure?
 
 ```{r}
 #| label: combine-in-df
-data.frame(name,age)
+data.frame(name, age)
 ```
 
 Two dimensions:
@@ -444,7 +444,7 @@ Or: in a multi-dimensional list.
 
 ```{r}
 #| label: combine-in-list
-list(name,age)
+list(name, age)
 ```
 
 Dimensions: *any*
@@ -473,7 +473,7 @@ NB: dataframes and lists appear under `Data` in the Environment (top right panel
 ```{r}
 #| label: factors
 # Create vector country
-country <- c("UK","USA","USA","UK")
+country <- c("UK", "USA", "USA", "UK")
 country
 
 # Turn country into a factor
@@ -557,7 +557,7 @@ age[1]
 2. Return the 2nd and 4th name in your vector `name`.
 ```{r}
 #| label: exercise-4.2
-name[c(2,4)]
+name[c(2, 4)]
 ```
 
 . . .
@@ -565,7 +565,7 @@ name[c(2,4)]
 3. Return only ages under 30 from your vector `age`.
 ```{r}
 #| label: exercise-4.3
-age[age<30]
+age[age < 30]
 ```
 
 # Indexing a data frame {background-color=#FFCD00}
@@ -587,7 +587,7 @@ df[,2]
 By name (as a character string):
 ```{r}
 #| label: select-col-name
-df[,"age"]
+df[, "age"]
 ```
 
 . . .
@@ -604,7 +604,7 @@ df$age
 By position:
 ```{r}
 #| label: select-row-pos
-df[2,]
+df[2, ]
 ```
 
 . . .
@@ -612,7 +612,7 @@ df[2,]
 By content:
 ```{r}
 #| label: select-row-content
-df[df$name=="Bob",]
+df[df$name=="Bob", ]
 ```
 
 . . .
@@ -620,7 +620,7 @@ df[df$name=="Bob",]
 **Combining rows and columns**
 ```{r}
 #| label: select-row-col
-df[df$name=="Bob","age"]
+df[df$name=="Bob", "age"]
 ```
 
 # Go to exercise 5
@@ -646,7 +646,7 @@ df[df$age<40, "name"]
 3. Return the columns `name` and `age` together.
 ```{r}
 #| label: exercise-5.3
-df[, c("name","age")]
+df[, c("name", "age")]
 ```
 
 ## Selecting from a list
@@ -678,7 +678,7 @@ Subselection *in the content* of a list element:
 ```{r}
 #| label: select-list-sub
 mylist[[4]][2]
-mylist[[4]][1,2]
+mylist[[4]][1, 2]
 ```
 :::
 :::
@@ -691,7 +691,7 @@ mylist[[4]][1,2]
 Let's add a column to our data:
 ```{r}
 #| label: na-df
-df$pet <- c("cat","none","",NA)
+df$pet <- c("cat", "none", "", NA)
 
 df
 ```
@@ -932,8 +932,8 @@ First, run the code with the function itself. It will appear in your environment
 Now, you can use the function:
 ```{r}
 #| label: use-myfun
-myFun(3,4)
-myFun(90,71)
+myFun(3, 4)
+myFun(90, 71)
 ```
 
 # Go to exercise 8
@@ -1087,7 +1087,7 @@ for(the_age in df$age){
 - Use a search engine (often useful: Stackoverflow)
 - (Generative AI)
     - Upside: can write all code for you
-    - Downside: you learn less, can hallucinate, not certain what sources it uses
+    - Downside: you learn less, it can hallucinate, not certain what sources it uses
 
 ## Help!
 
