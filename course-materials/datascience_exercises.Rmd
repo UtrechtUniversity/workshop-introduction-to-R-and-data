@@ -115,8 +115,7 @@ Use the `mutate()` function to create a new column called `culmen_ratio`, which 
 Make sure to work with the `penguins_subset_2` dataframe.
 
 ```{r}
-penguins_subset_3 <- penguins_subset_2 %>%
-  ???(culmen_ratio = ???)
+penguins_subset_3 <- mutate(penguins_subset_2, ???)
 ```
 
 ## Exercise 7
@@ -124,9 +123,9 @@ penguins_subset_3 <- penguins_subset_2 %>%
 In the next chapter, we will make our dataframe tidy. Before we do that, we will rename the `Culmen_Length_mm` and `Culmen_Depth_mm` columns in order to make subsequent operations easier.
 
 ```{r}
-penguins_subset_4 <- penguins_subset_3 %>%
-  rename(length = ???, 
-         depth = ???)
+penguins_subset_4 <- rename(penguins_subset_3,
+                            length = ???,
+                            depth = ???)
 ```
 
 # Exercise 8
@@ -184,8 +183,7 @@ penguins_summary <- penguins_long %>%
 Use the function `full_join()` to merge the `penguins_summary` and `penguins_long` data frames, so that each row in the long data frame will have additional columns with the mean and standard deviation for its group.
 
 ```{r}
-penguins_join <- full_join(???, ???,
-                           by = c(???, ???))
+penguins_join <- full_join(???)
 ```
 
 # Chapter 4: Data Visualization
@@ -208,12 +206,12 @@ Add the variables we want to plot, i.e. `culmen_element` and `avg`:
 
 ```{r}
 ggplot(penguins_summary) +
-  aes(x = ???, y = ???)
+  aes(???)
 ```
 
 ### Step 3
 
-Give your data a geometric element - in this case, bars - using `geom_col()`:
+Give your data a geometric element. In this case: bars.
 
 ```{r}
 ggplot(penguins_summary) +
@@ -271,4 +269,15 @@ ggplot(penguins_summary) +
   facet_wrap(~Species, ncol = 1) +
   theme_bw() +
   ???(???(???, ???), width= .1)
+```
+
+## Exercise 13
+
+Create another type of data visualization with any of the following dataframes that we've created: `penguins`, `penguins_long`, penguins_summary` or `penguins_join`. 
+
+Tip: Use the ggplot2 cheatsheet, or find a nice data visualization (and code examples) at https://www.data-to-viz.com/.
+
+```{r}
+# Add your code to create your plot here!
+
 ```
