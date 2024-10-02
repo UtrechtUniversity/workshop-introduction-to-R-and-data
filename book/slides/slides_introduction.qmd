@@ -1096,20 +1096,4 @@ for(the_age in df$age){
 ## Help? Scroll down for examples!
 ![](images/help2.png "Help examples")
 
-## Note on R projects
-
-When you start programming for yourself:
-
-- Create a folder dedicated to your project
-- Start a new R project: **File > New Project > Existing Directory**
-- An `.RProj` file will be created
-
-. . .
-
-Advantages:
-
-- Automatically set your working directory to that folder
-- Automatically retrieve only the history and objects from that R project
-- More reproducible (relative vs. absolute paths)
-
 # Lunch break! {background-color=#FFCD00}
