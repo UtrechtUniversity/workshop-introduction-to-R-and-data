@@ -943,44 +943,34 @@ df_long %>%
   theme(text = element_text(size = 25))
 ```
 
-# Go to Exercise 12 and 13
+## ggplot2 resources
 
-## Answers to Exercise 12
-
-Plot a barplot of `culmen_element` and `avg` with error bars.
-
-```{r}
-#| label: exercise-12
-#| output-location: column
-ggplot(penguins_summary) +
-  aes(x = culmen_element, 
-      y = avg ) +
-  geom_col() +
-  aes(fill = culmen_element) +
-  facet_wrap(~Species, 
-             ncol = 1) +
-  theme_bw() +
-  geom_errorbar(aes(ymin = avg-sd, 
-                    ymax = avg+sd), 
-                width= .1)
-```
-
-## Learn more
-
-Learning R:
-
-- R 4 Data Science: <https://r4ds.hadley.nz/>
-- Data Science in a Box: <https://datasciencebox.org/content>
-- Learning statistics with R: <https://learningstatisticswithr.com/book/>
-- Statistical Inference via Data Science: A ModernDive into R and the Tidyverse: <https://moderndive.com/>
-
-. . .
-
-Plotting:
+Useful resources for plotting with ggplot2:
 
 - Choose a visualization > Get example code: <https://www.data-to-viz.com/>
 - ggplot2 book: <https://ggplot2-book.org/>
 - ggplot flipbook: <https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html>
+
+# Go to Exercise 12 - 13
+
+## Answers to Exercise 12
+
+A scatterplot of Culmen_Length_mm against Flipper_Length_mm per Island.
+
+```{r}
+#| label: exercise-13
+#| output-location: column
+ggplot(penguins, aes(x = Culmen_Length_mm, 
+                     y = Flipper_Length_mm, 
+                     color = Species)) + 
+  geom_point() + 
+  labs(x = "Culmen length (mm)",
+       y = "Flipper length (mm)",
+       title = "Culmen and Flipper length by Species") +
+  theme_classic() +
+  facet_wrap( ~ Island) + 
+  geom_smooth(method = "lm")
+```
 
 ## Wrap-up
 
@@ -996,6 +986,14 @@ What have we learned this afternoon?
 - Summarizing and combining datasets
 - Using `ggplot2` to make some basic plots
 :::
+
+
+## Learn more
+
+- R 4 Data Science: <https://r4ds.hadley.nz/>
+- Data Science in a Box: <https://datasciencebox.org/content>
+- Learning statistics with R: <https://learningstatisticswithr.com/book/>
+- Statistical Inference via Data Science: A ModernDive into R and the Tidyverse: <https://moderndive.com/>
 
 ## Where to find us
 
