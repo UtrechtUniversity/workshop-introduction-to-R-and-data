@@ -35,7 +35,6 @@ format:
 1. Installing a package (once):
 
 ```r
-#| label: install-package
 install.packages("dplyr")
 ```
 
@@ -113,6 +112,25 @@ This means that often the results of one step will be the input for the next
 
 ![](../images/reading_writing.png "Importing files into R, and exporting them into a file again")
 
+## R projects and working directories
+
+When you start programming for yourself:
+
+- Create a folder dedicated to your project
+- Start a new R project: **File > New Project > Existing Directory**
+- An `.RProj` file will be created
+
+. . .
+
+Advantages:
+
+- Automatically set your working directory to that folder
+- Automatically retrieve only the history and objects from that R project
+- More reproducible (relative vs. absolute paths)
+
+```r
+getwd()
+```
 
 ## readr: Read Rectangular Text Data
 
@@ -288,7 +306,7 @@ select(your-dataframe, -col3)       # select all but col3
 
 Use special [selecting functions](https://tidyselect.r-lib.org/reference/language.html)
 ```r
-select(your-dataframe, contain("col"))    # select cols containing "col"
+select(your-dataframe, contains("col"))    # select cols containing "col"
 ``` 
 
 . . .
@@ -308,65 +326,7 @@ df[, c("name","age")]       # Base R
 select(df, name, age)       # Tidyverse
 ```
 
-
-## Mutate
-
-Transform column values, or create new column.
-
-Basic use:
-```r
-mutate(your-dataframe, column_name = an_operation)
-```
-
-. . .
-
-
-Add a new column:
-
-```{r}
-#| label: newcol-baser
-#| eval: false
-df$adult <- c("adult", "minor",     # Base R
-              "adult", "adult")
-```
-
-. . .
-
-```{r}
-#| label: newcol-tidyverse
-df <- mutate(df,                    # Tidyverse
-            adult = c("adult", "minor", "adult", "adult"))
-```
-
-## Rename
-
-Renaming columns.
-
-Basic use:
-```r
-rename(your-dataframe, new_column_name = old_column_name)
-```
-
-. . .
-
-
-Rename a column:
-
-```{r}
-#| label: rename-baser
-#| eval: false
-df$Adult <- df$adult          # Base R
-```
-
-. . .
-
-```{r}
-#| label: rename-tidyverse
-df <- rename(df, Adult = adult) # Tidyverse
-df
-```
-
-# Go to Exercise 4 - 7
+# Go to exercises 4 and 5
 
 ## Answers exercise 4
 
@@ -425,6 +385,62 @@ penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,
                             contains("Culmen"))
 ```
 
+
+## Mutate
+
+Transform column values, or create new column.
+
+Basic use:
+```r
+mutate(your-dataframe, column_name = an_operation)
+```
+
+. . .
+
+
+Add a new column:
+
+```r
+df$old_age <- df$age + 20           # Base R
+```
+
+. . .
+
+```{r}
+#| label: newcol-tidyverse
+df <- mutate(df, old_age = age + 20) # Tidyverse
+```
+
+## Rename
+
+Renaming columns.
+
+Basic use:
+```r
+rename(your-dataframe, new_column_name = old_column_name)
+```
+
+. . .
+
+
+Rename a column:
+
+```{r}
+#| label: rename-baser
+#| eval: false
+df$Old_Age <- df$old_age          # Base R
+```
+
+. . .
+
+```{r}
+#| label: rename-tidyverse
+df <- rename(df, Old_Age = old_age) # Tidyverse
+df
+```
+
+# Go to Exercise 6 and 7
+
 ## Answers exercises 6 and 7
 
 6. Use `mutate()` to create a new column `culmen_ratio`.
@@ -473,13 +489,13 @@ Why?
 my_new_df <- df %>%
   
   # Perform a function using that object as input
-  filter(adult == "adult") %>%
+  filter(country == "UK") %>%
   
   # Add another operation
   select(name, age) %>%
   
   # And another, etc.
-  mutate(adult = c("adult", "minor", "adult", "adult"))
+  mutate(old_age = age + 20)
   
 ```
 
@@ -538,6 +554,7 @@ Tidy Data Principles: principles for structuring tabular data sets:
 #| echo: false
 
 df_ext <- df %>%
+  select(-Old_Age) %>%
   mutate(mood_wk1 = c(4, 3, 4, 2),
          mood_wk2 = c(2, 3, 5, 4))
 
@@ -623,7 +640,7 @@ Do It Yourself:
 
 . . .
 
-BASIC use:
+Basic use:
 ```r
 pivot_longer(your-dataframe, cols = c(col_to_pivot1, col_to_pivot2, etc),
             names_to = "name_of_measurement",
@@ -926,44 +943,34 @@ df_long %>%
   theme(text = element_text(size = 25))
 ```
 
-# Go to Exercise 12
+## ggplot2 resources
 
-## Answers to Exercise 12
-
-Plot a barplot of `culmen_element` and `avg` with error bars.
-
-```{r}
-#| label: exercise-12
-#| output-location: column
-ggplot(penguins_summary) +
-  aes(x = culmen_element, 
-      y = avg ) +
-  geom_col() +
-  aes(fill = culmen_element) +
-  facet_wrap(~Species, 
-             ncol = 1) +
-  theme_bw() +
-  geom_errorbar(aes(ymin = avg-sd, 
-                    ymax = avg+sd), 
-                width= .1)
-```
-
-## Learn more
-
-Learning R:
-
-- R 4 Data Science: <https://r4ds.hadley.nz/>
-- Data Science in a Box: <https://datasciencebox.org/content>
-- Learning statistics with R: <https://learningstatisticswithr.com/book/>
-- Statistical Inference via Data Science: A ModernDive into R and the Tidyverse: <https://moderndive.com/>
-
-. . .
-
-Plotting:
+Useful resources for plotting with ggplot2:
 
 - Choose a visualization > Get example code: <https://www.data-to-viz.com/>
 - ggplot2 book: <https://ggplot2-book.org/>
 - ggplot flipbook: <https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html>
+
+# Go to Exercise 12 - 13
+
+## Answers to Exercise 12
+
+A scatterplot of Culmen_Length_mm against Flipper_Length_mm per Island.
+
+```{r}
+#| label: exercise-13
+#| output-location: column
+ggplot(penguins, aes(x = Culmen_Length_mm, 
+                     y = Flipper_Length_mm, 
+                     color = Species)) + 
+  geom_point() + 
+  labs(x = "Culmen length (mm)",
+       y = "Flipper length (mm)",
+       title = "Culmen and Flipper length by Species") +
+  theme_classic() +
+  facet_wrap( ~ Island) + 
+  geom_smooth(method = "lm")
+```
 
 ## Wrap-up
 
@@ -979,6 +986,14 @@ What have we learned this afternoon?
 - Summarizing and combining datasets
 - Using `ggplot2` to make some basic plots
 :::
+
+
+## Learn more
+
+- R 4 Data Science: <https://r4ds.hadley.nz/>
+- Data Science in a Box: <https://datasciencebox.org/content>
+- Learning statistics with R: <https://learningstatisticswithr.com/book/>
+- Statistical Inference via Data Science: A ModernDive into R and the Tidyverse: <https://moderndive.com/>
 
 ## Where to find us
 

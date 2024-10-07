@@ -115,8 +115,7 @@ Use the `mutate()` function to create a new column called `culmen_ratio`, which 
 Make sure to work with the `penguins_subset_2` dataframe.
 
 ```{r}
-penguins_subset_3 <- penguins_subset_2 %>%
-  ???(culmen_ratio = ???)
+penguins_subset_3 <- mutate(penguins_subset_2, ???)
 ```
 
 ## Exercise 7
@@ -124,9 +123,9 @@ penguins_subset_3 <- penguins_subset_2 %>%
 In the next chapter, we will make our dataframe tidy. Before we do that, we will rename the `Culmen_Length_mm` and `Culmen_Depth_mm` columns in order to make subsequent operations easier.
 
 ```{r}
-penguins_subset_4 <- penguins_subset_3 %>%
-  rename(length = ???, 
-         depth = ???)
+penguins_subset_4 <- rename(penguins_subset_3,
+                            length = ???,
+                            depth = ???)
 ```
 
 # Exercise 8
@@ -184,91 +183,39 @@ penguins_summary <- penguins_long %>%
 Use the function `full_join()` to merge the `penguins_summary` and `penguins_long` data frames, so that each row in the long data frame will have additional columns with the mean and standard deviation for its group.
 
 ```{r}
-penguins_join <- full_join(???, ???,
-                           by = c(???, ???))
+penguins_join <- full_join(???)
 ```
 
 # Chapter 4: Data Visualization
 
 ## Exercise 12
 
-Using the `ggplot()` package in a step-by-step manner, we will slowly build up the layers of a simple bar plot of the culmen elements and their average size for each species of penguin.
+Using the ggplot2 package, let's plot the culmen length against their flipper length from the `penguins` dataframe.
+Culmen_Length_mm and Flipper_Length_mm are both continuous variables, and therefore we are now choosing a scatterplot.
 
-### Step 1
+In the code chunk below:
 
-First, load the data:
-
-```{r}
-ggplot(penguins_summary)
-```
-
-### Step 2
-
-Add the variables we want to plot, i.e. `culmen_element` and `avg`: 
-
-```{r}
-ggplot(penguins_summary) +
-  aes(x = ???, y = ???)
-```
-
-### Step 3
-
-Give your data a geometric element - in this case, bars - using `geom_col()`:
+- Put Culmen_Length_mm on the x-axis, and Flipper_Length_mm on the y-axis
+- Add scatter points using the geom `geom_point()`
+- Color the points according to Species
+- Add x- and y-labels and a title with `labs()`
+- Add a 'theme' layer to your plot. There are many default themes available, check them out here: https://ggplot2.tidyverse.org/reference/ggtheme.html.
+- Bonus 1: Use `facet_wrap()` to make subplots per Island. The `~` needs to be used before the variable that you wish to subplot.
+- Bonus 2: Use `geom_smooth()` to add regression lines to the scatter plots with the method "lm" (linear model)
 
 ```{r}
-ggplot(penguins_summary) +
-  aes(x = culmen_element, y = avg) +
+ggplot(penguins, aes(x = ???, y = ???)) +
   ???
 ```
 
-### Step 4
 
-Add the aesthetic layer `aes()` and within it use the `fill =` argument to give your `culmen_element` color:
+## Exercise 13
 
-```{r}
-ggplot(penguins_summary) +
-  aes(x = culmen_element, y = avg) +
-  geom_col() +
-  ???
-```
+Create another type of data visualization with any of the following dataframes that we've created: `penguins`, `penguins_long`, `penguins_summary` or `penguins_join`. 
 
-### Step 5
-
-Use `facet_wrap()` to create subplots for each species. The `~` needs to be used before the variable you wish to subplot. The `ncol =` argument lets you specify how many columns you want.
+Tip: Use the ggplot2 cheatsheet, or find a nice data visualization (and code examples) at https://www.data-to-viz.com/.
 
 ```{r}
-ggplot(penguins_summary) +
-  aes(x = culmen_element, y=avg ) +
-  geom_col() +
-  aes(fill = culmen_element) +
-  facet_wrap(~ ???, ncol = 1)
-```
+# Add your code to create your plot here!
 
-### Step 6
-
-We will now add a 'theme' layer to our plot, to make it look nicer!
-
-There are many default themes available, check them out here: https://ggplot2.tidyverse.org/reference/ggtheme.html. Feel free to try them out if you would like. 
-
-```{r}
-ggplot(penguins_summary) +
-  aes(x = culmen_element, y = avg) +
-  geom_col() +
-  aes(fill = culmen_element) +
-  facet_wrap(~Species, ncol = 1) +
-  theme_bw() # Or replace with a theme of your preference!
-```
-
-### Step 7
-
-Let's finish up by adding some error bars. Within `geom_errorbar()`, we will use the `aes()` layer to determine the `ymin =` and `ymax =` end points of our error bars. Calculate these using the `avg` and the `sd`. 
-
-```{r}
-ggplot(penguins_summary) +
-  aes(x = culmen_element, y = avg) +
-  geom_col() +
-  aes(fill = culmen_element) +
-  facet_wrap(~Species, ncol = 1) +
-  theme_bw() +
-  ???(???(???, ???), width= .1)
 ```
