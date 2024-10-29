@@ -6,6 +6,8 @@
 <iframe class="slide-deck" src="slides/slides_tidyverse.html#tidy-data" title="Tidy data" width="100%" height="540"></iframe>
 ```
 
+[Link to the slides](slides/slides_tidyverse.html#tidy-data)
+
 
 ## Video
 

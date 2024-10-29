@@ -6,6 +6,8 @@
 <iframe class="slide-deck" src="slides/slides_introduction.html#vectors-in-r"  title="Vectors in R" width="100%" height="540"></iframe>
 ```
 
+[Link to the slides](slides/slides_introduction.html#vectors-in-r)
+
 ## Video
 
 {{< video https://youtu.be/XMFjteCdHbQ >}}
