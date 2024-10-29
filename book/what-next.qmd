@@ -1,3 +1,25 @@
 # What's next?
 
 Not finished learning? Feel free to check our website, [uu.nl/rdm](https://www.uu.nl/en/research/research-data-management/training-workshops/) for our other workshops and trainings.
+
+### More R resources
+
+- R 4 Data Science: <https://r4ds.hadley.nz/>
+- Data Science in a Box: <https://datasciencebox.org/content>
+- Learning statistics with R: <https://learningstatisticswithr.com/book/>
+- Statistical Inference via Data Science: A ModernDive into R and the Tidyverse: <https://moderndive.com/>
+- Big Book of R: <https://www.bigbookofr.com/>
+- Better spreadsheets: <https://better-spreadsheets.netlify.app/>
+
+### Data visualization
+
+- Choose a visualization > Get example code: <https://www.data-to-viz.com/>
+- ggplot2 book: <https://ggplot2-book.org/>
+- ggplot flipbook: <https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html>
+- Better plots: <https://better-plots.netlify.app/>
+
+### Get practice
+
+- Starting a data analysis project - Extra practice exercises: <https://tavareshugo.github.io/r-intro-tidyverse-gapminder/90-appendix-exercises/index.html>
+- Exercises data wrangling with the tidyverse: <https://data-se.netlify.app/2021/02/24/exercises-to-data-wrangling-with-the-tidyverse/>
+- Use real public data: <https://github.com/awesomedata/awesome-public-datasets>

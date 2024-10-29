@@ -137,7 +137,7 @@ Make a workflow that starts with the data `penguins` and subsequently applies yo
 ```{r}
 penguins_subset_5 <- penguins %>%
   ??? %>%
-  ??? >%>
+  ??? %>%
   ??? %>%
 ```
 
@@ -196,8 +196,8 @@ Culmen_Length_mm and Flipper_Length_mm are both continuous variables, and theref
 In the code chunk below:
 
 - Put Culmen_Length_mm on the x-axis, and Flipper_Length_mm on the y-axis
-- Add scatter points using the geom `geom_point()`
 - Color the points according to Species
+- Add scatter points using the geom `geom_point()`
 - Add x- and y-labels and a title with `labs()`
 - Add a 'theme' layer to your plot. There are many default themes available, check them out here: https://ggplot2.tidyverse.org/reference/ggtheme.html.
 - Bonus 1: Use `facet_wrap()` to make subplots per Island. The `~` needs to be used before the variable that you wish to subplot.

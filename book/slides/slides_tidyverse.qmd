@@ -7,12 +7,11 @@ execute:
 format: 
   revealjs:
     pagetitle: "The data science workflow with Tidyverse"
-    theme: [default]
+    theme: default
     css: custom.css
     embed-resources: true
+    keep-md: false
     smaller: true
-  gfm:
-    mermaid-format: png
 ---
 
 # {background-color=#FFCD00}
@@ -468,7 +467,7 @@ penguins_subset_4 <- rename(penguins_subset_3,
 
 A key tidyverse component that chains all data science steps together: 
 
-`%>%`
+`%>%`[^1]
 
 . . .
 
@@ -478,6 +477,10 @@ Why?
 - no nested function calls
 - no need to save intermediate R objects with `<-`
 - easily add and/or delete steps in your pipeline without breaking the code
+
+[^1]: Base R now also has a piping operator: `|>`     
+which [works very similarly](https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/) to the magrittr piping operator `%>%`
+
 
 ## Pipe operator: how it works
 
@@ -537,15 +540,17 @@ penguins_subset_5 <- penguins %>%
 
 ## Tidy Data
 
-> Tidy data sets are all alike; but every messy data set is messy in its own way ([Wickham/Grolemund, 2017](https://r4ds.had.co.nz/tidy-data.html)]
+> Tidy data sets are all alike; but every messy data set is messy in its own way ([Wickham/Grolemund, 2017](https://r4ds.had.co.nz/tidy-data.html))
 
 . . .
 
 Tidy Data Principles: principles for structuring tabular data sets:
 
-1. Each variable forms a column.
-2. Each observation forms a row.
-3. Each type of observational unit forms a table.
+1. Each variable must have its own column.
+2. Each observation must have its own row.
+3. Each value must have its own cell.
+
+![](https://d33wubrfki0l68.cloudfront.net/6f1ddb544fc5c69a2478e444ab8112fb0eea23f8/91adc/images/tidy-1.png "Visualization of the tidy data principles. Source: R 4 Data Science, https://r4ds.had.co.nz/tidy-data.html")
 
 ## Our df - but extended
 
@@ -567,14 +572,14 @@ Wide or long?
 
 . . .
 
-That's right: **wide**. Why is this not tidy?
+**Wide!** Why is this not tidy?
 
 . . .
 
 - Values in column names
 - Multiple observations per row
 
-## Our extended df - Long format
+## Wide vs Long
 
 ```{r}
 #| label: pivot-ext-df
@@ -586,17 +591,7 @@ df_long <- df_ext %>%
                         values_to = "mood") %>%
            mutate(week = as.numeric(gsub("mood_wk", "", week))) %>%
            arrange(name, week)
-
-df_long
 ```
-
-. . .
-
-- 1 observation (week) per row
-- multiple rows per individual
-
-## Wide vs Long
-
 
 ::: columns
 ::: {.column width="53%"}
@@ -608,7 +603,8 @@ df_long
 head(df_ext, 4)
 ```
 
-- All observations on 1 individual in 1 row
+- Values in column names
+- Multiple observations per row: all observations on 1 individual in 1 row
 - Not tidy
 
 :::
@@ -624,12 +620,17 @@ head(df_ext, 4)
 head(df_long, 4)
 ```
 
-- No values as column headers
 - Single observation (weight, mood) in a single row
-- Often needed for data visualization
+- No values in column names
+- Tidy!
+
 :::
 :::
 :::
+
+. . .
+
+Tidy data is a consistent way of storing data + most R functions work with vectors of values (columns). Tidyverse packages are designed to work with tidy data (`dplyr`, `ggplot2`, etc.)
 
 ## tidyr: Tidy Messy Data
 
@@ -943,15 +944,9 @@ df_long %>%
   theme(text = element_text(size = 25))
 ```
 
-## ggplot2 resources
-
-Useful resources for plotting with ggplot2:
-
-- Choose a visualization > Get example code: <https://www.data-to-viz.com/>
-- ggplot2 book: <https://ggplot2-book.org/>
-- ggplot flipbook: <https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html>
-
 # Go to Exercise 12 - 13
+
+Tip: Choose a visualization -> Get example code: <https://www.data-to-viz.com/>
 
 ## Answers to Exercise 12
 
@@ -994,6 +989,10 @@ What have we learned this afternoon?
 - Data Science in a Box: <https://datasciencebox.org/content>
 - Learning statistics with R: <https://learningstatisticswithr.com/book/>
 - Statistical Inference via Data Science: A ModernDive into R and the Tidyverse: <https://moderndive.com/>
+- Big Book of R: <https://www.bigbookofr.com/>
+- Better spreadsheets: <https://better-spreadsheets.netlify.app/>
+
+**See also the [What's next page](https://utrechtuniversity.github.io/workshop-introduction-to-R-and-data/what-next.html).**
 
 ## Where to find us
 

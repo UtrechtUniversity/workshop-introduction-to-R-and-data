@@ -6,6 +6,8 @@
 <iframe class="slide-deck" src="slides/slides_introduction.html#indexing-vectors-lists" title="Indexing vectors and lists" width="100%" height="540"></iframe>
 ```
 
+[Link to the slides](slides/slides_introduction.html#indexing-vectors-lists)
+
 ## Video
 
 {{< video https://youtu.be/e10nO2swYIE >}}
