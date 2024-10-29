@@ -10,9 +10,8 @@ format:
     theme: default
     css: custom.css
     embed-resources: true
+    keep-md: false
     smaller: true
-  gfm:
-    mermaid-format: png
 ---
 
 # {background-color=#FFCD00}
