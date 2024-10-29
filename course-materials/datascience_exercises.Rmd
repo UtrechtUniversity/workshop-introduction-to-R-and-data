@@ -137,7 +137,7 @@ Make a workflow that starts with the data `penguins` and subsequently applies yo
 ```{r}
 penguins_subset_5 <- penguins %>%
   ??? %>%
-  ??? >%>
+  ??? %>%
   ??? %>%
 ```
 
