@@ -24,7 +24,7 @@
     "href": "schedule.html",
     "title": "2  Schedule",
     "section": "",
-    "text": "Time\nActivity\n\n\n\n\n9:00\nWalk-in, tech support\n\n\n9:30\nIntroductions\n\n\n10:00\nBase R: Exercises 1-6\n\n\n11:25\nRecap & Questions\n\n\n11:30\nCoffee break\n\n\n11:45\nProgramming: Exercises 7-9\n\n\n12:40\nRecap & Questions\n\n\n12:45\nLunch break\n\n\n13:30\nIntroduction to Tidyverse, Importing data: Exercises 0-3\n\n\n14:15\nSelecting & filtering data, Piping operations: Exercises 4-8\n\n\n14:55\nRecap & Questions\n\n\n15:00\nCoffee break\n\n\n15:15\nTidy data, Summarizing & combining data: Exercises 9-11\n\n\n16:00\nData visualization: Exercise 12\n\n\n16:55\nFinal recap and closing",
+    "text": "Time\nActivity\n\n\n\n\n9:00\nWalk-in, tech support\n\n\n9:30\nIntroductions\n\n\n10:00\nBase R: Exercises 1-6\n\n\n11:25\nRecap & Questions\n\n\n11:30\nCoffee break\n\n\n11:45\nProgramming: Exercises 7-9\n\n\n12:40\nRecap & Questions\n\n\n12:45\nLunch break\n\n\n13:30\nIntroduction to Tidyverse, Importing data: Exercises 0-3\n\n\n14:15\nSelecting, filtering, mutating and renaming data, Piping operations: Exercises 4-8\n\n\n14:55\nRecap & Questions\n\n\n15:00\nCoffee break\n\n\n15:15\nTidy data, Summarizing & combining data: Exercises 9-11\n\n\n16:00\nData visualization: Exercise 12-13\n\n\n16:55\nFinal recap and closing",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Schedule</span>"
     ]
@@ -122,7 +122,7 @@
     "href": "introduction.html",
     "title": "5  Introduction to RStudio",
     "section": "",
-    "text": "5.1 Slides",
+    "text": "5.1 Slides\nLink to the slides",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Introduction to RStudio</span>"
     ]
@@ -152,7 +152,7 @@
     "href": "syntax-and-data-types.html",
     "title": "6  Syntax & Data Types",
     "section": "",
-    "text": "6.1 Slides",
+    "text": "6.1 Slides\nLink to the slides",
     "crumbs": [
       "R Fundamentals",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Syntax & Data Types</span>"
@@ -185,7 +185,7 @@
     "href": "vectors.html",
     "title": "7  Vectors",
     "section": "",
-    "text": "7.1 Slides",
+    "text": "7.1 Slides\nLink to the slides",
     "crumbs": [
       "R Fundamentals",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Vectors</span>"
@@ -218,7 +218,7 @@
     "href": "data-structures.html",
     "title": "8  Data Structures",
     "section": "",
-    "text": "8.1 Slides",
+    "text": "8.1 Slides\nLink to the slides",
     "crumbs": [
       "R Fundamentals",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Data Structures</span>"
@@ -251,7 +251,7 @@
     "href": "indexing-vectors-and-lists.html",
     "title": "9  Indexing Vectors & Lists",
     "section": "",
-    "text": "9.1 Slides",
+    "text": "9.1 Slides\nLink to the slides",
     "crumbs": [
       "R Fundamentals",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Indexing Vectors & Lists</span>"
@@ -284,7 +284,7 @@
     "href": "indexing-dataframes.html",
     "title": "10  Indexing Dataframes",
     "section": "",
-    "text": "10.1 Slides",
+    "text": "10.1 Slides\nLink to the slides",
     "crumbs": [
       "R Fundamentals",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Indexing Dataframes</span>"
@@ -317,7 +317,7 @@
     "href": "missing-data.html",
     "title": "11  Missing Data",
     "section": "",
-    "text": "11.1 Slides",
+    "text": "11.1 Slides\nLink to the slides",
     "crumbs": [
       "R Fundamentals",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Missing Data</span>"
@@ -361,7 +361,7 @@
     "href": "if-statements.html",
     "title": "13  If Statements",
     "section": "",
-    "text": "13.1 Slides",
+    "text": "13.1 Slides\nLink to the slides",
     "crumbs": [
       "R Fundamentals",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>If Statements</span>"
@@ -394,7 +394,7 @@
     "href": "functions.html",
     "title": "14  Functions",
     "section": "",
-    "text": "14.1 Slides",
+    "text": "14.1 Slides\nLink to the slides",
     "crumbs": [
       "R Fundamentals",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Functions</span>"
@@ -427,7 +427,7 @@
     "href": "loops.html",
     "title": "15  Loops",
     "section": "",
-    "text": "15.1 Slides",
+    "text": "15.1 Slides\nLink to the slides",
     "crumbs": [
       "R Fundamentals",
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>Loops</span>"
@@ -460,7 +460,7 @@
     "href": "introduction-tidyverse.html",
     "title": "16  The data science workflow with Tidyverse",
     "section": "",
-    "text": "16.1 Slides",
+    "text": "16.1 Slides\nLink to the slides",
     "crumbs": [
       "Working With Data",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>The data science workflow with Tidyverse</span>"
@@ -493,7 +493,7 @@
     "href": "importing-data.html",
     "title": "17  Importing Data",
     "section": "",
-    "text": "17.1 Slides",
+    "text": "17.1 Slides\nLink to the slides",
     "crumbs": [
       "Working With Data",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Importing Data</span>"
@@ -526,7 +526,7 @@
     "href": "subsetting-and-mutating-data.html",
     "title": "18  Selecting & filtering data",
     "section": "",
-    "text": "18.1 Slides",
+    "text": "18.1 Slides\nLink to the slides",
     "crumbs": [
       "Working With Data",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>Selecting & filtering data</span>"
@@ -559,7 +559,7 @@
     "href": "piping.html",
     "title": "19  Piping operations",
     "section": "",
-    "text": "19.1 Slides",
+    "text": "19.1 Slides\nLink to the slides",
     "crumbs": [
       "Working With Data",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>Piping operations</span>"
@@ -581,7 +581,7 @@
     "href": "transformations-and-tidy-data.html",
     "title": "20  Tidy Data",
     "section": "",
-    "text": "20.1 Slides",
+    "text": "20.1 Slides\nLink to the slides",
     "crumbs": [
       "Working With Data",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Tidy Data</span>"
@@ -614,7 +614,7 @@
     "href": "summarizing-combining-data.html",
     "title": "21  Summarizing & combining data",
     "section": "",
-    "text": "21.1 Slides",
+    "text": "21.1 Slides\nLink to the slides",
     "crumbs": [
       "Working With Data",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>Summarizing & combining data</span>"
@@ -636,7 +636,7 @@
     "href": "data-visualization.html",
     "title": "22  Data Visualization",
     "section": "",
-    "text": "22.1 Slides",
+    "text": "22.1 Slides\nLink to the slides",
     "crumbs": [
       "Working With Data",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Data Visualization</span>"
@@ -669,7 +669,7 @@
     "href": "what-next.html",
     "title": "23  What’s next?",
     "section": "",
-    "text": "Not finished learning? Feel free to check our website, uu.nl/rdm for our other workshops and trainings.",
+    "text": "Not finished learning? Feel free to check our website, uu.nl/rdm for our other workshops and trainings.\n\n23.0.1 More R resources\n\nR 4 Data Science: https://r4ds.hadley.nz/\nData Science in a Box: https://datasciencebox.org/content\nLearning statistics with R: https://learningstatisticswithr.com/book/\nStatistical Inference via Data Science: A ModernDive into R and the Tidyverse: https://moderndive.com/\nBig Book of R: https://www.bigbookofr.com/\nBetter spreadsheets: https://better-spreadsheets.netlify.app/\n\n\n\n23.0.2 Data visualization\n\nChoose a visualization &gt; Get example code: https://www.data-to-viz.com/\nggplot2 book: https://ggplot2-book.org/\nggplot flipbook: https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html\nBetter plots: https://better-plots.netlify.app/\n\n\n\n23.0.3 Get practice\n\nStarting a data analysis project - Extra practice exercises: https://tavareshugo.github.io/r-intro-tidyverse-gapminder/90-appendix-exercises/index.html\nExercises data wrangling with the tidyverse: https://data-se.netlify.app/2021/02/24/exercises-to-data-wrangling-with-the-tidyverse/\nUse real public data: https://github.com/awesomedata/awesome-public-datasets",
     "crumbs": [
       "<span class='chapter-number'>23</span>  <span class='chapter-title'>What's next?</span>"
     ]
