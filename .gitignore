@@ -41,5 +41,4 @@ rsconnect/
 .Rproj.user
 
 # Project-specific files that need to be ignored
-data/penguins_isotopes.csv
-datascience_solutions_files/
+docs/
