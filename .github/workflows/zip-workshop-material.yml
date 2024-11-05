@@ -1,0 +1,38 @@
+on:
+  pull_request_target:
+    branches: main
+      - 'main'
+    paths:
+      - 'course-materials/**'
+  workflow_dispatch:
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }}
+        fetch-depth: 0
+    - name: Zip Course materials 
+      run: |
+        rm course_materials.zip
+        cd course_materials
+        zip -r ../course_materials.zip .
+    - uses: actions/upload-artifact@v3
+      with:
+        name: course_materials
+        path: course_materials.zip
+    - name: Commit files
+      run: |
+        git config --local user.email "github@uu.nl"
+        git config --local user.name "GitHub Utrecht University"
+        git add .
+        git commit -a -m "Update course materials"
+      continue-on-error: true
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        branch: ${{ github.head_ref }} 
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+      continue-on-error: true
