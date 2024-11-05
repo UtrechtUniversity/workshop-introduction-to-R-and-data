@@ -1,4 +1,4 @@
-ame: Publish Website
+name: Publish Website
 
 # Allow one concurrent deployment
 concurrency:
