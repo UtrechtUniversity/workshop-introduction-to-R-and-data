@@ -1,22 +1,36 @@
+name: Publish Website
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 on:
   workflow_dispatch:
   push:
     branches: main
-
-name: Quarto Publish
+    paths:
+      - 'book/**'
 
 jobs:
-  build-deploy:
+  quarto:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Set up Quarto
+      - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        with:
+        with: 
           tinytex: true
 
       - name: Install R
@@ -24,13 +38,25 @@ jobs:
         with:
           r-version: '4.4.0'
 
-      - name: Install R dependencies
-        run: Rscript -e 'install.packages(c("rmarkdown","quarto","tidyverse", "readxl"))'
-
-      - name: Render and Publish
-        uses: quarto-dev/quarto-actions/publish@v2
+      - name: Install packages
+        uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          target: gh-pages
-          path: ./book
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          packages: |
+            any::rmarkdown
+            any::quarto
+            any::tidyverse
+            any::readxl
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v1
+
+      - name: Render Website
+        run: quarto render book/
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'book/_book'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@main

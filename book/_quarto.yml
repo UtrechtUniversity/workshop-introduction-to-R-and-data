@@ -1,9 +1,8 @@
 project:
   type: book
-  output-dir: ../docs
+  output-dir: _book
   pre-render: 
-    - "pre-rendering/zip-course-materials.R"
-    #- "pre-rendering/render-slides.R"
+    - "pre-rendering/render-slides.R"
 
 book:
   title: "Introduction to R & Data"

@@ -2,6 +2,8 @@
 /tmp
 .DS_Store
 
+
+
 # History files
 .Rhistory
 .Rapp.history
@@ -42,3 +44,5 @@ rsconnect/
 
 # Project-specific files that need to be ignored
 docs/
+
+book/_book
