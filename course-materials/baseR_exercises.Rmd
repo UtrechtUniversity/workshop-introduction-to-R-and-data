@@ -113,13 +113,18 @@ Predict the results before you run the code. Does the real answer make sense to 
 
 ```{r}
 5==5
+``` 
 
+```{r}
 5==NA
+```
 
+```{r}
 NA==NA
+```
 
+```{r}
 is.na(NA)
-
 ```
 
 
