@@ -16,13 +16,13 @@ jobs:
         fetch-depth: 0
     - name: Zip Course materials 
       run: |
-        rm course_materials.zip
-        cd course_materials
-        zip -r ../course_materials.zip .
+        rm course-materials.zip
+        cd course-materials
+        zip -r ../course-materials.zip .
     - uses: actions/upload-artifact@v3
       with:
-        name: course_materials
-        path: course_materials.zip
+        name: course-materials
+        path: course-materials.zip
     - name: Commit files
       run: |
         git config --local user.email "github@uu.nl"
