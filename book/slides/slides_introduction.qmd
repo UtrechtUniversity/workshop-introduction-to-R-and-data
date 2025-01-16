@@ -1010,6 +1010,23 @@ for(the_age in df$age){
 }
 ```
 
+. . .
+
+Bonus question: add age category as a new column in df.
+
+```{r}
+# We first set an index that will be increased every time the for-loop runs
+i <- 1
+
+for(nr in df$age){
+  # Add the age category to a new column in df
+  df$age_category[i] <- test_age(nr)
+
+  # Increase the index with 1 after running the code in this for-loop iteration
+  i <- i + 1
+}
+```
+
 # Recap "Basics of R" {background-color=#FFCD00}
 
 ## Which bracket does what?

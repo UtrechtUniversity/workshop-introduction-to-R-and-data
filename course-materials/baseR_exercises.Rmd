@@ -171,3 +171,21 @@ for( in ){
 
 ```
 
+Bonus question!
+
+Create a different for-loop. This for-loop runs the test_age function for each age in your dataframe df,
+and adds the age categories as a new column to your dataframe df.
+
+```{r}
+# We first set an index that will be increased every time the for-loop runs
+i <- 1
+
+for(){
+  # Add the age category to a new column in df
+  ???
+    
+  # Increase the index with 1 after running the code in this for-loop iteration
+  i <- i + 1
+}
+
+```
