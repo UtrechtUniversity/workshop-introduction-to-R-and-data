@@ -56,6 +56,43 @@ dplyr::rename(iris, petal_length = Petal.Length)
 
 # Go to Exercise 0 in `datascience_exercises.Rmd`
 
+# Some good coding practices {background-color=#FFCD00}
+
+## R projects and working directories
+
+When you start programming for yourself:
+
+- Create a folder dedicated to your project
+- Start a new R project: **File > New Project > Existing Directory**
+- An `.RProj` file will be created
+
+. . .
+
+Advantages:
+
+- Automatically set your working directory to that folder
+- Automatically retrieve only the history and objects from that R project
+- More reproducible (relative vs. absolute paths)
+
+```r
+getwd()
+```
+
+## Comments
+
+If a line of R code starts with `#`, it is ignored.
+
+- Help your future you and collaborators/supervisors understand what your code does
+- Explain (the purpose of) code that is not self-explanatory
+- Comment and un-comment to debug code without having to delete it[^1]
+
+```{r}
+# Print a very important line
+print("A very important line")
+```
+
+[^1]: You should delete non-working code when done debugging though.
+
 ## The Data Science workflow
 
 ![Source: [R 4 Data Science](https://r4ds.had.co.nz/introduction.html)](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png "The data science workflow."){fig-align="center"}
@@ -110,26 +147,6 @@ This means that often the results of one step will be the input for the next
 ## Reading data into R
 
 ![](../images/reading_writing.png "Importing files into R, and exporting them into a file again")
-
-## R projects and working directories
-
-When you start programming for yourself:
-
-- Create a folder dedicated to your project
-- Start a new R project: **File > New Project > Existing Directory**
-- An `.RProj` file will be created
-
-. . .
-
-Advantages:
-
-- Automatically set your working directory to that folder
-- Automatically retrieve only the history and objects from that R project
-- More reproducible (relative vs. absolute paths)
-
-```r
-getwd()
-```
 
 ## readr: Read Rectangular Text Data
 
@@ -239,6 +256,16 @@ write_csv(penguins_isotopes,
 
 # Selecting & filtering data {background-color=#FFCD00}
 
+```{r}
+#| label: load-df-morning-session
+#| output: false
+#| echo: false
+df <- data.frame(name = c("Ann", "Bob", "Chloe", "Dan"),
+                 age = c(15,22,50,51),
+                 country = c("UK","USA","USA","UK")
+)
+```
+
 ## dplyr: Data Manipulation
 
 `dplyr` contains functions for many types of data manipulation, such as:
@@ -300,16 +327,6 @@ filter(your-dataframe, your-condition)
 
 . . .
 
-```{r}
-#| label: load-df-morning-session
-#| output: false
-#| echo: false
-df <- data.frame(name = c("Ann", "Bob", "Chloe", "Dan"),
-                 age = c(35,22,50,51),
-                 country = c("UK","USA","USA","UK")
-)
-```
-
 From the morning session: "From your dataframe `df`, return complete rows for everyone living in a country of your choice."
 
 ```{r}
@@ -332,8 +349,8 @@ filter(df, country == "UK")   # Tidyverse
 4. Select the columns Individual_ID, Species, Sex, Island, Culmen_Depth_mm and Culmen_Length_mm
 
 ```{r}
-#| label: exercise-5a
-penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,
+#| label: exercise-4a
+penguins_subset <- select(penguins, Individual_ID, Species,
                             Sex, Island, 
                             Culmen_Depth_mm, Culmen_Length_mm)
 ```
@@ -342,8 +359,8 @@ penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,
 
 Or
 ```{r}
-#| label: exercise-5b
-penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,
+#| label: exercise-4b
+penguins_subset <- select(penguins, Individual_ID, Species,
                             Sex, Island, 
                             starts_with("Culmen"))
 ```
@@ -352,8 +369,8 @@ penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,
 
 Or
 ```{r}
-#| label: exercise-5c
-penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,
+#| label: exercise-4c
+penguins_subset <- select(penguins, Individual_ID, Species,
                             Sex, Island, 
                             contains("Culmen"))
 ```
@@ -363,16 +380,16 @@ penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,
 5. Filter `penguins` to leave out the NAs.
 
 ```{r}
-#| label: exercise-4a
-penguins_subset <- filter(penguins, !is.na(Sex))
+#| label: exercise-5a
+penguins_subset_2 <- filter(penguins_subset, !is.na(Sex))
 ```
 
 . . .
 
 Or
 ```{r}
-#| label: exercise-4b
-penguins_subset <- filter(penguins, Sex == "MALE" | Sex == "FEMALE")
+#| label: exercise-5b
+penguins_subset_2 <- filter(penguins_subset, Sex == "MALE" | Sex == "FEMALE")
 ```
 
 . . .
@@ -380,8 +397,8 @@ penguins_subset <- filter(penguins, Sex == "MALE" | Sex == "FEMALE")
 Or
 
 ```{r}
-#| label: exercise-4c
-penguins_subset <- filter(penguins, Sex %in% c("MALE", "FEMALE"))
+#| label: exercise-5c
+penguins_subset_2 <- filter(penguins_subset, Sex %in% c("MALE", "FEMALE"))
 ```
 
 
@@ -467,7 +484,7 @@ penguins_subset_4 <- rename(penguins_subset_3,
 
 A key tidyverse component that chains all data science steps together: 
 
-`%>%`[^1]
+`%>%`[^2]
 
 . . .
 
@@ -478,7 +495,7 @@ Why?
 - no need to save intermediate R objects with `<-`
 - easily add and/or delete steps in your pipeline without breaking the code
 
-[^1]: Base R now also has a piping operator: `|>`     
+[^2]: Base R now also has a piping operator: `|>`     
 which [works very similarly](https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/) to the magrittr piping operator `%>%`
 
 
