@@ -85,8 +85,8 @@ This means that often the results of one step will be the input for the next
 ::: {.incremental}
 1. Read a file into R
 2. Clean the data:
-   - Filter on relevant rows
    - Select only relevant columns
+   - Filter on relevant rows
 3. Calculate a new column
 4. Rename a column
 5. Put the dataframe into a long (tidy) format
@@ -250,42 +250,6 @@ write_csv(penguins_isotopes,
 - `group_by()`: group data on one or more columns
 - `summarize()`: reduces a group of data into a single row
 
-## Filter
-
-Selects **rows** in your dataframe.
-
-Use:
-```r
-filter(your-dataframe, your-condition)
-```
-
-. . .
-
-```{r}
-#| label: load-df-morning-session
-#| output: false
-#| echo: false
-df <- data.frame(name = c("Ann", "Bob", "Chloe", "Dan"),
-                 age = c(35,22,50,51),
-                 country = c("UK","USA","USA","UK")
-)
-```
-
-From the morning session: "From your dataframe `df`, return complete rows for everyone living in a country of your choice."
-
-```{r}
-#| label: filter-baser
-#| eval: false
-df[df$country=="UK", ]        # Base R
-```
-
-. . .
-
-```{r}
-#| label: filter-tidyverse
-filter(df, country == "UK")   # Tidyverse
-```
-
 ## Select
 
 Select or drop **columns** in your dataframe.
@@ -325,37 +289,47 @@ df[, c("name","age")]       # Base R
 select(df, name, age)       # Tidyverse
 ```
 
+## Filter
+
+Selects **rows** in your dataframe.
+
+Use:
+```r
+filter(your-dataframe, your-condition)
+```
+
+. . .
+
+```{r}
+#| label: load-df-morning-session
+#| output: false
+#| echo: false
+df <- data.frame(name = c("Ann", "Bob", "Chloe", "Dan"),
+                 age = c(35,22,50,51),
+                 country = c("UK","USA","USA","UK")
+)
+```
+
+From the morning session: "From your dataframe `df`, return complete rows for everyone living in a country of your choice."
+
+```{r}
+#| label: filter-baser
+#| eval: false
+df[df$country=="UK", ]        # Base R
+```
+
+. . .
+
+```{r}
+#| label: filter-tidyverse
+filter(df, country == "UK")   # Tidyverse
+```
+
 # Go to exercises 4 and 5
 
 ## Answers exercise 4
 
-4. Filter `penguins` to leave out the NAs.
-
-```{r}
-#| label: exercise-4a
-penguins_subset <- filter(penguins, !is.na(Sex))
-```
-
-. . .
-
-Or
-```{r}
-#| label: exercise-4b
-penguins_subset <- filter(penguins, Sex == "MALE" | Sex == "FEMALE")
-```
-
-. . .
-
-Or
-
-```{r}
-#| label: exercise-4c
-penguins_subset <- filter(penguins, Sex %in% c("MALE", "FEMALE"))
-```
-
-## Answers exercise 5
-
-5. Select the columns Individual_ID, Species, Sex, Island, Culmen_Depth_mm and Culmen_Length_mm
+4. Select the columns Individual_ID, Species, Sex, Island, Culmen_Depth_mm and Culmen_Length_mm
 
 ```{r}
 #| label: exercise-5a
@@ -382,6 +356,32 @@ Or
 penguins_subset_2 <- select(penguins_subset, Individual_ID, Species,
                             Sex, Island, 
                             contains("Culmen"))
+```
+
+## Answers exercise 5
+
+5. Filter `penguins` to leave out the NAs.
+
+```{r}
+#| label: exercise-4a
+penguins_subset <- filter(penguins, !is.na(Sex))
+```
+
+. . .
+
+Or
+```{r}
+#| label: exercise-4b
+penguins_subset <- filter(penguins, Sex == "MALE" | Sex == "FEMALE")
+```
+
+. . .
+
+Or
+
+```{r}
+#| label: exercise-4c
+penguins_subset <- filter(penguins, Sex %in% c("MALE", "FEMALE"))
 ```
 
 

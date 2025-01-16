@@ -79,16 +79,6 @@ We are going to clean up our data by selecting/filtering only the relevant infor
 
 ## Exercise 4
 
-For some of the penguins, the sex was not determined. Use the function `filter()` to keep only the rows where the column `Sex` specifies either "FEMALE" or "MALE".
-
-One way to do this (though not the only way) is to filter out the rows where `Sex` is NA. Remember the function `is.na()` and remember that to negate a condition, you use the operator! For example, `!is.na(NA)` returns `FALSE`.
-
-```{r}
-penguins_subset <- filter(penguins, ???)
-```
-
-## Exercise 5
-
 We are going to select columns with relevant data, for our upcoming analysis.
 The research we do is on penguin bill sizes (described in our data with the word "Culmen").
 
@@ -107,6 +97,18 @@ Use the function `select()` to include the right columns in our data subset.
 ```{r}
 penguins_subset_2 <- select(???)
 ```
+
+
+## Exercise 5
+
+For some of the penguins, the sex was not determined. Use the function `filter()` to keep only the rows where the column `Sex` specifies either "FEMALE" or "MALE".
+
+One way to do this (though not the only way) is to filter out the rows where `Sex` is NA. Remember the function `is.na()` and remember that to negate a condition, you use the operator! For example, `!is.na(NA)` returns `FALSE`.
+
+```{r}
+penguins_subset <- filter(penguins, ???)
+```
+
 
 ## Exercise 6
 
