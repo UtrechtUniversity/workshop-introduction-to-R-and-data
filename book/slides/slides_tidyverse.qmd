@@ -509,10 +509,10 @@ which [works very similarly](https://www.tidyverse.org/blog/2023/04/base-vs-magr
 my_new_df <- df %>%
   
   # Perform a function using that object as input
-  filter(country == "UK") %>%
+  select(name, age) %>%
   
   # Add another operation
-  select(name, age) %>%
+  filter(country == "UK") %>%
   
   # And another, etc.
   mutate(old_age = age + 20)
@@ -538,11 +538,11 @@ Make a workflow that starts with the data `penguins` and subsequently applies yo
 #| label:  exercise-8
 penguins_subset_5 <- penguins %>%
   
-  # Filter out NAs
-  filter(!is.na(Sex)) %>%
-  
   # Select only relevant columns
   select(Individual_ID, Species, Sex, Island, starts_with("Culmen")) %>%
+  
+    # Filter out NAs
+  filter(!is.na(Sex)) %>%
   
   # Add a new columns culmen_ratio
   mutate(culmen_ratio =  Culmen_Length_mm / Culmen_Depth_mm) %>%
