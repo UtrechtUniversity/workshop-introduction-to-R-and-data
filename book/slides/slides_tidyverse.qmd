@@ -636,8 +636,8 @@ Tidy data is a consistent way of storing data + most R functions work with vecto
 
 Do It Yourself:
 
-- `pivot_longer()`: lengthen data: more rows, fewer columns (long format, tidy)
-- `pivot_wider()`: widen data: fewer rows, more columns (wide format)
+- `pivot_longer()`: lengthen data: more rows, often fewer columns (long format, tidy)
+- `pivot_wider()`: widen data: fewer rows, often more columns (wide format)
 
 . . .
 
