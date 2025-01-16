@@ -665,7 +665,7 @@ pivot_longer(df_ext,
 
 # Go to Exercise 9
 
-![](https://raw.githubusercontent.com/apreshill/teachthat/master/pivot/pivot_longer_smaller.gif "Visualization of the pivot_longer() process")
+![](images/pivot_longer_smaller-cut.gif "Visualization of the pivot_longer() process")
 *Source: [Allison Hill](https://github.com/apreshill/teachthat/blob/master/pivot/pivot_longer_smaller.gif)*
 
 ## Answer exercise 9
