@@ -95,7 +95,7 @@ Use the function `select()` to include the right columns in our data subset.
 **Note** that in order to work with the subset from Exercise 4, we need to use that data frame (`penguin_subset`) as our data input!
 
 ```{r}
-penguins_subset_2 <- select(???)
+penguins_subset <- select(???)
 ```
 
 
@@ -106,7 +106,7 @@ For some of the penguins, the sex was not determined. Use the function `filter()
 One way to do this (though not the only way) is to filter out the rows where `Sex` is NA. Remember the function `is.na()` and remember that to negate a condition, you use the operator! For example, `!is.na(NA)` returns `FALSE`.
 
 ```{r}
-penguins_subset <- filter(penguins, ???)
+penguins_subset_2 <- filter(penguins_subset, ???)
 ```
 
 
