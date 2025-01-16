@@ -484,7 +484,7 @@ country_fac
 . . .
 
 ::: columns
-::: {.column width="50%"}
+::: {.column width="40%"}
 
 ```{r}
 #| label: factors-df
@@ -492,7 +492,7 @@ df <- data.frame(name, age, country_fac)
 df
 ```
 :::
-::: {.column width="50%"}
+::: {.column width="60%"}
 ```{r}
 #| label: summary-factor-df
 summary(df)
@@ -1008,6 +1008,25 @@ for(the_age in df$age){
   test <- test_age(the_age)
   print(test)
 }
+```
+
+## Answers Bonus question
+
+Bonus question: add age category as a new column in df.
+
+```{r}
+# We first set an index that will be increased every time the for-loop runs
+i <- 1
+
+for(nr in df$age){
+  # Add the age category to a new column in df
+  df$age_category[i] <- test_age(nr)
+
+  # Increase the index with 1 after running the code in this for-loop iteration
+  i <- i + 1
+}
+
+df
 ```
 
 # Recap "Basics of R" {background-color=#FFCD00}
