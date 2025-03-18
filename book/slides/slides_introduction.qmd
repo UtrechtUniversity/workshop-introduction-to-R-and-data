@@ -880,34 +880,9 @@ mean(df$age)
 mean(1:100)
 ```
 
-## Functions
-
-**Functions can also be used to make a complex line of code easier to write/read:**
-
-You write the function once:
-```{r}
-#| label: function-find-bobs-age
-find_bobs_age <- function(data){
-  bobs_age <- data[data$name == "Bob", "age"]
-  return(bobs_age)
-}
-```
-
-Now, every time you want to find Bob's age you use:
-```{r}
-#| label: use-find-bobs-age
-find_bobs_age(df)
-```
-
-. . .
-
-**Functions are the bread and butter of programming!**
-
-A good script will consist mostly of functions, with a minimal amount of code that applies the functions.
-
 ## Functions in R
 
-- To make a function, use the function `function()`:
+- To make a function yourself, use the function `function()`:
   ```r
   myFun <- function()
   ```
@@ -953,6 +928,26 @@ Now, you can use the function:
 myFun(3, 4)
 myFun(90, 71)
 ```
+
+## Functions
+
+**Functions are the bread and butter of programming!**
+
+A good script will consist mostly of functions, with a minimal amount of code that applies the functions.
+
+. . .
+
+```r
+myFun <- function(arg1, arg2){
+    multiplication <- arg1 * arg2
+    return(multiplication)
+}
+```
+
+Note that:
+
+- arg1 and arg2 are **internal variables**: they do not exist outside of the function and they are used within the function to perform the code.
+- The output of a function is always spit out using `return` (**not** `print`).
 
 # Go to exercise 8
 
