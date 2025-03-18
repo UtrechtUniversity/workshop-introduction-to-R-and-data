@@ -122,7 +122,7 @@ x <- "hello world"
 ```
 
     
-You will see your variabe (R object) appear in your Environment (top right panel).
+You will see your variable (R object) appear in your Environment (top right panel).
 :::
 
 ::: {.column width="50%"}
@@ -784,7 +784,7 @@ df$job
 
 ## If statement: a conditional
 
-An if statement tests if a condition is TRUE or FALSE and exectues code depending on the outcome of that test.
+An if statement tests if a condition is TRUE or FALSE and executes code depending on the outcome of that test.
 
 ![](images/ifstatement.png)
 
@@ -981,7 +981,7 @@ test_age(2)
 
 ## A for-loop
 
-- Perform the same action(s) for mutiple inputs at a time
+- Perform the same action(s) for multiple inputs at a time
 - Input is an object with multiple similar elements (e.g., a vector, row in a dataframe, etc.) that can be iterated over
 
 ![](images/forloop.png "For loop")
