@@ -56,7 +56,7 @@ library(readxl)
 Use the function `read_excel()` to read a related data set `penguins_isotopes.xlsx` (an Excel file!), also located in your `data` folder, into R.
 
 ```{r}
-penguins_isotopes <- ???(path = "???")
+penguins_isotopes <- ???
 ```
 
 ## Exercise 3
@@ -68,9 +68,7 @@ For this function, you need to provide:
 - The name of the folder and the file name: "data/penguins_isotopes.csv"
 
 ```{r}
-???(penguins_isotopes,
-    # Name of the file, including extension (.csv)
-    file = "???")
+
 ```
 
 # Chapter 2: Selecting & Filtering Data
@@ -95,7 +93,7 @@ Use the function `select()` to include the right columns in our data subset.
 **Note** that in order to work with the subset from Exercise 4, we need to use that data frame (`penguin_subset`) as our data input!
 
 ```{r}
-penguins_subset <- select(???)
+penguins_subset <- ???
 ```
 
 
@@ -103,10 +101,12 @@ penguins_subset <- select(???)
 
 For some of the penguins, the sex was not determined. Use the function `filter()` to keep only the rows where the column `Sex` specifies either "FEMALE" or "MALE".
 
+Use the `penguins_subset` dataframe that you created in the previous exercise as input.
+
 One way to do this (though not the only way) is to filter out the rows where `Sex` is NA. Remember the function `is.na()` and remember that to negate a condition, you use the operator! For example, `!is.na(NA)` returns `FALSE`.
 
 ```{r}
-penguins_subset_2 <- filter(penguins_subset, ???)
+penguins_subset_2 <- ???
 ```
 
 
@@ -117,17 +117,17 @@ Use the `mutate()` function to create a new column called `culmen_ratio`, which 
 Make sure to work with the `penguins_subset_2` dataframe.
 
 ```{r}
-penguins_subset_3 <- mutate(penguins_subset_2, ???)
+penguins_subset_3 <- ???
 ```
 
 ## Exercise 7
 
-In the next chapter, we will make our dataframe tidy. Before we do that, we will rename the `Culmen_Length_mm` and `Culmen_Depth_mm` columns in order to make subsequent operations easier.
+In the next chapter, we will make our dataframe tidy. Before we do that, we will rename the `Culmen_Length_mm` column as `length` and `Culmen_Depth_mm` as `depth` in order to make subsequent operations easier.
+
+Use the `rename` function to rename these columns. Make sure to take `penguins_subset_3` as the input dataframe.
 
 ```{r}
-penguins_subset_4 <- rename(penguins_subset_3,
-                            length = ???,
-                            depth = ???)
+penguins_subset_4 <- ???
 ```
 
 # Exercise 8
@@ -157,8 +157,8 @@ For this, you need to specify:
 ```{r}
 penguins_long <- penguins_subset_5 %>%
   pivot_longer(cols = c(???, ???),
-               names_to = "culmen_element",
-               values_to = "measurement")
+               ??? = "culmen_element",
+               ??? = "measurement")
 ```
 
 ### Exercise 10 
@@ -175,9 +175,8 @@ Make sure to feed the right data frame into the workflow: the column `culmen_ele
 
 ```{r}
 penguins_summary <- penguins_long %>%
-  group_by(???) %>%
-  summarize(avg = ???,
-            sd = ???)
+  ??? %>%
+  ???
 ```
 
 ## Exercise 11 
@@ -185,7 +184,7 @@ penguins_summary <- penguins_long %>%
 Use the function `full_join()` to merge the `penguins_summary` and `penguins_long` data frames, so that each row in the long data frame will have additional columns with the mean and standard deviation for its group.
 
 ```{r}
-penguins_join <- full_join(???)
+penguins_join <- ???
 ```
 
 # Chapter 4: Data Visualization
@@ -193,11 +192,11 @@ penguins_join <- full_join(???)
 ## Exercise 12
 
 Using the ggplot2 package, let's plot the culmen length against their flipper length from the `penguins` dataframe.
-Culmen_Length_mm and Flipper_Length_mm are both continuous variables, and therefore we are now choosing a scatterplot.
+`Culmen_Length_mm` and `Flipper_Length_mm` are both continuous variables, and therefore we are now choosing a scatterplot.
 
 In the code chunk below:
 
-- Put Culmen_Length_mm on the x-axis, and Flipper_Length_mm on the y-axis
+- Put `Culmen_Length_mm` on the x-axis, and `Flipper_Length_mm` on the y-axis
 - Color the points according to Species
 - Add scatter points using the geom `geom_point()`
 - Add x- and y-labels and a title with `labs()`

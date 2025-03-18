@@ -1008,6 +1008,7 @@ What have we learned this afternoon?
 - Statistical Inference via Data Science: A ModernDive into R and the Tidyverse: <https://moderndive.com/>
 - Big Book of R: <https://www.bigbookofr.com/>
 - Better spreadsheets: <https://better-spreadsheets.netlify.app/>
+- [YaRrr! The Pirate’s Guide to R](https://bookdown.org/ndphillips/YaRrr/)
 
 **See also the [What's next page](https://utrechtuniversity.github.io/workshop-introduction-to-R-and-data/what-next.html).**
 
