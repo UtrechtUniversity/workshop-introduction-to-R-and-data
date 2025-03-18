@@ -96,7 +96,7 @@ Before you start, please run this code:
 rm(name,age,country)
 ```
 
-1. From your dataframe df, return complete rows for everyone living in a country of your choice.
+1. From your dataframe df, return all columns for everyone living in a country of your choice.
 
 2. Return only the names of everyone in your data frame df under 40. 
 
@@ -131,7 +131,7 @@ is.na(NA)
 ### Exercise 7: If statement
 
 Make an if statement that tests if a number is larger than 18. 
-If the number is larger, the variable age_category should be assigned the value "adult". If not, the variable age_category should be assigned the vaue "minor".
+If the number is larger, the variable age_category should be assigned the value "adult". If not, the variable age_category should be assigned the value "minor".
 
 ```{r}
 number <- 8
@@ -142,6 +142,21 @@ if(){
 
 print(age_category)
 ```
+
+BONUS exercise:
+
+Expand your if-else statement from above with an additional condition: if the number is less than 2, age_category should get the value "toddler" assigned.
+
+```{r}
+number <- 8
+
+if(){
+  
+}
+
+print(age_category)
+```
+
 
 ### Exercise 8: Function
 
