@@ -627,7 +627,8 @@ df[df$name=="Bob", "age"]
 
 ## Answers to exercise 5
 
-1. From your dataframe `df`, return complete rows for everyone living in a country of your choice.
+1. From your dataframe `df`, return all columns for everyone living in a country of your choice.
+
 ```{r}
 #| label: exercise-5.1
 df[df$country=="UK", ]
@@ -838,6 +839,23 @@ number <- 8
 if(number >= 18){
   age_category <- "adult"
 } else{
+  age_category <- "minor"
+}
+
+print(age_category)
+```
+
+Bonus exercise: expand the if-else statement to assign "toddler" if number is smaller than 2:
+
+```{r}
+#| label: exercise-7-bonus
+number <- 8
+
+if(number >= 18){
+  age_category <- "adult"
+} else if(number < 2) {
+  age_category <- "toddler"
+} else {
   age_category <- "minor"
 }
 
