@@ -77,7 +77,7 @@ We are going to clean up our data by selecting/filtering only the relevant infor
 
 ## Exercise 4
 
-We are going to select columns with relevant data, for our upcoming analysis.
+We are going to select columns from the `penguins` dataframe with relevant data, for our upcoming analysis.
 The research we do is on penguin bill sizes (described in our data with the word "Culmen").
 
 We want to include a few relevant variables so we can analyse them later:
@@ -89,8 +89,6 @@ We want to include a few relevant variables so we can analyse them later:
 - Culmen_Length_mm
 
 Use the function `select()` to include the right columns in our data subset. 
-
-**Note** that in order to work with the subset from Exercise 4, we need to use that data frame (`penguin_subset`) as our data input!
 
 ```{r}
 penguins_subset <- ???
