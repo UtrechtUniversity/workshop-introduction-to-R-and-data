@@ -92,6 +92,25 @@ Part 1: Basics of R
 
 5. From the ‘Files’ menu (bottom right), click **baseR_exercises.Rmd**.
 
+## R project files
+
+When you start programming for yourself:
+
+- Create a folder dedicated to your project
+- Start a new R project: **File > New Project > Existing Directory**
+- An `.RProj` file will be created
+
+. . .
+
+Advantages:
+
+- Automatically set your working directory to that folder
+- Automatically retrieve only the history and objects from that R project
+- More reproducible (relative vs. absolute paths)
+
+```r
+getwd()
+```
 
 ## Running R code
 

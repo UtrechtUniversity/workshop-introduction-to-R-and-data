@@ -56,43 +56,6 @@ dplyr::rename(iris, petal_length = Petal.Length)
 
 # Go to Exercise 0 in `datascience_exercises.Rmd`
 
-# Some good coding practices {background-color=#FFCD00}
-
-## R projects and working directories
-
-When you start programming for yourself:
-
-- Create a folder dedicated to your project
-- Start a new R project: **File > New Project > Existing Directory**
-- An `.RProj` file will be created
-
-. . .
-
-Advantages:
-
-- Automatically set your working directory to that folder
-- Automatically retrieve only the history and objects from that R project
-- More reproducible (relative vs. absolute paths)
-
-```r
-getwd()
-```
-
-## Comments
-
-If a line of R code starts with `#`, it is ignored.
-
-- Help your future you and collaborators/supervisors understand what your code does
-- Explain (the purpose of) code that is not self-explanatory
-- Comment and un-comment to debug code without having to delete it[^1]
-
-```{r}
-# Print a very important line
-print("A very important line")
-```
-
-[^1]: You should delete non-working code when done debugging though.
-
 ## The Data Science workflow
 
 ![Source: [R 4 Data Science](https://r4ds.had.co.nz/introduction.html)](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png "The data science workflow."){fig-align="center"}
