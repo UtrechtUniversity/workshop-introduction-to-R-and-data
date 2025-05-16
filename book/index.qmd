@@ -17,4 +17,4 @@ your work.
 
 Our workshop material is licensed under a Creative Commons Attribution 4.0 
 International License. You can view the license 
-[in our GitHub repository](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/blob/main/LICENSE.md).
+[in our GitHub repository](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data/blob/main/LICENSE).
